@@ -1,11 +1,10 @@
 package com.test.web.mapper;
 
 import java.util.List;
-
-import com.test.web.entity.User;
+import com.test.web.entity.UserEntity;
 
 public interface UserMapper {
 	
-	public List<User> findById(int userId);
+	public List<UserEntity> findById(int userId);
 	
 }
