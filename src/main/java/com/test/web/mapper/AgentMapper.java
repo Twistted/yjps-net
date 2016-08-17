@@ -1,5 +1,11 @@
 package com.test.web.mapper;
 
-public interface AgentMapper {
+import java.util.List;
 
+import com.test.web.entity.AgentEntity;
+
+public interface AgentMapper {
+	public AgentEntity findById(int id);
+	public List<AgentEntity> findAll();
+	public List<AgentEntity> queryPage(int offset, int size);
 }

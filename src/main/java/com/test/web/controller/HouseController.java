@@ -20,8 +20,10 @@ public class HouseController {
 		ModelAndView model = new ModelAndView();
 		IHouseService houseService = new HouseService();
 		HouseEntity houseEntity = houseService.getHouseById(Integer.valueOf(id));
+		
 		model.addObject("house", houseEntity);
 		model.setViewName("house");
+		
 		return model;
 	}
 	

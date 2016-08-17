@@ -7,17 +7,25 @@ public class HouseEntity {
 	private double prize;
 	private double downPayment;
 	private double monthlyPayment;
-	private String orientation;
+	private int orientation;
 	private int floor;
-	private int villageId;
 	private int year;
 	private String houseDescribe;
 	private double area;
-	private String houseType;
+	private String houseTypeUrl;
 	private int roomAmount;
 	private int livingroomAmount;
 	private int toiletAmount;
 	private int balconyAmount;
+	private int state;
+	private int agentId;
+	private int houseNumber;
+	private String province;
+	private String city;
+	private String town;
+	private String zone;
+	private String villageName;
+	private String address;
 	
 	public int getHouseId() {
 		return houseId;
@@ -49,10 +57,10 @@ public class HouseEntity {
 	public void setMonthlyPayment(double monthlyPayment) {
 		this.monthlyPayment = monthlyPayment;
 	}
-	public String getOrientation() {
+	public int getOrientation() {
 		return orientation;
 	}
-	public void setOrientation(String orientation) {
+	public void setOrientation(int orientation) {
 		this.orientation = orientation;
 	}
 	public int getFloor() {
@@ -60,12 +68,6 @@ public class HouseEntity {
 	}
 	public void setFloor(int floor) {
 		this.floor = floor;
-	}
-	public int getVillageId() {
-		return villageId;
-	}
-	public void setVillageId(int villageId) {
-		this.villageId = villageId;
 	}
 	public int getYear() {
 		return year;
@@ -86,10 +88,10 @@ public class HouseEntity {
 		this.area = area;
 	}
 	public String getHouseType() {
-		return houseType;
+		return houseTypeUrl;
 	}
-	public void setHouseType(String houseType) {
-		this.houseType = houseType;
+	public void setHouseType(String houseTypeUrl) {
+		this.houseTypeUrl = houseTypeUrl;
 	}
 	public int getRoomAmount() {
 		return roomAmount;
@@ -115,13 +117,76 @@ public class HouseEntity {
 	public void setBalconyAmount(int balconyAmount) {
 		this.balconyAmount = balconyAmount;
 	}
+	public int getAgentId() {
+		return agentId;
+	}
+	public void setAgentId(int agentId) {
+		this.agentId = agentId;
+	}
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
+	}
+	public int getHouseNumber() {
+		return houseNumber;
+	}
+	public void setHouseNumber(int houseNumber) {
+		this.houseNumber = houseNumber;
+	}
+	public String getHouseTypeUrl() {
+		return houseTypeUrl;
+	}
+	public void setHouseTypeUrl(String houseTypeUrl) {
+		this.houseTypeUrl = houseTypeUrl;
+	}
+	public String getProvince() {
+		return province;
+	}
+	public void setProvince(String province) {
+		this.province = province;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getTown() {
+		return town;
+	}
+	public void setTown(String town) {
+		this.town = town;
+	}
+	public String getZone() {
+		return zone;
+	}
+	public void setZone(String zone) {
+		this.zone = zone;
+	}
+	public String getVillageName() {
+		return villageName;
+	}
+	public void setVillageName(String villageName) {
+		this.villageName = villageName;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	
 	@Override
 	public String toString() {
 		return "House [houseId=" + houseId + ", title=" + title + ", prize=" + prize + ",downPayment=" + downPayment + 
-			    ",monthlyPayment=" + monthlyPayment + ",orientation=" + orientation + ",floor=" + floor + ",villageId=" +
-				villageId + ",year=" + year + ",houseDescribe=" + houseDescribe + ",area=" + area + ",houseType=" + houseType +
-				",roomAmount=" + roomAmount + ",livingroomAmount=" + livingroomAmount +",toiletAmount=" + toiletAmount + ",balconyAmount=" + balconyAmount ;
+			    ",monthlyPayment=" + monthlyPayment + ",orientation=" + orientation + ",floor=" + floor + 
+				",year=" + year + ",houseDescribe=" + houseDescribe + ",area=" + area + ",houseTypeUrl=" + houseTypeUrl +
+				",roomAmount=" + roomAmount + ",livingroomAmount=" + livingroomAmount +",toiletAmount=" + toiletAmount + 
+				",balconyAmount=" + balconyAmount + ",state=" + state + ",agentId=" + agentId + ",houseNumber=" + houseNumber +
+				",province=" + province + ",city=" + city + ",town=" + town + ",zone=" + zone + ",villageName=" + villageName +
+				",address=" + address;
 	}
 
 }

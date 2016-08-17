@@ -8,4 +8,5 @@ public interface HouseMapper {
 	public HouseEntity findById(int id);
 	public List<HouseEntity> findAll();
 	public List<HouseEntity> queryPage(int offset, int size);
+	public int update(HouseEntity house);
 }

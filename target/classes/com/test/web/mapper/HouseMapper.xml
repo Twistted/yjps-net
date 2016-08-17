@@ -3,8 +3,8 @@
 <mapper namespace="com.test.web.mapper.HouseMapper">
 
 	<insert id="insert" parameterType="HouseEntity">
-		insert into house (house_id, title, prize)
-		values(#{houseId},#{title},#{prize})
+		insert into house ( title, prize)
+		values(#{title},#{prize})
 	</insert>
 	
 	<select id="findById" parameterType="int" resultType="HouseEntity">
@@ -18,5 +18,100 @@
 	<select id="queryPage" parameterType="int" resultType="HouseEntity">
 		select * from house order by house_id limit #{offset} #{size}
 	</select>
+	
+	<update id="update" parameterType="HouseEntity">
+		update house
+			<set>
+				<if test="title != null">
+					title=#{title},
+				</if>
+				<if test="prize != null">
+					prize=#{prize},
+				</if>
+				<if test="down_payment != null">
+					down_payment=#{down_payment},
+				</if>
+				<if test="monthly_payment != null">
+					monthly_payment=#{monthly_payment},
+				</if>
+				<if test="orientation != null">
+					orientation=#{orientation},
+				</if>
+				<if test="floor != null">
+					floor=#{floor},
+				</if>
+				<if test="year != null">
+					year=#{year},
+				</if>
+				<if test="house_describe != null">
+					house_describe=#{house_describe},
+				</if>
+				<if test="room_amount != null">
+					room_amount=#{room_amount},
+				</if>
+				<if test="livingroom_amount != null">
+					livingroom_amount=#{livingroom_amount},
+				</if>
+				<if test="toilet_amount != null">
+					toilet_amount=#{toiletAmount},
+				</if>
+				<if test="balcony_amount != null">
+					balcony_amount=#{balconyAmount},
+				</if>
+				<if test="balcony_amount != null">
+					balcony_amount=#{balconyAmount},
+				</if>
+				<if test="state != null">
+					state=#{state},
+				</if>
+				<if test="agent_id != null">
+					agent_id=#{agentId},
+				</if>
+				<if test="house_number != null">
+					house_number=#{houseNumber},
+				</if>
+				<if test="province != null">
+					province=#{province},
+				</if>
+				<if test="city != null">
+					city=#{city},
+				</if>
+				<if test="town != null">
+					town=#{town},
+				</if>
+				<if test="zone != null">
+					zone=#{zone},
+				</if>
+				<if test="village_name != null">
+					village_name=#{village_name},
+				</if>
+				<if test="address != null">
+					address=#{address}
+				</if>
+			</set>
+		where house_id=#{houseId}
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 </mapper>
