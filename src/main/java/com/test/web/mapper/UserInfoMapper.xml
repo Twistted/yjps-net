@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.web.mapper.UserInfoMapper">
+	
+	
+	<insert id="insert" parameterType="UserInfo">
+		insert into userinfo(username,age,password)
+		values(#{username},#{age},#{password})
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		delete from userinfo where userid=#{userid}
+	</delete>
+	
+	<select id="findById" parameterType="int" resultType="UserInfo">
+		select * from userinfo where userid = #{value}
+	</select>
+	
+	<select id="findAll" resultType="UserInfo">
+		select * from userinfo order by userid
+	</select>
+	
+	<select id="search" parameterType="string" resultType="UserInfo">
+		select * from userinfo
+		<where>
+			<if test="userName != null and userName != ''">
+			   	 user_name like '%' #{userName} '%'
+			</if>
+			<if test="email != null">
+				and email like '%' #{email} '%'
+			</if>
+		</where>
+	</select>
+	
+	
+	<select id="findByIds" parameterType="int" resultType="UserInfo">
+		select * from userinfo
+		<where>
+			userid in (
+			<foreach item="item" index="index" collection="list" separator=",">
+				#{item}
+			</foreach>
+			)
+		</where>
+	</select>
+	
+	<update id="update" parameterType="UserInfo">
+		update userinfo 
+			<set>
+				<if test="userName != null">
+				user_name = #{userName},
+				</if>
+				<if test="age != null">
+				age = #{age},
+				</if>
+				<if test="password != null">
+				password = #{password}
+				</if>
+			</set>
+		where userid = #{userid}
+	</update>
+
+</mapper>

@@ -1,0 +1,112 @@
+a{
+	color: #000;
+	text-decoration: none;
+}
+a:hover{
+	color: #000;
+	text-decoration: none;
+}
+a:after{
+	color: #000;
+	text-decoration: none;
+}
+.bold{
+	font-weight: bold;
+}
+header{
+	background-color: #39AC6A;
+	width: 100%;
+	height: 55px;
+}
+/*搜索框*/
+.searchs{
+	
+	background-color: ;
+	height: 55px;
+}
+.searchs .search-area{
+	width: 620px;
+	height: 37px;
+	margin-left: 12.5%;
+	margin-top: 10px;
+}
+.searchs .search-area #keyword-box{
+	width: 500px;
+	padding: 0 5px;
+	border: solid 1px #CCC;
+}
+.searchs .search-area button{
+	width: 100px;
+	background-color: #C7524B;
+	color: #FFF;
+	margin-left: 10px;
+	font-weight: bolder;
+}
+
+/*脚部*/
+footer{
+	float: left;
+	height: 226px;
+	background: url(../img/footer-bg.jpg) no-repeat center top #222;
+}
+footer *{
+	width: auto;
+	height: auto;
+}
+footer .wrapper{
+	width: 100%;
+	padding: 10px 10%;
+}
+footer .wrapper .f-title{
+	height: 75px;
+	width: 100%;
+	border-bottom: 1px solid #393939;
+}
+footer .wrapper .f-title .fl{
+	height: 100%;
+}
+footer .wrapper .f-title .fl ul{
+	height: 100%;
+}
+footer .wrapper .f-title .fl ul li{
+	height: 100%;
+	padding: 20px 0;
+	margin-right: 10px;
+}
+footer .wrapper .f-title .fl ul li a{
+	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","微软雅黑",'Segoe UI',Tahoma,"宋体b8b\4f53",SimSun,sans-serif;
+	color: #FFF;
+}
+footer .wrapper .f-title .fr{
+	float: right;
+	margin: 20px 0;
+	color: #7DCFA0;
+	font-size: 1em;
+	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","微软雅黑",'Segoe UI',Tahoma,"宋体b8b\4f53",SimSun,sans-serif;
+}
+footer .wrapper .bottom{
+	width: 100%;
+}
+footer .wrapper .bottom .copyright{
+	margin: 10px 0;
+	color: #888C8E;
+	font-size: 1em;
+	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","微软雅黑",'Segoe UI',Tahoma,"宋体b8b\4f53",SimSun,sans-serif;
+}
+
+@media screen and (max-width: 1200px) { /*当屏幕尺寸小于1200px时，应用下面的CSS样式*/
+    .wrapper{
+	padding: 0 0 0 5%;
+	}
+	.searchs .search-area{
+	margin-left: 5%;
+	}
+}
+@media screen and (max-width: 1100px) { /*当屏幕尺寸小于1100px时，应用下面的CSS样式*/
+    .wrapper{
+	padding: 0 0 0 1%;
+	}
+	.searchs .search-area{
+	margin-left: 1%;
+	}
+}

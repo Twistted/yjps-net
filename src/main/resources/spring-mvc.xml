@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xsi:schemaLocation="
+	   		http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-4.3.xsd
+			http://www.springframework.org/schema/mvc
+			http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+	
+	<!-- 启动注解，注册服务，如验证框架、全局类型转换器-->
+	<mvc:annotation-driven  />
+	<!-- 静态资源处理 -->
+	<mvc:default-servlet-handler />
+	<!-- 启动自动扫描 -->
+	<context:component-scan base-package="com.test.web.controller">
+		<!-- 制定扫包规则 ,只扫描使用@Controller注解的JAVA类 -->
+		<!-- <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/> -->
+	</context:component-scan>
+	
+	<!-- 视图 -->
+	<!-- 配置视图解析器 -->
+	<!-- prefix和suffix：查找视图页面的前缀和后缀(前缀[逻辑视图名]),后缀比如传进来的逻辑视图名为WEB-INF/jsp/hello，
+		则该该jsp视图页面应该存放在“WEB-INF/jsp/hello.jsp”； -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+    	<!-- 我这里的视图直接放在/WEB-INF/views -->
+        <property name="prefix" value="/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+   
+    <!-- 上传 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    	<property name="resolveLazily" value="true" />
+    	<property name="maxUploadSize" value="20971520" />
+    	<property name="defaultEncoding" value="utf-8" />
+    </bean>
+
+</beans>

@@ -1,0 +1,384 @@
+*{
+	float: left;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	text-decoration: none;
+	font-size: 1em;
+	width: 100%;
+	height: 100%;
+	list-style: none;
+}
+
+body{
+	min-width: 1024px;
+}
+a{
+	color: #000;
+	text-decoration: none;
+}
+a:hover{
+	color: #000;
+	text-decoration: none;
+}
+a:after{
+	color: #000;
+	text-decoration: none;
+}
+.bold{
+	font-weight: bold;
+}
+header{
+	background-color: #39AC6A;
+	width: 100%;
+	height: 55px;
+}
+/*搜索框*/
+.searchs{
+	background-color: ;
+	height: 55px;
+}
+.searchs .search-area{
+	width: 620px;
+	height: 37px;
+	margin-left: 12.5%;
+	margin-top: 10px;
+}
+.searchs .search-area #keyword-box{
+	width: 500px;
+	padding: 0 5px;
+	border: solid 1px #CCC;
+}
+.searchs .search-area button{
+	width: 100px;
+	background-color: #C7524B;
+	color: #FFF;
+	margin-left: 10px;
+	font-weight: bolder;
+}
+/*灰白区域*/
+.intro{
+	background-color: #F1F1F1;
+	height: 50px;
+}
+/*主区域*/
+.wrapper{
+	height: auto;
+	padding: 0 0 0 12.5%;
+}
+/*标题栏*/
+.wrapper .title-line{
+	height: 100px;
+	padding: 30px 0;
+}
+.wrapper .title-line .line01{
+	height: 42px;
+	width: 1000px;
+}
+.wrapper .title-line .line01 .title-box{
+	height: 22px;
+	margin: 0;
+	padding: 0;
+	font-size: 1.85em;
+	font-family: "Hiragino Sans GB","微软雅黑","Microsoft YaHei",SimHei,Tahoma,"宋体b8b\4f53",SimSun,sans-serif;
+}
+.wrapper .title-line .view-label{
+	height: 25px;
+	width: 1000px;
+}
+.wrapper .title-line .view-label span{
+	height: 25px;
+	width: auto;
+	font-size: 1em;
+	margin-right: 5px;
+}
+.wrapper .title-line .view-label .span-discount{
+	border: solid 1px lightgreen;
+	color: lightgreen;
+}
+.wrapper .title-line .view-label .span-visit{
+	border: solid 1px lightblue;
+	color: lightblue;
+}
+/*信息区域*/
+.wrapper .panel-box-info{
+	height: 420px;
+	padding: 0;
+}
+/*图像框*/
+.wrapper .panel-box-info .album-box{
+	width: 334px;
+	padding: 30px 0;
+}
+
+.wrapper .panel-box-info .album-box #myCarousel{
+	height: 250px;
+}
+.wrapper .panel-box-info .album-box #myCarousel .carousel-control{
+	padding: 35% 0 0 0;
+}
+.wrapper .panel-box-info .album-box #myCarousel .carousel-control span{
+	height: auto;
+}
+.wrapper .panel-box-info .album-box #myCarousel .carousel-idc{
+	height: 83px;
+	width: 100%;
+	overflow-y: hidden;
+	overflow-x: scroll;
+}
+.wrapper .panel-box-info .album-box #myCarousel .carousel-indicators{
+	height: 100%;
+	width: auto;
+	position: relative;
+	top: 5px;
+	left: 100px;
+	padding: 5px;
+}
+.wrapper .panel-box-info .album-box #myCarousel .carousel-indicators li{
+	width: 70px;
+	height: 50px;
+	margin: 1px 5px;
+	border:solid 1px #fff;
+}
+/*信息框*/
+.wrapper .panel-box-info .info-box{
+	width: 388px;
+	padding: 30px 0 0 25px;
+}
+.wrapper .panel-box-info .info-box .desc-text{
+	height: auto;
+}
+.wrapper .panel-box-info .info-box .desc-text dl{
+	height: 13px;
+	font-size: 0.8em;
+}
+.wrapper .panel-box-info .info-box .desc-text dl *{
+	width: auto;
+	height: auto;
+}
+.wrapper .panel-box-info .info-box .countact-panel{
+	height: 68px;
+}
+/*中介框（部分内容可复用于后面的样式）*/
+.wrapper .panel-box-info .agent-box{
+	width: 218px;
+	height: 318px;
+	margin: 30px 0 0 60px;
+}
+.agent-info{
+	width: 218px;
+	height: 102px;
+}
+.agent-info .agent-del{
+	width: 83px;
+	height: 95px;
+	overflow: hidden;
+}
+.agent-info .agent-del .iframe-img{
+	width: 83px;
+	height: auto;
+}
+.agent-info .p-del{
+	width: 115px;
+	height: 102px;
+	float: right;
+}
+.agent-info .p-del *{
+	height: auto;
+	width: auto;
+}
+.agent-info .p-del p{
+	height: 25px;
+	width: 100%;
+	margin: 0px;
+	padding: 0 5px;
+	font-size: 0.8em;
+}
+.agent-info .p-del .p-01{
+	height: 27px;
+	font-size: 1.2em;
+	font-weight: bolder;
+}
+.agent-info .p-del .p-01 a{
+	margin-right: 5px;
+}
+.wrapper .panel-box-info .agent-box .agent-comment{
+	width: 218px;
+	height: 113px;
+	background-color: skyblue;
+	margin-top: 10px;
+}
+.wrapper .panel-box-info .agent-box .promise{
+	width: 212px;
+	height: 45px;
+	background-color: lightgreen;
+	margin-top: 10px;
+}
+.wrapper .panel-box-info .agent-box .unic-label{
+	width: 218px;
+	height: 42px;
+	background-color: grey;
+	margin-top: 10px;
+}
+/*内容区域*/
+.wrapper .panel-box-content{
+	width: 1000px;
+}
+/*内容导航*/
+.wrapper .panel-box-content .panel-tab{
+	height: 46px;
+	border-bottom: solid 3px #39AC6A;
+}
+.wrapper .panel-box-content .panel-tab li{
+	width: auto;
+	height: 44px;
+	padding:10px 20px;
+}
+.wrapper .panel-box-content .panel-tab li.on{
+	background-color: #39AC6A;
+}
+.wrapper .panel-box-content .panel-tab li.on a{
+	color: #FFF;
+}
+.wrapper .panel-box-content .panel-tab li a{
+	font-size: 1.2em;
+	font-weight: bold;
+}
+/*房源描述*/
+.wrapper .panel-box-content .tab-content{
+	height: auto;
+	margin: 10px 0 50px 0;
+}
+.wrapper .panel-box-content .tab-content #detail-content{
+	height: auto;
+}
+/*标题样式可以复用*/
+.wrapper .panel-box-content .tab-content .detail-title{
+	height: 50px;
+	border-bottom: solid 1px #CCC;
+	padding: 0 5px;
+}
+.wrapper .panel-box-content .tab-content .detail-title h3{
+	font-size: 1.2em;
+	font-weight: bold;
+	width: auto;
+}
+.wrapper .panel-box-content .tab-content #detail-content .items{
+	height: auto;
+	border-bottom: solid 1px #CCC;
+}
+.items *{
+	width: auto;
+	height: auto;
+}
+.wrapper .panel-box-content .tab-content #detail-content .items .content{
+	width: 738px;
+	padding: 1%;
+}
+.wrapper .panel-box-content .tab-content #detail-content .items .content h2{
+	font-size: 1.5em;
+	width: 98%;
+	font-family: "Hiragino Sans GB","微软雅黑","Microsoft YaHei",SimHei,Tahoma,"宋体b8b\4f53",SimSun,sans-serif;
+}
+.wrapper .panel-box-content .tab-content #detail-content .items .content .time{
+	width: 98%;
+	color: #999;
+	font-size: 0.8em;
+}
+.wrapper .panel-box-content .tab-content #detail-content .items .content .text-comment{
+	width: 98%;
+	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","微软雅黑",'Segoe UI',Tahoma,"宋体b8b\4f53",SimSun,sans-serif;
+	font-size: 1.1em;
+}
+.wrapper .panel-box-content .tab-content #detail-content .items .content .text-comment .actShowMore{
+	float: none;
+	color: #39AC6A;
+}
+.wrapper .panel-box-content .tab-content #detail-content .items .people{
+	width: 218px;
+}
+.wrapper .panel-box-content .tab-content #detail-content .items .contactted{
+	color: #39AC6A;
+	font-size: 1.5em;
+}
+.wrapper .panel-box-content .tab-content #detail-album .detail-album-box{
+	height: auto;
+}
+.wrapper .panel-box-content .tab-content #detail-album .detail-album-box .actShowImg{
+	width: 49%;
+	height: auto;
+	margin: 0.5%;
+}
+.wrapper .panel-box-content .tab-content #detail-album .detail-album-box .sub-text{
+	color: #888;
+	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","微软雅黑",'Segoe UI',Tahoma,"宋体b8b\4f53",SimSun,sans-serif;
+	font-size: 0.9em;
+	width: auto;
+	margin-left: 5px;
+}
+/*脚部*/
+footer{
+	float: left;
+	height: 226px;
+	background: url(../img/footer-bg.jpg) no-repeat center top #222;
+}
+footer *{
+	width: auto;
+	height: auto;
+}
+footer .wrapper{
+	width: 100%;
+	padding: 10px 10%;
+}
+footer .wrapper .f-title{
+	height: 75px;
+	width: 100%;
+	border-bottom: 1px solid #393939;
+}
+footer .wrapper .f-title .fl{
+	height: 100%;
+}
+footer .wrapper .f-title .fl ul{
+	height: 100%;
+}
+footer .wrapper .f-title .fl ul li{
+	height: 100%;
+	padding: 20px 0;
+	margin-right: 10px;
+}
+footer .wrapper .f-title .fl ul li a{
+	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","微软雅黑",'Segoe UI',Tahoma,"宋体b8b\4f53",SimSun,sans-serif;
+	color: #FFF;
+}
+footer .wrapper .f-title .fr{
+	float: right;
+	margin: 20px 0;
+	color: #7DCFA0;
+	font-size: 1em;
+	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","微软雅黑",'Segoe UI',Tahoma,"宋体b8b\4f53",SimSun,sans-serif;
+}
+footer .wrapper .bottom{
+	width: 100%;
+}
+footer .wrapper .bottom .copyright{
+	margin: 10px 0;
+	color: #888C8E;
+	font-size: 1em;
+	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","微软雅黑",'Segoe UI',Tahoma,"宋体b8b\4f53",SimSun,sans-serif;
+}
+@media screen and (max-width: 1200px) { /*当屏幕尺寸小于1200px时，应用下面的CSS样式*/
+    .wrapper{
+	padding: 0 0 0 5%;
+	}
+	.searchs .search-area{
+	margin-left: 5%;
+	}
+}
+@media screen and (max-width: 1100px) { /*当屏幕尺寸小于1100px时，应用下面的CSS样式*/
+    .wrapper{
+	padding: 0 0 0 1%;
+	}
+	.searchs .search-area{
+	margin-left: 1%;
+	}
+}
