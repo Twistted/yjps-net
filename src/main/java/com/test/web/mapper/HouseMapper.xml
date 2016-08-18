@@ -46,6 +46,9 @@
 				<if test="house_describe != null">
 					house_describe=#{house_describe},
 				</if>
+				<if test="area != null">
+				    area=#{area}
+				</if>
 				<if test="room_amount != null">
 					room_amount=#{room_amount},
 				</if>
