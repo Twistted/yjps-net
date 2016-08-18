@@ -2,6 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.test.web.mapper.ManagerMapper">
 	
+    <insert id="insert" parameterType="ManagerEntity">
+        insert into house ( acocunt, password, state, level, photo_url)
+		values(#{account},#{password},#{state},#{level},#{photoUrl})
+    </insert>
+    
 	<select id="findById" parameterType="int" resultType="ManagerEntity">
 		select * from manager where manager_id=#{id}
 	</select>
