@@ -26,4 +26,48 @@
 		select * from order by manager_id limit #{offset} #{size}
 	</select>
 	
+	<update id="update" parameterType="AgentEntity">
+	    update agent
+	    <set>
+	        <if test="account != null">
+	            account = #{account},
+	        </if>
+	        <if test="password != null">
+	            password = #{password},
+	        </if>
+	        <if test="name != null">
+	            name = #{name},
+	        </if>
+	        <if test="age != null">
+	            age = #{age},
+	        </if>
+	        <if test="sex != null">
+	            sex = #{sex},
+	        </if>
+	        <if test="phone != null">
+	            phone = #{phone},
+	        </if>
+	        <if test="email != null">
+	            email = #{email},
+	        </if>
+	        <if test="photoUrl != null">
+	            photo_url = #{photoUrl},
+	        </if>
+	        <if test="state != null">
+	            state = #{state},
+	        </if>
+	        <if test="introduction != null">
+	            introduction = #{introduction},
+	        </if>
+	        <if test="company != null">
+	            company = #{company},
+	        </if>
+	        <if test="year != null">
+	            year = #{year}
+	        </if>
+	    </set>
+	    where agent_id = #{agentId};
+	</update>
+	
+	
 </mapper>
