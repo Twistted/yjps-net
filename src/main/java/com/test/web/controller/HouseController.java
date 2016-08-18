@@ -1,5 +1,7 @@
 package com.test.web.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +32,9 @@ public class HouseController {
 	@RequestMapping(value="page/{id}/{size}", method=RequestMethod.GET) 
 	public ModelAndView page(@PathVariable String id, @PathVariable String size) {
 		ModelAndView model = new ModelAndView();
-		
+		IHouseService houseService = new HouseService();
+		List<HouseEntity> housePage = houseService.listHouse(Integer.valueOf(id), Integer.valueOf(size));
+		System.out.println(housePage);
 		model.setViewName("test");
 		return model;
 	}
