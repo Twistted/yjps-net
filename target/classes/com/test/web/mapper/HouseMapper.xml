@@ -29,10 +29,10 @@
 					prize=#{prize},
 				</if>
 				<if test="down_payment != null">
-					down_payment=#{down_payment},
+					down_payment=#{downPayment},
 				</if>
 				<if test="monthly_payment != null">
-					monthly_payment=#{monthly_payment},
+					monthly_payment=#{monthlyPayment},
 				</if>
 				<if test="orientation != null">
 					orientation=#{orientation},
@@ -44,13 +44,16 @@
 					year=#{year},
 				</if>
 				<if test="house_describe != null">
-					house_describe=#{house_describe},
+					house_describe=#{houseDescribe},
+				</if>
+				<if test="area != null">
+				    area=#{area}
 				</if>
 				<if test="room_amount != null">
-					room_amount=#{room_amount},
+					room_amount=#{roomAmount},
 				</if>
 				<if test="livingroom_amount != null">
-					livingroom_amount=#{livingroom_amount},
+					livingroom_amount=#{livingroomAmount},
 				</if>
 				<if test="toilet_amount != null">
 					toilet_amount=#{toiletAmount},
@@ -83,7 +86,7 @@
 					zone=#{zone},
 				</if>
 				<if test="village_name != null">
-					village_name=#{village_name},
+					village_name=#{villageName},
 				</if>
 				<if test="address != null">
 					address=#{address}

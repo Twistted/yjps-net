@@ -1,13 +1,10 @@
+com/test/web/controller/IndexController.class
+com/test/web/service/IHouseService.class
+com/test/web/mapper/HouseMapper.class
 com/test/web/util/DBUtil.class
 com/test/web/controller/DemoController.class
 com/test/web/service/impl/HouseService.class
 com/test/web/houseweb/App.class
-com/test/web/controller/IndexController.class
-com/test/web/mapper/UserInfoMapper.class
-com/test/web/service/IHouseService.class
-com/test/web/entity/User.class
 com/test/web/entity/UserEntity.class
 com/test/web/entity/HouseEntity.class
 com/test/web/mapper/UserMapper.class
-com/test/web/entity/UserInfo.class
-com/test/web/mapper/HouseMapper.class

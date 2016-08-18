@@ -14,4 +14,6 @@
 		select * from order by manager_id limit #{offset} #{size}
 	</select>
 	
+	
+	
 </mapper>
