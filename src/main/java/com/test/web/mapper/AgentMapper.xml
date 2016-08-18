@@ -8,7 +8,7 @@
     </resultMap> -->
     
     <insert id="insert" parameterType="AgentEntity">
-        insert into house ( acocunt, password, name, age, sex, phone, email, photo_url, state, introduction,
+        insert into house ( account, password, name, age, sex, phone, email, photo_url, state, introduction,
 		                    company, year)
 		values(#{account},#{password},#{name},#{age},#{sex},#{phone},#{email},#{photoUrl},
 		       #{state},#{introduction},#{company},#{year})
