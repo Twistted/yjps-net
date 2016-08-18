@@ -7,6 +7,13 @@
         <result column="数据库字段名" property="AgentEntity实体类中对应的数据"/>
     </resultMap> -->
     
+    <insert id="insert" parameterType="AgentEntity">
+        insert into house ( acocunt, password, name, age, sex, phone, email, photo_url, state, introduction,
+		                    company, year)
+		values(#{account},#{password},#{name},#{age},#{sex},#{phone},#{email},#{photoUrl},
+		       #{state},#{introduction},#{company},#{year})
+    </insert>
+    
 	<select id="findById" parameterType="int" resultType="AgentEntity">
 		select * from manager where manager_id=#{id}
 	</select>
