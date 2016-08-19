@@ -57,78 +57,81 @@
 		</div>
 		<div class="list-wrap">
 			<ul id="house-1st" class="house-1st" data-bl="list">
-				<li data-index="0" data-log-index="1" data-id="a0000001">
-					<div class="pic-panel">
-						<a target="_blank" href="#" data-el="ershoufang" rel="nofollow">
-							<img class="lj-lazy" src="http://image1.ljcdn.com/approl/group3/M00/14/88/rBAF7VdNi0OAB9GwAACemQLD8oA831.jpg.280x210.jpg" alt="pic1" style="display:inline;"></img>
-						</a>
-					</div>
-					<div class="info-panel">
-						<h2>
-							<a target="_blank" href="#" data-el="ershoufang" title="碧桂园稀缺内跃带双花园，套三环变套四，08年电梯">碧桂园稀缺内跃带双花园，套三环变套四，08年电梯</a>
-						</h2>
-						<div class="col-1">
-							<div class="where">
-								<a class="laisuzhou" href="#" data-el="xiaoqu">
-									<span class="">弘吉雅居</span>
+				<c:if test="${!empty houseList }">
+					<c:forEach var="house" items="${houseList}">
+						<li data-index="0" data-log-index="1" data-id="a0000001">
+							<div class="pic-panel">
+								<a target="_blank" href="#" data-el="ershoufang" rel="nofollow">
+									<img class="lj-lazy" src="http://image1.ljcdn.com/approl/group3/M00/14/88/rBAF7VdNi0OAB9GwAACemQLD8oA831.jpg.280x210.jpg" alt="pic1" style="display:inline;"></img>
 								</a>
-								<span class="">
-									<span>3室2厅</span>
-								</span>
-								<span class="">98.24平</span>
-								<span>南</span>
 							</div>
-							<div class="other">
-								<div class="con">
-									<a href="#" data-el="region">五大花园二手房</a>
-									<span>/</span>
-									高楼层(共11层)
-									<span>/</span>
-									2006年建板楼
-								</div>
-							</div>
-							<div class="chanquan">
-								<div class="left agency">
-									 
-										<div class="view-label left">
-											<span class="fang05"></span>
-											<span class="fang05-ex">
-												<span>金阳小学</span>
-											</span>
-											<span class="taxfree"></span>
-											<span class="taxfree-ex">
-												<span>满五年唯一</span>
-											</span>
-											<span class="unique"></span>
-											<span class="unique-ex">
-												<span>独家</span>
-											</span>
-											<span class="haskey"></span>
-											<span class="haskey-ex">
-												<span>随时看房</span>
-											</span>
+							<div class="info-panel">
+								<h2>
+									<a target="_blank" href="#" data-el="ershoufang" title="${house.title}">${house.title}</a>
+								</h2>
+								<div class="col-1">
+									<div class="where">
+										<a class="laisuzhou" href="#" data-el="xiaoqu">
+											<span class="">弘吉雅居</span>
+										</a>
+										<span class="">
+											<span>${house.roomAmount}室${house.livingroomAmount}厅</span>
+										</span>
+										<span class="">${house.area}平</span>
+										<span>南</span>
+									</div>
+									<div class="other">
+										<div class="con">
+											<a href="#" data-el="region">五大花园二手房</a>
+											<span>/</span>
+											高楼层(共11层)
+											<span>/</span>
+											${house.year}年建板楼
+										</div>
+									</div>
+									<div class="chanquan">
+										<div class="left agency">
+											 
+												<div class="view-label left">
+													<span class="fang05"></span>
+													<span class="fang05-ex">
+														<span>金阳小学</span>
+													</span>
+													<span class="taxfree"></span>
+													<span class="taxfree-ex">
+														<span>满五年唯一</span>
+													</span>
+													<span class="unique"></span>
+													<span class="unique-ex">
+														<span>独家</span>
+													</span>
+													<span class="haskey"></span>
+													<span class="haskey-ex">
+														<span>随时看房</span>
+													</span>
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-						<div class="col-3">
-							<div class="price">
-								<span class="num">110</span>
-								万
-							</div>
-							<div class="price-pre">111198元/m2</div>
-						</div>
-						<div class="col-2">
-							<div class="square">
-								<div>
-									<span class="num">82</span>
-									人
+								<div class="col-3">
+									<div class="price">
+										<span class="num">${house.prize.intValue()}</span>
+										万
+									</div>
+									<div class="price-pre">${(house.prize/house.area*10000).intValue()}元/m2</div>
 								</div>
-								<div class="col-look">看过此房</div>
-							</div>
-						</div>
-						
-				</li>
+								<div class="col-2">
+									<div class="square">
+										<div>
+											<span class="num">82</span>
+											人
+										</div>
+										<div class="col-look">看过此房</div>
+									</div>
+								</div>
+								
+						</li>
+				</c:if>
 			</ul>
 			<div class="page-box">
 				<a href="" class="on">1</a>
