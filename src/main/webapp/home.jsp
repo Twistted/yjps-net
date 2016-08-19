@@ -4,20 +4,15 @@
 <html>
 <head>
    <title>二手房电子商务交易平台</title>
-   	<link rel="shortcut icon" type="image/x-icon" href="http://lianjia.com/favicon.ico" />
-   	 <link href="/public/css/sh-house-css.css" rel="stylesheet">
-   	 <link href="/public/css/reset.css" rel="stylesheet">
+   <link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="shortcut icon" type="image/x-icon" href="http://lianjia.com/favicon.ico" />
+   <link href="/public/css/sh-house-css.css" rel="stylesheet">
+   <link href="/public/css/reset.css" rel="stylesheet">
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-   <script src="jquery-3.1.0.min.js"></script>
-<script>
-	$(document).ready(function(){
-		$("")
-	});
-</script>
 </head>
 <body>
 	<!--导航-->
-		<header>
+	<header>
 		<div class="nav-wrap"></div>
 	</header>
 	<div class="searchs">
@@ -135,6 +130,79 @@
 						
 				</li>
 			</ul>
+			<div class="page-box">
+				<a href="" class="on">1</a>
+				<a href="">2</a>
+				<a href="">3</a>
+				<span>...</span>
+				<a href="">100</a>
+				<a href="">下一页</a>
+			</div>
+		</div>
+		<div class="house-commend">
+			<div class="detail-title">
+				<h3>推荐楼盘</h3>
+			</div>
+			<div class="show-content">
+				<ul>
+					<li>
+						<a class="pic" href="/public/img/commend00.jpg">
+							<img src="/public/img/commend00.jpg">
+							<div class="bg"></div>
+							<div class="description">
+								<span class="title" title="青羊－朗诗西溪里">青羊－朗诗西溪里</span>
+								<span class="type">普通住宅</span>
+							</div>
+						</a>
+						<p class="price">
+							<span class="average">均价：<span>11500</span>元/平</span>
+						</p>
+						<p class="area">4居/3居/2居 - 54~88平</p>
+					</li>
+					<li>
+						<a class="pic" href="/public/img/commend00.jpg">
+							<img src="/public/img/commend00.jpg">
+							<div class="bg"></div>
+							<div class="description">
+								<span class="title" title="青羊－朗诗西溪里">青羊－朗诗西溪里</span>
+								<span class="type">普通住宅</span>
+							</div>
+						</a>
+						<p class="price">
+							<span class="average">均价：<span>11500</span>元/平</span>
+						</p>
+						<p class="area">4居/3居/2居 - 54~88平</p>
+					</li>
+					<li>
+						<a class="pic" href="/public/img/commend00.jpg">
+							<img src="/public/img/commend00.jpg">
+							<div class="bg"></div>
+							<div class="description">
+								<span class="title" title="青羊－朗诗西溪里">青羊－朗诗西溪里</span>
+								<span class="type">普通住宅</span>
+							</div>
+						</a>
+						<p class="price">
+							<span class="average">均价：<span>11500</span>元/平</span>
+						</p>
+						<p class="area">4居/3居/2居 - 54~88平</p>
+					</li>
+					<li>
+						<a class="pic" href="/public/img/commend00.jpg">
+							<img src="/public/img/commend00.jpg">
+							<div class="bg"></div>
+							<div class="description">
+								<span class="title" title="青羊－朗诗西溪里">青羊－朗诗西溪里</span>
+								<span class="type">普通住宅</span>
+							</div>
+						</a>
+						<p class="price">
+							<span class="average">均价：<span>11500</span>元/平</span>
+						</p>
+						<p class="area">4居/3居/2居 - 54~88平</p>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 	<!--最后-->
@@ -142,11 +210,11 @@
 		<div class="wrapper">
 			<div class="f-title">
 				<div class="fl">
-					<ul>
-						<li>
+					<ul width="500px">
+						<li width="100px">
 							<a href="#">了解易居网</a>
 						</li>
-						<li>
+						<li width="100px">
 							<a href="#">关于易居</a>
 						</li>
 						<li>
@@ -173,8 +241,11 @@
 			</div>
 		</div>
 	</footer>
-		
-
-
+	<script src="jquery-3.1.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("")
+		});
+	</script>
 </body>
 </html>
