@@ -16,8 +16,7 @@ public class HouseService implements IHouseService {
 		SqlSession session = DBUtil.getSession();
 	    try {
 			HouseMapper mapper = session.getMapper(HouseMapper.class);
-			houseList = mapper.findAll();
-			System.out.println(houseList);	
+			houseList = mapper.findAll();	
 		} finally {
 			DBUtil.closeSession();
 		}
@@ -42,7 +41,45 @@ public class HouseService implements IHouseService {
 	}
 	
 	public List<HouseEntity> listHouse(int page, int size) {
-		return findAll();
+		List<HouseEntity> houseList = null;
+		SqlSession session = DBUtil.getSession();
+		try {
+			HouseMapper mapper = session.getMapper(HouseMapper.class);
+			houseList = mapper.queryPage(page, size);
+		} finally {
+			DBUtil.closeSession();
+		}
+		return houseList;
+	}
+	
+	public boolean delete(int id) {
+		boolean ret = false;
+		SqlSession session = DBUtil.getSession();
+		try {
+			HouseMapper mapper = session.getMapper(HouseMapper.class);
+			int change = mapper.delete(id);
+			ret = change > 0 ? true : false;
+			
+			session.commit();
+		} finally {
+			DBUtil.closeSession();
+		}
+		return ret;
+	}
+	
+	public boolean inser(HouseEntity houseEntity) {
+		boolean ret = false;
+		SqlSession session = DBUtil.getSession();
+		try {
+			HouseMapper mapper = session.getMapper(HouseMapper.class);
+			int change = mapper.insert(houseEntity);
+			ret = change > 0 ? true : false;
+			
+			session.commit();
+		} finally {
+			DBUtil.closeSession();
+		}
+		return ret;
 	}
 
 }

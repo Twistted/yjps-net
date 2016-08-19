@@ -22,7 +22,7 @@ public class HouseController {
 		ModelAndView model = new ModelAndView();
 		IHouseService houseService = new HouseService();
 		HouseEntity houseEntity = houseService.getHouseById(Integer.valueOf(id));
-		
+		System.out.println(houseEntity);
 		model.addObject("house", houseEntity);
 		model.setViewName("house");
 		
@@ -31,6 +31,7 @@ public class HouseController {
 	
 	@RequestMapping(value="page/{id}/{size}", method=RequestMethod.GET) 
 	public ModelAndView page(@PathVariable String id, @PathVariable String size) {
+		System.out.println("id => " + id + " size => " + size);
 		ModelAndView model = new ModelAndView();
 		IHouseService houseService = new HouseService();
 		List<HouseEntity> housePage = houseService.listHouse(Integer.valueOf(id), Integer.valueOf(size));
@@ -44,7 +45,17 @@ public class HouseController {
 		ModelAndView model = new ModelAndView();
 		IHouseService houseService = new HouseService();
 		HouseEntity houseEntity = houseService.getHouseById(12);
+		System.out.println(houseEntity);
 		model.setViewName("test");
+		return model;
+	}
+	
+	@RequestMapping("delete")
+	public ModelAndView delete(@RequestParam("id") String id) {
+		ModelAndView model = new ModelAndView();
+		IHouseService houseService = new HouseService();
+		boolean ok = houseService.delete(Integer.valueOf(id));
+		System.out.println(ok);
 		return model;
 	}
 	

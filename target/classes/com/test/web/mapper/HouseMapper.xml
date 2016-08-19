@@ -3,8 +3,12 @@
 <mapper namespace="com.test.web.mapper.HouseMapper">
 
 	<insert id="insert" parameterType="HouseEntity">
-		insert into house ( title, prize)
-		values(#{title},#{prize})
+		insert into house ( title, prize, down_payment, monthly_payment, orientation, floor, year, house_describe,
+		                    area, house_type_url, room_amount, livingroom_amount, toilet_amount, balcony_amount,
+		                    state, agent_id, house_number, privince, city, town, zone, village_name, address)
+		values(#{title},#{prize},#{downPayment},#{monthlyPayment},#{orientation},#{floor},#{year},#{houseDescribe},
+		       #{area},#{houseTypeUrl},#{roomAmount},#{livingroomAmount},#{toiletAmount},#{balconyAmount},#{state},
+		       #{agentId},#{houseNumber},#{privince},#{city},#{town},#{zone},#{villageName},#{address})
 	</insert>
 	
 	<select id="findById" parameterType="int" resultType="HouseEntity">
@@ -16,7 +20,7 @@
 	</select>
 	
 	<select id="queryPage" parameterType="int" resultType="HouseEntity">
-		select * from house order by house_id limit #{offset} #{size}
+		select * from house order by house_id limit #{offset}, #{size}
 	</select>
 	
 	<update id="update" parameterType="HouseEntity">
@@ -95,26 +99,9 @@
 		where house_id=#{houseId}
 	</update>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	<delete id="delete" parameterType="int">
+		delete from house where house_id=#{id}
+	</delete>
+
 	
 </mapper>

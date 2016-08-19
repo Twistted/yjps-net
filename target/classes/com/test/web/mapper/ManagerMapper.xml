@@ -2,6 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.test.web.mapper.ManagerMapper">
 	
+    <insert id="insert" parameterType="ManagerEntity">
+        insert into manager (account, password, state, level, photo_url)
+		values(#{account},#{password},#{state},#{level},#{photoUrl})
+    </insert>
+    
 	<select id="findById" parameterType="int" resultType="ManagerEntity">
 		select * from manager where manager_id=#{id}
 	</select>
@@ -13,5 +18,27 @@
 	<select id="queryPage" parameterType="int" resultType="ManagerEntity">
 		select * from order by manager_id limit #{offset} #{size}
 	</select>
+	
+	<update id="update" parameterType="ManagerEntity">
+		update manager
+			<set>
+				<if test="account != null">
+					account = #{account},
+				</if>
+				<if test="password != null">
+					password = #{password},
+				</if>
+				<if test="state != null">
+					state = #{state},
+				</if>
+				<if test="level != null">
+					level = #{level},
+				</if>
+				<if test="photoUrl != null">
+					photo_url = #{photoUrl}
+				</if>
+			</set>
+		where manager_id=#{managerId}
+	</update>
 	
 </mapper>

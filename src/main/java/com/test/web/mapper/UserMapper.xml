@@ -23,5 +23,5 @@
 			</set>
 		where userid = #{userid}
 	</update>
-
+	
 </mapper>

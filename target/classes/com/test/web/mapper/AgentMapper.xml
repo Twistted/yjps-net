@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.test.web.mapper.AgentMapper">
-	
+    <!-- 老版本的返回值配置 -->
+<!-- 	
+    <resultMap type="AgentEntity" id="AgentMap">
+        <result column="数据库字段名" property="AgentEntity实体类中对应的数据"/>
+    </resultMap> -->
+    
+    <insert id="insert" parameterType="AgentEntity">
+        insert into house (account, password, name, age, sex, phone, email, photo_url, state, introduction,
+		                    company, year)
+		values(#{account},#{password},#{name},#{age},#{sex},#{phone},#{email},#{photoUrl},
+		       #{state},#{introduction},#{company},#{year})
+    </insert>
+    
 	<select id="findById" parameterType="int" resultType="AgentEntity">
 		select * from manager where manager_id=#{id}
 	</select>
@@ -13,7 +25,5 @@
 	<select id="queryPage" parameterType="int" resultType="AgentEntity">
 		select * from order by manager_id limit #{offset} #{size}
 	</select>
-	
-	
 	
 </mapper>
