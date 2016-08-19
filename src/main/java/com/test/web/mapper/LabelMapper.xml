@@ -11,4 +11,8 @@
         delete from label where label_id = #{labelId};
     </delete>
     
+    <insert id="insert" parameterType="LabelEntity">
+        insert into label(label_id,label) values (#{labelId},#{label})
+    </insert>
+    
 </mapper>

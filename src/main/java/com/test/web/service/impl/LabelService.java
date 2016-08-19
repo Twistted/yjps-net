@@ -46,13 +46,28 @@ public class LabelService implements ILabelService{
 		return i;
 	}
 	
+	private int insert(LabelEntity label){
+		SqlSession session = DBUtil.getSession();
+		int i;
+		try{
+			LabelMapper labelMapper = session.getMapper(LabelMapper.class);
+			i = labelMapper.insert(label);
+			System.out.println(i);
+		}finally{
+			
+		}
+		return i;
+	}
+	
 	public List<LabelEntity> getLabelById(int id) {
 		return findByHouseId(id);
 	}
 
 	public boolean addLabel(LabelEntity label) {
 		// TODO Auto-generated method stub
-		return false;
+		if(insert(label) > 0)
+			return true;
+		else return false;
 	}
 
 	public boolean deleteByLabelId(int labelId) {

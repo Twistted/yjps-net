@@ -8,5 +8,6 @@ public interface LabelMapper {
 	
 	public LabelEntity findById(int labelId);
 	public int delete(int labelId);
+	public int insert(LabelEntity label);
 
 }
