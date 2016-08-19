@@ -23,6 +23,10 @@
 		select * from house order by house_id limit #{offset}, #{size}
 	</select>
 	
+	<select id="queryAdvertisementList" parameterType="int" resultType="HouseEntity">
+		select * from house where house_id > #{id} order by house_id limit 4
+	</select>
+	
 	<update id="update" parameterType="HouseEntity">
 		update house
 			<set>
