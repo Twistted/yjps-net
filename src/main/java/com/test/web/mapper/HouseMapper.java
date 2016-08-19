@@ -14,4 +14,6 @@ public interface HouseMapper {
 	public int update(HouseEntity house);
 	public int delete(int id);
 	public int insert(HouseEntity houseEntity);
+	public List<HouseEntity> search(@Param("title") String title, @Param("prize") String prize, 
+				@Param("roomAmount") String roomAmount, @Param("area") String area);
 }

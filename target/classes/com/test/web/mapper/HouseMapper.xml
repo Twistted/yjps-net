@@ -11,6 +11,24 @@
 		       #{agentId},#{houseNumber},#{privince},#{city},#{town},#{zone},#{villageName},#{address})
 	</insert>
 	
+	<select id="search" parameterType="string" resultType="UserInfo">
+		select * from userinfo
+		<where>
+			<if test="title != null and titel != ''">
+			   	 user_name like '%' #{userName} '%'
+			</if>
+			<if test="prize != null and prize != ''">
+			   	 user_name like '%' #{userName} '%'
+			</if>
+			<if test="roomAmount != null and roomAmount != ''">
+			   	 user_name like '%' #{userName} '%'
+			</if>
+			<if test="area != null and area != ''">
+				or email like '%' #{email} '%'
+			</if>
+		</where>
+	</select>
+	
 	<select id="findById" parameterType="int" resultType="HouseEntity">
 		select * from house where house_id=#{id}
 	</select>

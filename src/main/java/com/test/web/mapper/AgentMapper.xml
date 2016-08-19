@@ -12,27 +12,6 @@
 		values(#{account},#{password},#{name},#{age},#{sex},#{phone},#{email},#{photoUrl},
 		#{state},#{introduction},#{company},#{year})
 	</insert>
-
-    <insert id="insert" parameterType="AgentEntity">
-        insert into house (account, password, name, age, sex, phone, email, photo_url, state, introduction,
-		                    company, year)
-		values(#{account},#{password},#{name},#{age},#{sex},#{phone},#{email},#{photoUrl},
-		       #{state},#{introduction},#{company},#{year})
-    </insert>
-    
-    <insert id="insert" parameterType="AgentEntity">
-        insert into house (account, password, name, age, sex, phone, email, photo_url, state, introduction,
-		                    company, year)
-		values(#{account},#{password},#{name},#{age},#{sex},#{phone},#{email},#{photoUrl},
-		       #{state},#{introduction},#{company},#{year})
-    </insert>
-    
-    <insert id="insert" parameterType="AgentEntity">
-        insert into house (account, password, name, age, sex, phone, email, photo_url, state, introduction,
-		                    company, year)
-		values(#{account},#{password},#{name},#{age},#{sex},#{phone},#{email},#{photoUrl},
-		       #{state},#{introduction},#{company},#{year})
-    </insert>
     
 	<select id="findById" parameterType="int" resultType="AgentEntity">
 		select *

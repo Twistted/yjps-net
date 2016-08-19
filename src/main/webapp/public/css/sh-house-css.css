@@ -1,11 +1,25 @@
-
 body{
 	background-color: #f1f1f1;
 	
 }
  
+ 
+ 
 .contain{
+	float: left;
 	background-color: #F1F1F1;
+	height: auto;
+	margin: 50px 0;
+	position: relative;
+	width:100%;
+}
+.contain div{
+	margin: 0 auto;
+	float: none;
+}
+.con-box {
+	width: 1000px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 .con-box .list-head .view-type{
 	float: left;
@@ -81,17 +95,11 @@ label.ico-new{
 	font-size:16px;
 	font-family: tahoma;
 }
-.contain{
-	margin:0 auto;
-	position: relative;
-	height:auto;
-	width:1000px;
-
-}
 .house-1st li{
 	padding:26px 26px;
 	border-bottom:1px dotted #e1e1e1;
 	height:183px;
+	width: 100%;
 	position:relative;
 	background-color: #fff;
 }
@@ -112,7 +120,7 @@ label.ico-new{
 	width:173px;
 	display:inline-block;
 	height:130px;
-
+	float: left;
 }
 .house-1st .pic-panel img:hover{
 	opacity:.8;
@@ -130,6 +138,19 @@ ul{
 img{
 	vertical-align: top;
 	border:0;
+}
+.list-wrap{
+	width: 1000px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.list-wrap .house-1st .info-panel{
+	display: inline-block;
+	color:#565a5c;
+	width: auto;
+	position: relative;
+	left: 30px;
+	float: left;
+	height:130px;
 }
 .house-1st .info-panel h2 a:hover{
 	color:#00a9fa;
@@ -151,14 +172,6 @@ img{
 	height:32px;
 	line-height: 20px;
 	vertical-align:middle;
-}
-.list-wrap .house-1st .info-panel{
-	display: inline-block;
-	color:#565a5c;
-	width:750px;
-	position: relative;
-	float: right;
-	height:130px;
 }
 .house-1st .info-panel .col-1{
 	width:460px;
@@ -285,4 +298,117 @@ img{
 	padding:0 7px;
 	margin-right: 6px;
 	float:left;
+}
+/*分页样式*/
+.page-box{
+	background-color: #FFF;
+	width: 100%;
+	padding: 30px 25px 66px 25px;
+	text-align: center;
+}
+.page-box a{
+	height: 30px;
+	padding: 0 12px;
+	margin-left: 5px;
+	text-align: center;
+	line-height: 30px;
+	border:1px solid #b0b4b9;
+	overflow: hidden;
+	font-size: 12px;
+	font-weight: 700;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	color: #555;
+	display: inline-block;
+	zoom:1;
+	vertical-align: middle;
+}
+/*楼房推荐*/
+.house-commend{
+	height: 310px;
+	width: 1000px;
+	margin: 15px 0;
+	background-color: #FFF;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.house-commend *{
+	float: left;
+}
+.house-commend .detail-title{
+	height: 50px;
+	padding: 0 5px;
+	width: 100%;
+}
+.house-commend .detail-title h3{
+	font-size: 20px;
+	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","微软雅黑",'Segoe UI',Tahoma,"宋体b8b\4f53",SimSun,sans-serif;
+	width: auto;
+	margin-left: 5px;
+}
+.house-commend .show-content{
+	margin-top: 30px;
+	height: 221px;
+}
+.house-commend .show-content ul{
+	padding: 0;
+}
+.house-commend .show-content ul li{
+	width: 228px;
+	margin:0 10px;
+}
+.house-commend .show-content ul li .pic{
+	height: 173px;
+}
+.house-commend .show-content ul li .pic .bg{
+	height: 45px;
+	position: relative;
+	top: -45px;
+	width: 100%;
+}
+.house-commend .show-content ul li .pic img{
+	height: 173px;
+}
+.house-commend .show-content ul li .pic .description{
+	padding: 0 12px;
+	position: relative;
+	top: -75px;
+	left: 0;
+	color: #FFF;
+	height: 19px;
+	width: 228px;
+}
+.house-commend .show-content ul li .pic .description span{
+	height: auto;
+	width: auto;
+}
+.house-commend .show-content ul li .pic .description .title{
+	font-size: 16px;
+	font-weight: bold;
+	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","微软雅黑",'Segoe UI',Tahoma,"宋体b8b\4f53",SimSun,sans-serif;
+}
+.house-commend .show-content ul li .pic .description .type{
+	line-height: 17px;
+	margin-left: 6px;
+	font-size: 0.8em;
+	padding: 0 5px;
+	border:1px solid white;
+	display: inline-block;
+	border-radius: 2px;
+	vertical-align: middle;
+	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","微软雅黑",'Segoe UI',Tahoma,"宋体b8b\4f53",SimSun,sans-serif;
+}
+.house-commend .show-content ul li .price{
+	width: 228px;
+	height: 14px;
+	font-weight: bold;
+	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","微软雅黑",'Segoe UI',Tahoma,"宋体b8b\4f53",SimSun,sans-serif;
+}
+.house-commend .show-content ul li .price .average span{
+	width: auto;
+	float: none;
+	color: #E4393C;
+}
+.house-commend .show-content ul li .area{
+	height: 12px;
+	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","微软雅黑",'Segoe UI',Tahoma,"宋体b8b\4f53",SimSun,sans-serif;
+	font-size: 0.8em;
 }
