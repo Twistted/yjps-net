@@ -20,7 +20,7 @@
 	</select>
 	
 	<select id="queryPage" parameterType="int" resultType="HouseEntity">
-		select * from house order by house_id limit #{offset} #{size}
+		select * from house order by house_id limit #{offset}, #{size}
 	</select>
 	
 	<update id="update" parameterType="HouseEntity">
@@ -98,7 +98,8 @@
 			</set>
 		where house_id=#{houseId}
 	</update>
-	
-
+	<delete id="delete" parameterType="int">
+		delete from house where house_id=#{id}
+	</delete>
 	
 </mapper>
