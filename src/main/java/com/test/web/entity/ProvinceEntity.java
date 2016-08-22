@@ -1,6 +1,6 @@
 package com.test.web.entity;
 
-public class Province {
+public class ProvinceEntity {
 	
 	private int provinceId;
 	private String provinceName;
