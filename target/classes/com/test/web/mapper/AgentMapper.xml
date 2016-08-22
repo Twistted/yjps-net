@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.test.web.mapper.AgentMapper">
@@ -68,79 +67,7 @@
 	        </if>
 	    </set>
 	    where agent_id = #{agentId};
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.test.web.mapper.AgentMapper">
-	<!-- 老版本的返回值配置 -->
-	<!-- <resultMap type="AgentEntity" id="AgentMap"> <result column="数据库字段名" 
-		property="AgentEntity实体类中对应的数据"/> </resultMap> -->
-
-	<insert id="insert" parameterType="AgentEntity">
-		insert into house (account, password, name, age, sex, phone, email,
-		photo_url, state, introduction,
-		company, year)
-		values(#{account},#{password},#{name},#{age},#{sex},#{phone},#{email},#{photoUrl},
-		#{state},#{introduction},#{company},#{year})
-	</insert>
-    
-	<select id="findById" parameterType="int" resultType="AgentEntity">
-		select *
-		from manager where manager_id=#{id}
-	</select>
-
-	<select id="findAll" resultType="AgentEntity">
-		select * from manager order by
-		manager_id
-	</select>
-
-	<select id="queryPage" parameterType="int" resultType="AgentEntity">
-		select *
-		from order by manager_id limit #{offset} #{size}
-	</select>
-
-	<update id="update" parameterType="AgentEntity">
-		update agent
-		<set>
-			<if test="account != null">
-				account = #{account},
-			</if>
-			<if test="password != null">
-				password = #{password},
-			</if>
-			<if test="name != null">
-				name = #{name},
-			</if>
-			<if test="age != null">
-				age = #{age},
-			</if>
-			<if test="sex != null">
-				sex = #{sex},
-			</if>
-			<if test="phone != null">
-				phone = #{phone},
-			</if>
-			<if test="email != null">
-				email = #{email},
-			</if>
-			<if test="photoUrl != null">
-				photo_url = #{photoUrl},
-			</if>
-			<if test="state != null">
-				state = #{state},
-			</if>
-			<if test="introduction != null">
-				introduction = #{introduction},
-			</if>
-			<if test="company != null">
-				company = #{company},
-			</if>
-			<if test="year != null">
-				year = #{year}
-			</if>
-		</set>
-		where agent_id = #{agentId};
->>>>>>> bf53b6236ba17b8a2d32cdeb70d4aabd9cabe872
 	</update>
 	
 </mapper>
+
