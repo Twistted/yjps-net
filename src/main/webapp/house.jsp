@@ -14,7 +14,8 @@
 </head>
 <body width= screen.width>
 	<header>
-		<div class="nav-wrap"   ></div>
+	
+		<div class="nav-wrap"></div>
 	</header>
 	<div class="searchs">
 		<div class="search-area">
