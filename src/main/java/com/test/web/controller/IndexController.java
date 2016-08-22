@@ -28,6 +28,8 @@ public class IndexController {
 		List<HouseEntity> houseList = houseService.listHouse(0, 3);
 		
 		model.addObject("houseList", houseList);
+		model.addObject("listSize", houseList.size());
+		model.addObject("pageSize", (houseList.size() / 5) + 1 );
 		
 		IAdvertisementService advertisementService = new AdvertisementService();
 		List<AdvertisementEntity> advertisementList = advertisementService.getAdvertisementList(4);

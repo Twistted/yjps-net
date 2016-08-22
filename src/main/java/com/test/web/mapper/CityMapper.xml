@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.web.mapper.CityMapper">
+    <!-- 老版本的返回值配置 -->
+<!-- 	
+    <resultMap type="AgentEntity" id="AgentMap">
+        <result column="数据库字段名" property="AgentEntity实体类中对应的数据"/>
+    </resultMap> -->
+    
+    <insert id="insert" parameterType="CityEntity">
+        insert into city  (province_id, city_name)
+		values(#{provinceId},#{cityName})
+    </insert>
+    
+	<select id="findById" parameterType="int" resultType="CityEntity">
+		select * from city where city_id=#{id}
+	</select>
+	
+	<select id="findAll" resultType="CityEntity">
+		select * from city order by city_id
+	</select>
+	
+	<select id="queryPage" parameterType="int" resultType="CityEntity">
+		select * from city order by city_id limit #{offset} #{size}
+	</select>
+	
+	<update id="update" parameterType="CityEntity">
+	    update city
+	    <set>
+	        <if test="provinceId!= null">
+	            province_id = #{provinceId},
+	        </if>
+	        <if test="cityName != null">
+	           	city_name = #{cityName},
+	        </if>
+	    </set>
+	    where city_id = #{cityName};
+	</update>
+	
+</mapper>
+
