@@ -231,8 +231,7 @@
 									<h2>正读晋阳小学 内跃精装套三可改套四 带入户花园</h2>
 									<p class="time">2016-08-05 20:18:49 更新</p>
 									<p class="text-comment">
-										${house.houseDescribe.substring(0,160)}...
-										<span class="actShowMore">阅读全部</span>
+										<p></p>
 									</p>
 									<p class="text-comment-all" style="display:none">
 										${house.houseDescribe}
@@ -261,10 +260,10 @@
 											</p>
 										</div>
 									</div>
-								</div>
-								<p class="contactted">
+									<p class="contactted">
 									 4008752017转3695
-								</p>
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -431,15 +430,20 @@
 		map.setCurrentCity("成都");          // 设置地图显示的城市 此项是必须设置的
 		map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
 		
-		var string1="${house.houseDescribe}";
+		var s1="${house.houseDescribe}";
 		$(document).ready(function(){
-			  
+			  console.log(s1.length);
+			  if(s1.length>160){
+				  $(".text-comment").html(s1.substring(0,160)+"..."+"<span class='actShowMore'>阅读全部</span>");
+			  }
+			  else{
+				  $(".text-comment").html(s1);
+			  }
 			  $(".actShowMore").click(function(){
 				  $(".text-comment-all").show();
 				  $(".actShowMore").hide();
 				  $(".text-comment").hide();
 			  });
-			  console.log(cutstr(s1,50));
 			});	
 		
 		function cutstr(str,len)
