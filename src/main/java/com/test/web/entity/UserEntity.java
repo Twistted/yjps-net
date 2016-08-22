@@ -1,57 +1,91 @@
 package com.test.web.entity;
+
+import java.util.Date;
+
 /**
  * 用户实体对象类
  *
  */
 public class UserEntity {
 
-	private int userid;
-	private String userName;   //用户名
-	private String loginname;  //登陆名 
-	private String password;  //密码
-	private int age;   //年龄
-
+	private int userId;
+	private String account;   //账号
+	private String password;  //密码 
+	private String name;  //密码
+	private int state;
+	private int sex;
+	private int age;
+	private String photoUrl;
+	private Date timestamp;
+	private String contact;
 	
-	public int getUserid() {
-		return userid;
+	public int getUserId() {
+		return userId;
 	}
-
-	public void setUserid(int userid) {
-		this.userid = userid;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
-	
-	public int getAge() {
-		return age;
+	public String getAccount() {
+		return account;
 	}
-
-	public void setAge(int age) {
-		this.age = age;
+	public void setAccount(String account) {
+		this.account = account;
 	}
-
-
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getLoginname() {
-		return loginname;
-	}
-
-	public void setLoginname(String loginname) {
-		this.loginname = loginname;
-	}
-
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
+	}
+	public int getSex() {
+		return sex;
+	}
+	public void setSex(int sex) {
+		this.sex = sex;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
+	}
+	public Date getTimeStamp() {
+		return timestamp;
+	}
+	public void setTimeStamp(Date timestamp) {
+		this.timestamp = timestamp;
+	}
+	public String getContact() {
+		return contact;
+	}
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
+	
+	@Override
+	public String toString(){
+		return "User [userId=" + userId + ",account=" + account + ",password=" + password + ",name=" + name + 
+				",state=" + state + ",sex=" + sex + ",age=" + age + ",photoUrl=" + photoUrl + ",timestamp=" + timestamp +
+				",contact=" + contact;
+	}
+
 
 }

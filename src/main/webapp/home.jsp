@@ -130,7 +130,7 @@
 									</div>
 								</div>
 								
-						</li>
+						</div>
 					</c:forEach>
 				</c:if>
 			</ul>
