@@ -11,7 +11,7 @@
 		       #{agentId},#{houseNumber},#{privince},#{city},#{town},#{zone},#{villageName},#{address})
 	</insert>
 	
-	<select id="search" parameterType="string" resultType="UserInfo">
+	<select id="search" parameterType="string" resultType="HouseEntity">
 		select * from userinfo
 		<where>
 			<if test="title != null and titel != ''">
