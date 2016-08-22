@@ -5,8 +5,8 @@
 <head>
    <title>二手房电子商务交易平台</title>
    	<link rel="shortcut icon" type="image/x-icon" href="http://lianjia.com/favicon.ico" />
-   	 <link href="/Public/css/sh-house-css.css" rel="stylesheet">
-   	 <link href="/Public/css/reset.css" rel="stylesheet">
+   	 <link href="/public/css/sh-house-css.css" rel="stylesheet">
+   	 <link href="/public/css/reset.css" rel="stylesheet">
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
    <script src="jquery-3.1.0.min.js"></script>
 <script>

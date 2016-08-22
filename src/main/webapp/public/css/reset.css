@@ -1,3 +1,14 @@
+*{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	text-decoration: none;
+	font-size: 1em;
+	list-style: none;
+}
+body{
+	min-width: 1024px;
+}
 a{
 	color: #000;
 	text-decoration: none;
@@ -17,23 +28,47 @@ header{
 	background-color: #39AC6A;
 	width: 100%;
 	height: 55px;
+	float: left;
 }
+
 /*搜索框*/
 .searchs{
-	
-	background-color: ;
+	background-color: #FFF;
 	height: 55px;
+	float: left;
+	width: 100%;
+	float: left;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	text-decoration: none;
+	font-size: 1em;
+	list-style: none;
+}
+.searchs *{
+	float: left;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	text-decoration: none;
+	font-size: 1em;
+	list-style: none;
 }
 .searchs .search-area{
 	width: 620px;
 	height: 37px;
-	margin-left: 12.5%;
+	margin:0 auto;
 	margin-top: 10px;
+	float: none;
+}
+.searchs .search-area *{
+	height: 100%;
 }
 .searchs .search-area #keyword-box{
 	width: 500px;
 	padding: 0 5px;
 	border: solid 1px #CCC;
+	height: 100%;
 }
 .searchs .search-area button{
 	width: 100px;
@@ -41,21 +76,32 @@ header{
 	color: #FFF;
 	margin-left: 10px;
 	font-weight: bolder;
+	height: 100%;
 }
 
 /*脚部*/
 footer{
 	float: left;
+	width: 100%;
 	height: 226px;
 	background: url(../img/footer-bg.jpg) no-repeat center top #222;
 }
 footer *{
 	width: auto;
 	height: auto;
+	float: left;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	text-decoration: none;
+	font-size: 1em;
+	list-style: none;
 }
 footer .wrapper{
-	width: 100%;
-	padding: 10px 10%;
+	width: 1000px;
+	padding: 10px 0;
+	float: none;
+	margin: 0 auto;
 }
 footer .wrapper .f-title{
 	height: 75px;
@@ -64,22 +110,28 @@ footer .wrapper .f-title{
 }
 footer .wrapper .f-title .fl{
 	height: 100%;
+	width: auto;
 }
 footer .wrapper .f-title .fl ul{
 	height: 100%;
+	width: auto;
+	margin: 0;
+	padding: 0;
 }
 footer .wrapper .f-title .fl ul li{
 	height: 100%;
+	width: auto;
 	padding: 20px 0;
-	margin-right: 10px;
+	margin: 0 10px 0 0;
 }
 footer .wrapper .f-title .fl ul li a{
 	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","微软雅黑",'Segoe UI',Tahoma,"宋体b8b\4f53",SimSun,sans-serif;
 	color: #FFF;
+	width: auto;
 }
 footer .wrapper .f-title .fr{
 	float: right;
-	margin: 20px 0;
+	margin:20px;
 	color: #7DCFA0;
 	font-size: 1em;
 	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","微软雅黑",'Segoe UI',Tahoma,"宋体b8b\4f53",SimSun,sans-serif;
@@ -92,21 +144,4 @@ footer .wrapper .bottom .copyright{
 	color: #888C8E;
 	font-size: 1em;
 	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","微软雅黑",'Segoe UI',Tahoma,"宋体b8b\4f53",SimSun,sans-serif;
-}
-
-@media screen and (max-width: 1200px) { /*当屏幕尺寸小于1200px时，应用下面的CSS样式*/
-    .wrapper{
-	padding: 0 0 0 5%;
-	}
-	.searchs .search-area{
-	margin-left: 5%;
-	}
-}
-@media screen and (max-width: 1100px) { /*当屏幕尺寸小于1100px时，应用下面的CSS样式*/
-    .wrapper{
-	padding: 0 0 0 1%;
-	}
-	.searchs .search-area{
-	margin-left: 1%;
-	}
 }
