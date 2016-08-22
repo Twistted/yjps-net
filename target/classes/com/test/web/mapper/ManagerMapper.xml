@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.test.web.mapper.ManagerMapper">
@@ -41,4 +42,49 @@
 		where manager_id=#{managerId}
 	</update>
 	
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.web.mapper.ManagerMapper">
+	
+    <insert id="insert" parameterType="ManagerEntity">
+        insert into manager (account, password, state, level, photo_url)
+		values(#{account},#{password},#{state},#{level},#{photoUrl})
+    </insert>
+    
+	<select id="findById" parameterType="int" resultType="ManagerEntity">
+		select * from manager where manager_id=#{id}
+	</select>
+	
+	<select id="findAll" resultType="ManagerEntity">
+		select * from manager order by manager_id
+	</select>
+	
+	<select id="queryPage" parameterType="int" resultType="ManagerEntity">
+		select * from order by manager_id limit #{offset} #{size}
+	</select>
+	
+	<update id="update" parameterType="ManagerEntity">
+		update manager
+			<set>
+				<if test="account != null">
+					account = #{account},
+				</if>
+				<if test="password != null">
+					password = #{password},
+				</if>
+				<if test="state != null">
+					state = #{state},
+				</if>
+				<if test="level != null">
+					level = #{level},
+				</if>
+				<if test="photoUrl != null">
+					photo_url = #{photoUrl}
+				</if>
+			</set>
+		where manager_id=#{managerId}
+	</update>
+	
+>>>>>>> bf53b6236ba17b8a2d32cdeb70d4aabd9cabe872
 </mapper>

@@ -11,6 +11,27 @@
 		       #{agentId},#{houseNumber},#{privince},#{city},#{town},#{zone},#{villageName},#{address})
 	</insert>
 	
+<<<<<<< HEAD
+=======
+	<select id="search" parameterType="string" resultType="HouseEntity">
+		select * from userinfo
+		<where>
+			<if test="title != null and titel != ''">
+			   	user_name like '%'#{userName}'%'
+			</if>
+			<if test="prize != null and prize != ''">
+				or prize like '%'#{prize}'%'
+			</if>
+			<if test="roomAmount != null and roomAmount != ''">
+			   	or room_amount like '%'#{roomAmount} '%'
+			</if>
+			<if test="area != null and area != ''">
+				or email like '%' #{email} '%'
+			</if>
+		</where>
+	</select>
+	
+>>>>>>> bf53b6236ba17b8a2d32cdeb70d4aabd9cabe872
 	<select id="findById" parameterType="int" resultType="HouseEntity">
 		select * from house where house_id=#{id}
 	</select>
@@ -23,6 +44,13 @@
 		select * from house order by house_id limit #{offset}, #{size}
 	</select>
 	
+<<<<<<< HEAD
+=======
+	<select id="queryAdvertisementList" parameterType="int" resultType="HouseEntity">
+		select * from house where house_id > #{id} order by house_id limit 4
+	</select>
+	
+>>>>>>> bf53b6236ba17b8a2d32cdeb70d4aabd9cabe872
 	<update id="update" parameterType="HouseEntity">
 		update house
 			<set>
@@ -31,11 +59,19 @@
 				</if>
 				<if test="prize != null">
 					prize=#{prize},
+<<<<<<< HEAD
 				</if>
 				<if test="downPayment != null">
 					down_payment=#{downPayment},
 				</if>
 				<if test="monthlyPayment != null">
+=======
+				</if>
+				<if test="down_payment != null">
+					down_payment=#{downPayment},
+				</if>
+				<if test="monthly_payment != null">
+>>>>>>> bf53b6236ba17b8a2d32cdeb70d4aabd9cabe872
 					monthly_payment=#{monthlyPayment},
 				</if>
 				<if test="orientation != null">
@@ -46,12 +82,18 @@
 				</if>
 				<if test="year != null">
 					year=#{year},
+<<<<<<< HEAD
 				</if>
 				<if test="houseDescribe != null">
+=======
+				</if>
+				<if test="house_describe != null">
+>>>>>>> bf53b6236ba17b8a2d32cdeb70d4aabd9cabe872
 					house_describe=#{houseDescribe},
 				</if>
 				<if test="area != null">
 				    area=#{area}
+<<<<<<< HEAD
 				</if>
 				<if test="roomAmount != null">
 					room_amount=#{roomAmount},
@@ -66,15 +108,38 @@
 					balcony_amount=#{balconyAmount},
 				</if>
 				<if test="balconyAmount != null">
+=======
+				</if>
+				<if test="room_amount != null">
+					room_amount=#{roomAmount},
+				</if>
+				<if test="livingroom_amount != null">
+					livingroom_amount=#{livingroomAmount},
+				</if>
+				<if test="toilet_amount != null">
+					toilet_amount=#{toiletAmount},
+				</if>
+				<if test="balcony_amount != null">
+					balcony_amount=#{balconyAmount},
+				</if>
+				<if test="balcony_amount != null">
+>>>>>>> bf53b6236ba17b8a2d32cdeb70d4aabd9cabe872
 					balcony_amount=#{balconyAmount},
 				</if>
 				<if test="state != null">
 					state=#{state},
 				</if>
+<<<<<<< HEAD
 				<if test="agentAd != null">
 					agent_id=#{agentId},
 				</if>
 				<if test="houseAumber != null">
+=======
+				<if test="agent_id != null">
+					agent_id=#{agentId},
+				</if>
+				<if test="house_number != null">
+>>>>>>> bf53b6236ba17b8a2d32cdeb70d4aabd9cabe872
 					house_number=#{houseNumber},
 				</if>
 				<if test="province != null">
@@ -88,8 +153,13 @@
 				</if>
 				<if test="zone != null">
 					zone=#{zone},
+<<<<<<< HEAD
 				</if>
 				<if test="villageAame != null">
+=======
+				</if>
+				<if test="village_name != null">
+>>>>>>> bf53b6236ba17b8a2d32cdeb70d4aabd9cabe872
 					village_name=#{villageName},
 				</if>
 				<if test="address != null">
@@ -97,9 +167,18 @@
 				</if>
 			</set>
 		where house_id=#{houseId}
+<<<<<<< HEAD
 	</update>
 	<delete id="delete" parameterType="int">
 		delete from house where house_id=#{id}
 	</delete>
+=======
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from house where house_id=#{id}
+	</delete>
+
+>>>>>>> bf53b6236ba17b8a2d32cdeb70d4aabd9cabe872
 	
 </mapper>

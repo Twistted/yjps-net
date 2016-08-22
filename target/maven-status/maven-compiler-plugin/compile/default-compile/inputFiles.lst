@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\Users\S\Desktop\²âÊÔ\houseweb\src\main\java\com\test\web\mapper\LabelMapper.java
 D:\Users\S\Desktop\²âÊÔ\houseweb\src\main\java\com\test\web\houseweb\App.java
 D:\Users\S\Desktop\²âÊÔ\houseweb\src\main\java\com\test\web\controller\DemoController.java
@@ -23,3 +24,30 @@ D:\Users\S\Desktop\²âÊÔ\houseweb\src\main\java\com\test\web\service\impl\LabelSe
 D:\Users\S\Desktop\²âÊÔ\houseweb\src\main\java\com\test\web\entity\UserEntity.java
 D:\Users\S\Desktop\²âÊÔ\houseweb\src\main\java\com\test\web\entity\HousePhotoEntity.java
 D:\Users\S\Desktop\²âÊÔ\houseweb\src\main\java\com\test\web\util\DBUtil.java
+=======
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/util/DBUtil.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/entity/HousePhotoEntity.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/entity/UserEntity.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/service/impl/HouseService.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/entity/ManagerEntity.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/service/impl/ManagerService.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/service/impl/LabelService.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/entity/HouseEntity.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/mapper/ManagerMapper.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/service/IAgentService.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/service/ILabelService.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/mapper/HouseLabelMapper.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/entity/LabelEntity.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/service/IHouseService.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/controller/HouseController.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/mapper/AgentMapper.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/mapper/HouseMapper.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/controller/IndexController.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/mapper/UserMapper.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/entity/AgentEntity.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/service/impl/AgentService.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/service/IManagerService.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/controller/DemoController.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/houseweb/App.java
+/Users/USER/Documents/workspace/houseweb/src/main/java/com/test/web/mapper/LabelMapper.java
+>>>>>>> bf53b6236ba17b8a2d32cdeb70d4aabd9cabe872

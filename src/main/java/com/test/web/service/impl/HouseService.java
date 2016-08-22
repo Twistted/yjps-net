@@ -81,5 +81,46 @@ public class HouseService implements IHouseService {
 		}
 		return ret;
 	}
+	
+	public boolean update(HouseEntity houseEntity) {
+		boolean ret = false;
+		SqlSession session = DBUtil.getSession();
+		try {
+			HouseMapper mapper = session.getMapper(HouseMapper.class);
+			int change = mapper.update(houseEntity);
+			ret = change > 0 ? true : false;
+			
+			session.commit();
+		} finally {
+			DBUtil.closeSession();
+		}
+		return ret;
+	}
+	
+	public List<HouseEntity> getAdvertisementList(int id) {
+		List<HouseEntity> houseList = null;
+		SqlSession session = DBUtil.getSession();
+		try {
+			HouseMapper mapper = session.getMapper(HouseMapper.class);
+			houseList = mapper.queryAdvertisementList(id);
+		} finally {
+			DBUtil.closeSession();
+		}
+		return houseList;
+	}
 
+	public List<HouseEntity> search(String search) {
+		List<HouseEntity> houseList = null;
+		SqlSession session = DBUtil.getSession();
+		try {
+			HouseMapper mapper = session.getMapper(HouseMapper.class);
+			houseList = mapper.search(search, null, null, null);
+			
+		} finally {
+			DBUtil.closeSession();
+		}
+		
+		return houseList;
+	}
+	
 }
