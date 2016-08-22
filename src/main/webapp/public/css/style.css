@@ -4,12 +4,12 @@
 	height: 100%;
 }
 
-/*ç°ç™½åŒºåŸŸ*/
+/*»Ò°×ÇøÓò*/
 .intro{
 	background-color: #F1F1F1;
 	height: 50px;
 }
-/*ä¸»åŒºåŸŸ*/
+/*Ö÷ÇøÓò*/
 .wrapper{
 	height: auto;
 	width: 1000px;
@@ -17,7 +17,7 @@
 	float:none;
 }
 
-/*æ ‡é¢˜æ */
+/*±êÌâÀ¸*/
 .wrapper .title-line{
 	height: 100px;
 	padding: 30px 0;
@@ -31,7 +31,7 @@
 	margin: 0;
 	padding: 0;
 	font-size: 1.85em;
-	font-family: "Hiragino Sans GB","å¾®è½¯é›…é»‘","Microsoft YaHei",SimHei,Tahoma,"å®‹ä½“b8b\4f53",SimSun,sans-serif;
+	font-family: "Hiragino Sans GB","Î¢ÈíÑÅºÚ","Microsoft YaHei",SimHei,Tahoma,"ËÎÌåb8b\4f53",SimSun,sans-serif;
 }
 .wrapper .title-line .view-label{
 	height: 25px;
@@ -51,11 +51,11 @@
 	border: solid 1px lightblue;
 	color: lightblue;
 }
-/*ä¿¡æ¯åŒºåŸŸ*/
+/*ĞÅÏ¢ÇøÓò*/
 .wrapper .panel-box-info{
 	height: 420px;
 }
-/*å›¾åƒæ¡†*/
+/*Í¼Ïñ¿ò*/
 .wrapper .panel-box-info .album-box{
 	width: 334px;
 	padding: 30px 0;
@@ -90,7 +90,7 @@
 	margin: 1px 5px;
 	border:solid 1px #fff;
 }
-/*ä¿¡æ¯æ¡†*/
+/*ĞÅÏ¢¿ò*/
 .wrapper .panel-box-info .info-box{
 	width: 388px;
 	padding: 30px 0 0 25px;
@@ -109,7 +109,7 @@
 .wrapper .panel-box-info .info-box .countact-panel{
 	height: 68px;
 }
-/*ä¸­ä»‹æ¡†ï¼ˆéƒ¨åˆ†å†…å®¹å¯å¤ç”¨äºåé¢çš„æ ·å¼ï¼‰*/
+/*ÖĞ½é¿ò£¨²¿·ÖÄÚÈİ¿É¸´ÓÃÓÚºóÃæµÄÑùÊ½£©*/
 .wrapper .panel-box-info .agent-box{
 	width: 218px;
 	height: 318px;
@@ -171,7 +171,7 @@
     padding-bottom: 7px;
     font-size: 12px;
     width: 100%;
-    font-family: "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei", å¾®è½¯é›…é»‘, "Segoe UI", Tahoma, å®‹ä½“b8bä½“, SimSun, sans-serif;
+    font-family: "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei", Î¢ÈíÑÅºÚ, "Segoe UI", Tahoma, ËÎÌåb8bÌå, SimSun, sans-serif;
 }
 .wrapper .panel-box-info .agent-box .agent-comment .title h2{
 	height: 100%;
@@ -218,23 +218,63 @@
 	height: 64px;
 	width: 100px;
 }
+.wrapper .panel-box-info .agent-box .agent-comment .content .comment-rate-detail p{
+	width: 100px;
+	height: 24px;
+	margin: 0;
+	padding: 0;
+}
+.wrapper .panel-box-info .agent-box .agent-comment .content .comment-rate-detail p .comment-span{
+	font-family: "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei", Î¢ÈíÑÅºÚ, "Segoe UI", Tahoma, ËÎÌåb8bÌå, SimSun, sans-serif;
+	font-size: 12px;
+	line-height: 24px;
+    color: #888;
+}
+.wrapper .panel-box-info .agent-box .agent-comment .content .comment-rate-detail p .comment-bar{
+	width: 70px;
+	height: 14px;
+	background-color: #fbdcd5;
+	margin: 5px 3px;
+	padding: 0;
+	border-radius: 5px;
+	overflow: hidden;
+}
+.wrapper .panel-box-info .agent-box .agent-comment .content .comment-rate-detail p .comment-bar .fill-bar{
+	height: 14px;
+	background-color: #fd9b6a;
+}
 .wrapper .panel-box-info .agent-box .promise{
 	width: 212px;
 	height: 45px;
-	background-color: lightgreen;
-	margin-top: 10px;
+	margin: 10px 0;
+	font-size: 16px;
+    font-weight: 700;
+    padding: 8px;
+    font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","Î¢ÈíÑÅºÚ",'Segoe UI',Tahoma,"ËÎÌåb8b\4f53",SimSun,sans-serif;
+}
+.wrapper .panel-box-info .agent-box .promise b{
+	float: none;
+	color: #39ac6a;
 }
 .wrapper .panel-box-info .agent-box .unic-label{
 	width: 218px;
-	height: 42px;
-	background-color: grey;
-	margin-top: 10px;
+	height: auto;
+	padding: 8px;
 }
-/*å†…å®¹åŒºåŸŸ*/
+.wrapper .panel-box-info .agent-box .unic-label p{
+	height: 21px;
+}
+.wrapper .panel-box-info .agent-box .unic-label p span{
+	width: auto;
+}
+.wrapper .panel-box-info .agent-box .unic-label .unic-about span a{
+	color: #009de8;
+}
+/*ÄÚÈİÇøÓò*/
 .wrapper .panel-box-content{
 	width: 1000px;
 }
-/*å†…å®¹å¯¼èˆª*/
+/*ÄÚÈİµ¼º½*/
 .wrapper .panel-box-content .panel-tab{
 	height: 46px;
 	border-bottom: solid 3px #39AC6A;
@@ -254,7 +294,7 @@
 	font-size: 1.2em;
 	font-weight: bold;
 }
-/*æˆ¿æºæè¿°*/
+/*·¿Ô´ÃèÊö*/
 .wrapper .panel-box-content .tab-content{
 	height: auto;
 	margin: 10px 0 50px 0;
@@ -262,7 +302,7 @@
 .wrapper .panel-box-content .tab-content #detail-content{
 	height: auto;
 }
-/*æ ‡é¢˜æ ·å¼å¯ä»¥å¤ç”¨*/
+/*±êÌâÑùÊ½¿ÉÒÔ¸´ÓÃ*/
 .wrapper .panel-box-content .tab-content .detail-title{
 	height: 50px;
 	border-bottom: solid 1px #CCC;
@@ -288,7 +328,7 @@
 .wrapper .panel-box-content .tab-content #detail-content .items .content h2{
 	font-size: 1.5em;
 	width: 98%;
-	font-family: "Hiragino Sans GB","å¾®è½¯é›…é»‘","Microsoft YaHei",SimHei,Tahoma,"å®‹ä½“b8b\4f53",SimSun,sans-serif;
+	font-family: "Hiragino Sans GB","Î¢ÈíÑÅºÚ","Microsoft YaHei",SimHei,Tahoma,"ËÎÌåb8b\4f53",SimSun,sans-serif;
 }
 .wrapper .panel-box-content .tab-content #detail-content .items .content .time{
 	width: 98%;
@@ -297,7 +337,7 @@
 }
 .wrapper .panel-box-content .tab-content #detail-content .items .content .text-comment,.text-comment-all{
 	width: 98%;
-	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","å¾®è½¯é›…é»‘",'Segoe UI',Tahoma,"å®‹ä½“b8b\4f53",SimSun,sans-serif;
+	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","Î¢ÈíÑÅºÚ",'Segoe UI',Tahoma,"ËÎÌåb8b\4f53",SimSun,sans-serif;
 	font-size: 1.1em;
 }
 .wrapper .panel-box-content .tab-content #detail-content .items .content .text-comment .actShowMore{
@@ -322,12 +362,12 @@
 }
 .wrapper .panel-box-content .tab-content #detail-album .detail-album-box .sub-text{
 	color: #888;
-	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","å¾®è½¯é›…é»‘",'Segoe UI',Tahoma,"å®‹ä½“b8b\4f53",SimSun,sans-serif;
+	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","Î¢ÈíÑÅºÚ",'Segoe UI',Tahoma,"ËÎÌåb8b\4f53",SimSun,sans-serif;
 	font-size: 0.9em;
 	width: auto;
 	margin-left: 5px;
 }
-/*åœ°å›¾ä¿¡æ¯*/
+/*µØÍ¼ĞÅÏ¢*/
 .wrapper .panel-box-content .tab-content #house-map{
 	margin-top:10px;
 }
@@ -343,9 +383,9 @@
 	height: 100%;
 	overflow: hidden;
 	margin-top:30px;
-	font-family:"å¾®è½¯é›…é»‘";
+	font-family:"Î¢ÈíÑÅºÚ";
 }
-/*æ¥¼æˆ¿æ¨è*/
+/*Â¥·¿ÍÆ¼ö*/
 .wrapper .house-commend{
 	height: auto;
 	width: 1000px;
@@ -400,7 +440,7 @@
 .wrapper .house-commend .show-content ul li .pic .description .title{
 	font-size: 16px;
 	font-weight: bold;
-	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","å¾®è½¯é›…é»‘",'Segoe UI',Tahoma,"å®‹ä½“b8b\4f53",SimSun,sans-serif;
+	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","Î¢ÈíÑÅºÚ",'Segoe UI',Tahoma,"ËÎÌåb8b\4f53",SimSun,sans-serif;
 }
 .wrapper .house-commend .show-content ul li .pic .description .type{
 	line-height: 17px;
@@ -411,13 +451,13 @@
 	display: inline-block;
 	border-radius: 2px;
 	vertical-align: middle;
-	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","å¾®è½¯é›…é»‘",'Segoe UI',Tahoma,"å®‹ä½“b8b\4f53",SimSun,sans-serif;
+	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","Î¢ÈíÑÅºÚ",'Segoe UI',Tahoma,"ËÎÌåb8b\4f53",SimSun,sans-serif;
 }
 .wrapper .house-commend .show-content ul li .price{
 	width: 228px;
 	height: 14px;
 	font-weight: bold;
-	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","å¾®è½¯é›…é»‘",'Segoe UI',Tahoma,"å®‹ä½“b8b\4f53",SimSun,sans-serif;
+	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","Î¢ÈíÑÅºÚ",'Segoe UI',Tahoma,"ËÎÌåb8b\4f53",SimSun,sans-serif;
 }
 .wrapper .house-commend .show-content ul li .price .average span{
 	width: auto;
@@ -426,6 +466,6 @@
 }
 .wrapper .house-commend .show-content ul li .area{
 	height: 12px;
-	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","å¾®è½¯é›…é»‘",'Segoe UI',Tahoma,"å®‹ä½“b8b\4f53",SimSun,sans-serif;
+	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","Î¢ÈíÑÅºÚ",'Segoe UI',Tahoma,"ËÎÌåb8b\4f53",SimSun,sans-serif;
 	font-size: 0.8em;
 }

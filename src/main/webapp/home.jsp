@@ -61,13 +61,13 @@
 					<c:forEach var="house" items="${houseList}">
 						<li data-index="0" data-log-index="1" data-id="a0000001">
 							<div class="pic-panel">
-								<a target="_blank" href="#" data-el="ershoufang" rel="nofollow">
+								<a target="_blank" href="/house/house?id=${house.houseId}" data-el="ershoufang" rel="nofollow">
 									<img class="lj-lazy" src="http://image1.ljcdn.com/approl/group3/M00/14/88/rBAF7VdNi0OAB9GwAACemQLD8oA831.jpg.280x210.jpg" alt="pic1" style="display:inline;"></img>
 								</a>
 							</div>
 							<div class="info-panel">
 								<h2>
-									<a target="_blank" href="#" data-el="ershoufang" title="${house.title}">${house.title}</a>
+									<a target="_blank" href="/house/house?id=${house.houseId}" data-el="ershoufang" title="${house.title}">${house.title}</a>
 								</h2>
 								<div class="col-1">
 									<div class="where">

@@ -14,6 +14,7 @@
 </head>
 <body width= screen.width>
 	<header>
+	
 		<div class="nav-wrap"></div>
 	</header>
 	<div class="searchs">
@@ -153,9 +154,56 @@
 						</p>
 					</div>
 				</div>
-				<div class="agent-comment"></div>
-				<div class="promise"></div>
-				<div class="unic-label"></div>
+				<div class="agent-comment">
+					<div class="title">
+						<h2>好评率</h2>
+						<span><a href="">共28条评价</a></span>
+					</div>
+					<div class="content">
+						<div class="comment-rate">
+							<a href="#">80%</a>
+						</div>
+						<div class="comment-rate-detail">
+							<p>
+								<span class="comment-span">好评</span>
+								<span class="comment-bar">
+									<span class="fill-bar" style="width:80%;"></span>
+								</span>
+							</p>
+							<p>
+								<span class="comment-span">中评</span>
+								<span class="comment-bar">
+									<span class="fill-bar" style="width:15%;"></span>
+								</span>
+							</p>
+							<p>
+								<span class="comment-span">差评</span>
+								<span class="comment-bar">
+									<span class="fill-bar" style="width:5%;"></span>
+								</span>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="promise">
+					易居承诺
+					<b>真实</b>
+					在售房源
+				</div>
+				<div class="unic-label">
+					<p class="bold">
+						<span>房源编号：</span>
+						<span>CDWH92292663</span>
+					</p>
+					<p class="unic-about">
+						<span>
+							<a href="#">了解真房源&nbsp;</a>
+						</span>
+						<span class="vote logined">
+							<a href="#">举报</a>
+						</span>
+					</p>
+				</div>
 				<div></div>
 			</div>
 		</section>
@@ -183,57 +231,11 @@
 									<h2>正读晋阳小学 内跃精装套三可改套四 带入户花园</h2>
 									<p class="time">2016-08-05 20:18:49 更新</p>
 									<p class="text-comment">
-										${house.houseDescribe}
+										${house.houseDescribe.substring(0,160)}...
 										<span class="actShowMore">阅读全部</span>
 									</p>
 									<p class="text-comment-all" style="display:none">
-										<br>
-										特别提醒：诚心出售！
-										<br>
-										1.房子我看过很多次了，户型是内跃套二带两个书房，可改套三。
-										<br>
-										2.进门有一个入户花园，可以摆一个很大的鞋柜，还可以放一些盆栽的绿色植物，视野看起来非常开阔。
-										<br>
-										3.入户花园推拉门进去是客厅，右手边是厨房和卫生间，厨房是拉长型的，空间挺大，而且明亮带生活阳台；左手边是卧室，对着卧室的是一个书房，也可以作为另外一个卧室；
-										<br>
-										4.两卧室中间的楼梯上去是二楼，二楼是一个很大的主卧，带独立的卫生间。旁边有一个小书房，左边门打开出去是十多个平方的屋顶花园，可以在上面远眺看书喝茶，夏天可以纳凉看星星，冬天可以享受日光浴。
-										<br>
-										<br>
-										房源描述： 
-										<br>
-										房屋卖点：精装套二，带入户花园，顶楼带平台花园，临近地铁7号线
-										<br>
-										户型：内跃套二，带一个书房、一个储物间，可改套三，一厨两卫，带入户花园，带屋顶花园
-										<br>
-										朝向：坐东朝西
-										<br>
-										装修：精装，拎包入住 
-										<br>
-										学区：有名额、可落户。可上学校：成都市晋阳小学
-										<br>
-										税费：房子满五唯一，没有增值税和个税。契税按实际情况缴纳
-										<br>
-										看房：房屋空置，有钥匙，随时可看
-										<br>
-										小区介绍：
-										<br>
-										地理位置：武侯区中央花园晋阳路215号
-										<br>
-										总建面：39507平方米（中型小区）
-										<br>
-										开发商：汉派实业
-										<br>
-										物业公司：好人家
-										<br>
-										物业费用：1.6元/平米·月
-										<br>
-										容积率：3.4
-										<br>
-										绿化率：30%（绿化率高）
-										<br>
-										其他：小区总共有3栋，一栋有5个单元；二栋有2个单元；三栋有3个单元。电梯11楼到顶
-										小区里面带游泳池，带小孩娱乐设备，有地下停车场
-										<br>
+										${house.houseDescribe}
 									</p>
 								</div>
 								<div class="people">
@@ -424,10 +426,49 @@
     <script type="text/javascript">
 		// 百度地图API功能
 		var map = new BMap.Map("allmap");    // 创建Map实例
-		map.centerAndZoom("成都郫县德源镇", 15);  // 初始化地图,设置中心点坐标和地图级别
+		map.centerAndZoom("成都市郫县德源镇大禹东路66号", 15);  // 初始化地图,设置中心点坐标和地图级别
 		map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
 		map.setCurrentCity("成都");          // 设置地图显示的城市 此项是必须设置的
 		map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+		
+		var string1="${house.houseDescribe}";
+		$(document).ready(function(){
+			  
+			  $(".actShowMore").click(function(){
+				  $(".text-comment-all").show();
+				  $(".actShowMore").hide();
+				  $(".text-comment").hide();
+			  });
+			  console.log(cutstr(s1,50));
+			});	
+		
+		function cutstr(str,len)
+		{
+		   var str_length = 0;
+		   var str_len = 0;
+		      str_cut = new String();
+		      str_len = str.length;
+		      for(var i = 0;i<str_len;i++)
+		     {
+		        a = str.charAt(i);
+		        str_length++;
+		        if(escape(a).length > 4)
+		        {
+		         //中文字符的长度经编码之后大于4
+		         str_length++;
+		         }
+		         str_cut = str_cut.concat(a);
+		         if(str_length>=len)
+		         {
+		         str_cut = str_cut.concat("...");
+		         return str_cut;
+		         }
+		    }
+		    //如果给定字符串小于指定长度，则返回源字符串；
+		    if(str_length<len){
+		     return  str;
+		    }
+		}
 	</script>
 </body>
 </html>
