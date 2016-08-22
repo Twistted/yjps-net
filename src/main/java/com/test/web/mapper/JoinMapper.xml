@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.web.mapper.JoinMapper">
+    <!-- 老版本的返回值配置 -->
+<!-- 	
+    <resultMap type="AgentEntity" id="AgentMap">
+        <result column="数据库字段名" property="AgentEntity实体类中对应的数据"/>
+    </resultMap> -->
+    
+    <insert id="insert" parameterType="JoinEntity">
+        insert into join  (join_url, state)
+		values(#{joinUrl},#{state})
+    </insert>
+    
+	<select id="findById" parameterType="int" resultType="JoinEntity">
+		select * from join where join_id=#{id}
+	</select>
+	
+	<select id="findAll" resultType="JoinEntity">
+		select * from join order by join_id
+	</select>
+	
+	<select id="queryPage" parameterType="int" resultType="JoinEntity">
+		select * from join order by join_id limit #{offset} #{size}
+	</select>
+	
+	<update id="update" parameterType="JoinEntity">
+	    update agent
+	    <set>
+	        <if test="joinUrl != null">
+	            join_url = #{joinUrl},
+	        </if>
+	        <if test="state != null">
+	           	state = #{state},
+	        </if>
+	    </set>
+	    where join_id = #{joinId};
+	</update>
+	
+</mapper>
+
