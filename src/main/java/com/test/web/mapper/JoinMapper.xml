@@ -25,7 +25,7 @@
 	</select>
 	
 	<update id="update" parameterType="JoinEntity">
-	    update agent
+	    update join
 	    <set>
 	        <if test="joinUrl != null">
 	            join_url = #{joinUrl},

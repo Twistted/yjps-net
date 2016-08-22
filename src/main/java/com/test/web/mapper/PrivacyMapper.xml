@@ -16,7 +16,7 @@
 	</select>
 	
 	<select id="queryPage" parameterType="int" resultType="PrivacyEntity">
-		select * from privacy order by link_id limit #{offset} #{size}
+		select * from privacy order by privacy_id limit #{offset} #{size}
 	</select>
 	
 	<update id="update" parameterType="PrivacyEntity">

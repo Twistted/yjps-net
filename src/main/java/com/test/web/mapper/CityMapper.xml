@@ -34,7 +34,7 @@
 	           	city_name = #{cityName},
 	        </if>
 	    </set>
-	    where city_id = #{cityName};
+	    where city_id = #{cityId};
 	</update>
 	
 </mapper>

@@ -31,7 +31,7 @@
 	            user_id = #{userId},
 	        </if>
 	        <if test="houseId != null">
-	           	state = #{houseId},
+	           	house_id = #{houseId},
 	        </if>
 	    </set>
 	    where interest_id = #{interestId};
