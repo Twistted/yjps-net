@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.web.mapper.PrivacyMapper">
+    
+    <insert id="insert" parameterType="PrivacyEntity">
+        insert into privacy (privacy_id, content, timestamp, author, state)
+		values(#{privacyId},#{content},#{timestamp},#{author},#{state})
+    </insert>
+    
+	<select id="findById" parameterType="int" resultType="PrivacyEntity">
+		select * from privacy where privacy_id=#{privacyId}
+	</select>
+	
+	<select id="findAll" resultType="PrivacyEntity">
+		select * from privacy order by privacy_id
+	</select>
+	
+	<select id="queryPage" parameterType="int" resultType="PrivacyEntity">
+		select * from privacy order by link_id limit #{offset} #{size}
+	</select>
+	
+	<update id="update" parameterType="PrivacyEntity">
+	    update privacy
+	    <set>
+	        <if test="content != null">
+	            content = #{content},
+	        </if>
+	        <if test="timestamp != null">
+	            timestamp = #{timestamp},
+	        </if>
+	        <if test="author != null">
+	            author = #{author},
+	        </if>
+	    </set>
+	    where privacy_id = #{privacyId};
+	</update>
+	
+	<delete id="delete" parameterType="privacyEntity">
+	    delete from privacy where privacy_id = #{privacyId}
+	</delete>
+	
+</mapper>

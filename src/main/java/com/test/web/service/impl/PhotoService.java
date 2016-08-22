@@ -4,17 +4,18 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.test.web.entity.PhotoEntity;
+import com.test.web.util.DBUtil;
+import com.test.web.entity.HousePhotoEntity;
 import com.test.web.mapper.PhotoMapper;
 import com.test.web.service.IPhotoService;
-import com.test.web.util.DBUtil;
 
-public class PhotoService implements IPhotoService{
+
+public class PhotoService implements IPhotoService {
 	
-	private List<PhotoEntity> photoList;
-	private PhotoEntity photo;
+	private List<HousePhotoEntity> photoList;
+	private HousePhotoEntity photo;
 
-	private List<PhotoEntity> findById(int houseId){
+	private List<HousePhotoEntity> findById(int houseId){
 		SqlSession session = DBUtil.getSession();
 		try{
 			PhotoMapper mapper = session.getMapper(PhotoMapper.class);
@@ -25,7 +26,7 @@ public class PhotoService implements IPhotoService{
 		return photoList;
 	}
 	
-	private PhotoEntity findMinById(int houseId){
+	private HousePhotoEntity findMinById(int houseId){
 		SqlSession session = DBUtil.getSession();
 		try{
 			PhotoMapper mapper = session.getMapper(PhotoMapper.class);
@@ -36,12 +37,12 @@ public class PhotoService implements IPhotoService{
 		return photo;
 	}
 	
-	public List<PhotoEntity> getPhotoByHouseId(int houseId) {
+	public List<HousePhotoEntity> getPhotoByHouseId(int houseId) {
 		// TODO Auto-generated method stub
 		return findById(houseId);
 	}
 
-	public PhotoEntity getMainPhotoByHouseId(int houseId){
+	public HousePhotoEntity getMainPhotoByHouseId(int houseId){
 		// TODO Auto-generated method stub
 		return findMinById(houseId);
 	}

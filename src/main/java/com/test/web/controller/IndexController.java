@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.test.web.entity.AdvertisementEntity;
 import com.test.web.entity.HouseEntity;
 import com.test.web.service.IAdvertisementService;
 import com.test.web.service.IHouseService;
@@ -28,7 +29,7 @@ public class IndexController {
 		
 		model.addObject("houseList", houseList);
 		
-		IAdvertisementService advertisementSerice = new AdvertisementService();
+		IAdvertisementService advertisementService = new AdvertisementService();
 		List<AdvertisementEntity> advertisementList = advertisementService.getAdvertisementList(4);
 		model.addObject("abvertisementList", advertisementList);
 		

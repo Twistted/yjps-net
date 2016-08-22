@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.web.mapper.TownMapper">
+    
+    <insert id="insert" parameterType="TownEntity">
+        insert into town (town_id, city_id, town_name)
+		values(#{townId},#{cityId},#{townName})
+    </insert>
+    
+	<select id="findById" parameterType="int" resultType="TownEntity">
+		select * from town where town_id=#{townId}
+	</select>
+	
+	<select id="findAll" resultType="TownEntity">
+		select * from town order by town_id
+	</select>
+	
+	<select id="queryPage" parameterType="int" resultType="TownEntity">
+		select * from town order by town_id limit #{offset} #{size}
+	</select>
+	
+	<update id="update" parameterType="TownEntity">
+	    update province
+	    <set>
+	        <if test="cityId != null">
+	            city_id = #{cityId},
+	        </if>
+	        <if test="townName != null">
+	            town_name = #{townName},
+	        </if>
+	    </set>
+	    where town_id = #{townId};
+	</update>
+	
+	<delete id="delete" parameterType="TownEntity">
+	    delete from town where town_id = #{townId}
+	</delete>
+	
+</mapper>
