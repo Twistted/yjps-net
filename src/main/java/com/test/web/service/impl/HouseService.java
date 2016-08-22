@@ -109,4 +109,18 @@ public class HouseService implements IHouseService {
 		return houseList;
 	}
 
+	public List<HouseEntity> search(String search) {
+		List<HouseEntity> houseList = null;
+		SqlSession session = DBUtil.getSession();
+		try {
+			HouseMapper mapper = session.getMapper(HouseMapper.class);
+			houseList = mapper.search(search, null, null, null);
+			
+		} finally {
+			DBUtil.closeSession();
+		}
+		
+		return houseList;
+	}
+	
 }

@@ -239,7 +239,7 @@ img{
 .fang05{
 	background: url("http://static1.ljcdn.com/pc/asset/img/new-version/sprite_lb.png") no-repeat -46px -7px;
 	width:25px;
-	height:25px;
+	height:23px;
 	display:inline-block;
 	text-align:center;
 	line-height: 25px;
@@ -262,7 +262,7 @@ img{
 .taxfree{
 	background: url("http://static1.ljcdn.com/pc/asset/img/new-version/sprite_lb.png") no-repeat -98px -7px;
 	width:25px;
-	height:25px;
+	height:23px;
 	display:inline-block;
 	float:left;
 }
