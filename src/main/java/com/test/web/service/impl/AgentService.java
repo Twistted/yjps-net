@@ -11,7 +11,7 @@ import com.test.web.util.DBUtil;
 
 public class AgentService implements IAgentService {
 
-	public List<AgentEntity> findAll() {
+	private List<AgentEntity> findAll() {
 		List<AgentEntity> agentList = null;
 		SqlSession session = DBUtil.getSession();
 		try {
@@ -24,7 +24,7 @@ public class AgentService implements IAgentService {
 		return agentList;
 	}
 
-	public AgentEntity findById(int id) {
+	private AgentEntity findById(int id) {
 		AgentEntity house = null;
 		SqlSession session = DBUtil.getSession();
 		try {
@@ -36,6 +36,32 @@ public class AgentService implements IAgentService {
 		}
 		return house;
 	}
+	
+	private int update(AgentEntity agentEntity){
+		int i;
+		SqlSession session = DBUtil.getSession();
+		try {
+			AgentMapper mapper = session.getMapper(AgentMapper.class);
+			i = mapper.update(agentEntity);
+			System.out.println(i);
+		} finally {
+			DBUtil.closeSession();
+		}
+		return i;
+	}
+	
+	private int insert(AgentEntity agentEntity){
+		int i;
+		SqlSession session = DBUtil.getSession();
+		try {
+			AgentMapper mapper = session.getMapper(AgentMapper.class);
+			i = mapper.insert(agentEntity);
+			System.out.println(i);
+		} finally {
+			DBUtil.closeSession();
+		}
+		return i;
+	}
 
 	public AgentEntity getAgentById(int id) {
 		return findById(id);
@@ -44,4 +70,18 @@ public class AgentService implements IAgentService {
 	public List<AgentEntity> listAgent(int page, int size) {
 		return findAll();
 	}
+
+	public boolean addAgent(AgentEntity agentEntity) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean modifyAgent(AgentEntity agentEntity) {
+		// TODO Auto-generated method stub
+		if(update(agentEntity) > 0)
+			return true;
+		else return false;
+	}
+	
+	
 }

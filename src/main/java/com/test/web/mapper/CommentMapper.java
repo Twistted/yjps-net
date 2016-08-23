@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.test.web.entity.CommentEntity;
 
-public interface Comment {
+public interface CommentMapper {
 	public int insert(CommentEntity commentEntity);
 	public CommentEntity findById(int id);
 	public List<CommentEntity> findAll();
