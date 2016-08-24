@@ -246,6 +246,7 @@
 		</div>
 	</footer>
 	<script src="jquery-3.1.0.min.js"></script>
+	<script src="public/js/laypage.js"></script>
 	<script>
 		$(document).ready(function(){
 			$("")
