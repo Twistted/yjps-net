@@ -44,6 +44,7 @@ public class AgentService implements IAgentService {
 			AgentMapper mapper = session.getMapper(AgentMapper.class);
 			i = mapper.update(agentEntity);
 			System.out.println(i);
+			session.commit();
 		} finally {
 			DBUtil.closeSession();
 		}
