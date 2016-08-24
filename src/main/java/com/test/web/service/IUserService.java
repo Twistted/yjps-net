@@ -8,4 +8,5 @@ public interface IUserService {
 	UserEntity login(UserEntity userEntity);
 	boolean register(UserEntity userEntity);
 	List<UserEntity> findAll();
+	boolean modify(UserEntity userEntity);
 }

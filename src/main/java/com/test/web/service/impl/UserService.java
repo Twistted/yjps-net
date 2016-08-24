@@ -50,5 +50,20 @@ public class UserService implements IUserService {
 		}
 		return userList;
 	}
+
+	public boolean modify(UserEntity userEntity) {
+		boolean ret = false;
+		SqlSession session = DBUtil.getSession();
+		try {
+			UserMapper userMapper = session.getMapper(UserMapper.class);
+			int i = userMapper.update(userEntity);
+			ret = i > 0 ? true : false;
+			
+			session.commit();
+		} finally {
+			DBUtil.closeSession();
+		}
+		return false;
+	}
 	
 }

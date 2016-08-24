@@ -10,5 +10,6 @@ public interface UserMapper {
 	public List<UserEntity> findById(int userId);
 	public List<UserEntity> findAll();
 	public int insert(UserEntity userEntity);
+	public int update(UserEntity userEntity);
 	
 }
