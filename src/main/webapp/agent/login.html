@@ -115,12 +115,14 @@
 <script>
     function RESIZEIMG(b,k,l,m){var c=b.parentNode;var d=parseInt(c.offsetWidth)||k;var e=parseInt(c.offsetHeight)||l;var f=d/e;var g=b.naturalWidth||b.width;var h=b.naturalHeight||b.height;var i=g/h;var j="width";if(f<i){j="height";try{b.style["left"]="-"+parseInt(Math.abs((d-(g*e/h))/2))+"px"}catch(e){}}else if(m){try{b.style["top"]="-"+parseInt(Math.abs((e-(h*d/g))/2))+"px"}catch(e){}};b.style[j]="100%";};
     $().ready(function(){
-    	var account = $("input#username").val();
-    	var password = $("input#password").val();
-    	$(".user-logn .actDoSubmit").click(function(){
-    			$.post("",{'account':account,'password':password},function(data){
-    		
+    	$(".user-login .login-cun ul li button.actDoSubmit").click(function(){
+    		var account = $("input#username").val();
+    		var password = $("input#password").val();
+    		$(".user-logn .actDoSubmit").click(function(){
+    			$.post("agent/login",{'account':account,'password':password},function(data){
+    		       alert("登录成功");
     	},'json');
+    	});
     	});
     });
 </script>
