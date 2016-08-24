@@ -10,6 +10,7 @@ import com.test.web.service.IManagerService;
 import com.test.web.util.DBUtil;
 
 public class ManagerService implements IManagerService {
+	
 	public List<ManagerEntity> findAll() {
 		List<ManagerEntity> houseList = null;
 		SqlSession session = DBUtil.getSession();
@@ -34,6 +35,19 @@ public class ManagerService implements IManagerService {
 			DBUtil.closeSession();
 		}
 		return house;
+	}
+	
+	public boolean addManager(ManagerEntity managerEntity){
+		boolean ret = false;
+		SqlSession session = DBUtil.getSession();
+		try{
+			ManagerMapper mapper = session.getMapper(ManagerMapper.class);
+			ret = mapper.insert(managerEntity) > 0 ? true : false;
+			session.commit();
+		}finally{
+			DBUtil.closeSession();
+		}
+		return ret;
 	}
 	
 	public ManagerEntity getManagerById(int id) {

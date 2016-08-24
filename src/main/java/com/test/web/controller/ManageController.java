@@ -22,4 +22,13 @@ public class ManageController {
 		return model;
 	}
 	
+	@RequestMapping("add_manager")
+	public ModelAndView addManager(ManagerEntity managerEntity,HttpSession httpSession){
+		ModelAndView model = new ModelAndView();
+		IManagerService managerService = new ManagerService();
+		boolean ok = managerService.addManager(managerEntity);
+		
+		return model;
+	}
+	
 }
