@@ -5,6 +5,7 @@ public class HousePhotoEntity {
 	private int housePhotoId;
 	private String photoUrl;
 	private int houseId;
+	
 	public int getHousePhotoId() {
 		return housePhotoId;
 	}

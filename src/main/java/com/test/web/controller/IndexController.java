@@ -28,6 +28,8 @@ public class IndexController {
 		List<HouseEntity> houseList = houseService.listHouse(0, 3);
 		
 		model.addObject("houseList", houseList);
+		model.addObject("listSize", houseList.size());
+		model.addObject("pageSize", (houseList.size() / 5) + 1 );
 		
 		IAdvertisementService advertisementService = new AdvertisementService();
 		List<AdvertisementEntity> advertisementList = advertisementService.getAdvertisementList(4);
@@ -56,6 +58,10 @@ public class IndexController {
 		List<HouseEntity> houseList = houseService.search(search);
 		
 		model.addObject("houseList", houseList);
+		
+		IAdvertisementService advertisementService = new AdvertisementService();
+		List<AdvertisementEntity> advertisementList = advertisementService.getAdvertisementList(4);
+		model.addObject("abvertisementList", advertisementList);
 		
 		model.setViewName("home");
 		return model;

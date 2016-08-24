@@ -12,7 +12,7 @@
 	</insert>
 	
 	<select id="search" parameterType="string" resultType="HouseEntity">
-		select * from userinfo
+		select * from house
 		<where>
 			<if test="title != null and titel != ''">
 			   	user_name like '%'#{userName}'%'
@@ -35,6 +35,10 @@
 	
 	<select id="findAll" resultType="HouseEntity">
 		select * from house order by house_id
+	</select>
+	
+	<select id="findByAgentId" parameterType="int" resultType="HouseEntity">
+	    select * from house where agent_id=#{agentId}
 	</select>
 	
 	<select id="queryPage" parameterType="int" resultType="HouseEntity">

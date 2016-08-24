@@ -9,7 +9,7 @@
     
     <insert id="insert" parameterType="AdvertisementEntity">
         insert into advertisement (advertisement_url, title, timestamp, state)
-		values(#{AdvertisementUrl},#{title},#{timestamp},#{state})
+		values(#{advertisementUrl},#{title},#{timestamp},#{state})
     </insert>
     
 	<select id="queryAdvs" parameterType="int" resultType="AdvertisementEntity">
@@ -17,7 +17,7 @@
 	</select>
 	
 	<update id="update" parameterType="AdvertisementEntity">
-	    update agent
+	    update advertisement
 	    <set>
 	        <if test="advertisementUrl != null">
 	            advertisement_url = #{advertisementUrl},

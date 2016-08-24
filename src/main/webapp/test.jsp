@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title>二手房电子商务交易平台</title>
+   <title>${sessionScope.user.account}</title>
    	<link rel="shortcut icon" type="image/x-icon" href="http://lianjia.com/favicon.ico" />
    	 <link href="/public/css/sh-house-css.css" rel="stylesheet">
    	 <link href="/public/css/reset.css" rel="stylesheet">

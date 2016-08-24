@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.web.mapper.LinkMapper">
+    
+    <insert id="insert" parameterType="LinkEntity">
+        insert into link (link_id, web_url, web_name)
+		values(#{linkId},#{webUrl},#{webName})
+    </insert>
+    
+	<select id="findByName" parameterType="LinkEntity" resultType="LinkEntity">
+		select * from link where web_name=#{webName}
+	</select>
+	
+	<select id="findAll" resultType="LinkEntity">
+		select * from link order by link_id
+	</select>
+	
+	<select id="queryPage" parameterType="int" resultType="LinkEntity">
+		select * from link order by link_id limit #{offset} #{size}
+	</select>
+	
+	<update id="update" parameterType="LinkEntity">
+	    update link
+	    <set>
+	        <if test="webUrl != null">
+	            web_url = #{webUrl},
+	        </if>
+	        <if test="webName != null">
+	            web_name = #{webName},
+	        </if>
+	    </set>
+	    where link_id = #{linkId};
+	</update>
+	
+	<delete id="delete" parameterType="LinkEntity">
+	    delete from link where link_id = #{linkId}
+	</delete>
+	
+</mapper>
