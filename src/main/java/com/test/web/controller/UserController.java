@@ -26,6 +26,8 @@ public class UserController {
 	@RequestMapping("index")
 	public ModelAndView index() {
 		ModelAndView model = new ModelAndView();
+		
+		model.addObject("title", "用户登录");
 		model.setViewName("user/login");
 		return model;
 	}
@@ -44,21 +46,39 @@ public class UserController {
 		} else {
 			model.addObject("user", user);
 			httpSession.setAttribute("userSession", user);
-			model.setViewName("test");
+			model.setViewName("user/user_index");
 		}
 		return model;
+	}
+	
+	@RequestMapping("modify_user")
+	public @ResponseBody Result modifyUser(UserEntity userEntity, HttpSession httpSession) {
+		Result result = new Result();
+		IUserService userService = new UserService();
+		boolean ok = userService.modify(userEntity);
+		if (ok) {
+			result.setCode(200);
+		} else {
+			result.setCode(500);
+		}
+		return result;
 	}
 	
 	@RequestMapping("register")
 	public ModelAndView register(UserEntity userEntity, HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
 		
+		if (userEntity.getAccount() == null || userEntity.getAccount().isEmpty()) {
+			model.setViewName("user/register");
+			return model;
+		}
+		
 		IUserService userService = new UserService();
 		
 		boolean ok = userService.register(userEntity);
 		System.out.println(ok);
 		if (ok) {
-			httpSession.setAttribute("user", userEntity);
+			httpSession.setAttribute("userSession", userEntity);
 			model.setViewName("user/login");
 		} else {
 			model.setViewName("user/register");
@@ -93,6 +113,13 @@ public class UserController {
 		} else {
 			return new Result(500);
 		}
+	}
+	
+	@RequestMapping("user_protocol")
+	public ModelAndView userProtocal() {
+		ModelAndView model = new ModelAndView();
+		model.setViewName("user/user_protocol");
+		return model;
 	}
 	
 }

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
@@ -90,42 +92,42 @@
         height:100px;
     }
     </style>
-<style type="text/css">          
-#detail a.rr-taobao-big{ 
-	float: left; 
-	line-height: 40px; 
-	padding: 0 15px; 
-	font-size: 14px; 
-	color: #fff; 
-	background: #f40; 
-	border-radius: 2px; 
-	margin-left: 10px;}
-	#detail a.rr-taobao-big:hover{ 
-	background: #f20;}          
-	#detail a.rr-taobao-normal{ 
-		display: inline-block; 
-		background: #ff8e1b; 
+	<style type="text/css">          
+	#detail a.rr-taobao-big{ 
+		float: left; 
+		line-height: 40px; 
+		padding: 0 15px; 
+		font-size: 14px; 
 		color: #fff; 
-		padding: 0 5px; 
+		background: #f40; 
 		border-radius: 2px; 
-		line-height: 25px; 
-		margin-left: 5px;}          
-	#detail a.rr-taobao-normal:hover{ 
-		background: #f60;}          
-	#page a.rr-tmall-big, 
-	#page a.rr-tmall-normal{ 
-		display: inline-block; 
-		line-height: 30px; 
-		background: #c40000; 
-		padding: 0 10px; 
-		color: #fff; 
-		border-radius: 2px; 
-		margin-left: 12px;}          
-	#page a.rr-tmall-big:hover, 
-	#page a.rr-tmall-normal:hover{ 
-		text-decoration: none; 
-		background: #b50000;}       
-</style>
+		margin-left: 10px;}
+		#detail a.rr-taobao-big:hover{ 
+		background: #f20;}          
+		#detail a.rr-taobao-normal{ 
+			display: inline-block; 
+			background: #ff8e1b; 
+			color: #fff; 
+			padding: 0 5px; 
+			border-radius: 2px; 
+			line-height: 25px; 
+			margin-left: 5px;}          
+		#detail a.rr-taobao-normal:hover{ 
+			background: #f60;}          
+		#page a.rr-tmall-big, 
+		#page a.rr-tmall-normal{ 
+			display: inline-block; 
+			line-height: 30px; 
+			background: #c40000; 
+			padding: 0 10px; 
+			color: #fff; 
+			border-radius: 2px; 
+			margin-left: 12px;}          
+		#page a.rr-tmall-big:hover, 
+		#page a.rr-tmall-normal:hover{ 
+			text-decoration: none; 
+			background: #b50000;}       
+	</style>
 </head>
 <body>
 <div class="logo-wrap">

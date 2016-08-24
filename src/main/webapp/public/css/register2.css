@@ -168,15 +168,15 @@
 }
 
 .user-login .login-cun ul li.user-phone label {
-	background: url(../images/sprite_user.png) no-repeat -113px 0
+	background: url(../img/sprite_user.png) no-repeat -113px 0
 }
 
 .user-login .login-cun ul li.pwd label {
-	background: url(../images/sprite_user.png) no-repeat -113px -25px
+	background: url(../img/sprite_user.png) no-repeat -113px -25px
 }
 
 .user-login .login-cun ul li.owner-id label {
-	background: url(../images/sprite_user.png) no-repeat -134px 0;
+	background: url(../img/sprite_user.png) no-repeat -134px 0;
 	width: 17px;
 	height: 19px
 }
@@ -213,7 +213,7 @@
 
 .user-login .user-footer {
 	margin-top: 52px;
-	background: url(../images/footer-bg.png) no-repeat bottom center;
+	background: url(../img/footer-bg.png) no-repeat bottom center;
 	height: 80px;
 	text-align: center;
 	padding-top: 20px;
@@ -346,14 +346,14 @@
 .registerred li label.iagreed {
 	position: relative;
 	top: 4px;
-	background: url(../images/sprite_user.png) -250px -9px;
+	background: url(../img/sprite_user.png) -250px -9px;
 	width: 25px;
 	height: 20px;
 	display: inline-block
 }
 
 .registerred li label.iagreed:hover {
-	background: url(../images/sprite_user.png) -250px -35px
+	background: url(../img/sprite_user.png) -250px -35px
 }
 
 .registerred li i {
@@ -513,7 +513,7 @@ transform
 	position: absolute;
 	top: -21px;
 	right: -16px;
-	background: url(../images/detail.png) -293px -125px
+	background: url(../img/detail.png) -293px -125px
 		no-repeat;
 	display: block;
 	width: 41px;
@@ -521,7 +521,7 @@ transform
 }
 
 .verifyLayer a:hover {
-	background: url(../images/detail.png) -345px -125px
+	background: url(../img/detail.png) -345px -125px
 		no-repeat
 }
 
@@ -538,7 +538,6 @@ transform
      only screen and (-o-min-device-pixel-ratio: 3/2),
      only screen and (min-device-pixel-ratio: 1.5) {
      	.user-login .logo{
-     		background: url(../images/login-logo@2x.png);
-     		background-size: 322px 55px;
+     		background: url(../img/login-logo.png) no-repeat;
      	}
 }
