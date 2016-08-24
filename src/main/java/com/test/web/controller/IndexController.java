@@ -59,6 +59,10 @@ public class IndexController {
 		
 		model.addObject("houseList", houseList);
 		
+		IAdvertisementService advertisementService = new AdvertisementService();
+		List<AdvertisementEntity> advertisementList = advertisementService.getAdvertisementList(4);
+		model.addObject("abvertisementList", advertisementList);
+		
 		model.setViewName("home");
 		return model;
 	}

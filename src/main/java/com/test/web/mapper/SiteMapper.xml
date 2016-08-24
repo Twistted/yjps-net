@@ -41,7 +41,7 @@
 	            address = #{address},
 	        </if>
 	        <if test="registerTime != null">
-	            register_name = #{registerName},
+	            register_time = #{registerTime},
 	        </if>
 	        <if test="legalPerson != null">
 	            legal_person = #{legalPerson},

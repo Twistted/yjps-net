@@ -8,22 +8,22 @@
     </resultMap> -->
     
     <insert id="insert" parameterType="AgentEntity">
-        insert into house (account, password, name, age, sex, phone, email, photo_url, state, introduction,
+        insert into agent (account, password, name, age, sex, phone, email, photo_url, state, introduction,
 		                    company, year)
 		values(#{account},#{password},#{name},#{age},#{sex},#{phone},#{email},#{photoUrl},
 		       #{state},#{introduction},#{company},#{year})
     </insert>
     
 	<select id="findById" parameterType="int" resultType="AgentEntity">
-		select * from manager where manager_id=#{id}
+		select * from agent where agent_id=#{id}
 	</select>
 	
 	<select id="findAll" resultType="AgentEntity">
-		select * from manager order by manager_id
+		select * from agent order by agent_id
 	</select>
 	
 	<select id="queryPage" parameterType="int" resultType="AgentEntity">
-		select * from order by manager_id limit #{offset} #{size}
+		select * from agent order by agent_id limit #{offset} #{size}
 	</select>
 	
 	<update id="update" parameterType="AgentEntity">

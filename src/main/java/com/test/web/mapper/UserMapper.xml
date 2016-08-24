@@ -5,20 +5,47 @@
 	<!-- 这里sql结尾不能加分号，否则报"ORA-00911"的错误 -->
 	<!-- 这里的id必须和UserMapper接口中的接口方法名相同，不然运行的时候也要报错 -->
 	<select id="findById" parameterType="int" resultType="UserEntity">
-		select * from blog where id=#{id}
+		select * from user where id=#{id}
 	</select>
+	
+	<select id="login" parameterType="UserEntity" resultType="UserEntity">
+		select * from user where account=#{account} and password=#{password}
+	</select>
+	
+	<insert id="register" parameterType="UserEntity">
+		insert into user (account, password, name, state, sex, age, photo_url, timestamp, contact)
+		values (#{account}, #{password}, #{name}, #{state}, #{sex}, #{age}, #{photoUrl}, #{timestamp}, #{contact})
+	</insert>
 
 	<update id="update" parameterType="UserEntity">
 		update user
 			<set>
-				<if test="userName != null">
-				user_name = #{userName},
-				</if>
-				<if test="age != null">
-				age = #{age},
+				<if test="account != null">
+				account = #{account},
 				</if>
 				<if test="password != null">
-				password = #{password}
+				password = #{password},
+				</if>
+				<if test="name != null">
+				name = #{name}
+				</if>
+				<if test="state != null">
+				state = #{state}
+				</if>
+				<if test="sex != null">
+				sex = #{sex}
+				</if>
+				<if test="age != null">
+				age = #{age}
+				</if>
+				<if test="photoUrl != null">
+				photo_url = #{photoUrl}
+				</if>
+				<if test="timestamp != null">
+				timestamp = #{timestamp}
+				</if>
+				<if test="contact != null">
+				contact = #{contact}
 				</if>
 			</set>
 		where userid = #{userid}

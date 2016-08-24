@@ -40,7 +40,7 @@
 	        	web_address = #{webAddress}
 	        </if>
 	    </set>
-	    where about_id = #{cityName};
+	    where about_id = #{aboutId};
 	</update>
 	
 </mapper>

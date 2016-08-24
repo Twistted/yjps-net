@@ -31,7 +31,7 @@
 	            user_id = #{userId},
 	        </if>
 	        <if test="houseId != null">
-	            user_id = #{userId},
+	            house_id = #{houseId},
 	        </if>
 	        <if test="agentId != null">
 	           	agent_id = #{agentId},

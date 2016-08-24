@@ -20,7 +20,7 @@
 	</select>
 	
 	<update id="update" parameterType="TownEntity">
-	    update province
+	    update town
 	    <set>
 	        <if test="cityId != null">
 	            city_id = #{cityId},

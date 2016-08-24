@@ -12,7 +12,7 @@
 	</insert>
 	
 	<select id="search" parameterType="string" resultType="HouseEntity">
-		select * from userinfo
+		select * from house
 		<where>
 			<if test="title != null and titel != ''">
 			   	user_name like '%'#{userName}'%'
