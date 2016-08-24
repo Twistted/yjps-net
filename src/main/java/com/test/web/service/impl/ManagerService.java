@@ -70,4 +70,16 @@ public class ManagerService implements IManagerService {
 	public List<ManagerEntity> listManager(int page, int size) {
 		return findAll();
 	}
+	
+	public ManagerEntity login(ManagerEntity managerEntity) {
+		ManagerEntity manager = null;
+		SqlSession session = DBUtil.getSession();
+		try {
+			ManagerMapper mapper = session.getMapper(ManagerMapper.class);
+			manager = mapper.login(managerEntity);
+		} finally {
+			DBUtil.closeSession();
+		}
+		return manager;
+	}
 }

@@ -1,5 +1,7 @@
 package com.test.web.service.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.test.web.entity.UserEntity;
@@ -34,6 +36,19 @@ public class UserService implements IUserService {
 			DBUtil.closeSession();
 		}
 		return ret;
+	}
+	
+	public List<UserEntity> findAll() {
+		List<UserEntity> userList = null;
+		SqlSession session = DBUtil.getSession();
+		try {
+			UserMapper userMapper = session.getMapper(UserMapper.class);
+			userList = userMapper.findAll();
+			
+		} finally {
+			DBUtil.closeSession();
+		}
+		return userList;
 	}
 	
 }

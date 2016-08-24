@@ -95,7 +95,13 @@ public class AgentController {
 		List<AgentEntity> agentList;
 		IAgentService agentService = new AgentService();
 		agentList = agentService.allAgent();
-		result.setAgentList()
+		if(agentList == null || agentList.isEmpty())
+			result.setCode(500);
+		else result.setCode(200);
+		result.setAgentList(agentList);
+		for(int i = 0;i < agentList.size();i++){
+			System.out.println(agentList.get(i));
+		}
 		return result;
 	}
 }
