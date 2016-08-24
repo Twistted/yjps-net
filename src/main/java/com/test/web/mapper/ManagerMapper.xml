@@ -7,6 +7,10 @@
 		values(#{account},#{password},#{state},#{level},#{photoUrl})
     </insert>
     
+    <select id="login" parameterType="ManagerEntity">
+    	select * from manager where account=#{account} and password=#{password}
+    </select>
+    
 	<select id="findById" parameterType="int" resultType="ManagerEntity">
 		select * from manager where manager_id=#{id}
 	</select>

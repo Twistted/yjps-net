@@ -10,4 +10,5 @@ public interface ManagerMapper {
 	public List<ManagerEntity> findAll();
 	public List<ManagerEntity> queryPage(int offset, int size);
 	public int update(ManagerEntity managerEntity);
+	public ManagerEntity login(ManagerEntity managerEntity);
 }
