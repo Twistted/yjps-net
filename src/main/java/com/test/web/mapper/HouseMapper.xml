@@ -37,6 +37,10 @@
 		select * from house order by house_id
 	</select>
 	
+	<select id="findByAgentId" parameterType="int" resultType="HouseEntity">
+	    select * from house where agent_id=#{agentId}
+	</select>
+	
 	<select id="queryPage" parameterType="int" resultType="HouseEntity">
 		select * from house order by house_id limit #{offset}, #{size}
 	</select>
