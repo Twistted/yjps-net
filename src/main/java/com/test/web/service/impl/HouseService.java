@@ -52,6 +52,18 @@ public class HouseService implements IHouseService {
 		return houseList;
 	}
 	
+	public List<HouseEntity> getByAgentId(int agentId){
+		List<HouseEntity> houseList = null;
+		SqlSession session = DBUtil.getSession();
+		try {
+			HouseMapper mapper = session.getMapper(HouseMapper.class);
+			houseList = mapper.findByAgentId(agentId);
+		} finally {
+			DBUtil.closeSession();
+		}
+		return houseList;
+	}
+	
 	public boolean delete(int id) {
 		boolean ret = false;
 		SqlSession session = DBUtil.getSession();

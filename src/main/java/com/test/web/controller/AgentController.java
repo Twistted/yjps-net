@@ -1,8 +1,11 @@
 package com.test.web.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -61,6 +64,15 @@ public class AgentController {
 			model.setViewName("agent/index");
 		}
 		else model.setViewName("agent/index");
+		return model;
+	}
+	
+	@RequestMapping("select")
+	public ModelAndView getHouseList(AgentEntity agentEntity,HttpSession httpSession){
+		ModelAndView model = new ModelAndView();
+		IHouseService houseService = new HouseService();
+		List<HouseEntity> houseList = houseService.getByAgentId(agentEntity.getAgentId());
+		System.out.println(houseList.size());
 		return model;
 	}
 	
