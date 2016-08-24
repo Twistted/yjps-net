@@ -25,8 +25,17 @@ public class ManageController {
 	@RequestMapping("add_manager")
 	public ModelAndView addManager(ManagerEntity managerEntity,HttpSession httpSession){
 		ModelAndView model = new ModelAndView();
+		ManagerEntity manager = (ManagerEntity) httpSession.getAttribute("managerSession");
 		IManagerService managerService = new ManagerService();
 		boolean ok = managerService.addManager(managerEntity);
+		
+		return model;
+	}
+	
+	@RequestMapping("modify_manager")
+	public ModelAndView modifyManager(ManagerEntity managerEntity,HttpSession httpSession){
+		ModelAndView model = new ModelAndView();
+		IManagerService managerService = new ManagerService();
 		
 		return model;
 	}

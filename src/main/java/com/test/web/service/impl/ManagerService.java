@@ -37,6 +37,19 @@ public class ManagerService implements IManagerService {
 		return house;
 	}
 	
+	public boolean modifyManager(ManagerEntity managerEntity){
+		boolean ret = false;
+		SqlSession session = DBUtil.getSession();
+		try{
+			ManagerMapper mapper = session.getMapper(ManagerMapper.class);
+			ret = mapper.update(managerEntity) > 0 ? true : false;
+			session.commit();
+		}finally{
+			DBUtil.closeSession();
+		}
+		return ret;
+	}
+	
 	public boolean addManager(ManagerEntity managerEntity){
 		boolean ret = false;
 		SqlSession session = DBUtil.getSession();

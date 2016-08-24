@@ -109,6 +109,11 @@ public class AgentService implements IAgentService {
 			return true;
 		else return false;
 	}
+
+	public List<AgentEntity> allAgent() {
+		// TODO Auto-generated method stub
+		return findAll();
+	}
 	
 	
 }

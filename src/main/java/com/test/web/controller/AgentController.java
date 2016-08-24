@@ -8,8 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.test.web.dto.Result;
 import com.test.web.entity.AgentEntity;
 import com.test.web.entity.HouseEntity;
 import com.test.web.service.IAgentService;
@@ -87,6 +89,13 @@ public class AgentController {
 		return model;
 	}
 	
-
-
+	@RequestMapping("list_agent")
+	public @ResponseBody Result listAgent(HttpSession httpSession){
+		Result result = new Result();
+		List<AgentEntity> agentList;
+		IAgentService agentService = new AgentService();
+		agentList = agentService.allAgent();
+		result.setAgentList()
+		return result;
+	}
 }
