@@ -1,0 +1,536 @@
+*{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	text-decoration: none;
+	font-size: 1em;
+	list-style: none;
+}
+/**消失**/
+.xiaoshi{
+	display:none;
+}
+a{
+	text-decoration: none;
+	outline: none;
+}
+body{
+	background-color: #f5f5f5;
+}
+.yiju-header{
+	height:55px;
+	line-height: 55px;
+	background:#39ac6a;
+	color:#fff;	 
+
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.nav{
+	 
+}
+.lianjia-header .nav .typeUserInfo a span, .lianjia-header .nav .typeShowUser a span{
+	max-width:132px;
+	float: left;
+}
+.yiju-header .nav{
+	width:840px;
+}
+.nav-wrap{
+	width:1000px;
+	margin:0 auto;
+	height:55px;
+}
+.yiju-header .nav-wrap .fr .fl{
+	font-size: 25px;
+	font-weight: 700;
+	letter-spacing: 3px;
+}
+.yiju-header .nav .login .typeShowUser a{
+	font-size: 14px;
+	color:#fff;
+	margin:0 5px;
+}
+.yiju-header .nav .login .typeShowUser .welcome a:hover{
+	text-decoration: underline;
+}
+.user-main .main-left{
+	width:150px;
+	border:1px solid #e6e5e5;
+	padding:35px 0 9px;
+	background-color: #fff;
+	height:600px;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+	box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+.user-main{
+	width:1000px;
+	margin:0 auto;
+	padding:30px 0;
+}
+.user-main .main-right{
+	 padding:35px;
+	background-color: #fff;
+	border:1px solid #e6e5e5;
+	width:800px;
+	height:300px;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+	box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+.user-main .main-left .user-name{
+	text-align: center;
+	padding:15px 0;
+	width:150px;
+	font-size: 12px;
+	position:relative;
+	left:-25px;
+}
+.user-main .main-left .name{
+	width:80px;
+	height:80px;
+	margin:0 auto;
+	position: relative;
+	left:-5px;
+}
+.user-main .main-left ul{
+	position: relative;
+	top:80;
+}
+.user-main .main-left ul li{
+	width:152px;
+	height:40px;
+	line-height:43px;
+	text-align:center;
+	position: relative;
+	 
+}
+.a_active{
+	  background-color: #4fac6a;
+}
+.user-main .main-left ul li a{
+	color:#000;
+	height:40px;
+	margin:0 auto;
+	display: inline-block;
+	font-size: 14px;
+	text-decoration: none;
+	outline: none;
+	width:152px;
+}
+.user-main .main-left ul li a:hover{ 
+	text-decoration: underline;
+
+}
+.yiju-footer{
+	height:80px;
+	text-align:center;
+	line-height: 24px;
+	color:#999;
+	font-size: 12px;
+	background-color: #f5f5f5;
+	padding-top: 60px;
+}
+/**清除浮动**/
+.clearfix{
+	clear:both; height: 0; line-height: 0; font-size: 0;
+}
+
+/**首页**/
+.user-main #resetPwddom {
+	height:512px;
+}
+.user-main .main-right .title{
+	font-size: 22px;
+	font-weight: bold;
+}
+.user-main .main-right .tab{
+	margin-top:20px;
+	background-color: #f5f5f5;
+	height:38px;
+	line-height: 38px;
+	border-bottom:1px solid #e6e6e6;
+	overflow: hidden;
+}
+.user-main .main-right .tab span:hover{
+	background-color: #e6e5e5;
+	display: inline-block;
+	height:38px;
+	color:#333;
+	cursor: pointer;
+
+}
+.user-main .main-right .tab span{
+	float: left;
+	padding:0 25px;
+	font-size: 14px;
+}
+.user-main .main-right .change-portrait .file{
+	position: relative;
+	width:78px;
+	height: 39px;
+	overflow: hidden;
+	margin:20px 0;
+
+}
+.user-main .main-right .change-portrait .file .inp{
+	color:#fff;
+	background-color: #53ab6c;
+	width:78px;
+	height:39px;
+	line-height: 39px;
+	text-align:center;
+	position: absolute;
+	left:0;
+	top:0;
+	font-size: 14px;
+	cursor: pointer;
+
+}
+#label{
+	height:273px;
+	width:273px;
+	position: relative;
+}
+.user-main .main-right .change-portrait .preview .fl{
+	background-color: #f5f5f5;
+}
+
+.user-main .main-right .change-portrait .preview .fl .parcanvas{
+	position: absolute;
+	left:0;
+	top:0;
+	width:240px;
+	height: 573px;
+	z-index: 10;
+	overflow: hidden;
+}
+.user-main .main-right .change-portrait .preview .fl label{
+	position: absolute;
+	z-index: 2;
+	color: #333;
+	left: 18px;
+	top:130;
+	font-size: 12px;
+}
+.user-main .main-right .change-portrait .preview .fl .null{
+	width:105px;
+	height: 154px;
+	vertical-align: middle;
+	position: absolute;
+	left: 50%;
+	margin-left:-53px;
+	top:50%;
+	margin-top:-77px;
+}
+ 
+img{
+	border:0;
+	vertical-align: top;
+}
+.user-main .main-right .change-portrait .preview .fr{
+	width:360px;
+	 
+}
+.user-main .main-right .change-portrait .preview .fr .preview-box{
+	background-color: #f5f5f5;
+	height: 196px;
+	padding-top:47px;
+}
+.user-main .main-right .change-portrait .preview .fr .preview-box div{
+	display: inline-block;
+	vertical-align: middle;
+}
+.user-main .main-right .change-portrait .preview .fr .preview-box img{
+	width:100%;
+	height:100%;
+
+}
+.user-main .main-right .change-portrait .preview .fr .preview-box .preview-3x{
+	width:120px;
+	height:120px;
+	overflow: hidden;
+	margin-right: 50px;
+	margin-left: 0px;
+}
+.user-main .main-right .change-portrait .preview .fr .preview-box .preview-2x{
+	width:80px;
+	height:80px;
+	overflow: hidden;
+	margin-left:0px;
+	 
+}
+.user-main .main-right .change-portrait .preview .fr .preview-box .preview-1x{
+	width:34px;
+	height:34px;
+	overflow: hidden;
+	margin-left: 40px;
+	margin-right: 0px;
+}
+.user-main .main-right .change-portrait .preview .fr .preview-box span{
+	display: inline-block;
+	width: 80px;
+	text-align:center;
+	margin-left:35px;
+	padding-top:10px;
+	font-size: 12px;
+	 
+}
+.user-main .main-right .change-portrait .preview .fr .preview-box span.text-2{
+	margin-left: 50;
+}
+
+.user-main .main-right .change-portrait .preview .fr .preview-box span.text-1{
+	margin-left: 12;
+}
+.user-main .main-right .suc span{
+	background-color: #53ab6c;
+	color:#fff;
+	display: block;
+	width:85px;
+	height:35px;
+	line-height: 35px;
+	margin:10px auto;
+	text-align: center;
+	cursor: pointer;
+	position: relative;
+	bottom: -270;
+	right:-80px;
+}
+/**修改昵称**/
+.user-main .main-right .change-pwd{
+	width:350px;
+	margin:100px auto;
+ 	 
+}
+.user-main .main-right .change-pwd input{
+	width:237px;
+	height: 38px;	
+	border:1px solid #c8c8c8;
+	padding-top: 0 10px;
+	 
+}
+.user-main .main-right .change-pwd span{
+	width:95px;
+ 	 display: inline-block;
+	font-size: 14px;
+}
+.lj-btn:hover{
+	background-color: #4fac8c;
+	text-decoration: none;
+	color:#fff;
+
+}
+.lj-btn{
+	display: inline-block;
+	width:240px;
+	height:40px;
+	text-decoration: none;
+	background-color:#4fac6a;
+	cursor: pointer;
+	text-align: center;
+	vertical-align: middle;
+}
+.user-main .main-right .change-pwd li{
+	padding-top:15px;
+	clear:both;
+ 
+}
+a.lj-btn{
+	text-decoration: none;
+	color:#fff;
+	padding-top: 3px;
+	line-height: 40px;
+	outline:none;
+}
+/** 房源发布 **/
+.user-main .Fyfabu{
+	height:1200px;
+}
+.user-main .Fyfabu .fy p.Fyh1{
+	font-size: 22px;
+	font-weight: bold;
+}
+.user-main .Fyfabu .fy span.star{
+	color:red;
+	margin:0 5px;
+}
+.user-main .Fyfabu .fy span.Fyh2{
+	margin:0 10px;
+	font-size: 14px;
+	color:gray;
+}
+.user-main .Fyfabu .fy ul li{
+	line-height: 40px;
+}
+.user-main .Fyfabu .fy ul li input.textInput{
+	height:34px;
+	width:250px;
+	border:1px solid #e8e8e8;
+	border-radius: 2px;
+	text-align: left;
+}
+.user-main .Fyfabu .fy ul li input.radioInput{
+	color:#e8e8e8;
+	position: relative;
+	top:2px;
+}
+.user-main .Fyfabu .fy .fy_contain ul li .chosespan{
+	margin-left: 5px;
+	position: relative;
+	top:1px;
+}
+.user-main .Fyfabu .fy .FyDescri .instro textarea{
+	border:1px solid #e8e8e8;
+	border-radius: 2px;
+	vertical-align: top;
+}
+.user-main .Fyfabu .fy .fy_contain ul li input.huxing{
+	width:100px;
+	text-align: center;
+	text-overflow: ellipsis;
+
+
+}
+.user-main .Fyfabu .fy .fy_contain ul li .huxingspan{
+	position: relative;
+	left:-25px;
+	color:gray;
+}
+.user-main .Fyfabu .fy .fy_contain ul li .huxingspan1{
+	position: relative;
+	left:-30px;
+	color:gray;
+}
+
+.user-main .Fyfabu .fy .fy_contain ul li .t1{
+	position: relative;
+	left:-90px;
+	color:gray;
+}
+.user-main .Fyfabu .fy .fy_contain ul li input#FyTitle{
+	width:400px;
+}
+.user-main .Fyfabu .fy .FyDescri .FyUpload_wrap{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.user-main .Fyfabu .fy .FyDescri .FyUpload_wrap .uploadInfo p{
+	font-size: 12px;
+	color:#a6a6a6;
+}
+.user-main .Fyfabu .fy .FyDescri .FyUpload_wrap .FyUpload{
+	display: inline-block;
+	position: relative;
+	top:25px;
+}
+/**footer**/ 
+.yiju-footer{
+	height:80px;
+	text-align:center;
+	line-height: 24px;
+	color:#999;
+	font-size:12px;
+	background-color: #f5f5f5;
+	padding-top:30px;
+}
+/**我的发布**/
+.user-main div#rightcontent5{
+	height:550px;
+}
+/**个人信息**/
+.user-main div#personal_info{
+	height:500px;
+}
+.user-main .main-right .info_wrap{
+	margin: 20px 10px;
+}
+.user-main .main-right .info_wrap ul{
+	line-height: 30px;
+}
+.user-main .main-right .info_wrap ul li .info_title{
+	font-weight: bold;
+	font-size: 14px;
+}
+.user-main .main-right .info_wrap ul li .info_c{
+	display: inline-block;
+	margin-left: 10px;
+}
+.user-main .main-right .info_wrap ul li .info_c .redspan{
+	color:red;
+	font-weight: bold;
+}
+.user-main .main-right .info_wrap ul .logo{
+	margin-bottom: 10px;
+}
+.user-main .main-right .info_wrap ul .logo img{
+	width:120px;
+	height:120px;
+	vertical-align: top;
+}
+.tab-content #user_logo .update .uploadPic_wrap{
+	color:#fff;
+	background-color: #53ab6c;
+	width:78px;
+	height:39px;
+	line-height:39px;
+	text-align:center;
+	position: relative;
+	left:0;
+	top:0;
+}
+.tab-content #user_logo .update .uploadPic_wrap .uploadPic_input input{
+	display: inline-block;
+	width:75px;
+	height:38px;
+	opacity: 0;
+}
+.tab-content #user_logo .update .uploadPic_wrap .uploadPic_input{
+	position: relative;
+	top:0;
+	
+}
+.tab-content #user_logo .update .uploadPic_wrap .previewPic{
+	position: relative;
+	left:0;
+	top:40;
+	width:273px;
+	height:250px;
+	z-index:10px;
+	background-color: #f5f5f5;
+}
+.tab-content #user_logo .update .uploadPic_wrap .previewPic .picbox img{
+
+	vertical-align: middle;
+	position: relative;
+	top:20px;
+
+}
+.check_wrap .form-group span{
+	position: absolute;
+	width:700px;
+	height:300px;
+	background-color: red;
+	top:200px;
+	left:410px;
+	opacity: 0;
+
+	
+}
+.user-main .edit_info{
+	height:550px;
+}
+.user-main .personal_info{
+	height:600px;
+}
+.tabbable .tab-content #mtab5{
+	height:500px;
+}
+.tabbable .tab-content .hasList{
+	height:600px;
+}

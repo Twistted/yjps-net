@@ -6,6 +6,10 @@
 	font-size: 1em;
 	list-style: none;
 }
+::selection{
+	background-color: rgba(13,173,81,0.2);
+    color: #333;
+}
 body{
 	min-width: 1024px;
 }
@@ -30,7 +34,61 @@ header{
 	height: 55px;
 	float: left;
 }
-
+header .wrapper{
+	width: 1000px;
+	float: none;
+	margin: 0 auto;
+	height: 100%;
+}
+header .wrapper .fl{
+	float: left;
+	width: auto;
+	height: 100%;
+}
+header .wrapper .fl .logo{
+    display: block;
+    height: 100%;
+    background-image: url(../img/logo.png);
+    width: 148px;
+    background-repeat: no-repeat;
+    float: left;
+}
+header .wrapper .fl span{
+	color: #FFF;
+	font-size: 2em;
+	height: 80%;
+	margin: 5px 150px;
+	width: auto;
+	font-family: "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei", 微软雅黑, "Segoe UI", Tahoma, 宋体b8b体, SimSun, sans-serif;
+}
+header .wrapper .fr{
+	float: right;
+	width: auto;
+	height: 100%;
+}
+header .wrapper .fr .login{
+	width: auto;
+	height: 100%;
+	color: #FFF;
+	padding: 20px 0 0 0;
+}
+header .wrapper .fr .login a{
+	width: auto;
+	height: 100%;
+	margin: 0;
+    display: inline;
+    font-size: 14px;
+    color: #FFF;
+    float: none;
+    font-family: "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei", 微软雅黑, "Segoe UI", Tahoma, 宋体b8b体, SimSun, sans-serif;
+}
+header .wrapper .fr .login a span{
+	width: auto;
+	height: 100%;
+	float: none;
+	display: inline;
+    font-size: 14px;
+}
 /*搜索框*/
 .searchs{
 	background-color: #FFF;

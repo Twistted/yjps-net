@@ -14,8 +14,25 @@
 </head>
 <body width= screen.width>
 	<header>
-	
-		<div class="nav-wrap"></div>
+		<div class="nav-wrap">
+			<div class="wrapper">
+				<div class="fl">
+					<a href="home.html" class="logo" title="易居网络平台"></a>
+					<span>易居二手房网上交易平台</span>
+				</div>
+				<div class="fr">
+					<div class="login">
+						<a href="user/register.html">
+							<span class="log">注册</span>
+						</a>
+						|
+						<a href="user/login.html">
+							<span class="user-reg">登录</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
 	</header>
 	<div class="searchs">
 		<div class="search-area">
