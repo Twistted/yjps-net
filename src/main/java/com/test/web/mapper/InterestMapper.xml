@@ -12,11 +12,19 @@
 		values(#{userId},#{houseId})
     </insert>
     
+    <delete id="delete" parameterType="InterestEntity">
+    	delete from interest where interest_id=#{interestId}
+    </delete>
+    
 	<select id="findById" parameterType="int" resultType="InterestEntity">
 		select * from interest where interest_id=#{id}
 	</select>
 	
 	<select id="findAll" resultType="InterestEntity">
+		select * from interest order by interest_id
+	</select>
+	
+	<select id="getInterestList" parameterType="int" resultType="InterestEntity">
 		select * from interest order by interest_id
 	</select>
 	

@@ -10,4 +10,6 @@ public interface InterestMapper {
 	public List<InterestEntity> findAll();
 	public List<InterestEntity> queryPage(int offset, int size);
 	public int update(InterestEntity interestEntity);
+	public List<InterestEntity> getInterestList(int usrId);
+	public int delete(InterestEntity interestEntity);
 }

@@ -40,8 +40,17 @@ public class InterestService implements IInterestService{
 	}
 	
 	public boolean deleteInterest(InterestEntity interestEntity) {
-	
-		return false;
+		boolean ret = false;
+		SqlSession session = DBUtil.getSession();
+		try {
+			InterestMapper mapper = session.getMapper(InterestMapper.class);
+			int i = mapper.delete(interestEntity);
+			ret = i > 0 ? true : false;
+			session.commit();
+		} finally {
+			DBUtil.closeSession();
+		}
+		return ret;
 	}
 
 	public boolean addInterest(InterestEntity interestEntity) {
@@ -53,7 +62,14 @@ public class InterestService implements IInterestService{
 	}
 
 	public List<InterestEntity> getInterestList(int userId) {
-		return null;
+		SqlSession session = DBUtil.getSession();
+		try {
+			InterestMapper mapper = session.getMapper(InterestMapper.class);
+			interestList = mapper.getInterestList(userId);
+		} finally {
+			DBUtil.closeSession();
+		}
+		return interestList;
 	}
 
 	public InterestEntity getInterest(int id) {
