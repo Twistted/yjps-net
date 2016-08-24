@@ -11,5 +11,6 @@ public interface AgentMapper {
 	public List<AgentEntity> findAll();
 	public List<AgentEntity> queryPage(int offset, int size);
 	public int update(AgentEntity agentEntity);
+	public AgentEntity findByAccount(String account);
 
 }

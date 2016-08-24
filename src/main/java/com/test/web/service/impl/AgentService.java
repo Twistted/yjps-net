@@ -25,16 +25,16 @@ public class AgentService implements IAgentService {
 	}
 
 	private AgentEntity findById(int id) {
-		AgentEntity house = null;
+		AgentEntity agent = null;
 		SqlSession session = DBUtil.getSession();
 		try {
 			AgentMapper mapper = session.getMapper(AgentMapper.class);
-			house = mapper.findById(id);
-			System.out.println(house);
+			agent = mapper.findById(id);
+			System.out.println(agent);
 		} finally {
 			DBUtil.closeSession();
 		}
-		return house;
+		return agent;
 	}
 	
 	private int update(AgentEntity agentEntity){
@@ -57,10 +57,24 @@ public class AgentService implements IAgentService {
 			AgentMapper mapper = session.getMapper(AgentMapper.class);
 			i = mapper.insert(agentEntity);
 			System.out.println(i);
+			session.commit();
 		} finally {
 			DBUtil.closeSession();
 		}
 		return i;
+	}
+	
+	private AgentEntity findByAccount(String account){
+		AgentEntity agent = null;
+		SqlSession session = DBUtil.getSession();
+		try {
+			AgentMapper mapper = session.getMapper(AgentMapper.class);
+			agent = mapper.findByAccount(account);
+			System.out.println(agent);
+		} finally {
+			DBUtil.closeSession();
+		}
+		return agent;
 	}
 
 	public AgentEntity getAgentById(int id) {
@@ -79,6 +93,18 @@ public class AgentService implements IAgentService {
 	public boolean modifyAgent(AgentEntity agentEntity) {
 		// TODO Auto-generated method stub
 		if(update(agentEntity) > 0)
+			return true;
+		else return false;
+	}
+
+	public AgentEntity getAgentByAccount(String account) {
+		// TODO Auto-generated method stub
+		return findByAccount(account);
+	}
+
+	public boolean register(AgentEntity agentEntity) {
+		// TODO Auto-generated method stub
+		if(insert(agentEntity) > 0)
 			return true;
 		else return false;
 	}

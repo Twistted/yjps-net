@@ -14,6 +14,10 @@
 		       #{state},#{introduction},#{company},#{year})
     </insert>
     
+    <select id="findByAccount" parameterType="String" resultType="AgentEntity">
+        select * from agent where account=#{account}
+    </select>
+    
 	<select id="findById" parameterType="int" resultType="AgentEntity">
 		select * from agent where agent_id=#{id}
 	</select>

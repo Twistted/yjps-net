@@ -67,7 +67,7 @@ public class HouseService implements IHouseService {
 		return ret;
 	}
 	
-	public boolean inser(HouseEntity houseEntity) {
+	public boolean addHouse(HouseEntity houseEntity) {
 		boolean ret = false;
 		SqlSession session = DBUtil.getSession();
 		try {
