@@ -55,7 +55,7 @@ public class AgentController {
 	}
 	
 	
-	@RequestMapping("insert")
+	@RequestMapping("add_house")
 	public ModelAndView addHouse(HouseEntity houseEntity,HttpSession httpSession){
 		ModelAndView model = new ModelAndView();
 		IHouseService houseService = new HouseService();
@@ -66,12 +66,24 @@ public class AgentController {
 		return model;
 	}
 	
-	@RequestMapping("select")
+	@RequestMapping("find_house")
 	public ModelAndView getHouseList(AgentEntity agentEntity,HttpSession httpSession){
 		ModelAndView model = new ModelAndView();
 		IHouseService houseService = new HouseService();
 		List<HouseEntity> houseList = houseService.getByAgentId(agentEntity.getAgentId());
 		System.out.println(houseList.size());
+		return model;
+	}
+	
+	@RequestMapping("modify_agent")
+	public ModelAndView modifyAgent(AgentEntity agentEntity,HttpSession httpSession){
+		ModelAndView model = new ModelAndView();
+		IAgentService agentService = new AgentService();
+		if(agentService.modifyAgent(agentEntity)){
+			httpSession.setAttribute("agentSession", agentEntity);
+			model.setViewName("agent/index");
+		}
+		else model.setViewName("agent/index");
 		return model;
 	}
 	
