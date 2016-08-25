@@ -8,6 +8,7 @@
    <link rel="shortcut icon" type="image/x-icon" href="http://lianjia.com/favicon.ico" />
    <link href="/public/css/sh-house-css.css" rel="stylesheet">
    <link href="/public/css/reset.css" rel="stylesheet">
+   <link href="/public/css/laypage.css" rel="stylesheet">
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
@@ -58,7 +59,7 @@
 		<div class="list-wrap">
 			<ul id="house-1st" class="house-1st" data-bl="list">
 				<c:if test="${!empty houseList }">
-					<c:forEach var="house" items="${houseList}">
+					<c:forEach var="house" items="${houseList}" >
 						<li data-index="0" data-log-index="1" data-id="a0000001">
 							<div class="pic-panel">
 								<a target="_blank" href="/house/house?id=${house.houseId}" data-el="ershoufang" rel="nofollow">
@@ -245,12 +246,198 @@
 			</div>
 		</div>
 	</footer>
-	<script src="jquery-3.1.0.min.js"></script>
-	<script src="public/js/laypage.js"></script>
+	<script src="/public/js/laypage.js"></script>
+	<script src="/public/js/jquery-2.1.4.min.js"></script>
 	<script>
+	
 		$(document).ready(function(){
-			$("")
+			console.log("${pageSize}");
+			console.log("${listSize}");
+			console.log("${abvertisementList}");
+			console.log("${houseList[2]}");
 		});
 	</script>
+	<script>
+    $(function () {
+        var cur_keyword='';
+        var cur_page = 1, cur_status = '';
+        var reset_tr_id=-1;
+        var del_tr_id=-1;
+        var pnode; 
+        //分页
+        /*function fetchRegData(curr,status,keyword) {
+            $.getJSON('/Operation/Operator/getOperator', {
+                page: curr || 1,
+                type: status || '',
+                keyword:keyword||'',
+            }, function (res) {
+                createTable(res);
+                cur_page = curr;
+                //显示分页
+                laypage({
+                    cont: 'page', //分页容器
+                    pages: res.total_page, //总页数
+                    curr: curr || 1, //当前页
+                    jump: function (obj, first) { //分页后的回调，点击跳页触发函数自身，并传递当前页：obj.curr
+                        //一定要加此判断，否则初始时会无限刷新
+                        if (!first) {
+                            fetchRegData(obj.curr, status,cur_keyword);
+                        }
+                    }
+                });
+            });
+        };
+
+        //加载表格
+        var createTable = function (res) {
+            var data = res.data;
+            $('#reg_manage .table tbody').empty();
+            for (var i in data) {
+                var tr_id = data[i].id,
+                        tr_username = data[i].username,
+                        tr_nickname = data[i].nickname,
+                        tr_schoolname = data[i].schoolname,
+                        tr_create_at = data[i].create_at,
+                        tr_type = data[i].type,
+                        table_operation = '',
+                        table_content = '<tr data-oid="' + tr_id + '">\
+                                <td class="tr_username">' + tr_username + '</td>\
+                                <td  class="tr_nickname">' + tr_nickname + '</td>\
+                                <td class="tr_schoolname">' + tr_schoolname + '</td>\
+                                <td class="tr_create_at">' + tr_create_at + '</td>';
+
+                if (tr_type === '0') {
+                    tr_type = '<td>未审核</td>';
+                    table_operation = '<td>\
+                                <a class="tr_pass" href="javascript:void(0)">通过</a>\
+                                <a class="tr_reject" href="javascript:void(0)">拒绝</a>\
+                            </td>';
+                } else if (tr_type === '1') {
+                    tr_type = '<td>已通过</td>';
+                    table_operation = '<td>\
+                                <a class="tr_reset" href="javascript:void(0)">重置密码</a>\
+                                <a class="tr_reject" href="javascript:void(0)">拒绝</a>\
+                            </td>';
+                } else if (tr_type === '-1') {
+                    tr_type = '<td>已拒绝</td>';
+                    table_operation = '<td>\
+                                <a class="tr_pass" href="javascript:void(0)">通过</a>\
+                                <a class="tr_delete" href="javascript:void(0)">彻底删除</a>\
+                            </td>';
+                } else if (tr_type === '2') {
+                    tr_type = '<td>管理员</td>';
+                    table_operation = '<td>\
+                            </td>';
+                }
+                else {
+                    tr_type = '<td>不明状况=。=</td>';
+                }
+                ;
+                table_row = table_content + tr_type + table_operation + '</tr>';
+                $('#reg_manage .table tbody').append(table_row);
+                btnEvent();
+            }
+        }
+
+        $('#platform_config #jump_btn').click(function () {
+            var cpage=$('#jump_input').val();
+            if (cpage<=cur_totalpage) {
+                fetchConfigData(cpage,cur_keyword);
+                cur_page=cpage;
+            }
+            else
+            {
+                alert("页码超出范围");
+            }
+            $('#jump_input').val('');
+        });
+        
+        $('#reg_manage #search_btn').click(function () {
+            cur_keyword=$('#search_input').val();
+            fetchRegData(1,cur_status,cur_keyword);
+        });
+
+        var btnEvent = function () {
+            //通过
+            $('.tr_pass').unbind().click(function () {
+                var tr_id = $(this).parent('td').parent('tr').attr('data-oid'),
+                        pass_val = {
+                            oid: tr_id,
+                            type: 1
+                        }
+                postEvent('/Operation/Operator/setOperator', pass_val);
+            })
+
+            //拒绝
+            $('.tr_reject').unbind().click(function () {
+                var tr_id = $(this).parent('td').parent('tr').attr('data-oid'),
+                        reject_val = {
+                            oid: tr_id,
+                            type: -1
+                        }
+                postEvent('/Operation/Operator/setOperator', reject_val);
+            })
+            //重置
+            $('.tr_reset').unbind().click(function () {
+                reset_tr_id = $(this).parent('td').parent('tr').attr('data-oid');
+                pnode = $(this).parent('td').parent('tr'); 
+                $('.this_user').html(pnode.children(".tr_username").text());
+                $('.this_nick').html(pnode.children(".tr_nickname").text());
+                $('.this_sch').html(pnode.children(".tr_schoolname").text());
+                $('.reset-tip').fadeIn(200);
+            })
+            $('#reset-btn-default').unbind().click(function () {
+                $('.reset-tip').fadeOut(200);
+            })
+            $('#reset-btn-primary').unbind().click(function () {
+                        reset_val = {
+                            oid: reset_tr_id
+                        }
+                postEvent('/Operation/Operator/resetOperator', reset_val);
+                $('.reset-tip').fadeOut(200);
+            })
+            //删除
+            $('.tr_delete').unbind().click(function () {
+                del_tr_id = $(this).parent('td').parent('tr').attr('data-oid');
+                pnode = $(this).parent('td').parent('tr'); 
+                $('.this_user').html(pnode.children(".tr_username").text());
+                $('.this_nick').html(pnode.children(".tr_nickname").text());
+                $('.this_sch').html(pnode.children(".tr_schoolname").text());
+                $('.del-tip').fadeIn(200);
+            })
+            $('#del-btn-default').unbind().click(function () {
+                $('.del-tip').fadeOut(200);
+            })
+            $('#del-btn-primary').unbind().click(function () { 
+                        del_val = {
+                            oid: del_tr_id
+                        }
+                postEvent('/Operation/Operator/delOperator', del_val);
+                $('.del-tip').fadeOut(200);
+            })
+
+            $('#regStatus').unbind().change(function (event) {
+                var regStatus = $(this).val();
+                cur_status = regStatus;
+                fetchRegData(1, regStatus);
+            });
+
+        }
+
+        var postEvent = function (url, obj) {
+            $.post(url, obj, function (jsondata) {
+                var data = $.parseJSON(jsondata);
+                if (data.status === 1) {
+                    alert(data.tips);
+                    fetchRegData(1, cur_status);
+                } else {
+                    alert(data.tips);
+                }
+            });
+        }
+
+        fetchRegData(1);*/
+    });
+</script>
 </body>
 </html>
