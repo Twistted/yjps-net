@@ -8,8 +8,8 @@
     </resultMap> -->
     
     <insert id="insert" parameterType="AdvertisementEntity">
-        insert into advertisement (house_id, advertisement_url, title, prize, timestamp, state)
-		values(#{houseId}, #{advertisementUrl},#{title}, #{prize}, #{timestamp},#{state})
+        insert into advertisement (house_id, advertisement_url, title, prize, timestamp, state, price)
+		values(#{houseId}, #{advertisementUrl},#{title}, #{prize}, #{timestamp},#{state},#{price})
     </insert>
     
 	<select id="queryAdvs" parameterType="int" resultType="AdvertisementEntity">

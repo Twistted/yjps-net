@@ -78,14 +78,13 @@ public class AgentController {
 	
 	
 	@RequestMapping("add_house")
-	public ModelAndView addHouse(HouseEntity houseEntity,HttpSession httpSession){
-		ModelAndView model = new ModelAndView();
+	public @ResponseBody Result addHouse(HouseEntity houseEntity,HttpSession httpSession){
+		AgentEntity agent = (AgentEntity) httpSession.getAttribute("agentSession");
+		houseEntity.setAgentId(agent.getAgentId());
 		IHouseService houseService = new HouseService();
-		if(houseService.addHouse(houseEntity)){
-			model.setViewName("agent/index");
-		}
-		else model.setViewName("agent/index");
-		return model;
+		if(houseService.addHouse(houseEntity))
+			return new Result(200);
+		else return new Result(200);
 	}
 	
 	@RequestMapping("find_house")
