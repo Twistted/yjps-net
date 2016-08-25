@@ -312,7 +312,7 @@
 							</div>
 						</a>
 						<p class="price">
-							<span class="average">价格：<span></span>万元</span>
+							<span class="average">价格：<span>${ad.price}</span>万元</span>
 						</p>
 						<p class="area"></p>
 					</li>
@@ -336,7 +336,6 @@
 		
 		var s1="${house.houseDescribe}";
 		$(document).ready(function(){
-			  console.log("${housePhotoList}");
 			  if(s1.length>160){
 				  $(".text-comment").html(s1.substring(0,160)+"..."+"<span class='actShowMore'>阅读全部</span>");
 			  }
