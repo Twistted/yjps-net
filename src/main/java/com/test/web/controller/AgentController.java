@@ -32,6 +32,16 @@ public class AgentController {
 		return model; 
 	}
 	
+	@RequestMapping("insert")
+	public ModelAndView insert() {
+		ModelAndView model = new ModelAndView();
+		IHouseService houseService = new HouseService();
+		HouseEntity houseEntity = houseService.getHouseById(12);
+		System.out.println(houseEntity);
+		model.setViewName("test");
+		return model;
+	}
+	
 	@RequestMapping(value="login",method=RequestMethod.POST)
 	public ModelAndView login(AgentEntity agentEntity,HttpSession httpSession){
 		ModelAndView model = new ModelAndView();
