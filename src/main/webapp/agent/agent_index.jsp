@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
      <title>易居网_经纪人中心</title>
@@ -19,7 +23,7 @@
 <script type="text/javascript" src="../public/js/slimtable.min.js"></script>
    	 <link rel="shortcut icon" type="image/x-icon" href="#" />
      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-     <script src="jquery-3.1.0.min.js"></script>
+     
      <script src="../public/js/manager.min.js"></script>
  
 </head>
@@ -33,17 +37,17 @@
 				</div>
 				<div class="fr">
 					<div class="login">
-						<a href="user/register.html" style="display:none">
+						<a href="/agent/index" style="display:none">
 							<span class="log" style="display:none">注册</span>
 						</a>
-						<a href="user/register.html">
-							<span class="log">朱国栋</span>
+						<a href="#">
+							<span class="log">${sessionScope.agentSession.name}</span>
 						</a>
 						|
-						<a href="user/login.html" style="display:none">>
+						<a href="/agent/index" style="display:none">>
 							<span class="user-reg">登录</span>
 						</a>
-						<a href="user/login.html">
+						<a href="/agent/logout">
 							<span class="log">退出</span>
 						</a>
 					</div>
@@ -216,6 +220,7 @@
 				        <li id="li1" class="active"><a href="#user_logo" data-toggle="tab" style="text-decoration:none;outline:none;">上传头像</a></li>
 				        <li id="li2"><a href="#user_name" data-toggle="tab" style="text-decoration:none;outline:none;">修改昵称</a></li>
 				        <li id="li3"><a href="#user_pwd" data-toggle="tab" style="text-decoration:none;outline:none;">修改密码</a></li>
+				        <li id="li4"><a href="#user_personalInfo" data-toggle="tab" style="text-decoration:none;outline:none;">修改个人信息</a></li>
 				      </ul>
 					  </div>
 
@@ -227,9 +232,9 @@
 					<!--存放item-->
 						<div class="update">
 						<!--改头像-->
-				 	<h3>请选择图片文件：JPG/GIF</h3>
+				 		<h3>请选择图片文件：JPG/GIF</h3>
 				 		<div class="uploadPic_wrap">
-							<form name="form0" id="form0" >
+							<form name="form0" action="" id="form0" >
 								<div class="uploadPic_btn">选择图片</div>
 								<div class="uploadPic_input" style="position:absolute;">
 									<input type="file" name="file0" id="file0" multiple="multiple" /><br>
@@ -253,7 +258,7 @@
 				<!-- 222222-->
 				<!--修改密码-->
 					<div class="tab-pane" id="user_pwd">
-						<form id="updatePwd" action="" method="post">
+						<form id="updatePwd" action="/agent/agent_modify" method="post">
 							<ul class="change-pwd">
 								<li>
 									<span>输入旧密码:</span>
@@ -265,7 +270,7 @@
 								</li>
 								<li>
 									<span>确认新密码：</span>
-									<input placeholder="请输入新密码" validate="notNull,isSame" validatedata="isSame=#password1" validatename="确认新密码" type="password" />
+									<input id="password2" placeholder="请输入新密码" validate="notNull,isSame" validatedata="isSame=#password1" validatename="确认新密码" type="password" />
 								</li>
 								<li>
 									<span></span>
@@ -277,7 +282,7 @@
 				<!-- 33333-->
 				<!--修改昵称-->
 					<div class="tab-pane" id="user_name">
-						<form id="updatePerson" action="" method="post">
+						<form id="updatePerson" action="agent/modify_agent" method="post">
 							<ul class="change-pwd">
 								<li>
 									<span>设置昵称:</span>
@@ -290,9 +295,58 @@
 							</ul>
 						</form>
 					</div>
-				</div>
+					<!--个人信息修改-->
+					<div class="tab-pane" id="user_personalInfo">
+						<div class="personalInfo_wrap">
+							<form id="updateInfo" action="agent/modify_agent" method="post">
+								<ul>
+									<li>
+										<span class="info_title">姓名:</span>
+										<input type="text" id="username" name="name" class="form-control" /> 
+									</li>
+									<li>
+										<span class="info_title">性别:</span>
+										<div class="checkbox">
+											<input class="radioInput" name="sex" value="man" checked="checked" type="radio"></input>
+											<span class="chosespan">男</span>
+											<input class="radioInput" name="sex" value="woman" checked="checked" type="radio"></input>
+											<span class="chosespan">女</span>
+										</div>
+									</li>
+									<li>
+										<span class="info_title">年龄:</span>
+										<input type="text" id="age" name="age" class="form-control" />
+										 
+									</li>
+									<li>
+										<span class="info_title">电话:</span>
+										<input type="text" id="phone" name="phone" class="form-control" />
+									</li>
+									<li>
+										<span class="info_title">邮箱:</span>
+										<input type="text" id="email" name="email" class="form-control" />
+									</li>
+									<li>
+										<span class="info_title">入行年份:</span>
+										<input type="text" id="year" name="year" class="form-control" />
+									</li>
+									<li>
+										<span class="info_title" >所属公司:</span>
+										<input type="text" id="company"  name="company" class="form-control" />
+									</li>
+									<li>
+										<span class="info_title">自我介绍:</span>
+										<textarea id="selfIntro" name="introduction" class="form-control" cols="300" rows="6" placeholder="请简单介绍你自己..."></textarea>
+									</li>
+								</ul>
+							</form>
+							<div class="ok-btn">
+								<a class="lj-btn" href="#">提交</a>
+							</div> 
+						</div>
+					</div>
 			</div>
-		
+		</div>
 		<!--个人信息-->
 		<div class="main-right xiaoshi fr personal_info tab-pane" id="mtab2">
 			<div class="title">
@@ -301,47 +355,49 @@
 					<ul>
 						<li class="logo">
 							<span class="info_title">当前头像:</span>
-							<picturebox><img src="../public/img/logo.jpg" style="border-radius:5px;" ></img></picturebox>
+							<picturebox><img src="${photourl}" style="border-radius:5px;" ></img></picturebox>
 						</li>
 						<li>
 							<span class="info_title">姓名:</span>
-							<div class="info_c"><span>朱国栋</span></div>
+							<div class="info_c"><span>${agent.name}</span></div>
 						</li>
 						<li>
 							<span class="info_title">性别:</span>
-							<div class="info_c"><span>男</span></div>
+							<div class="info_c"><span>${sex}</span></div>
 						</li>
 						<li>
-							<span class="info_title">生日:</span>
-							<div class="info_c"><span>1994-10-28</span></div>
+							<span class="info_title">年龄:</span>
+							<div class="info_c"><span>${age}</span></div>
 						</li>
 						<li>
-							<span class="info_title">居住地:</span>
-							<div class="info_c"><span>郫县</span></div>
+							<span class="info_title">电话:</span>
+							<div class="info_c"><span>${phone}</span></div>
 						</li>
 						<li>
-							<span class="info_title">注册日期：</span>
-							<div class="info_c"><span>2008-10-20<span></div>
+							<span class="info_title">邮箱:</span>
+							<div class="info_c"><span>${email}<span></div>
 						</li>
 						<li>
-							<span class="info_title">发布房源数目:</span>
-							<div class="info_c"><span class="redspan">22</span><span>套<span></div>
+							<span class="info_title">入行年份:</span>
+							<div class="info_c"><span>${year}</span></div>
 						</li>
 						<li>
-							<span class="info_title">在售套数:</span>
-							<div class="info_c"><span class="redspan">22</span><span>套<span></div>
+							<span class="info_title">所属公司:</span>
+							<div class="info_c"><span>${company}</span></div>
 						</li>
 						<li>
-							<span class="info_title">已售套数:</span>
-							<div class="info_c"><span class="redspan">22</span><span>套<span></div>
+							<span class="info_title">状态:</span>
+							<div class="info_c"><span class="redspan">${state}</span></div>
 						</li>
 						<li>
-							<span class="info_title">出售率:</span>
-							<div class="info_c"><span class="redspan">22%</span></div>
-						</li>
+							<span class="info_title">自我介绍:</span>
+							<div class="info_c"><span>${introduction}</span></div>
+						 </li>
+						
 					</ul>
 				</div>
 			</div>
+	
 
 
 

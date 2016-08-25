@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,7 +24,14 @@ import com.test.web.service.impl.HouseService;
 @RequestMapping("agent")
 public class AgentController {
 	
-	@RequestMapping(value="logi")
+	@RequestMapping("index")
+	public ModelAndView index(HttpSession httpSession){
+		ModelAndView model = new ModelAndView();
+		model.setViewName("agent/login");
+		return model; 
+	}
+	
+	@RequestMapping(value="login",method=RequestMethod.POST)
 	public ModelAndView login(AgentEntity agentEntity,HttpSession httpSession){
 		ModelAndView model = new ModelAndView();
 		IAgentService agentService = new AgentService();
@@ -31,16 +39,20 @@ public class AgentController {
 		System.out.println(agent);
 		model.addObject("agent", agent);
 		if(agent.getPassword().equals(agentEntity.getPassword())){
-			System.out.println("Yes");
 			model.addObject("agent",agent);
-			model.setViewName("test");
+			model.setViewName("agent/agent_index");
 			httpSession.setAttribute("agentSession", agent);
 		}
-		else{
-			System.out.println("no");
-			model.setViewName("agent/login");
-		}
+		else model.setViewName("agent/login");
 		return model;
+	}
+	
+	@RequestMapping("logout")
+	public ModelAndView logout(HttpSession httpSession){
+		ModelAndView model = new ModelAndView();
+		model.setViewName("agent/login");
+		httpSession.setAttribute("agentSession", null);
+		return model; 
 	}
 	
 	@RequestMapping("register")
@@ -75,6 +87,27 @@ public class AgentController {
 		List<HouseEntity> houseList = houseService.getByAgentId(agentEntity.getAgentId());
 		System.out.println(houseList.size());
 		return model;
+	}
+	
+	@RequestMapping(value="modify_password", method=RequestMethod.POST) 
+	public @ResponseBody Result modifyPassword(@RequestParam("oldPassword") String oldPassword, 
+			@RequestParam("newPassword") String newPassword, HttpSession httpSession) {
+		Result result = new Result();
+		AgentEntity agentSession = (AgentEntity) httpSession.getAttribute("agentSession");
+		if (agentSession.getPassword().equals(oldPassword)) {
+			agentSession.setPassword(newPassword);
+			IAgentService agentService = new AgentService();
+			if (agentService.modifyAgent(agentSession)) {
+				httpSession.setAttribute("agentSession", agentSession);
+				result.setCode(200);
+			} else {
+				result.setCode(500);
+			}
+			
+		} else {
+			result.setCode(500);
+		}
+		return result;
 	}
 	
 	@RequestMapping("modify_agent")
