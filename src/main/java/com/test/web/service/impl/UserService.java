@@ -38,6 +38,20 @@ public class UserService implements IUserService {
 		return ret;
 	}
 	
+	private List<UserEntity> queryPage(int page,int size){
+		List<UserEntity> userList = null;
+		SqlSession session = DBUtil.getSession();
+		try {
+			int offset = (page - 1) * size;
+			UserMapper userMapper = session.getMapper(UserMapper.class);
+			userList = userMapper.queryPage(offset, size);
+			
+		} finally {
+			DBUtil.closeSession();
+		}
+		return userList;
+	}
+	
 	public List<UserEntity> findAll() {
 		List<UserEntity> userList = null;
 		SqlSession session = DBUtil.getSession();
@@ -64,6 +78,10 @@ public class UserService implements IUserService {
 			DBUtil.closeSession();
 		}
 		return false;
+	}
+
+	public List<UserEntity> listUser(int page, int size) {
+		return queryPage(page, size);
 	}
 	
 }
