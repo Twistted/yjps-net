@@ -89,7 +89,7 @@ public class AgentController {
 		return model;
 	}
 	
-	@RequestMapping("modify_password") 
+	@RequestMapping(value="modify_password", method=RequestMethod.POST) 
 	public @ResponseBody Result modifyPassword(@RequestParam("oldPassword") String oldPassword, 
 			@RequestParam("newPassword") String newPassword, HttpSession httpSession) {
 		Result result = new Result();
