@@ -147,7 +147,7 @@
 							</div>
 						</a>
 						<p class="price">
-							<span class="average">价格：<span></span>万元</span>
+							<span class="average">价格：<span>${ad.price}</span>万元</span>
 						</p>
 						<p class="area"></p>
 					</li>
@@ -160,7 +160,6 @@
 	<jsp:include page="/footer.jsp"></jsp:include>
 	<script src="/public/js/jquery-2.1.4.min.js"></script>
 	<script>
-	console.log("${advertisementList}");
 		var page_html="";
 		var cur_page="${currentPage}";
 		var totalpage="${pageSize}";
@@ -224,6 +223,7 @@
 			$(".page-box").html(page_html);
 			
 		});
+
 		$("#hshow").click(function(){
 				$(".lj-lazy:eq(0)").attr("src","${houseList[0].houseTypeUrl}");
 				$(".lj-lazy:eq(1)").attr("src","${houseList[1].houseTypeUrl}");
