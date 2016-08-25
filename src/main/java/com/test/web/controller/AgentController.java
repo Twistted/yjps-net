@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -86,6 +87,27 @@ public class AgentController {
 		List<HouseEntity> houseList = houseService.getByAgentId(agentEntity.getAgentId());
 		System.out.println(houseList.size());
 		return model;
+	}
+	
+	@RequestMapping("modify_password") 
+	public @ResponseBody Result modifyPassword(@RequestParam("oldPassword") String oldPassword, 
+			@RequestParam("newPassword") String newPassword, HttpSession httpSession) {
+		Result result = new Result();
+		AgentEntity agentSession = (AgentEntity) httpSession.getAttribute("agentSession");
+		if (agentSession.getPassword().equals(oldPassword)) {
+			agentSession.setPassword(newPassword);
+			IAgentService agentService = new AgentService();
+			if (agentService.modifyAgent(agentSession)) {
+				httpSession.setAttribute("agentSession", agentSession);
+				result.setCode(200);
+			} else {
+				result.setCode(500);
+			}
+			
+		} else {
+			result.setCode(500);
+		}
+		return result;
 	}
 	
 	@RequestMapping("modify_agent")
