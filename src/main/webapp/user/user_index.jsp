@@ -26,13 +26,13 @@
 							<span class="log" style="display:none">注册</span>
 						</a>
 						<a href="user/register.html">
-							<span class="log">朱国栋</span>
+							<span class="log">${ sessionScope.userSession.name }</span>
 						</a>
 						|
-						<a href="user/login.html" style="display:none">>
+						<a href="user/login" style="display:none">>
 							<span class="user-reg">登录</span>
 						</a>
-						<a href="user/login.html">
+						<a href="/user/logout">
 							<span class="log">退出</span>
 						</a>
 					</div>
