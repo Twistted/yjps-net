@@ -17,7 +17,16 @@ public class Result implements Serializable {
 	private List<ManagerEntity> managerList;
 	private List<AgentEntity> agentList;
 	private List<UserEntity> userList;
+	private AgentEntity agentEntity;
 	
+	public AgentEntity getAgentEntity() {
+		return agentEntity;
+	}
+
+	public void setAgentEntity(AgentEntity agentEntity) {
+		this.agentEntity = agentEntity;
+	}
+
 	public Result() {
 		
 	}

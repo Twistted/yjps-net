@@ -20,7 +20,7 @@
 			<div class="list-head clear">
 				<h2>
 					共有
-					<span>0</span>
+					<span>${listSize}</span>
 					套二手房房源
 				</h2>
 				<div class="view-type">
@@ -50,7 +50,7 @@
 						<li data-index="0" data-log-index="1" data-id="a0000001">
 							<div class="pic-panel">
 								<a href="/house/house?id=${house.houseId}" data-el="ershoufang" rel="nofollow">
-									<img class="lj-lazy" src="http://image1.ljcdn.com/approl/group3/M00/14/88/rBAF7VdNi0OAB9GwAACemQLD8oA831.jpg.280x210.jpg" alt="pic1" style="display:inline;"></img>
+									<img class="lj-lazy" src="${house.houseViewUrl}" alt="pic1" style="display:inline;"></img>
 								</a>
 							</div>
 							<div class="info-panel">
@@ -137,62 +137,21 @@
 			</div>
 			<div class="show-content">
 				<ul>
+				<c:forEach var="ad" items="${advertisementList}" >
 					<li>
-						<a class="pic" href="/public/img/commend00.jpg">
-							<img src="/public/img/commend00.jpg">
+						<a class="pic" href="/house/house?id=${ad.houseId}">
+							<img src="${ad.advertisementUrl}">
 							<div class="bg"></div>
 							<div class="description">
-								<span class="title" title="青羊－朗诗西溪里">青羊－朗诗西溪里</span>
-								<span class="type">普通住宅</span>
+								<span class="title" title="${ad.title}">${ad.title}</span>
 							</div>
 						</a>
 						<p class="price">
-							<span class="average">均价：<span>11500</span>元/平</span>
+							<span class="average">价格：<span></span>万元</span>
 						</p>
-						<p class="area">4居/3居/2居 - 54~88平</p>
+						<p class="area"></p>
 					</li>
-					<li>
-						<a class="pic" href="/public/img/commend00.jpg">
-							<img src="/public/img/commend00.jpg">
-							<div class="bg"></div>
-							<div class="description">
-								<span class="title" title="青羊－朗诗西溪里">青羊－朗诗西溪里</span>
-								<span class="type">普通住宅</span>
-							</div>
-						</a>
-						<p class="price">
-							<span class="average">均价：<span>11500</span>元/平</span>
-						</p>
-						<p class="area">4居/3居/2居 - 54~88平</p>
-					</li>
-					<li>
-						<a class="pic" href="/public/img/commend00.jpg">
-							<img src="/public/img/commend00.jpg">
-							<div class="bg"></div>
-							<div class="description">
-								<span class="title" title="青羊－朗诗西溪里">青羊－朗诗西溪里</span>
-								<span class="type">普通住宅</span>
-							</div>
-						</a>
-						<p class="price">
-							<span class="average">均价：<span>11500</span>元/平</span>
-						</p>
-						<p class="area">4居/3居/2居 - 54~88平</p>
-					</li>
-					<li>
-						<a class="pic" href="/public/img/commend00.jpg">
-							<img src="/public/img/commend00.jpg">
-							<div class="bg"></div>
-							<div class="description">
-								<span class="title" title="青羊－朗诗西溪里">青羊－朗诗西溪里</span>
-								<span class="type">普通住宅</span>
-							</div>
-						</a>
-						<p class="price">
-							<span class="average">均价：<span>11500</span>元/平</span>
-						</p>
-						<p class="area">4居/3居/2居 - 54~88平</p>
-					</li>
+				</c:forEach>
 				</ul>
 			</div>
 		</div>
@@ -201,14 +160,14 @@
 	<jsp:include page="/footer.jsp"></jsp:include>
 	<script src="/public/js/jquery-2.1.4.min.js"></script>
 	<script>
+	console.log("${advertisementList}");
 		var page_html="";
 		var cur_page="${currentPage}";
 		var totalpage="${pageSize}";
 		var next_page=cur_page+1;
 		var pre_page=cur_page-1;
 		$(document).ready(function(){
-			console.log("${pageSize}");
-			if (cur_page!=1) {
+			if (cur_page>1) {
 				page_html+="<a href='/home/index?page="+pre_page+"'>上一页</a>";
 			};
 			if (totalpage<=3) {
@@ -263,8 +222,17 @@
 				page_html+="<a href='/home/index?page="+pre_page+"'>下一页</a>";
 			};
 			$(".page-box").html(page_html);
-			console.log(page_html);
-			console.log("${abvertisementList}");
+			
+		});
+		$("#hshow").click(function(){
+				$(".lj-lazy:eq(0)").attr("src","${houseList[0].houseTypeUrl}");
+				$(".lj-lazy:eq(1)").attr("src","${houseList[1].houseTypeUrl}");
+				$(".lj-lazy:eq(2)").attr("src","${houseList[2].houseTypeUrl}");
+		});
+		$("#lshow").click(function(){
+				$(".lj-lazy:eq(0)").attr("src","${houseList[0].houseViewUrl}");
+				$(".lj-lazy:eq(1)").attr("src","${houseList[1].houseViewUrl}");
+				$(".lj-lazy:eq(2)").attr("src","${houseList[2].houseViewUrl}");
 		});
 	</script>
 </body>

@@ -19,9 +19,9 @@ public class App
 			
 			UserMapper mapper = session.getMapper(UserMapper.class);
 			
-			List<UserEntity> user = mapper.findById(1);
 			
-			System.out.println( user );
+			
+			
 			
 		} finally {
 			DBUtil.closeSession();

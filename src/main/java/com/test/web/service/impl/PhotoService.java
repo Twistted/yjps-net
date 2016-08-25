@@ -38,12 +38,10 @@ public class PhotoService implements IPhotoService {
 	}
 	
 	public List<HousePhotoEntity> getPhotoByHouseId(int houseId) {
-		// TODO Auto-generated method stub
 		return findById(houseId);
 	}
 
 	public HousePhotoEntity getMainPhotoByHouseId(int houseId){
-		// TODO Auto-generated method stub
 		return findMinById(houseId);
 	}
 

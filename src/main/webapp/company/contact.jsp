@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 
@@ -14,10 +16,11 @@
 		<link rel="stylesheet" href="../public/css/new_file.css">
 		<link rel="stylesheet" href="../public/css/class.css">
 		<link rel="stylesheet" href="../public/css/luntang.css" />
-		<style type="text/css">
+        
+        <style type="text/css">
         a:hover{
-         text-decoration:underline;
-         }
+             text-decoration:underline;
+           }
 </style>
 	</head>
 	<body>
@@ -47,22 +50,22 @@
 <!--左侧菜單欄--><div class="row-left ">
 	                <div class="fl menu menu_fixed">
 	                	<ul>
-	                		<li class="aboutLj hover">
+	                		<li class="aboutLj">
 	                			<i></i>
 	                			<a href="index.html">关于易居</a>
 	                		</li>
 	                		<li class="dreamLj">
 	                			<i></i>
 	                			<a href="aboutUs.html">了解易居网</a></li>
-	                		<li class="eventLj">
+	                		<li class="contactLj hover">
 	                			<i></i>
 	                			<a href="contact.html">联系我们</a></li>
-	                		<li class="dreamLj">
+	                		<li class="joinLj">
     						<i></i>
-        					<a href="joinUs.html">加入我们</a>
+        					<a href="joinUs.html" target="_blank">加入我们</a>
     						</li>
     						<li class="statementLj">
-    							<i></i>				
+    							<i></i>
     							<a href="privacy.html">隐私声明</a>
     						</li>
     						<li class="statementLj">
@@ -75,28 +78,18 @@
 				</div>
 				<div class="row-right">
 <!--右边-->		     
-                    <div class="name">关于易居</div>
+                    <div class="name">联系我们</div>
                          <p>
-                         	<img src="http://static1.ljcdn.com/pc/asset/img/aboutUs/aboutLjw.jpg?_v=20160812164302"></img>
-                         
-                         <p>易居网站平台系统是为广大客户提供高效的房地产居间服务,
+                      
+                         <p class="thick">网址：www.lgbrc.com </p>
                          	<br />
-                         	提供安全、诚信、快捷、专业的一站式服务。
+                         	<p class="thick">电话：（028）86710000</p>	
                          	<br />
+                         	<p class="thick">传真：（028）86710001</p>
                          	<br />
-                         	易居网站平台系统是凭借地产行业的强大资源，
-                         	<br />
-                         	通过超前的战略构想、创新的运营模式、完善的风险控制体系、严密的管理机制，
-                         	<br />
-                         	组建一支标准化、专业化的职业经纪团队，
-                         	<br />
-                         	致力于为广大客户提供高效的房地产居间服务。
-                         	<br />
-                         	<br />
-                         	易居业务内容涵盖房屋买卖、租赁、按揭贷款办理、顾问咨询以及营销代理，
-                         	<br />
-                         	倡导安全、诚信、快捷、专业的一站式服务。
-                         </p>
+                         	<p class="thick">地址：成都市锦江区东大街东大街城守东大街</p>
+                         	<img src="../public/img/ditu.png"  width="655" height=auto>	
+                         </p>	
                          
                          
                          
@@ -140,4 +133,3 @@
     </footer>
 		<script src="../public/js/jquery-2.1.4.min.js"></script>
 	</body>
-</html>
