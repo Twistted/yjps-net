@@ -25,8 +25,8 @@
 		<div class="search-area">
 			<form>
 				<div class="search-txt">
-					<input class="left txt autoSuggest" name="keyword" autoComplete="off" placeholder="请输入区域、商圈或小区名开始找房" id="keyword-box">
-					<button type="submit" data-bl="search" data-el="search" target="_blank" class="btn ico-search act-search">搜索</button>
+					<input class="left txt autoSuggest" name="search" autoComplete="off" placeholder="请输入区域、商圈或小区名开始找房" id="keyword-box">
+					<button data-bl="search" data-el="search" class="btn ico-search act-search">搜索</button>
 				</div>
 			</form>
 		</div>

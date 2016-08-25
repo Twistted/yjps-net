@@ -49,13 +49,13 @@
 					<c:forEach var="house" items="${houseList}" >
 						<li data-index="0" data-log-index="1" data-id="a0000001">
 							<div class="pic-panel">
-								<a target="_blank" href="/house/house?id=${house.houseId}" data-el="ershoufang" rel="nofollow">
+								<a href="/house/house?id=${house.houseId}" data-el="ershoufang" rel="nofollow">
 									<img class="lj-lazy" src="http://image1.ljcdn.com/approl/group3/M00/14/88/rBAF7VdNi0OAB9GwAACemQLD8oA831.jpg.280x210.jpg" alt="pic1" style="display:inline;"></img>
 								</a>
 							</div>
 							<div class="info-panel">
 								<h2>
-									<a target="_blank" href="/house/house?id=${house.houseId}" data-el="ershoufang" title="${house.title}">${house.title}</a>
+									<a href="/house/house?id=${house.houseId}" data-el="ershoufang" title="${house.title}">${house.title}</a>
 								</h2>
 								<div class="col-1">
 									<div class="where">
@@ -202,8 +202,8 @@
 	<script src="/public/js/jquery-2.1.4.min.js"></script>
 	<script>
 		var page_html="";
-		var cur_page=1;
-		var totalpage=10;
+		var cur_page="${currentPage}";
+		var totalpage="${pageSize}";
 		var next_page=cur_page+1;
 		var pre_page=cur_page-1;
 		$(document).ready(function(){
