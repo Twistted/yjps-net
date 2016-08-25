@@ -7,6 +7,7 @@ public class AdvertisementEntity {
 	private int houseId;
 	private String advertisementUrl;
 	private String title;
+	private double prize;
 	private Date timestamp;
 	private int state;
 	
@@ -51,6 +52,12 @@ public class AdvertisementEntity {
 	}
 	public void setHouseId(int house_id) {
 		this.houseId = house_id;
+	}
+	public double getPrize() {
+		return prize;
+	}
+	public void setPrize(double prize) {
+		this.prize = prize;
 	}
 
 }

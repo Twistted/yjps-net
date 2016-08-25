@@ -6,15 +6,19 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.test.web.dto.Result;
+import com.test.web.entity.AgentEntity;
 import com.test.web.entity.InterestEntity;
 import com.test.web.entity.UserEntity;
+import com.test.web.service.IAgentService;
 import com.test.web.service.IInterestService;
 import com.test.web.service.IUserService;
+import com.test.web.service.impl.AgentService;
 import com.test.web.service.impl.InterestService;
 import com.test.web.service.impl.UserService;
 
@@ -57,6 +61,8 @@ public class UserController {
 		return model;
 	}
 	
+	
+	
 	@RequestMapping("logout")
 	public ModelAndView logout(HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
@@ -65,12 +71,38 @@ public class UserController {
 		return model;
 	}
 	
+	@RequestMapping("modify_password")
+	public @ResponseBody Result modifyPassword(@RequestParam("oldPassword") String oldPassword, 
+			@RequestParam("newPassword") String newPassword, HttpSession httpSession) {
+		Result result = new Result();
+		UserEntity userSession = (UserEntity) httpSession.getAttribute("userSession");
+		if (userSession.getPassword().equals(oldPassword)) {
+			userSession.setPassword(newPassword);
+			IUserService userService = new UserService();
+			if (userService.modify(userSession)) {
+				httpSession.setAttribute("userSession", userSession);
+				result.setCode(200);
+			} else {
+				result.setCode(500);
+			}
+			
+		} else {
+			result.setCode(500);
+		}
+		return result;
+	}
+	
 	@RequestMapping("modify_user")
 	public @ResponseBody Result modifyUser(UserEntity userEntity, HttpSession httpSession) {
 		Result result = new Result();
+		System.out.println(userEntity);
+		
+		UserEntity user = (UserEntity) httpSession.getAttribute("userSession");
+		userEntity.setUserId(user.getUserId());
 		IUserService userService = new UserService();
 		boolean ok = userService.modify(userEntity);
 		if (ok) {
+			httpSession.setAttribute("userSession", userEntity);
 			result.setCode(200);
 		} else {
 			result.setCode(500);
