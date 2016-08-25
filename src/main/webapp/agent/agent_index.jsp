@@ -61,7 +61,7 @@
 		<div class="main-left fl">
 			<div class="name" >
 				<img src="../public/img/logo.jpg" style="border-radius:5px;width:100px;height:100px;"></img>
-				<div class="user-name">欢迎你，<span>${sessionScope.agentSession.name}</span></div>
+				<div class="user-name">欢迎你 <br /><span>${sessionScope.agentSession.name}</span></div>
 			</div>
 			<div class="tabble">
 				<ul>
@@ -307,9 +307,9 @@
 									<li>
 										<span class="info_title">性别:</span>
 										<div class="checkbox">
-											<input class="radioInput" name="sex" value="man" checked="checked" type="radio"></input>
+											<input class="radioInput" name="sex" value="1" checked="checked" type="radio"></input>
 											<span class="chosespan">男</span>
-											<input class="radioInput" name="sex" value="woman" checked="checked" type="radio"></input>
+											<input class="radioInput" name="sex" value="2" checked="checked" type="radio"></input>
 											<span class="chosespan">女</span>
 										</div>
 									</li>
@@ -336,7 +336,7 @@
 									</li>
 									<li>
 										<span class="info_title" style="margin-left:-28px;">自我介绍:</span>
-										<textarea id="selfIntro" name="introduction" class="form-control" cols="300" rows="5" placeholder="请简单介绍你自己..." style="width:400px;"></textarea>
+										<textarea id="selfIntro" name="introduction" class="form-control" cols="300" rows="5" placeholder="请简单介绍你自己..." style="width:300px;"></textarea>
 									</li>
 								</ul>
 							</form>
@@ -376,7 +376,7 @@
 						<li>
 							<span class="info_title">邮箱:</span>
 							<div class="info_c"><span>${sessionScope.agentSession.email}<span></div>
-						</li>
+						</li>g
 						<li>
 							<span class="info_title">入行年份:</span>
 							<div class="info_c"><span>${sessionScope.agentSession.year}</span></div>
