@@ -12,6 +12,10 @@
 		select * from user
 	</select>
 	
+	<select id="queryPage" parameterType="int" resultType="UserEntity">
+		select * from user order by user_id limit #{offset}, #{size}
+	</select>
+	
 	<select id="login" parameterType="UserEntity" resultType="UserEntity">
 		select * from user where account=#{account} and password=#{password}
 	</select>

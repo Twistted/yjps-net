@@ -23,6 +23,21 @@ public class AgentService implements IAgentService {
 		}
 		return agentList;
 	}
+	
+	private List<AgentEntity> queryPage(int page,int size){
+		List<AgentEntity> agentList = null;
+		SqlSession session = DBUtil.getSession();
+		try{
+			int offset = (page-1)*size;
+			AgentMapper mapper = session.getMapper(AgentMapper.class);
+			System.out.println(offset);
+			agentList = mapper.queryPage(offset, size);
+			System.out.println(agentList.size());
+		}finally{
+			DBUtil.closeSession();
+		}
+		return agentList;
+	}
 
 	private AgentEntity findById(int id) {
 		AgentEntity agent = null;
@@ -83,7 +98,7 @@ public class AgentService implements IAgentService {
 	}
 
 	public List<AgentEntity> listAgent(int page, int size) {
-		return findAll();
+		return queryPage(page,size);
 	}
 
 	public boolean addAgent(AgentEntity agentEntity) {

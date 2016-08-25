@@ -20,7 +20,7 @@
 	</select>
 	
 	<select id="queryPage" parameterType="int" resultType="ManagerEntity">
-		select * from order by manager_id limit #{offset} #{size}
+		select * from manager order by manager_id limit #{offset}, #{size}
 	</select>
 	
 	<update id="update" parameterType="ManagerEntity">

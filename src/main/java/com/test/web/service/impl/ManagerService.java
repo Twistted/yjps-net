@@ -68,7 +68,7 @@ public class ManagerService implements IManagerService {
 	}
 	
 	public List<ManagerEntity> listManager(int page, int size) {
-		return findAll();
+		return queryPage(page,size);
 	}
 	
 	public ManagerEntity login(ManagerEntity managerEntity) {
@@ -81,5 +81,19 @@ public class ManagerService implements IManagerService {
 			DBUtil.closeSession();
 		}
 		return manager;
+	}
+	
+	public List<ManagerEntity> queryPage(int page ,int size){
+		List<ManagerEntity> managerList = null;
+		SqlSession session = DBUtil.getSession();
+		try {
+			int offset = (page - 1) * size;
+			ManagerMapper mapper = session.getMapper(ManagerMapper.class);
+			System.out.println(offset);
+			managerList = mapper.queryPage(offset, size);
+		} finally {
+			DBUtil.closeSession();
+		}
+		return managerList;
 	}
 }

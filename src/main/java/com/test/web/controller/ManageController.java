@@ -20,7 +20,7 @@ import com.test.web.service.impl.UserService;
 @Controller
 @RequestMapping("manage")
 public class ManageController {
-	
+
 	@RequestMapping("login")
 	public ModelAndView login(ManagerEntity managerEntity, HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
@@ -38,49 +38,50 @@ public class ManageController {
 		}
 		return model;
 	}
-	
+
 	@RequestMapping("add_manager")
-	public ModelAndView addManager(ManagerEntity managerEntity,HttpSession httpSession){
+	public ModelAndView addManager(ManagerEntity managerEntity, HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
 		ManagerEntity manager = (ManagerEntity) httpSession.getAttribute("managerSession");
 		IManagerService managerService = new ManagerService();
 		boolean ok = managerService.addManager(managerEntity);
-		
+
 		return model;
 	}
-	
+
 	@RequestMapping("modify_manager")
-	public ModelAndView modifyManager(ManagerEntity managerEntity,HttpSession httpSession){
+	public ModelAndView modifyManager(ManagerEntity managerEntity, HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
 		IManagerService managerService = new ManagerService();
-		
+
 		return model;
 	}
-	
+
 	@RequestMapping("list_manager")
-	public @ResponseBody Result listManager(HttpSession httpSession) {
+	public @ResponseBody Result listManager(Integer page, HttpSession httpSession) {
+		if (page == null || page == 0)
+			page = 1;
 		IManagerService managerService = new ManagerService();
-		List<ManagerEntity> managerList = managerService.findAll();
+		List<ManagerEntity> managerList = managerService.listManager(page, 3);
 		if (managerList == null || managerList.isEmpty()) {
 			return new Result(500, managerList);
 		}
 		return new Result(200, managerList);
 	}
-	
+
 	@RequestMapping("list_user")
-	public @ResponseBody Result listUser(HttpSession httpSession) {
+	public @ResponseBody Result listUser(Integer page, HttpSession httpSession) {
 		Result result = new Result();
+		if (page == null || page == 0)
+			page = 1;
 		IUserService userService = new UserService();
-		List<UserEntity> userList = userService.findAll();
-		if (userList == null || userList.isEmpty()) {
+		List<UserEntity> userList = userService.listUser(page, 3);
+		if (userList == null || userList.isEmpty())
 			result.setCode(500);
-			result.setUserList(userList);
-			return result;
-		} else {
-			result.setCode(200);
-			result.setUserList(userList);
-			return result;
-		}
+		else result.setCode(200);
+		result.setUserList(userList);
+		return result;
+
 	}
-	
+
 }
