@@ -11,20 +11,20 @@
 		       #{agentId},#{houseNumber},#{privince},#{city},#{town},#{zone},#{villageName},#{address})
 	</insert>
 	
-	<select id="search" parameterType="string" resultType="HouseEntity">
-		select * from house
+	<select id="search"  parameterType="string" resultType="HouseEntity">
+		select * from house 
 		<where>
-			<if test="title != null and titel != ''">
-			   	user_name like '%'#{userName}'%'
+			<if test="title != null and title != ''">
+			   	title like '%' #{title} '%'
 			</if>
 			<if test="prize != null and prize != ''">
-				or prize like '%'#{prize}'%'
+				or prize like '%' #{prize} '%'
 			</if>
 			<if test="roomAmount != null and roomAmount != ''">
-			   	or room_amount like '%'#{roomAmount} '%'
+			   	or room_amount like '%' #{roomAmount} '%'
 			</if>
 			<if test="area != null and area != ''">
-				or email like '%' #{email} '%'
+				or area like '%' #{area} '%'
 			</if>
 		</where>
 	</select>

@@ -127,7 +127,7 @@ public class HouseService implements IHouseService {
 		SqlSession session = DBUtil.getSession();
 		try {
 			HouseMapper mapper = session.getMapper(HouseMapper.class);
-			houseList = mapper.search(search, null, null, null);
+			houseList = mapper.search(search, search, search, search);
 			
 		} finally {
 			DBUtil.closeSession();

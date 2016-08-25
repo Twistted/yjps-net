@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class AdvertisementEntity {
 	private int advertisementId;
+	private int houseId;
 	private String advertisementUrl;
 	private String title;
 	private Date timestamp;
@@ -44,6 +45,12 @@ public class AdvertisementEntity {
 	public String toString(){
 		return "Advertisement [advertisementId=" + advertisementId + ",advertisementUrl=" + advertisementId + 
 			    ",title=" + title + ",timestamp=" + timestamp + ",state=" + state;
+	}
+	public int getHouseId() {
+		return houseId;
+	}
+	public void setHouseId(int house_id) {
+		this.houseId = house_id;
 	}
 
 }

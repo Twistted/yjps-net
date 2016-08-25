@@ -35,7 +35,7 @@ public class IndexController {
 		List<HouseEntity> houseList = houseService.listHouse(pageOffset, 3);
 		
 		model.addObject("houseList", houseList);
-		// model.addObject("listSize", houseList.size());
+		model.addObject("listSize", houseList.size());
 		model.addObject("currentPage", pageOffset);
 		model.addObject("pageSize", (houseList.size() / 3) + 1 );
 		
@@ -43,6 +43,7 @@ public class IndexController {
 		List<AdvertisementEntity> advertisementList = advertisementService.getAdvertisementList(4);
 		model.addObject("abvertisementList", advertisementList);
 		
+		System.out.println(advertisementList);
 		model.setViewName("home");
 		return model;
 	}
@@ -63,9 +64,11 @@ public class IndexController {
 		ModelAndView model = new ModelAndView();
 		// get service
 		IHouseService houseService = new HouseService();
+		System.out.println(search);
 		List<HouseEntity> houseList = houseService.search(search);
 		
 		model.addObject("houseList", houseList);
+		model.addObject("listSize", houseList.size());
 		
 		IAdvertisementService advertisementService = new AdvertisementService();
 		List<AdvertisementEntity> advertisementList = advertisementService.getAdvertisementList(4);
