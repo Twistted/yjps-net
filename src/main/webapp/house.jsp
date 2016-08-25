@@ -33,22 +33,17 @@
 				<div id="myCarousel" class="carousel slide"> 
 				   <!-- 轮播（Carousel）项目 -->
 				   <div class="carousel-inner">
-				   
-				      <div class="item active">
-				         <img src="/public/img/house00.jpg" alt="First slide">
-				      </div>
-				      <div class="item">
-				         <img src="/public/img/house01.jpg" alt="Second slide">
-				      </div>
-				      <div class="item">
-				         <img src="/public/img/house02.jpg" alt="Third slide">
-				      </div>
-				      <div class="item">
-				         <img src="/public/img/house03.jpg" alt="Third slide">
-				      </div>
-				      <div class="item">
-				         <img src="/public/img/house04.jpg" alt="Third slide">
-				      </div>
+				   <div class="item active">
+				         <img src="${house.houseViewUrl}" alt="slide">
+				   </div>
+				   <div class="item">
+				         <img src="${house.houseTypeUrl}" alt="slide">
+				   </div>
+				   <c:forEach var="photo" items="${housePhotoList}" >
+				   	 <div class="item">
+				         <img src="${photo.photoUrl}" alt="slide">
+				     </div>
+				   </c:forEach>
 				   </div>
 				   <!-- 轮播（Carousel）导航 -->
 				   <a class="carousel-control left" href="#myCarousel" 
@@ -58,11 +53,11 @@
 				   <!-- 轮播（Carousel）指标 -->
 				   <div class="carousel-idc">
 					   <ol class="carousel-indicators" id="">
-					      <li data-target="#myCarousel" data-slide-to="0" class="active"><img src="/public/img/house00.jpg"></li>
-					      <li data-target="#myCarousel" data-slide-to="1"><img src="/public/img/house01.jpg"></li>
-					      <li data-target="#myCarousel" data-slide-to="2"><img src="/public/img/house02.jpg"></li>
-					      <li data-target="#myCarousel" data-slide-to="3"><img src="/public/img/house03.jpg"></li>
-					      <li data-target="#myCarousel" data-slide-to="4"><img src="/public/img/house04.jpg"></li>
+					      <li data-target="#myCarousel" data-slide-to="0" class="active"><img src="${house.houseViewUrl}"></li>
+					      <li data-target="#myCarousel" data-slide-to="1"><img src="${house.houseTypeUrl}"></li>
+					      <c:forEach var="photo" items="${housePhotoList}"  varStatus="status">
+						   	  <li data-target="#myCarousel" data-slide-to="${status.count+1}"><img src="${photo.photoUrl}"></li>
+						   </c:forEach>
 					   </ol>
 				   </div> 
 				</div>
@@ -98,7 +93,7 @@
 					</dl>
 					<dl>
 						<dt>朝向：</dt>
-						<dd>南</dd>
+						<dd>${house.orientation}</dd>
 					</dl>
 					<dl>
 						<dt>楼层：</dt>
@@ -112,7 +107,7 @@
 					</dl>
 				</div>
 				<div class="countact-panel">
-					<img src="/public/img/PhoneNum.png">
+					<span class="ft-num" title="${agent.phone}">${agent.phone}</span>
 				</div>
 			</div>
 			<!--中介相关信息-->
@@ -120,24 +115,24 @@
 				<div class="agent-info">
 					<div class="agent-del">
 						<a href="#">
-							<img class="iframe-img" src="/public/img/agent.jpg">
+							<img class="iframe-img" src="${agent.photoUrl}">
 						</a>
 					</div>
 					<div class="p-del">
 						<p class="p-01">
-							<a href="">杜千</a>
+							<a href="">${agent.name}</a>
 							<a href="" alt="在线咨询"><img src="/public/img/query.png"></a>
 						</p>
 						<p class="p-02">
 							<span>店经理</span>
 						</p>
 						<p class="p-03">
-							<span class="bold">从业年限:</span>
-							<span>2-3年</span>
+							<span class="bold">年龄:</span>
+							<span>${agent.age}</span>
 						</p>
 						<p class="p-04">
-							<span class="bold">月总带看:</span>
-							<span>19次</span>
+							<span class="bold">性别:</span>
+							<span>${agent.sex}</span>
 						</p>
 					</div>
 				</div>
@@ -229,26 +224,26 @@
 									<div class="agent-info">
 										<div class="agent-del">
 											<a href="#">
-												<img class="iframe-img" src="/public/img/agent.jpg">
+												<img class="iframe-img" src="${agent.photoUrl}">
 											</a>
 										</div>
 										<div class="p-del">
 											<p class="p-01">
-												<a href="">杜千</a>
+												<a href="">${agent.name}</a>
 												<a href="" alt="在线咨询"><img src="/public/img/query.png"></a>
 											</p>
 											<p class="p-04">
-												<span class="bold">月总带看:</span>
-												<span>19次</span>
+												<span class="bold">年龄:</span>
+												<span>${agent.age}</span>
 											</p>
 											<p class="p-05">
-												<span class="bold">好评率:</span>
-												<span>100%</span>
+												<span class="bold">性别:</span>
+												<span>${agent.sex}</span>
 											</p>
 										</div>
 									</div>
 									<p class="contactted">
-									 4008752017转3695
+									 ${agent.phone}
 									</p>
 								</div>
 							</div>
@@ -261,25 +256,22 @@
 						<div class="detail-album-box">
 							<ul>
 								<li class="actShowImg">
-									<a href="/public/img/house03.jpg">
-										<img src="/public/img/house03.jpg">
+									<a href="${house.houseViewUrl}">
+											<img src="${house.houseViewUrl}">
 									</a>
 								</li>
 								<li class="actShowImg">
-									<a href="/public/img/house00.jpg">
-										<img src="/public/img/house00.jpg">
+									<a href="${house.houseTypeUrl}">
+											<img src="${house.houseTypeUrl}">
 									</a>
 								</li>
-								<li class="actShowImg">
-									<a href="/public/img/house01.jpg">
-										<img src="/public/img/house01.jpg">
-									</a>
-								</li>
-								<li class="actShowImg">
-									<a href="/public/img/house02.jpg">
-										<img src="/public/img/house02.jpg">
-									</a>
-								</li>
+								<c:forEach var="photo" items="${housePhotoList}">
+									<li class="actShowImg">
+										<a href="${photo.photoUrl}">
+											<img src="${photo.photoUrl}">
+										</a>
+									</li>
+								</c:forEach>
 							</ul>
 							<div>
 								<a href="#"><span class="sub-text" id="btn-expand-album" href="#">查看更多图片>></span></a>
@@ -344,7 +336,7 @@
 		
 		var s1="${house.houseDescribe}";
 		$(document).ready(function(){
-			  console.log(s1.length);
+			  console.log("${housePhotoList}");
 			  if(s1.length>160){
 				  $(".text-comment").html(s1.substring(0,160)+"..."+"<span class='actShowMore'>阅读全部</span>");
 			  }
