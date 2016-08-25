@@ -13,6 +13,7 @@ public class HouseEntity {
 	private String houseDescribe;
 	private double area;
 	private String houseTypeUrl;
+	private String houseViewUrl;
 	private int roomAmount;
 	private int livingroomAmount;
 	private int toiletAmount;
@@ -187,6 +188,12 @@ public class HouseEntity {
 				",balconyAmount=" + balconyAmount + ",state=" + state + ",agentId=" + agentId + ",houseNumber=" + houseNumber +
 				",province=" + province + ",city=" + city + ",town=" + town + ",zone=" + zone + ",villageName=" + villageName +
 				",address=" + address;
+	}
+	public String getHouseViewUrl() {
+		return houseViewUrl;
+	}
+	public void setHouseViewUrl(String houseViewUrl) {
+		this.houseViewUrl = houseViewUrl;
 	}
 
 }

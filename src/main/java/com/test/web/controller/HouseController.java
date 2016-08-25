@@ -33,7 +33,7 @@ public class HouseController {
 	public ModelAndView house(@RequestParam("id") String id, HttpSession httpSession) {
 		UserEntity userEntity = (UserEntity) httpSession.getAttribute("userSession");
 		if (userEntity != null) {
-			
+			// 记录浏览
 		}
 		
 		ModelAndView model = new ModelAndView();
@@ -49,7 +49,7 @@ public class HouseController {
 		
 		IAdvertisementService advertisementService = new AdvertisementService();
 		List<AdvertisementEntity> advertisementList = advertisementService.getAdvertisementList(4);
-		model.addObject("abvertisementList", advertisementList);
+		model.addObject("advertisementList", advertisementList);
 		
 		model.setViewName("house");
 		return model;

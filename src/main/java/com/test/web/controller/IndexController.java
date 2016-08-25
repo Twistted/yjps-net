@@ -41,9 +41,8 @@ public class IndexController {
 		
 		IAdvertisementService advertisementService = new AdvertisementService();
 		List<AdvertisementEntity> advertisementList = advertisementService.getAdvertisementList(4);
-		model.addObject("abvertisementList", advertisementList);
+		model.addObject("advertisementList", advertisementList);
 		
-		System.out.println(advertisementList);
 		model.setViewName("home");
 		return model;
 	}
@@ -72,7 +71,7 @@ public class IndexController {
 		
 		IAdvertisementService advertisementService = new AdvertisementService();
 		List<AdvertisementEntity> advertisementList = advertisementService.getAdvertisementList(4);
-		model.addObject("abvertisementList", advertisementList);
+		model.addObject("advertisementList", advertisementList);
 		
 		model.setViewName("home");
 		return model;
