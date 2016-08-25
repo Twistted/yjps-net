@@ -46,7 +46,7 @@ public class AgentController {
 		AgentEntity agent = agentService.getAgentByAccount(agentEntity.getAccount());
 		System.out.println(agent);
 		model.addObject("agent", agent);
-		if(agent.getPassword().equals(agentEntity.getPassword())){
+		if (agent != null && agent.getPassword().equals(agentEntity.getPassword())){
 			model.addObject("agent",agent);
 			model.setViewName("agent/agent_index");
 			httpSession.setAttribute("agentSession", agent);
@@ -77,7 +77,7 @@ public class AgentController {
 	}
 	
 	
-	@RequestMapping("add_house")
+	@RequestMapping(value="add_house", method=RequestMethod.POST)
 	public @ResponseBody Result addHouse(HouseEntity houseEntity,HttpSession httpSession){
 		AgentEntity agent = (AgentEntity) httpSession.getAttribute("agentSession");
 		houseEntity.setAgentId(agent.getAgentId());

@@ -42,7 +42,7 @@
 	</select>
 	
 	<select id="queryPage" parameterType="int" resultType="HouseEntity">
-		select * from house order by house_id limit #{offset}, #{size}
+		select * from house order by house_id desc limit #{offset}, #{size}
 	</select>
 	
 	<select id="queryAdvertisementList" parameterType="int" resultType="HouseEntity">

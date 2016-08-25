@@ -23,6 +23,19 @@ public class UserService implements IUserService {
 		
 		return userEntity;
 	}
+	
+	public UserEntity getUserById(int id) {
+		UserEntity userEntity = null;
+		SqlSession session = DBUtil.getSession();
+		try {
+			UserMapper userMapper = session.getMapper(UserMapper.class);
+			userEntity = userMapper.findById(id);
+		} finally {
+			DBUtil.closeSession();
+		}
+		
+		return userEntity;
+	}
 
 	public boolean register(UserEntity user) {
 		boolean ret = false;

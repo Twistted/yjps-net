@@ -63,26 +63,42 @@ public class ManageController {
 	@RequestMapping("findManager")
 	public @ResponseBody Result findManager(int id, HttpSession httpSession) {
 		Result result = new Result();
-		
+		IManagerService managerService = new ManagerService();
+		ManagerEntity managerEntity = managerService.getManagerById(id);
+		if (managerEntity == null) {
+			result.setCode(500);
+		} else {
+			result.setCode(200);
+			result.setManagerEntity(managerEntity);
+		}
 		return result;
 	}
 	
 	@RequestMapping("findAgent")
 	public @ResponseBody Result findAgent(int id, HttpSession httpSession) {
 		Result result = new Result();
-//		IManagerService managerService = new ManagerService();
-//		ManagerEntity managerList = managerService.
-//		if (managerList == null || managerList.isEmpty()) {
-//			return new Result(500, managerList);
-//		}
-//		return new Result(200, managerList);
+		IAgentService agentService = new AgentService();
+		AgentEntity agentEntity = agentService.getAgentById(id);
+		if (agentEntity == null) {
+			result.setCode(500);
+		} else {
+			result.setCode(200);
+			result.setAgentEntity(agentEntity);
+		}
 		return result;
 	}
 	
 	@RequestMapping("findUser")
 	public @ResponseBody Result findUser(int id, HttpSession httpSession) {
 		Result result = new Result();
-		
+		IUserService userService = new UserService();
+		UserEntity userEntity = userService.getUserById(id);
+		if (userEntity == null) {
+			result.setCode(500);
+		} else {
+			result.setCode(200);
+			result.setUserEntity(userEntity);
+		}
 		return result;
 	}
 

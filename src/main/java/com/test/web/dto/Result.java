@@ -18,6 +18,8 @@ public class Result implements Serializable {
 	private List<AgentEntity> agentList;
 	private List<UserEntity> userList;
 	private AgentEntity agentEntity;
+	private ManagerEntity managerEntity;
+	private UserEntity userEntity;
 	
 	public AgentEntity getAgentEntity() {
 		return agentEntity;
@@ -70,6 +72,22 @@ public class Result implements Serializable {
 
 	public void setUserList(List<UserEntity> userList) {
 		this.userList = userList;
+	}
+
+	public ManagerEntity getManagerEntity() {
+		return managerEntity;
+	}
+
+	public void setManagerEntity(ManagerEntity managerEntity) {
+		this.managerEntity = managerEntity;
+	}
+
+	public UserEntity getUserEntity() {
+		return userEntity;
+	}
+
+	public void setUserEntity(UserEntity userEntity) {
+		this.userEntity = userEntity;
 	}
 	
 	
