@@ -5,10 +5,10 @@
 	<insert id="insert" parameterType="HouseEntity">
 		insert into house ( title, prize, down_payment, monthly_payment, orientation, floor, year, house_describe,
 		                    area, house_type_url, house_view_url, room_amount, livingroom_amount, toilet_amount, balcony_amount,
-		                    state, agent_id, house_number, privince, city, town, zone, village_name, address)
+		                    state, agent_id, house_number, province, city, town, zone, village_name, address)
 		values(#{title},#{prize},#{downPayment},#{monthlyPayment},#{orientation},#{floor},#{year},#{houseDescribe},
 		       #{area},#{houseTypeUrl},#{houseViewUrl},#{roomAmount},#{livingroomAmount},#{toiletAmount},#{balconyAmount},#{state},
-		       #{agentId},#{houseNumber},#{privince},#{city},#{town},#{zone},#{villageName},#{address})
+		       #{agentId},#{houseNumber},#{province},#{city},#{town},#{zone},#{villageName},#{address})
 	</insert>
 	
 	<select id="search"  parameterType="string" resultType="HouseEntity">

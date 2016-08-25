@@ -20,7 +20,7 @@
 			<div class="list-head clear">
 				<h2>
 					共有
-					<span>${listSize}</span>
+					<span>${allHouseSize}</span>
 					套二手房房源
 				</h2>
 				<div class="view-type">
@@ -164,8 +164,8 @@
 		var page_html="";
 		var cur_page="${currentPage}";
 		var totalpage="${pageSize}";
-		var next_page=cur_page+1;
-		var pre_page=cur_page-1;
+		var next_page="${currentPage+1}";
+		var pre_page="${currentPage-1}";
 		$(document).ready(function(){
 			if (cur_page>1) {
 				page_html+="<a href='/home/index?page="+pre_page+"'>上一页</a>";
@@ -219,7 +219,7 @@
 				page_html+="<a href='/home/index?page="+totalpage+"'>"+totalpage+"</a>";
 			}
 			if (cur_page!=totalpage) {
-				page_html+="<a href='/home/index?page="+pre_page+"'>下一页</a>";
+				page_html+="<a href='/home/index?page="+next_page+"'>下一页</a>";
 			};
 			$(".page-box").html(page_html);
 			

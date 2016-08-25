@@ -163,7 +163,7 @@
 						<p class="Fyh1">房源个性描述</p>
 							<div class="instro">
 										<span class="Fyh2"><span class="star">*</span>详细描述</span>
-								<textarea name="houseDescribe" cols="80" rows="10" placeholder="个性且详尽的房源描述可以加速您出售您的房子"></textarea>
+								<textarea name="houseDescribe" id="houseDescribe" cols="80" rows="10" placeholder="个性且详尽的房源描述可以加速您出售您的房子"></textarea>
 							</div>
 							<!-- pic upload-->
 							<div class="FyUpload_wrap">
@@ -194,7 +194,7 @@
 						<ul>
 							<li>
 									<span class="Fyh2"><span class="star">*</span>状态</span>
-									<select>
+									<select id="state">
 										<option value="1" checked="checked">在售</option>
 									</select>
 							</li>
