@@ -135,5 +135,9 @@ public class HouseService implements IHouseService {
 		
 		return houseList;
 	}
+
+	public List<HouseEntity> getAllHouse() {
+		return findAll();
+	}
 	
 }

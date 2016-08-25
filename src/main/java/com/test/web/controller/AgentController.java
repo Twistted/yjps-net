@@ -32,6 +32,13 @@ public class AgentController {
 		return model; 
 	}
 	
+	@RequestMapping("insert")
+	public @ResponseBody Result insert(HouseEntity houseEntity,HttpSession httpSession) {
+		IHouseService houseService = new HouseService();
+		System.out.println(houseEntity);
+		return new Result(200);
+	}
+	
 	@RequestMapping(value="login",method=RequestMethod.POST)
 	public ModelAndView login(AgentEntity agentEntity,HttpSession httpSession){
 		ModelAndView model = new ModelAndView();
@@ -71,14 +78,14 @@ public class AgentController {
 	
 	
 	@RequestMapping("add_house")
-	public ModelAndView addHouse(HouseEntity houseEntity,HttpSession httpSession){
-		ModelAndView model = new ModelAndView();
+	public @ResponseBody Result addHouse(HouseEntity houseEntity,HttpSession httpSession){
+		AgentEntity agent = (AgentEntity) httpSession.getAttribute("agentSession");
+		houseEntity.setAgentId(agent.getAgentId());
+		System.out.println(houseEntity);
 		IHouseService houseService = new HouseService();
-		if(houseService.addHouse(houseEntity)){
-			model.setViewName("agent/index");
-		}
-		else model.setViewName("agent/index");
-		return model;
+		if(houseService.addHouse(houseEntity))
+			return new Result(200);
+		else return new Result(200);
 	}
 	
 	@RequestMapping("find_house")
@@ -111,16 +118,20 @@ public class AgentController {
 		return result;
 	}
 	
-	@RequestMapping("modify_agent")
-	public ModelAndView modifyAgent(AgentEntity agentEntity,HttpSession httpSession){
-		ModelAndView model = new ModelAndView();
+	@RequestMapping(value="modify_agent",method=RequestMethod.POST)
+	public @ResponseBody Result modifyAgent(AgentEntity agentEntity,HttpSession httpSession){
+		Result result = new Result();
+		System.out.println(agentEntity);
+		AgentEntity agent = (AgentEntity) httpSession.getAttribute("agentSession");
+		agentEntity.setAgentId(agent.getAgentId());
 		IAgentService agentService = new AgentService();
 		if(agentService.modifyAgent(agentEntity)){
 			httpSession.setAttribute("agentSession", agentEntity);
-			model.setViewName("agent/index");
+			result.setCode(200);
+			result.setAgentEntity(agentEntity);
 		}
-		else model.setViewName("agent/index");
-		return model;
+		else result.setCode(500);
+		return result;
 	}
 	
 	@RequestMapping("list_agent")

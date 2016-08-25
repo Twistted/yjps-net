@@ -34,11 +34,13 @@ public class IndexController {
 		
 		List<HouseEntity> houseList = houseService.listHouse(pageOffset, 3);
 		
+		List<HouseEntity> allHouseList = houseService.getAllHouse();
+		
 		model.addObject("houseList", houseList);
 		model.addObject("listSize", houseList.size());
 		model.addObject("currentPage", pageOffset);
-		model.addObject("pageSize", (houseList.size() / 3) + 1 );
-		
+		model.addObject("pageSize", (allHouseList.size() / 3) + 1 );
+		model.addObject("allHouseSize",allHouseList.size());
 		IAdvertisementService advertisementService = new AdvertisementService();
 		List<AdvertisementEntity> advertisementList = advertisementService.getAdvertisementList(4);
 		model.addObject("advertisementList", advertisementList);

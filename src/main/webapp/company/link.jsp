@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
 	
@@ -23,33 +25,11 @@
 	</head>
 
 <body>
-	<div class="header">
-    	<header>
-        <div class="nav-wrap">
-            <div class="wrapper">
-                <div class="fl">
-                    <a href="home.html" class="logo" title="易居网络平台"></a>
-                    <span>易居二手房网上交易平台</span>
-                </div>
-                <div class="fr">
-                    <div class="login">
-                        <a href="../user/register.html">
-                            <span class="log">注册</span>
-                        </a>
-                        |
-                        <a href="../user/login.html">
-                            <span class="user-reg">登录</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-	</div>
+	<jsp:include page="/sub_header.jsp"></jsp:include>
 	<div class="clear"></div>
 	<div class="container">
     	<div class="title">
-        	<img src="../public/img/top.jpg" width=100%  class="bg" style="margin-top: -154.5px;">
+        	<img src="../public/img/top.jpg" width="100%"  class="bg" style="margin-top: -154.5px;">
         		<div class="mask">
         		</div>
         		<input type="hidden" value="友情链接交换说明" id="subtitle">
@@ -95,41 +75,7 @@
     
 </div>
 
-	   <footer>
-        <div class="wrapper">
-            <div class="f-title">
-                <div class="fl">
-                    <ul>
-                        <li>
-                            <a href="index.html">了解易居网</a>
-                        </li>
-                        <li>
-                            <a href="aboutUs.html">关于易居</a>
-                        </li>
-                        <li>
-                            <a href="contact.html">联系我们</a>
-                        </li>
-                        <li>
-                            <a href="joinUs.html">加入我们</a>
-                        </li>
-                        <li>
-                            <a href="privacy.html">隐私声明</a>
-                        </li>
-                        <li>
-                            <a href="../broker/login.html">经纪人登录</a>
-                        </li>
-                        <li>
-                            <a href="link.html">友情链接</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="fr">官方客服 1010 9666</div>
-            </div>
-            <div class="bottom">
-                <div class="copyright">北京易居房地产经纪有限公司 | 网络经营许可证 京ICP备11024601号-12 | © Copyright©2010-2016 链家网Lianjia.com版权所有</div>
-            </div>
-        </div>
-    </footer>
+	   <jsp:include page="/footer.jsp"></jsp:include>
 		<script type="text/javascript" async="" src="http://static.mediav.com/mv.js"></script>
 	
 	<script type="text/javascript" async="" src="http://material.mediav.com/bjjs/mba.js"></script>

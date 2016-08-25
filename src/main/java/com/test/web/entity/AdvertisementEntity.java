@@ -10,7 +10,14 @@ public class AdvertisementEntity {
 	private double prize;
 	private Date timestamp;
 	private int state;
+	private double price;
 	
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
 	public int getAdvertisementId() {
 		return advertisementId;
 	}
@@ -45,7 +52,7 @@ public class AdvertisementEntity {
 	@Override
 	public String toString(){
 		return "Advertisement [advertisementId=" + advertisementId + ",advertisementUrl=" + advertisementId + 
-			    ",title=" + title + ",timestamp=" + timestamp + ",state=" + state;
+			    ",title=" + title + ",timestamp=" + timestamp + ",state=" + state + ",price=" + price;
 	}
 	public int getHouseId() {
 		return houseId;

@@ -27,13 +27,3 @@
 			</div>
 		</div>
 	</header>
-	<div class="searchs">
-		<div class="search-area">
-			<form action="/home/search">
-				<div class="search-txt">
-					<input class="left txt autoSuggest" name="search" autoComplete="off" placeholder="请输入区域、商圈或小区名开始找房" id="keyword-box">
-					<button data-bl="search" data-el="search" class="btn ico-search act-search">搜索</button>
-				</div>
-			</form>
-		</div>
-	</div>

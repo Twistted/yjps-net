@@ -6,25 +6,25 @@
 				<div class="fl">
 					<ul>
 						<li>
-							<a href="#">了解易居网</a>
+							<a href="/company/index.jsp">了解易居网</a>
 						</li>
 						<li>
-							<a href="#">关于易居</a>
+							<a href="/company/aboutUs.jsp">关于易居</a>
 						</li>
 						<li>
-							<a href="#">联系我们</a>
+							<a href="/company/contact.jsp">联系我们</a>
 						</li>
 						<li>
-							<a href="#">加入我们</a>
+							<a href="/company/joinUs.jsp">加入我们</a>
 						</li>
 						<li>
-							<a href="#">隐私声明</a>
+							<a href="/company/privacy.jsp">隐私声明</a>
 						</li>
 						<li>
-							<a href="#">经纪人登录</a>
+							<a href="/agent/login.jsp">经纪人登录</a>
 						</li>
 						<li>
-							<a href="#">友情链接</a>
+							<a href="/company/link.jsp">友情链接</a>
 						</li>
 					</ul>
 				</div>

@@ -11,6 +11,7 @@ public interface IHouseService {
     boolean addHouse(HouseEntity houseEntity);
 	boolean update(HouseEntity houseEntity);
 	boolean delete(int id);
+	List<HouseEntity> getAllHouse();
 	List<HouseEntity> getAdvertisementList(int id);
 	List<HouseEntity> search(String search);
 

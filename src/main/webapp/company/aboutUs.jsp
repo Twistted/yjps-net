@@ -1,4 +1,6 @@
-﻿<!doctype html>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
 <html>
 <head>
    
@@ -113,41 +115,7 @@
      
     </div>
 
-  <footer>
-        <div class="wrapper">
-            <div class="f-title">
-                <div class="fl">
-                    <ul>
-                        <li>
-                            <a href="index.html">了解易居网</a>
-                        </li>
-                        <li>
-                            <a href="aboutUs.html">关于易居</a>
-                        </li>
-                        <li>
-                            <a href="contact.html">联系我们</a>
-                        </li>
-                        <li>
-                            <a href="joinUs.html">加入我们</a>
-                        </li>
-                        <li>
-                            <a href="privacy.html">隐私声明</a>
-                        </li>
-                        <li>
-                            <a href="../broker/login.html">经纪人登录</a>
-                        </li>
-                        <li>
-                            <a href="link.html">友情链接</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="fr">官方客服 1010 9666</div>
-            </div>
-            <div class="bottom">
-                <div class="copyright">北京易居房地产经纪有限公司 | 网络经营许可证 京ICP备11024601号-12 | © Copyright©2010-2016 链家网Lianjia.com版权所有</div>
-            </div>
-        </div>
-    </footer>
+  <jsp:include page="/footer.jsp"></jsp:include>
  <script type="text/javascript" async="" charset="utf-8" src="http://c.cnzz.com/core.php?web_id=1255633284&amp;t=q"></script>
     <script type="text/javascript" async="" charset="utf-8" src="http://c.cnzz.com/core.php?web_id=1254525948&amp;t=q"></script>
 <script type="text/javascript" async="" charset="utf-8" src="http://c.cnzz.com/core.php?web_id=1253477541&amp;t=q"></script>
