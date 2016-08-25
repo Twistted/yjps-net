@@ -23,7 +23,6 @@ import com.test.web.service.impl.HouseService;
 @RequestMapping("agent")
 public class AgentController {
 	
-	
 	@RequestMapping("index")
 	public ModelAndView index(HttpSession httpSession){
 		ModelAndView model = new ModelAndView();

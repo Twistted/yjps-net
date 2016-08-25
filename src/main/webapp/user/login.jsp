@@ -150,7 +150,7 @@
 	<script type="text/javascript">
 		$(function(){
 			$(".actDoSubmit").click(function(){
-				alert("hhe");
+				
 			});
 		});
 	</script>

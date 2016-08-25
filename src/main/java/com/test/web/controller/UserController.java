@@ -23,6 +23,12 @@ import com.test.web.service.impl.UserService;
 @RequestMapping("user")
 public class UserController {
 
+	boolean isLogin(HttpSession httpSession) {
+		UserEntity userEntity = (UserEntity) httpSession.getAttribute("userSession");
+		System.out.println(userEntity);
+		return userEntity != null ? true : false;
+	}
+	
 	@RequestMapping("index")
 	public ModelAndView index() {
 		ModelAndView model = new ModelAndView();
@@ -48,6 +54,14 @@ public class UserController {
 			httpSession.setAttribute("userSession", user);
 			model.setViewName("user/user_index");
 		}
+		return model;
+	}
+	
+	@RequestMapping("logout")
+	public ModelAndView logout(HttpSession httpSession) {
+		ModelAndView model = new ModelAndView();
+		httpSession.setAttribute("userSession", null);
+		model.setViewName("user/login");
 		return model;
 	}
 	

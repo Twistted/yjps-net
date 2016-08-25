@@ -21,11 +21,18 @@ import com.test.web.service.impl.HouseService;
 public class IndexController {
 	
 	@RequestMapping("/index")
-	public ModelAndView home() {
+	public ModelAndView home(@RequestParam(value="page", required=false) String page) {
 		ModelAndView model = new ModelAndView();
 		// get service
 		IHouseService houseService = new HouseService();
-		List<HouseEntity> houseList = houseService.listHouse(0, 3);
+		int pageOffset;
+		if (page == null) {
+			pageOffset = 1;
+		} else {
+			pageOffset = Integer.valueOf(page);
+		}
+		
+		List<HouseEntity> houseList = houseService.listHouse(pageOffset, 3);
 		
 		model.addObject("houseList", houseList);
 		model.addObject("listSize", houseList.size());

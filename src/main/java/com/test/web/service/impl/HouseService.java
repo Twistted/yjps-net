@@ -45,7 +45,8 @@ public class HouseService implements IHouseService {
 		SqlSession session = DBUtil.getSession();
 		try {
 			HouseMapper mapper = session.getMapper(HouseMapper.class);
-			houseList = mapper.queryPage(page, size);
+			
+			houseList = mapper.queryPage((page - 1) * size, size);
 		} finally {
 			DBUtil.closeSession();
 		}
