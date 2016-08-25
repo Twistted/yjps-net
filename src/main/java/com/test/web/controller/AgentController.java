@@ -23,7 +23,7 @@ import com.test.web.service.impl.HouseService;
 @RequestMapping("agent")
 public class AgentController {
 	
-	@RequestMapping(value="login")
+	@RequestMapping(value="logi")
 	public ModelAndView login(AgentEntity agentEntity,HttpSession httpSession){
 		ModelAndView model = new ModelAndView();
 		IAgentService agentService = new AgentService();
