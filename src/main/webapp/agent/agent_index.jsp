@@ -307,9 +307,9 @@
 									<li>
 										<span class="info_title">性别:</span>
 										<div class="checkbox">
-											<input class="radioInput" name="sex" value="man" checked="checked" type="radio"></input>
+											<input class="radioInput" name="sex" value="1" checked="checked" type="radio"></input>
 											<span class="chosespan">男</span>
-											<input class="radioInput" name="sex" value="woman" checked="checked" type="radio"></input>
+											<input class="radioInput" name="sex" value="2" checked="checked" type="radio"></input>
 											<span class="chosespan">女</span>
 										</div>
 									</li>

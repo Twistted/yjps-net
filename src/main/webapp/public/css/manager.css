@@ -561,6 +561,6 @@ a.lj-btn{
 	margin-top: 30px;
 }
 #selfIntro{
-	display: block;
+	display: inline-block;
 	vertical-align: top;
 }

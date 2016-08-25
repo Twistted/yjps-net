@@ -33,13 +33,10 @@ public class AgentController {
 	}
 	
 	@RequestMapping("insert")
-	public ModelAndView insert() {
-		ModelAndView model = new ModelAndView();
+	public @ResponseBody Result insert(HouseEntity houseEntity,HttpSession httpSession) {
 		IHouseService houseService = new HouseService();
-		HouseEntity houseEntity = houseService.getHouseById(12);
 		System.out.println(houseEntity);
-		model.setViewName("test");
-		return model;
+		return new Result(200);
 	}
 	
 	@RequestMapping(value="login",method=RequestMethod.POST)
@@ -121,16 +118,20 @@ public class AgentController {
 		return result;
 	}
 	
-	@RequestMapping("modify_agent")
-	public ModelAndView modifyAgent(AgentEntity agentEntity,HttpSession httpSession){
-		ModelAndView model = new ModelAndView();
+	@RequestMapping(value="modify_agent",method=RequestMethod.POST)
+	public @ResponseBody Result modifyAgent(AgentEntity agentEntity,HttpSession httpSession){
+		Result result = new Result();
+		System.out.println(agentEntity);
+		AgentEntity agent = (AgentEntity) httpSession.getAttribute("agentSession");
+		agentEntity.setAgentId(agent.getAgentId());
 		IAgentService agentService = new AgentService();
 		if(agentService.modifyAgent(agentEntity)){
 			httpSession.setAttribute("agentSession", agentEntity);
-			model.setViewName("agent/index");
+			result.setCode(200);
+			result.setAgentEntity(agentEntity);
 		}
-		else model.setViewName("agent/index");
-		return model;
+		else result.setCode(500);
+		return result;
 	}
 	
 	@RequestMapping("list_agent")
