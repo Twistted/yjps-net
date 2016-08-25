@@ -199,7 +199,7 @@
         var cur_totalpage=9999;
         //分页
         var fetchConfigData = function (curr,keyword) {
-            $.getJSON('/Operation/Platform/getPlatform', {
+            $.getJSON('/agent/list_agent', {
                 page: curr || 1,
                 keyword:keyword || '',
             }, function (res) {

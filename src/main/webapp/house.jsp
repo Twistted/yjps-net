@@ -13,37 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
 </head>
 <body width= screen.width>
-	<header>
-		<div class="nav-wrap">
-			<div class="wrapper">
-				<div class="fl">
-					<a href="home.html" class="logo" title="易居网络平台"></a>
-					<span>易居二手房网上交易平台</span>
-				</div>
-				<div class="fr">
-					<div class="login">
-						<a href="user/register.html">
-							<span class="log">注册</span>
-						</a>
-						|
-						<a href="user/login.html">
-							<span class="user-reg">登录</span>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
-	<div class="searchs">
-		<div class="search-area">
-			<form>
-				<div class="search-txt">
-					<input class="left txt autoSuggest" name="keyword" autoComplete="off" placeholder="请输入区域、商圈或小区名开始找房" id="keyword-box">
-					<button type="submit" data-bl="search" data-el="search" target="_blank" class="btn ico-search act-search">搜索</button>
-				</div>
-			</form>
-		</div>
-	</div>
+	<jsp:include page="/header.jsp"></jsp:include>
 	<div class="intro"></div>
 	<div class="wrapper">
 		<!--标题行内容-->
@@ -340,102 +310,27 @@
 			</div>
 			<div class="show-content">
 				<ul>
+				<c:forEach var="ad" items="${advertisementList}" >
 					<li>
-						<a class="pic" href="/public/img/commend00.jpg">
-							<img src="/public/img/commend00.jpg">
+						<a class="pic" href="/house/house?id=${ad.houseId}">
+							<img src="${ad.advertisementUrl}">
 							<div class="bg"></div>
 							<div class="description">
-								<span class="title" title="青羊－朗诗西溪里">青羊－朗诗西溪里</span>
-								<span class="type">普通住宅</span>
+								<span class="title" title="${ad.title}">${ad.title}</span>
 							</div>
 						</a>
 						<p class="price">
-							<span class="average">均价：<span>11500</span>元/平</span>
+							<span class="average">价格：<span></span>万元</span>
 						</p>
-						<p class="area">4居/3居/2居 - 54~88平</p>
+						<p class="area"></p>
 					</li>
-					<li>
-						<a class="pic" href="/public/img/commend00.jpg">
-							<img src="/public/img/commend00.jpg">
-							<div class="bg"></div>
-							<div class="description">
-								<span class="title" title="青羊－朗诗西溪里">青羊－朗诗西溪里</span>
-								<span class="type">普通住宅</span>
-							</div>
-						</a>
-						<p class="price">
-							<span class="average">均价：<span>11500</span>元/平</span>
-						</p>
-						<p class="area">4居/3居/2居 - 54~88平</p>
-					</li>
-					<li>
-						<a class="pic" href="/public/img/commend00.jpg">
-							<img src="/public/img/commend00.jpg">
-							<div class="bg"></div>
-							<div class="description">
-								<span class="title" title="青羊－朗诗西溪里">青羊－朗诗西溪里</span>
-								<span class="type">普通住宅</span>
-							</div>
-						</a>
-						<p class="price">
-							<span class="average">均价：<span>11500</span>元/平</span>
-						</p>
-						<p class="area">4居/3居/2居 - 54~88平</p>
-					</li>
-					<li>
-						<a class="pic" href="/public/img/commend00.jpg">
-							<img src="/public/img/commend00.jpg">
-							<div class="bg"></div>
-							<div class="description">
-								<span class="title" title="青羊－朗诗西溪里">青羊－朗诗西溪里</span>
-								<span class="type">普通住宅</span>
-							</div>
-						</a>
-						<p class="price">
-							<span class="average">均价：<span>11500</span>元/平</span>
-						</p>
-						<p class="area">4居/3居/2居 - 54~88平</p>
-					</li>
+				</c:forEach>
 				</ul>
 			</div>
 		</div>
 	</div>
 	
-	<footer>
-		<div class="wrapper">
-			<div class="f-title">
-				<div class="fl">
-					<ul>
-						<li>
-							<a href="#">了解易居网</a>
-						</li>
-						<li>
-							<a href="#">关于易居</a>
-						</li>
-						<li>
-							<a href="#">联系我们</a>
-						</li>
-						<li>
-							<a href="#">加入我们</a>
-						</li>
-						<li>
-							<a href="#">隐私声明</a>
-						</li>
-						<li>
-							<a href="#">经纪人登录</a>
-						</li>
-						<li>
-							<a href="#">友情链接</a>
-						</li>
-					</ul>
-				</div>
-				<div class="fr">官方客服 1010 9666</div>
-			</div>
-			<div class="bottom">
-				<div class="copyright">北京易居房地产经纪有限公司 | 网络经营许可证 京ICP备11024601号-12 | © Copyright©2010-2016 链家网Lianjia.com版权所有</div>
-			</div>
-		</div>
-	</footer>
+	<jsp:include page="/footer.jsp"></jsp:include>
 	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=uDVWfbR5FdPofCih1zstBN3YQRyX8dLS"></script>
