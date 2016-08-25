@@ -14,16 +14,19 @@ import org.springframework.web.servlet.ModelAndView;
 import com.test.web.entity.AdvertisementEntity;
 import com.test.web.entity.AgentEntity;
 import com.test.web.entity.HouseEntity;
+import com.test.web.entity.HousePhotoEntity;
 import com.test.web.entity.InterestEntity;
 import com.test.web.entity.UserEntity;
 import com.test.web.service.IAdvertisementService;
 import com.test.web.service.IAgentService;
 import com.test.web.service.IHouseService;
 import com.test.web.service.IInterestService;
+import com.test.web.service.IPhotoService;
 import com.test.web.service.impl.AdvertisementService;
 import com.test.web.service.impl.AgentService;
 import com.test.web.service.impl.HouseService;
 import com.test.web.service.impl.InterestService;
+import com.test.web.service.impl.PhotoService;
 
 @Controller
 @RequestMapping("house")
@@ -37,10 +40,15 @@ public class HouseController {
 		}
 		
 		ModelAndView model = new ModelAndView();
+		
 		IHouseService houseService = new HouseService();
 		HouseEntity houseEntity = houseService.getHouseById(Integer.valueOf(id));
 		// System.out.println(houseEntity);
 		model.addObject("house", houseEntity);
+		
+		IPhotoService photoService = new PhotoService();
+		List<HousePhotoEntity> housePhotoList = photoService.getPhotoByHouseId(Integer.valueOf(id));
+		model.addObject("housePhotoList", housePhotoList);
 		
 		IAgentService agentService = new AgentService();
 		AgentEntity agentEntity = agentService.getAgentById(houseEntity.getAgentId());
