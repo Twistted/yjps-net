@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -123,11 +124,13 @@ public class AgentController {
 	}
 	
 	@RequestMapping("list_agent")
-	public @ResponseBody Result listAgent(HttpSession httpSession){
+	public @ResponseBody Result listAgent(Integer page,HttpSession httpSession){
 		Result result = new Result();
+		if( page == null || page == 0)
+			page = 1;
 		List<AgentEntity> agentList;
 		IAgentService agentService = new AgentService();
-		agentList = agentService.allAgent();
+		agentList = agentService.listAgent(page, 3);
 		if(agentList == null || agentList.isEmpty())
 			result.setCode(500);
 		else result.setCode(200);
