@@ -102,83 +102,106 @@
 					<form>
 						<ul>
 							<li>
-								<span class="Fyh2"><span class="star">*</span>供求</span>
-									<input class="radioInput" type="radio" name="typeOfFy" value="safe" checked="checked"><span class="chosespan">出售</span></input>
-									<input class="radioInput" type ="radio" name="typeOfFy" value="buy" >
-									<span class="chosespan">求购</span></input>
-							</li>
-							<li>
-								<span class="Fyh2"><span class="star">*</span>选择身份</span>
-									<input class="radioInput" type="radio" name="ide" value="personal" checked="checked"><span class="chosespan">
-									个人</span></input>
-									<input class="radioInput" type="radio" name="ide" value="manager"><span class="chosespan">经纪人</span></input>
-							</li>
-							<li>
-								<span class="Fyh2"><span class="star">*</span>小区名称</span>
-									<input class="textInput" type="text" id="nameOfDep"  placeholder="只填写小区名，例万达华府"></input>
-							</li>
-							<li>
-								<span class="Fyh2"><span class="star">*</span>小区户型</span>
-									<input class="textInput huxing" type="text" id="shi"><span class="huxingspan">室</span></input>
-									<input class="textInput huxing" type="text" id="ting"><span class="huxingspan">厅</span></input>
-									<input class="textInput huxing" type="text" id="wei"><span class="huxingspan">卫</span></input>
-									<input class="textInput huxing" type="text" id="mianji" placeholder="     建筑面积"><span class="t1">共</span><span class="huxingspan1">㎡</span></input>
-							</li>
-							<li>
-									<span class="Fyh2"><span class="star">*</span>总价</span>
-									<input class="textInput" type="text" id="total"><span class="huxingspan">万</span></input>
-							</li>
-							<li>
 									<span class="Fyh2"><span class="star">*</span>标题</span>
 									<input class="textInput" type="text" id="FyTitle"></input>
 							</li>
+							<li>
+								<span class="Fyh2"><span class="star">*</span>房源编码</span>
+									<input name="houseNumber" class="textInput" type="text" id="houseNumber"  ></input>
+							</li>
+							 
+							<li>
+								<span class="Fyh2"><span class="star">*</span>小区名称</span>
+									<input name="villageName" class="textInput" type="text" id="villageName"  placeholder="只填写小区名，例万达华府"></input>
+							</li>
+							<li>
+								<span class="Fyh2"><span class="star">*</span>小区户型</span>
+									<input class="textInput huxing" name="roomAmount" type="text" id="shi"><span class="huxingspan">室</span></input>
+									<input class="textInput huxing" name="livingroomAmount" type="text" id="ting"><span class="huxingspan">厅</span></input>
+									<input class="textInput huxing" name="toiletAmount" type="text" id="wei"><span class="huxingspan">卫</span></input>
+									<input class="textInput huxing" name="balconyAmount" type="text" id="yang"><span class="huxingspan">阳</span></input>
+									<input class="textInput huxing" name="area" type="text" id="mianji" placeholder="      建筑面积"style="width:120px;"><span class="t1" style="margin-left:-10px;">共</span><span class="huxingspan1" style="margin-left:8px;">㎡</span></input>
+							</li>
+							<li>
+								<span class="Fyh2"><span class="star">*</span>年份</span>
+									<input type="text" class="textInput" name="year" id="FyYear"  />
+									 
+							</li>
+							<li>
+									<span class="Fyh2"><span class="star">*</span>楼层</span>
+									<input class="textInput" name="floor" type="text" id="floor" style="width:100px;"><span class="huxingspan">层</span></input>
+							</li>
+							<li>
+									<span class="Fyh2"><span class="star">*</span>朝向</span>
+									<select name="orientation" id="orientation">
+										<option value="1">东</option>
+										<option value="2">南</option>
+										<option value="3">西</option>
+										<option value="4">北</option>
+										<option value="5">东北</option>
+										<option value="6">东南</option>
+										<option value="7">西北</option>
+										<option value="8">西南</option>
+									</select>
+							</li>
+							<li style="display:inline-block;">
+									<span class="Fyh2"><span class="star">*</span>总价</span>
+									<input class="textInput" name="prize" type="text" id="prize" style="width:100px;"><span class="huxingspan" >万</span></input>
+							</li>
+							<li>
+									<span class="Fyh2"><span class="star">*</span>首付</span>
+									<input class="textInput" name="downPayment" type="text" id="downPayment" style="width:100px;"><span class="huxingspan">万</span></input>
+							</li>
+							<li>
+									<span class="Fyh2"><span class="star">*</span>月供</span>
+									<input class="textInput" name="monthlyPayment" type="text" id="monPayment" style="width:100px;"><span class="huxingspan">万</span></input>
+							</li>
+							
 						</ul>
 					</div>
 					<div class="FyDescri">
 						<p class="Fyh1">房源个性描述</p>
 							<div class="instro">
 										<span class="Fyh2"><span class="star">*</span>详细描述</span>
-								<textarea cols="80" rows="10" placeholder="个性且详尽的房源描述可以加速您出售您的房子"></textarea>
+								<textarea name="houseDescribe" cols="80" rows="10" placeholder="个性且详尽的房源描述可以加速您出售您的房子"></textarea>
 							</div>
 							<!-- pic upload-->
 							<div class="FyUpload_wrap">
-								<span class="Fyh2">上传图片</span>
-								 <div class="FyUpload">
-								 	<div class="FyUploadTitle">上传电脑中图片</div>
-								 		<div class="localUpload">
-								 			<div id="imgUpload">
-								 				<div class="html5">
-								 					<input multiple="multiple" type="file"></input>
-								 				</div>
-								 			</div>
-								 		</div>
-									 <div class="uploadInfo">
-									 	<p>只能上传房屋照片，不能包含文字、数字、网址、名片等，最多上传<span>24</span>张，每张最大<span>10M</span></p>
-									 </div>
+								<div class="FyUpload_Type">
+								</div>
+								<div class="FyUpload_View">
 								</div>
 							</div>
 						</div>
-					<div class="contactType_wrap">
-						<p class="Fyh1">联系方式</p>
-							<div class="contactType">
-								<ul>
-									<li>
-										<span class="Fyh2"><span class="star">*</span>联系电话</span>
-											<input class="textInput" type="text" id="telNum"></input>
-									</li>
-									<li>
-											<span class="Fyh2"><span class="star">*</span>联系人</span>
-											<input class="textInput" type="text" id="nameOfNum" style="margin-left:13px;"></input>
-									</li>
-									<li> 
-											<span class="Fyh2"><span class="star">*</span>QQ</span>
-											<input class="textInput" type="text" id="qqNum" style="margin-left:32px;"></input>
-									</li>	
-								</ul>
-							</div>
+					<div class="FyPosition_wrap">
+						<p class="Fyh1">房源位置</p>
+						<ul>
+							<li>
+								<span class="Fyh2"><span class="star">*</span>地理位置</span>
+									<input class="textInput huxing" name="province" type="text" id="province" style="width:100px;text-align: center;"><span class="huxingspan">省</span></input>
+									<input class="textInput huxing" name="city" type="text" id="city" style="width:100px;text-align: center;"><span class="huxingspan">市</span></input>
+									<input class="textInput huxing" name="town" type="text" id="town" style="width:100px;text-align: center;"><span class="huxingspan">镇</span></input>
+							</li>
+							<li>
+									<span class="Fyh2"><span class="star">*</span>地址</span>
+									<input class="textInput" name="address" type="text" id="FyAddress" style="width:320px;"></input>
+							</li>
+						</ul>
+							 
+					</div>
+					<div class="FyStatus">
+						<p class="Fyh1">房源状态</p>
+						<ul>
+							<li>
+									<span class="Fyh2"><span class="star">*</span>状态</span>
+									<select>
+										<option value="1" checked="checked">在售</option>
+									</select>
+							</li>
+						</ul>
 					</div>
 					<div class="fabu">
-						<a class=" lj-btn" href="#">发布</a>
+						<a class=" lj-btn" href="#" style="margin-top:20px;">发布</a>
 					</div>
 				</div>
 			</div>
