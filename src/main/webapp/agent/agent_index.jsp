@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,7 +61,7 @@
 		<div class="main-left fl">
 			<div class="name" >
 				<img src="../public/img/logo.jpg" style="border-radius:5px;width:100px;height:100px;"></img>
-				<div class="user-name">欢迎你，一二三</div>
+				<div class="user-name">欢迎你，<span>${sessionScope.agentSession.name}</span></div>
 			</div>
 			<div class="tabble">
 				<ul>
@@ -327,21 +327,21 @@
 										<input type="text" id="email" name="email" class="form-control" />
 									</li>
 									<li>
-										<span class="info_title">入行年份:</span>
-										<input type="text" id="year" name="year" class="form-control" />
+										<span class="info_title" style="margin-left:-28px;">入行年份:</span>
+										<input type="text" id="year" name="year" class="form-control" style="margin-left:30px;"/>
 									</li>
 									<li>
-										<span class="info_title" >所属公司:</span>
+										<span class="info_title" style="margin-left:-28px;">所属公司:</span>
 										<input type="text" id="company"  name="company" class="form-control" />
 									</li>
 									<li>
-										<span class="info_title">自我介绍:</span>
-										<textarea id="selfIntro" name="introduction" class="form-control" cols="300" rows="6" placeholder="请简单介绍你自己..."></textarea>
+										<span class="info_title" style="margin-left:-28px;">自我介绍:</span>
+										<textarea id="selfIntro" name="introduction" class="form-control" cols="300" rows="5" placeholder="请简单介绍你自己..." style="width:400px;"></textarea>
 									</li>
 								</ul>
 							</form>
 							<div class="ok-btn">
-								<a class="lj-btn" href="#">提交</a>
+								<a class="lj-btn" >提交</a>
 							</div> 
 						</div>
 					</div>
@@ -359,39 +359,39 @@
 						</li>
 						<li>
 							<span class="info_title">姓名:</span>
-							<div class="info_c"><span>${agent.name}</span></div>
+							<div class="info_c"><span>${sessionScope.agentSession.name}</span></div>
 						</li>
 						<li>
 							<span class="info_title">性别:</span>
-							<div class="info_c"><span>${sex}</span></div>
+							<div class="info_c"><span>${sessionScope.agentSession.sex}</span></div>
 						</li>
 						<li>
 							<span class="info_title">年龄:</span>
-							<div class="info_c"><span>${age}</span></div>
+							<div class="info_c"><span>${sessionScope.agentSession.age}</span></div>
 						</li>
 						<li>
 							<span class="info_title">电话:</span>
-							<div class="info_c"><span>${phone}</span></div>
+							<div class="info_c"><span>${sessionScope.agentSession.phone}</span></div>
 						</li>
 						<li>
 							<span class="info_title">邮箱:</span>
-							<div class="info_c"><span>${email}<span></div>
+							<div class="info_c"><span>${sessionScope.agentSession.email}<span></div>
 						</li>
 						<li>
 							<span class="info_title">入行年份:</span>
-							<div class="info_c"><span>${year}</span></div>
+							<div class="info_c"><span>${sessionScope.agentSession.year}</span></div>
 						</li>
 						<li>
 							<span class="info_title">所属公司:</span>
-							<div class="info_c"><span>${company}</span></div>
+							<div class="info_c"><span>${sessionScope.agentSession.company}</span></div>
 						</li>
 						<li>
 							<span class="info_title">状态:</span>
-							<div class="info_c"><span class="redspan">${state}</span></div>
+							<div class="info_c"><span class="redspan">${sessionScope.agentSession.state}</span></div>
 						</li>
 						<li>
 							<span class="info_title">自我介绍:</span>
-							<div class="info_c"><span>${introduction}</span></div>
+							<div class="info_c"><span>${sessionScope.agentSession.introduction}</span></div>
 						 </li>
 						
 					</ul>

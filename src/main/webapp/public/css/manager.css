@@ -523,7 +523,7 @@ a.lj-btn{
 	
 }
 .user-main .edit_info{
-	height:550px;
+	height:650px;
 }
 .user-main .personal_info{
 	height:600px;
@@ -533,4 +533,34 @@ a.lj-btn{
 }
 .tabbable .tab-content .hasList{
 	height:600px;
+}
+ #user_personalInfo .personalInfo_wrap ul li{
+	line-height: 30px;
+}
+ 
+ #user_personalInfo .personalInfo_wrap .info_title{
+	font-size: 14px;
+	font-weight: bold;
+}
+#user_personalInfo .personalInfo_wrap .form-control{
+	display: inline-block;
+	width:200px;
+	margin-left:30px;
+
+}
+#user_personalInfo .personalInfo_wrap .checkbox{
+	display: inline-block;
+	margin-left: 30px;
+}
+#user_personalInfo .personalInfo_wrap {
+	width:400px;
+	margin:0 auto;
+	margin-top: 40px;
+}
+#user_personalInfo .personalInfo_wrap .lj-btn{
+	margin-top: 30px;
+}
+#selfIntro{
+	display: block;
+	vertical-align: top;
 }
