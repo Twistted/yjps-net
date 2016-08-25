@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
      <title>易居网_经纪人中心</title>
@@ -28,7 +30,7 @@
 		<div class="nav-wrap">
 			<div class="wrapper">
 				<div class="fl">
-					<a href="home.html" class="logo" title="易居网络平台" style="float:left;"></a>
+					<a href="../home.jsp" class="logo" title="易居网络平台" style="float:left;"></a>
 					<span>易居二手房网上交易平台</span>
 				</div>
 				<div class="fr">
@@ -37,13 +39,12 @@
 							<span class="log" style="display:none">注册</span>
 						</a>
 						<a href="user/register.html">
-							<span class="log">朱国栋</span>
+							<span class="log">${sessionScope.agentSession.name}</span>
 						</a>
-						|
 						<a href="user/login.html" style="display:none">>
 							<span class="user-reg">登录</span>
 						</a>
-						<a href="user/login.html">
+						<a href="/agent/logout">
 							<span class="log">退出</span>
 						</a>
 					</div>
@@ -57,7 +58,7 @@
 		<div class="main-left fl">
 			<div class="name" >
 				<img src="../public/img/logo.jpg" style="border-radius:5px;width:100px;height:100px;"></img>
-				<div class="user-name">欢迎你，一二三</div>
+				<div class="user-name">欢迎你，${sessionScope.agentSession.name}</div>
 			</div>
 			<div class="tabble">
 				<ul>
@@ -118,7 +119,7 @@
 									<input class="textInput huxing" type="text" id="shi"><span class="huxingspan">室</span></input>
 									<input class="textInput huxing" type="text" id="ting"><span class="huxingspan">厅</span></input>
 									<input class="textInput huxing" type="text" id="wei"><span class="huxingspan">卫</span></input>
-									<input class="textInput huxing" type="text" id="mianji" placeholder="     建筑面积"><span class="t1">共</span><span class="huxingspan1">㎡</span></input>
+									<input class="textInput huxing" type="text" id="mianji" placeholder="   建筑面积"><span class="t1">共</span><span class="huxingspan1">㎡</span></input>
 							</li>
 							<li>
 									<span class="Fyh2"><span class="star">*</span>总价</span>
@@ -305,7 +306,7 @@
 						</li>
 						<li>
 							<span class="info_title">姓名:</span>
-							<div class="info_c"><span>朱国栋</span></div>
+							<div class="info_c"><span>${sessionScope.agentSession.name}</span></div>
 						</li>
 						<li>
 							<span class="info_title">性别:</span>

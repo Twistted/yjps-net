@@ -23,7 +23,15 @@ import com.test.web.service.impl.HouseService;
 @RequestMapping("agent")
 public class AgentController {
 	
-	@RequestMapping(value="login")
+	
+	@RequestMapping("index")
+	public ModelAndView index(HttpSession httpSession){
+		ModelAndView model = new ModelAndView();
+		model.setViewName("agent/login");
+		return model; 
+	}
+	
+	@RequestMapping(value="login",method=RequestMethod.POST)
 	public ModelAndView login(AgentEntity agentEntity,HttpSession httpSession){
 		ModelAndView model = new ModelAndView();
 		IAgentService agentService = new AgentService();
@@ -31,16 +39,20 @@ public class AgentController {
 		System.out.println(agent);
 		model.addObject("agent", agent);
 		if(agent.getPassword().equals(agentEntity.getPassword())){
-			System.out.println("Yes");
 			model.addObject("agent",agent);
-			model.setViewName("test");
+			model.setViewName("agent/agent_index");
 			httpSession.setAttribute("agentSession", agent);
 		}
-		else{
-			System.out.println("no");
-			model.setViewName("agent/login");
-		}
+		else model.setViewName("agent/login");
 		return model;
+	}
+	
+	@RequestMapping("logout")
+	public ModelAndView logout(HttpSession httpSession){
+		ModelAndView model = new ModelAndView();
+		model.setViewName("agent/login");
+		httpSession.setAttribute("agentSession", null);
+		return model; 
 	}
 	
 	@RequestMapping("register")
