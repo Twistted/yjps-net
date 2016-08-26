@@ -25,48 +25,79 @@ import com.test.web.service.impl.UserService;
 @Controller
 @RequestMapping("manage")
 public class ManageController {
+	
+	@RequestMapping("index")
+	public ModelAndView index() {
+		ModelAndView model = new ModelAndView();
+		
+		return model;
+	}
 
 	@RequestMapping("login")
-	public ModelAndView login(ManagerEntity managerEntity, HttpSession httpSession) {
-		ModelAndView model = new ModelAndView();
+	public @ResponseBody Result login(ManagerEntity managerEntity, HttpSession httpSession) {
+		Result result = new Result();
 		IManagerService managerService = new ManagerService();
 
 		ManagerEntity manager = managerService.login(managerEntity);
 		System.out.println(manager);
 		if (manager == null) {
 			httpSession.setAttribute("managerSession", null);
-			model.setViewName("manager/login");
+			result.setCode(500);
 		} else {
-			model.addObject("manager", manager);
+			result.setManagerEntity(manager);
 			httpSession.setAttribute("managerSession", manager);
-			model.setViewName("test");
+			result.setCode(200);
 		}
+		return result;
+	}
+	
+	@RequestMapping("logout")
+	public ModelAndView logout(HttpSession httpSession) {
+		ModelAndView model = new ModelAndView();
+		httpSession.setAttribute("managerSession", null);
+		model.setViewName("manager/login");
 		return model;
 	}
-
-	@RequestMapping("add_manager")
-	public ModelAndView addManager(ManagerEntity managerEntity, HttpSession httpSession) {
-		ModelAndView model = new ModelAndView();
-		ManagerEntity manager = (ManagerEntity) httpSession.getAttribute("managerSession");
+	
+	@RequestMapping(value="add_manager",method=RequestMethod.POST)
+	public @ResponseBody Result addManager(ManagerEntity managerEntity,HttpSession httpSesion){
+		Result result = new Result();
 		IManagerService managerService = new ManagerService();
-		boolean ok = managerService.addManager(managerEntity);
-
-		return model;
+		if(managerService.addManager(managerEntity))
+			result.setCode(200);
+		else result.setCode(500);	
+		return result;
 	}
 
 	@RequestMapping("modify_manager")
 	public @ResponseBody Result modifyManager(ManagerEntity managerEntity, HttpSession httpSession) {
 		Result result = new Result();
 		IManagerService managerService = new ManagerService();
-		ManagerEntity manager = (ManagerEntity) httpSession.getAttribute("managerSession");
-		managerEntity.setManagerId(managerEntity.getManagerId());
 		boolean ok = managerService.modifyManager(managerEntity);
-		if (ok) {
+		if(ok) result.setCode(200);
+		else result.setCode(500);
+		return result;
+	}
+	
+	@RequestMapping("modify_agent")
+	public @ResponseBody Result modifyAgent(AgentEntity agentEntity, HttpSession httpSession) {
+		Result result = new Result();
+		IAgentService agentService = new AgentService();
+		boolean ok = agentService.modifyAgent(agentEntity);
+		if (ok)
 			result.setCode(200);
-			result.setManagerEntity(manager);
-		} else {
-			result.setCode(500);
-		}
+	    else result.setCode(500);
+		return result;
+	}
+	
+	@RequestMapping("modify_user")
+	public @ResponseBody Result modifyUser(UserEntity userEntity, HttpSession httpSession) {
+		Result result = new Result();
+		IUserService userService = new UserService();
+		boolean ok = userService.modify(userEntity);
+		if (ok)
+			result.setCode(200);
+	    else result.setCode(500);
 		return result;
 	}
 	
@@ -135,6 +166,17 @@ public class ManageController {
 		}
 		else result.setCode(500);
 		result.setAgentEntity(agentEntity);
+		return result;
+	}
+	
+	@RequestMapping(value="add_agent",method=RequestMethod.POST)
+	public @ResponseBody Result addAgent(AgentEntity agentEntity,HttpSession httpSesion){
+		Result result = new Result();
+		System.out.println("this" + agentEntity);
+		IAgentService agentService = new AgentService();
+		if(agentService.addAgent(agentEntity))
+			result.setCode(200);
+		else result.setCode(500);	
 		return result;
 	}
 	

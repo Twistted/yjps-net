@@ -64,7 +64,7 @@ public class AgentController {
 		return model; 
 	}
 	
-	@RequestMapping("register")
+	/*@RequestMapping("register")
 	public ModelAndView register(AgentEntity agentEntity,HttpSession httpSession){
 		ModelAndView model = new ModelAndView();
 		IAgentService agentService = new AgentService();
@@ -75,6 +75,14 @@ public class AgentController {
 		}
 		else model.setViewName("agent/login");
 		return model;
+	}*/
+	
+	@RequestMapping(value="delete_house",method=RequestMethod.POST)
+	public @ResponseBody Result deleteHose(HouseEntity houseEntity,HttpSession httpSession){
+		IHouseService houseService = new HouseService();
+		if(houseService.delete(houseEntity.getHouseId()))
+			return new Result(200);
+		else return new Result(500);
 	}
 	
 	@RequestMapping(value="add_house", method=RequestMethod.POST)

@@ -89,7 +89,6 @@ public class HouseController {
 				System.out.println(agentService);
 				result.setAgentEntity(agentEntity);
 				
-				
 			} else {
 				System.out.println("Interest Failure");
 			}
