@@ -24,16 +24,14 @@ body{
 .con-box .list-head .view-type{
 	float: left;
 }
-.con-box .list-head .view-type .modeshow .l-show{
-	
+.onshow{
+	color: #009de8;
 }
 .con-box .list-head .view-type span{
 	font-size:14px;
 	margin-right:20px;
 	cursor:pointer;
 	line-height: 50px;
-	color:#009de8;
-
 }
 .con-box .list-head .view-type .modeshows{
 	float:left;
@@ -248,10 +246,10 @@ img{
 }
 .fang05-ex{
 	background: #fff9f1;
-	height: 23px;
+	height: 25px;
 	display: inline-block;
 	text-align:center;
-	line-height: 23px;
+	line-height: 25px;
 	color:#a16816;
 	border:1px solid #ffa422;
 	padding:0 5px;
@@ -270,8 +268,8 @@ img{
 	border:1px solid #86c7a2;
 	background-color: #f2fff8;
 	color: #57846a;
-	height:23px;
-	line-height: 23px;
+	height:25px;
+	line-height: 25px;
 	padding:0 7px;
 	display: inline-block;
 	margin-right:6px;
@@ -280,20 +278,20 @@ img{
 .unique-ex{
 	border:1px solid #4db500;
 	width:34px;
-	height:23px;
+	height:25px;
 	display: inline-block;
 	text-align:center;
-	line-height: 23px;
+	line-height: 25px;
 	color:#588c31;
 	margin-right: 6px;
 	float: left;
 }
 .haskey-ex{
 	border:1px solid #357eac;
-	height: 23px;
+	height: 25px;
 	display: inline-block;
 	text-align:center;
-	line-height:23px;
+	line-height:25px;
 	color:#6e96af;
 	padding:0 7px;
 	margin-right: 6px;
