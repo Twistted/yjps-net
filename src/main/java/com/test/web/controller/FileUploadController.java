@@ -19,6 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.test.web.util.FileUploadUtil;
+
 @Controller
 @RequestMapping("/upload")
 public class FileUploadController {
@@ -39,14 +41,15 @@ public class FileUploadController {
      */  
     @RequestMapping(value="/file", method=RequestMethod.POST)     
     public String uploadFile(@RequestParam("fileName") String fileName,     
-            @RequestParam("clientFile") MultipartFile filedata, HttpSession session){  
+            @RequestParam("clientFile") MultipartFile fileData, HttpSession session){  
     	// 判断图片大小是否大于2M
-        if (filedata.getSize() > 2 * 1024 * 1024) {
+        if (fileData.getSize() > 2 * 1024 * 1024) {
             return "";
         }
         // 判断司机是否已存在
         // 在这里就可以对file进行处理了，可以根据自己的需求把它存到数据库或者服务器的某个文件夹
-        
+        String filePath = FileUploadUtil.saveFile(fileData);
+        System.out.println(filePath);
         return "";     
     } 
    
