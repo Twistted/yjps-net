@@ -77,7 +77,6 @@ public class AgentController {
 		return model;
 	}
 	
-	
 	@RequestMapping(value="add_house", method=RequestMethod.POST)
 	public @ResponseBody Result addHouse(HouseEntity houseEntity,HttpSession httpSession){
 		AgentEntity agent = (AgentEntity) httpSession.getAttribute("agentSession");
@@ -98,7 +97,7 @@ public class AgentController {
 		return model;
 	}
 	
-	@RequestMapping("modify_house")
+	@RequestMapping(value="modify_house",method=RequestMethod.POST)
 	public @ResponseBody Result modifyHouse(HouseEntity houseEntity,HttpSession httpSession){
 		Result result = new Result();
 		IHouseService houseService = new HouseService();
@@ -176,19 +175,23 @@ public class AgentController {
 	}
 	
 	@RequestMapping(value="list_house",method=RequestMethod.POST)
-	public @ResponseBody Result listHouse(HttpSession httpSession){
+	public @ResponseBody Result listHouse(Integer page,HttpSession httpSession){
 		Result result = new Result();
+		if( page == null || page == 0)
+			page = 1;
 		int agentId;
 		agentId = ((AgentEntity) httpSession.getAttribute("agentSession")).getAgentId();
-		List<HouseEntity> houseList = null;
+		List<HouseEntity> allHouseList,houseList;
 		IHouseService houseService = new HouseService();
-		houseList = houseService.getByAgentId(agentId);
+		houseList = houseService.getPageByAgentId(page, 3, agentId);
+		allHouseList = houseService.getByAgentId(agentId);
+		int pageSize = (int)Math.ceil(allHouseList.size()*1.0/3);
 		if(houseList == null)
 			result.setCode(500);
 		else result.setCode(200);
 		result.setHouseList(houseList);
 		result.setHouseListSize(houseList.size());
-		System.out.println(houseList.size());
+		result.setPageSize(pageSize);
 		return result;
 	}
 }

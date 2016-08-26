@@ -45,6 +45,10 @@
 		select * from house order by house_id desc limit #{offset}, #{size}
 	</select>
 	
+	<select id="queryPageByAgentId" parameterType="int" resultType="HouseEntity">
+	    select * from house where agent_id = #{agentId} order by house_id desc limit #{offset}, #{size}
+	</select>
+	
 	<select id="queryAdvertisementList" parameterType="int" resultType="HouseEntity">
 		select * from house where house_id > #{id} order by house_id limit 4
 	</select>

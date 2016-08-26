@@ -96,4 +96,30 @@ public class ManagerService implements IManagerService {
 		}
 		return managerList;
 	}
+
+	public boolean enableManager(int managerId) {
+		boolean ret = false;
+		SqlSession session = DBUtil.getSession();
+		try{
+			ManagerMapper mapper = session.getMapper(ManagerMapper.class);
+			ret = mapper.enable(managerId) > 0 ? true : false;
+			session.commit();
+		}finally{
+			DBUtil.closeSession();
+		}
+		return ret;
+	}
+
+	public boolean disableManager(int managerId) {
+		boolean ret = false;
+		SqlSession session = DBUtil.getSession();
+		try{
+			ManagerMapper mapper = session.getMapper(ManagerMapper.class);
+			ret = mapper.diaable(managerId) > 0 ? true : false;
+			session.commit();
+		}finally{
+			DBUtil.closeSession();
+		}
+		return ret;
+	}
 }

@@ -92,7 +92,33 @@ public class AgentService implements IAgentService {
 		}
 		return agent;
 	}
+	
+	private boolean enable(int agentId){
+		SqlSession session = DBUtil.getSession();
+		boolean ret = false;
+		try {
+			AgentMapper mapper = session.getMapper(AgentMapper.class);
+			if(mapper.enable(agentId) > 0)
+				ret = true;
+		} finally {
+			DBUtil.closeSession();
+		}
+		return ret;
+	}
 
+	private boolean disable(int agentId){
+		SqlSession session = DBUtil.getSession();
+		boolean ret = false;
+		try {
+			AgentMapper mapper = session.getMapper(AgentMapper.class);
+			if(mapper.disable(agentId) > 0)
+				ret = true;
+		} finally {
+			DBUtil.closeSession();
+		}
+		return ret;
+	}
+	
 	public AgentEntity getAgentById(int id) {
 		return findById(id);
 	}
@@ -128,6 +154,16 @@ public class AgentService implements IAgentService {
 	public List<AgentEntity> allAgent() {
 		// TODO Auto-generated method stub
 		return findAll();
+	}
+
+	public boolean enableAgent(int agentId) {
+		// TODO Auto-generated method stub
+		return enable(agentId);
+	}
+
+	public boolean disableAgent(int agentId) {
+		// TODO Auto-generated method stub
+		return disable(agentId);
 	}
 	
 	

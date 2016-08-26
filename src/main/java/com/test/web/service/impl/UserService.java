@@ -96,5 +96,35 @@ public class UserService implements IUserService {
 	public List<UserEntity> listUser(int page, int size) {
 		return queryPage(page, size);
 	}
+
+	public boolean enableUser(int userId) {
+		boolean ret = false;
+		SqlSession session = DBUtil.getSession();
+		try {
+			UserMapper userMapper = session.getMapper(UserMapper.class);
+			int i = userMapper.enable(userId);
+			ret = i > 0 ? true : false;
+			
+			session.commit();
+		} finally {
+			DBUtil.closeSession();
+		}
+		return false;
+	}
+
+	public boolean disableUser(int userId) {
+		boolean ret = false;
+		SqlSession session = DBUtil.getSession();
+		try {
+			UserMapper userMapper = session.getMapper(UserMapper.class);
+			int i = userMapper.disable(userId);
+			ret = i > 0 ? true : false;
+			
+			session.commit();
+		} finally {
+			DBUtil.closeSession();
+		}
+		return false;
+	}
 	
 }

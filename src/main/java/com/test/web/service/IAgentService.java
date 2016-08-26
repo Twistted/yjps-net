@@ -12,4 +12,6 @@ public interface IAgentService {
 	boolean register(AgentEntity agentEntity);
 	boolean addAgent(AgentEntity agentEntity);
 	boolean modifyAgent(AgentEntity agentEntity);
+	boolean enableAgent(int agentId);
+	boolean disableAgent(int agentId);
 }
