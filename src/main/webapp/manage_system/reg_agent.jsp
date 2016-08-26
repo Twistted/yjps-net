@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <title>成员管理</title>
+    <title>经纪人管理</title>
 
     <link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="public/css/adminSys.css">
@@ -58,7 +58,7 @@
         <input type="submit" value="跳转"  id="jump_btn" >
     </form>
 
-    <!--添加平台 -->
+    <!--添加 -->
     <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="addTitle">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -89,7 +89,7 @@
                             <label for="add_password" class="col-sm-3 control-label"><span class=".muted">*</span>密码</label>
 
                             <div class="col-sm-9">
-                                <input type="password" class="form-control" id="add_wpassword" placeholder="密码">
+                                <input type="password" class="form-control" id="add_password" placeholder="密码">
                             </div>
                         </div>
                         <div class="form-group">
@@ -107,10 +107,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="add_mail" class="col-sm-3 control-label">邮箱</label>
+                            <label for="add_email" class="col-sm-3 control-label">邮箱</label>
 
                             <div class="col-sm-9">
-                                <input type="email" class="form-control" id="add_mail" placeholder="邮箱">
+                                <input type="email" class="form-control" id="add_email" placeholder="邮箱">
                             </div>
                         </div>
                         <div class="form-group">
@@ -157,62 +157,101 @@
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="setPlatform" tabindex="-1" role="dialog" aria-labelledby="setPlaftormTitle">
+    <!--修改-->
+    <div class="modal fade" id="set" tabindex="-1" role="dialog" aria-labelledby="setTitle">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="setPlatformTitle">修改平台配置</h4>
+                    <h4 class="modal-title" id="setPlatformTitle">修改信息</h4>
                 </div>
 
                 <div class="modal-body">
                     <form class="form-horizontal">
-                        <div class="form-group">
-                            <label for="set_platform_id" class="col-sm-3 control-label"><span class=".muted">*</span>平台id</label>
+                    	<div class="form-group" style="display:none">
+                            <label for="set_id" class="col-sm-3 control-label">ID</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="set_platform_id" placeholder="平台id"
-                                       value="1" readonly>
+                                <input type="text" class="form-control" id="set_id" placeholder="ID">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="set_original_id" class="col-sm-3 control-label"><span class=".muted">*</span>原始ID</label>
+                            <label for="set_account" class="col-sm-3 control-label"><span class=".muted">*</span>账户名称</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="set_original_id" placeholder="原始ID">
+                                <input type="text" class="form-control" id="set_account" placeholder="账户名称">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="set_wechat_appid" class="col-sm-3 control-label">开发者ID</label>
+                            <label for="set_name" class="col-sm-3 control-label"><span class=".muted">*</span>姓名</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="set_wechat_appid" placeholder="开发者ID">
+                                <input type="text" class="form-control" id="set_name" placeholder="姓名">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="set_wechat_appsecret" class="col-sm-3 control-label">开发者密钥</label>
+                            <label for="set_password" class="col-sm-3 control-label"><span class=".muted">*</span>密码</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="set_wechat_appsecret" placeholder="开发者密钥">
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="set_wechat_account_id" class="col-sm-3 control-label">微信号</label>
-
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="set_wechat_account_id" placeholder="微信号">
+                                <input type="password" class="form-control" id="set_password" placeholder="密码">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="set_wechat_name" class="col-sm-3 control-label">微信名称</label>
+                            <label for="set_age" class="col-sm-3 control-label">年龄</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="set_wechat_name" placeholder="微信名称">
+                                <input type="text" class="form-control" id="set_age" placeholder="年龄">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_sex" class="col-sm-3 control-label">性别</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="set_sex" placeholder="性别">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_email" class="col-sm-3 control-label">邮箱</label>
+
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control" id="set_email" placeholder="邮箱">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_phone" class="col-sm-3 control-label">联系方式</label>
+
+                            <div class="col-sm-9">
+                                <input type="tel" class="form-control" id="set_phone" placeholder="联系方式">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_year" class="col-sm-3 control-label">入行年份</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="set_year" placeholder="入行年份">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_company" class="col-sm-3 control-label">公司</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="set_company" placeholder="入行年份">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_photo" class="col-sm-3 control-label">照片</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="set_photo" placeholder="照片">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_introduction" class="col-sm-3 control-label">个人介绍</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="set_introduction" placeholder="个人介绍">
                             </div>
                         </div>
                     </form>
@@ -266,6 +305,8 @@
                 var tr_id = data[i].agentId,              //ID
                 		tr_name = data[i].name,                            //姓名
                         tr_age = data[i].age,             //年龄
+                        tr_account = data[i].account,		//账户
+                        tr_password = data[i].password,
                         tr_sex = "";              //性别
                 if (data[i].sex==1) {
                 	tr_sex="男";
@@ -274,28 +315,29 @@
                 }else{
                 	tr_sex="嬲";
                 }
-                var     tr_year = data[i].yaer,  //入行年份
+                var     tr_year = data[i].year,  //入行年份
                         tr_phone = data[i].phone,            //电话
+                        tr_email = data[i].email,			//邮箱
+                        tr_introduction = data[i].introduction,//介绍
                         tr_company = data[i].company,    //公司
                         tr_photoUrl = data[i].photoUrl,             //照片地址
                         tr_state = data[i].state, //启用与否
-                        table_content = '<tr data-secret="' + tr_id + '">\
+                        table_content = '<tr data-secret="' + tr_id + '" data-account="'+ tr_account+'"data-password="'+ tr_password+'"data-email="'+tr_email+'"data-year="'+tr_year+'">\
                                     <td class="tr_name">' + tr_name + '</td>\
                                     <td class="tr_age">' + tr_age + '</td>\
                                     <td class="tr_sex">' + tr_sex + '</td>\
                                     <td class="tr_company">' + tr_company + '</td>\
+                                    <td class="tr_introduction" style="display:none">' + tr_introduction + '</td>\
                                     <td class="tr_photoUrl"><img width="80px" src="' + tr_photoUrl + '"></td>',
-
-                        table_type = '',
                         table_operation = '',
                         table_row = '';
                 if (tr_state == 2) { //被禁用
                     table_operation = '<td>\
-                                    <a class="tr_allow" style="cursor:pointer" data-toggle="modal" data-target="#allow">启用</a><a class="tr_set" style="cursor:pointer" data-toggle="modal" data-target="#set">修改</a>\
+                                    <a class="tr_allow" style="cursor:pointer" data-toggle="modal">启用</a>&nbsp;<a class="tr_set" style="cursor:pointer" data-toggle="modal" data-target="#set">修改</a>\
                                 </td>';
                 } else if (tr_state == 1) { //已启用
                     table_operation = '<td>\
-                                    <a class="tr_forbid" style="cursor:pointer" data-toggle="modal" data-target="#forbid">禁用</a>&nbsp;<a class="tr_set" style="cursor:pointer" data-toggle="modal" data-target="#set">修改</a>\
+                                    <a class="tr_forbid" style="cursor:pointer" data-toggle="modal">禁用</a>&nbsp;<a class="tr_set" style="cursor:pointer" data-toggle="modal" data-target="#set">修改</a>\
                                 </td>';
                 } else {
                     table_state = '<td>你谁啊</td>';
@@ -303,7 +345,7 @@
                 }
                 table_row = table_content + '<td class="tr_phone">'+tr_phone+'</td>' + table_operation + '</tr>';
                 $('#platform_config .table tbody').append(table_row);
-                //btnEvent();
+                btnEvent();
 
             }
         }
@@ -322,13 +364,22 @@
         });
 
         $('#sure-add').click(function () {
+        	var sexs = $('#add_sex').val();
+        	if (sexs=="男")
+        	 {
+        	 	sexs="1";
+        	 }else if(sexs=="女"){
+        	 	sexs="2";
+        	 }else{
+        	 	sexs="3"
+        	 }
             var addVal = {
                 account: $('#add_account').val(),
                 name: $('#add_name').val(),
                 password: $('#add_password').val(),
                 age: $('#add_password').val()||0,
-                sex: $('#add_sex').val()||1,
-                email: $('#add_mail').val()||"",
+                sex: sexs,
+                email: $('#add_email').val()||"",
                 phone: $('#add_phone').val()||"",
                 introduction: $('#add_introduction').val()||"宋吉吉是傻*",
                 company: $('#add_company').val()||"四川华迪公司",
@@ -340,49 +391,80 @@
 
         var btnEvent = function () {
             //修改,填充表单
-            $('.tr_setPlatform').unbind().click(function () {
+            $('.tr_set').unbind().click(function () {
                 var set_row = $(this).parent('td').parent('tr'),
-                        set_platform_id = set_row.children('.tr_platform_id').text(),
-                        set_original_id = set_row.children('.tr_original_id').text(),
-                        set_wechat_appid = set_row.children('.tr_wechat_appid').text(),
-                        set_wechat_appsecret = set_row.attr('data-secret'),
-                        set_wechat_name = set_row.children('.tr_wechat_name').text(),
-                        set_wechat_account_id = set_row.children('.tr_wechat_account_id').text();
-                $('#set_platform_id').val(set_platform_id);
-                $('#set_original_id').val(set_original_id);
-                $('#set_wechat_appid').val(set_wechat_appid);
-                $('#set_wechat_appsecret').val(set_wechat_appsecret);
-                $('#set_wechat_name').val(set_wechat_name);
-                $('#set_wechat_account_id').val(set_wechat_account_id);
+                id = set_row.attr('data-secret'),
+                account =  set_row.attr('data-account'),
+                name = set_row.children('.tr_name').text(),
+                password = set_row.attr('data-password'),
+                age = set_row.children('.tr_age').text(),
+                sex = set_row.children('.tr_sex').text(),
+                email = set_row.attr('data-email'),
+                phone = set_row.children('.tr_phone').text(),
+                introduction = set_row.children('.tr_introduction').text(),
+                company = set_row.children('.tr_company').text(),
+                year = set_row.attr('data-year'),
+                photoUrl = set_row.children('.tr_photoUrl').children().attr('src');
+                $('#set_id').val(id);
+                $('#set_account').val(account);
+                $('#set_name').val(name);
+                $('#set_password').val(password);
+                $('#set_age').val(age);
+                $('#set_sex').val(sex);
+                $('#set_email').val(email);
+                $('#set_phone').val(phone);
+                $('#set_introduction').val(introduction);
+                $('#set_company').val(company);
+                $('#set_year').val(year);
+                $('#set_photo').val(photoUrl);
             });
 
-            $('#sure-setPlatform').unbind().click(function () {
+            $('#sure-set').unbind().click(function () {
+            	var sexs = $('#set_sex').val();
+	        	if (sexs=="男")
+	        	 {
+	        	 	sexs="1";
+	        	 }else if(sexs=="女"){
+	        	 	sexs="2";
+	        	 }else{
+	        	 	sexs="3"
+	        	 }
                 var setPlatformVal = {
-                    pid: $('#set_platform_id').val(),
-                    original_id: $('#set_original_id').val(),
-                    wechat_appid: $('#set_wechat_appid').val(),
-                    wechat_appsecret: $('#set_wechat_appsecret').val(),
-                    wechat_name: $('#set_wechat_name').val(),
-                    wechat_account_id: $('#set_wechat_account_id').val()
+                    agentId: $('#set_id').val(),
+                    account:$('#set_account').val(),
+                    password:$('#set_password').val(),
+                    name:$('#set_name').val(),
+                    age:$('#set_age').val()||0,
+                    sex:sexs,
+                    phone:$('#set_phone').val()||"",
+                    email:$('#set_email').val()||"",
+                    photoUrl:$('#set_photo').val()||"/public/img/logo.jpg",
+                    company:$('#set_company').val()||"四川华迪公司",
+                    introduction:$('#set_introduction').val()||"宋吉吉是傻*",
+                    year:$('#set_year').val()||""
                 };
-                postEvent('/Operation/Platform/setPlatform', setPlatformVal);
+                postEvent('/manage/modify_agent', setPlatformVal);
             });
-
-            $('.switchPID').unbind().click(function(event) {
-                var pid = $(this).parent().siblings('.tr_platform_id').text();
-
-                $.post('/Operation/index/switchPID',
-                    {pid: pid}, 
-                    function(data) {
-                        var dataobj = $.parseJSON(data);
-                        if(dataobj.code === 1) {
-                            top.location.reload();
-                        } else {
-                            alert(dataobj.tips);
-                        }
-                });
+			
+			$('.tr_forbid').unbind().click(function () {
+        		var set_row = $(this).parent('td').parent('tr'),
+                ids = set_row.attr('data-secret');
+                var setPlatformVal={
+                	id:ids
+                }
+                postEvent('/manage/disable_agent', setPlatformVal);
+            });
+            $('.tr_allow').unbind().click(function () {
+        		var set_row = $(this).parent('td').parent('tr'),
+                ids = set_row.attr('data-secret');
+                var setPlatformVal={
+                	id:ids
+                }
+                postEvent('/manage/enable_agent', setPlatformVal);
             });
         }
+
+        
         
 
         var postEvent = function (url, obj) {

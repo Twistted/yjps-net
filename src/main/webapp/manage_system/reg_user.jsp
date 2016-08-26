@@ -22,7 +22,7 @@
     <li><a href="#">系统管理</a></li>
     <li class="active">用户管理</li>
 </ol>
-<div id="reg_manage">
+<div id="platform_config">
     <form class="search-box" id="searchbox" onsubmit="return false">
         <input type="search" placeholder="请输入搜索内容" id="search_input">
         <span class="glyphicon glyphicon-search"></span>
@@ -32,125 +32,257 @@
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>用户名</th>
-            <th>昵称</th>
-            <th>学校</th>
-            <th>创建时间</th>
-            <th>
-                <select id="regStatus">
-                    <option value="">全部</option>
-                    <option value="0">待审核</option>
-                    <option value="1">已通过</option>
-                    <option value="-1">已拒绝</option>
-                </select>
-            </th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>照片</th>
+            <th>联系方式</th>
             <th>操作</th>
         </tr>
         </thead>
         <tbody>
-        <!--   <tr>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>
-                  <a href="javascript:void(0)">通过</a>
-                  <a href="javascript:void(0)">拒绝</a>
-              </td>
 
-          </tr> -->
 
         </tbody>
 
     </table>
+    <div class="btn-group" style="display:none">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
+            添加用户
+        </button>
+    </div>
     <form class="search-box" id="jumpbox" onsubmit="return false">
         <input type="search" placeholder="请输入跳转页码" id="jump_input">
         <span class="glyphicon glyphicon-search"></span>
         <input type="submit" value="跳转"  id="jump_btn" >
     </form>
+
+    <!--添加 -->
+    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="addTitle">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="addPlatformTitle">添加用户</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="add_account" class="col-sm-3 control-label"><span class=".muted">*</span>账户名称</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="add_account" placeholder="账户名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="add_name" class="col-sm-3 control-label"><span class=".muted">*</span>姓名</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="add_name" placeholder="姓名">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="add_password" class="col-sm-3 control-label"><span class=".muted">*</span>密码</label>
+
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" id="add_password" placeholder="密码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="add_age" class="col-sm-3 control-label">年龄</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="add_age" placeholder="年龄">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="add_sex" class="col-sm-3 control-label">性别</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="add_sex" placeholder="性别">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="add_contact" class="col-sm-3 control-label">联系方式</label>
+
+                            <div class="col-sm-9">
+                                <input type="tel" class="form-control" id="add_contact" placeholder="联系方式">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="add_photo" class="col-sm-3 control-label">照片</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="add_photo" placeholder="照片">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="sure-add">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--修改-->
+    <div class="modal fade" id="set" tabindex="-1" role="dialog" aria-labelledby="setTitle">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="setPlatformTitle">修改信息</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                    	<div class="form-group" style="display:none">
+                            <label for="set_id" class="col-sm-3 control-label">ID</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="set_id" placeholder="ID">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_account" class="col-sm-3 control-label"><span class=".muted">*</span>账户名称</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="set_account" placeholder="账户名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_name" class="col-sm-3 control-label"><span class=".muted">*</span>姓名</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="set_name" placeholder="姓名">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_password" class="col-sm-3 control-label"><span class=".muted">*</span>密码</label>
+
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" id="set_password" placeholder="密码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_age" class="col-sm-3 control-label">年龄</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="set_age" placeholder="年龄">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_sex" class="col-sm-3 control-label">性别</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="set_sex" placeholder="性别">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_contact" class="col-sm-3 control-label">联系方式</label>
+
+                            <div class="col-sm-9">
+                                <input type="tel" class="form-control" id="set_contact" placeholder="联系方式">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_photo" class="col-sm-3 control-label">照片</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="set_photo" placeholder="照片">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="sure-set">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="text-center" id="page"></div>
 </div>
 <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 
 <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="/Public/static/laypage/js/laypage.js"></script>
+<script src="/public/js/laypage.js"></script>
 <script>
+
     $(function () {
-        var cur_keyword='';
-        var cur_page = 1, cur_status = '';
-        var reset_tr_id=-1;
-        var del_tr_id=-1;
-        var pnode; 
+        var cur_page = 1;
+	        var cur_keyword='';
+	        var cur_totalpage=9999;
         //分页
-        function fetchRegData(curr,status,keyword) {
-            $.getJSON('/Operation/Operator/getOperator', {
+        var fetchConfigData = function (curr) {
+            $.post('/manage/list_user', {
                 page: curr || 1,
-                type: status || '',
-                keyword:keyword||'',
             }, function (res) {
                 createTable(res);
-                cur_page = curr;
+                cur_totalpage = res.pageSize;
                 //显示分页
                 laypage({
                     cont: 'page', //分页容器
-                    pages: res.total_page, //总页数
+                    pages: cur_totalpage, //总页数
                     curr: curr || 1, //当前页
                     jump: function (obj, first) { //分页后的回调，点击跳页触发函数自身，并传递当前页：obj.curr
                         //一定要加此判断，否则初始时会无限刷新
                         if (!first) {
-                            fetchRegData(obj.curr, status,cur_keyword);
+                            fetchConfigData(obj.curr);
                         }
                     }
                 });
-            });
+            },"json");
         };
-
         //加载表格
         var createTable = function (res) {
-            var data = res.data;
-            $('#reg_manage .table tbody').empty();
+            var data = res.userList;
+            console.log(data);
+            $('#platform_config .table tbody').empty();
             for (var i in data) {
-                var tr_id = data[i].id,
-                        tr_username = data[i].username,
-                        tr_nickname = data[i].nickname,
-                        tr_schoolname = data[i].schoolname,
-                        tr_create_at = data[i].create_at,
-                        tr_type = data[i].type,
+                var tr_id = data[i].userId,              //ID
+                		tr_name = data[i].name,                            //姓名
+                        tr_age = data[i].age,             //年龄
+                        tr_account = data[i].account,		//账户
+                        tr_password = data[i].password,
+                        tr_sex = "";              //性别
+                if (data[i].sex==1) {
+                	tr_sex="男";
+                }else if(data[i].sex==2){
+                	tr_sex="女";
+                }else{
+                	tr_sex="嬲";
+                }
+                var     tr_contact = data[i].contact,            //电话
+                        tr_photoUrl = data[i].photoUrl,             //照片地址
+                        tr_state = data[i].state, //启用与否
+                        table_content = '<tr data-secret="' + tr_id + '" data-account="'+ tr_account+'"data-password="'+ tr_password+'">\
+                                    <td class="tr_name">' + tr_name + '</td>\
+                                    <td class="tr_age">' + tr_age + '</td>\
+                                    <td class="tr_sex">' + tr_sex + '</td>\
+                                    <td class="tr_photoUrl"><img width="80px" src="' + tr_photoUrl + '"></td>',
                         table_operation = '',
-                        table_content = '<tr data-oid="' + tr_id + '">\
-                                <td class="tr_username">' + tr_username + '</td>\
-                                <td  class="tr_nickname">' + tr_nickname + '</td>\
-                                <td class="tr_schoolname">' + tr_schoolname + '</td>\
-                                <td class="tr_create_at">' + tr_create_at + '</td>';
-
-                if (tr_type === '0') {
-                    tr_type = '<td>未审核</td>';
+                        table_row = '';
+                if (tr_state == 2) { //被禁用
                     table_operation = '<td>\
-                                <a class="tr_pass" href="javascript:void(0)">通过</a>\
-                                <a class="tr_reject" href="javascript:void(0)">拒绝</a>\
-                            </td>';
-                } else if (tr_type === '1') {
-                    tr_type = '<td>已通过</td>';
+                                    <a class="tr_allow" style="cursor:pointer" data-toggle="modal">恢复</a>&nbsp;<a class="tr_set" style="cursor:pointer" data-toggle="modal" data-target="#set">修改</a>\
+                                </td>';
+                } else if (tr_state == 1) { //已启用
                     table_operation = '<td>\
-                                <a class="tr_reset" href="javascript:void(0)">重置密码</a>\
-                                <a class="tr_reject" href="javascript:void(0)">拒绝</a>\
-                            </td>';
-                } else if (tr_type === '-1') {
-                    tr_type = '<td>已拒绝</td>';
-                    table_operation = '<td>\
-                                <a class="tr_pass" href="javascript:void(0)">通过</a>\
-                                <a class="tr_delete" href="javascript:void(0)">彻底删除</a>\
-                            </td>';
-                } else if (tr_type === '2') {
-                    tr_type = '<td>管理员</td>';
-                    table_operation = '<td>\
-                            </td>';
+                                    <a class="tr_forbid" style="cursor:pointer" data-toggle="modal">删除</a>&nbsp;<a class="tr_set" style="cursor:pointer" data-toggle="modal" data-target="#set">修改</a>\
+                                </td>';
+                } else {
+                    table_state = '<td>你谁啊</td>';
+                    table_operation = '<td></td>';
                 }
-                else {
-                    tr_type = '<td>不明状况=。=</td>';
-                }
-                ;
-                table_row = table_content + tr_type + table_operation + '</tr>';
-                $('#reg_manage .table tbody').append(table_row);
+                table_row = table_content + '<td class="tr_contact">'+tr_contact+'</td>' + table_operation + '</tr>';
+                $('#platform_config .table tbody').append(table_row);
                 btnEvent();
             }
         }
@@ -158,7 +290,7 @@
         $('#platform_config #jump_btn').click(function () {
             var cpage=$('#jump_input').val();
             if (cpage<=cur_totalpage) {
-                fetchConfigData(cpage,cur_keyword);
+                fetchConfigData(cpage);
                 cur_page=cpage;
             }
             else
@@ -167,133 +299,114 @@
             }
             $('#jump_input').val('');
         });
-        
-        $('#reg_manage #search_btn').click(function () {
-            cur_keyword=$('#search_input').val();
-            fetchRegData(1,cur_status,cur_keyword);
+
+        $('#sure-add').click(function () {
+        	var sexs = $('#add_sex').val();
+        	if (sexs=="男")
+        	 {
+        	 	sexs="1";
+        	 }else if(sexs=="女"){
+        	 	sexs="2";
+        	 }else{
+        	 	sexs="3"
+        	 }
+            var addVal = {
+                account: $('#add_account').val(),
+                name: $('#add_name').val(),
+                password: $('#add_password').val(),
+                age: $('#add_password').val()||0,
+                sex: sexs,
+                contact: $('#add_contact').val()||"",
+                photoUrl:$('#add_photo').val()||"/public/img/logo.jpg"
+            };
+            postEvent('/manage/add_user', addVal);
         });
 
         var btnEvent = function () {
-            //通过
-            $('.tr_pass').unbind().click(function () {
-                var tr_id = $(this).parent('td').parent('tr').attr('data-oid'),
-                        pass_val = {
-                            oid: tr_id,
-                            type: 1
-                        }
-                postEvent('/Operation/Operator/setOperator', pass_val);
-            })
-
-            //拒绝
-            $('.tr_reject').unbind().click(function () {
-                var tr_id = $(this).parent('td').parent('tr').attr('data-oid'),
-                        reject_val = {
-                            oid: tr_id,
-                            type: -1
-                        }
-                postEvent('/Operation/Operator/setOperator', reject_val);
-            })
-            //重置
-            $('.tr_reset').unbind().click(function () {
-                reset_tr_id = $(this).parent('td').parent('tr').attr('data-oid');
-                pnode = $(this).parent('td').parent('tr'); 
-                $('.this_user').html(pnode.children(".tr_username").text());
-                $('.this_nick').html(pnode.children(".tr_nickname").text());
-                $('.this_sch').html(pnode.children(".tr_schoolname").text());
-                $('.reset-tip').fadeIn(200);
-            })
-            $('#reset-btn-default').unbind().click(function () {
-                $('.reset-tip').fadeOut(200);
-            })
-            $('#reset-btn-primary').unbind().click(function () {
-                        reset_val = {
-                            oid: reset_tr_id
-                        }
-                postEvent('/Operation/Operator/resetOperator', reset_val);
-                $('.reset-tip').fadeOut(200);
-            })
-            //删除
-            $('.tr_delete').unbind().click(function () {
-                del_tr_id = $(this).parent('td').parent('tr').attr('data-oid');
-                pnode = $(this).parent('td').parent('tr'); 
-                $('.this_user').html(pnode.children(".tr_username").text());
-                $('.this_nick').html(pnode.children(".tr_nickname").text());
-                $('.this_sch').html(pnode.children(".tr_schoolname").text());
-                $('.del-tip').fadeIn(200);
-            })
-            $('#del-btn-default').unbind().click(function () {
-                $('.del-tip').fadeOut(200);
-            })
-            $('#del-btn-primary').unbind().click(function () { 
-                        del_val = {
-                            oid: del_tr_id
-                        }
-                postEvent('/Operation/Operator/delOperator', del_val);
-                $('.del-tip').fadeOut(200);
-            })
-
-            $('#regStatus').unbind().change(function (event) {
-                var regStatus = $(this).val();
-                cur_status = regStatus;
-                fetchRegData(1, regStatus);
+            //修改,填充表单
+            $('.tr_set').unbind().click(function () {
+                var set_row = $(this).parent('td').parent('tr'),
+                id = set_row.attr('data-secret'),
+                account =  set_row.attr('data-account'),
+                name = set_row.children('.tr_name').text(),
+                password = set_row.attr('data-password'),
+                age = set_row.children('.tr_age').text(),
+                sex = set_row.children('.tr_sex').text(),
+                contact = set_row.children('.tr_contact').text(),
+                photoUrl = set_row.children('.tr_photoUrl').children().attr('src');
+                $('#set_id').val(id);
+                $('#set_account').val(account);
+                $('#set_name').val(name);
+                $('#set_password').val(password);
+                $('#set_age').val(age);
+                $('#set_sex').val(sex);
+                $('#set_contact').val(contact);
+                $('#set_photo').val(photoUrl);
             });
 
+            $('#sure-set').unbind().click(function () {
+            	var sexs = $('#set_sex').val();
+	        	if (sexs=="男")
+	        	 {
+	        	 	sexs="1";
+	        	 }else if(sexs=="女"){
+	        	 	sexs="2";
+	        	 }else{
+	        	 	sexs="3"
+	        	 }
+                var setPlatformVal = {
+                    userId: $('#set_id').val(),
+                    account:$('#set_account').val(),
+                    password:$('#set_password').val(),
+                    name:$('#set_name').val(),
+                    age:$('#set_age').val()||0,
+                    sex:sexs,
+                    timestamp:1472177080000,
+                    contact:$('#set_contact').val()||"",
+                    photoUrl:$('#set_photo').val()||"/public/img/logo.jpg"
+                };
+                console.log(setPlatformVal);
+                postEvent('/manage/modify_user', setPlatformVal);
+            });
+			
+			$('.tr_forbid').unbind().click(function () {
+        		var set_row = $(this).parent('td').parent('tr'),
+                ids = set_row.attr('data-secret');
+                var setPlatformVal={
+                	id:ids
+                }
+                postEvent('/manage/disable_user', setPlatformVal);
+            });
+            $('.tr_allow').unbind().click(function () {
+        		var set_row = $(this).parent('td').parent('tr'),
+                ids = set_row.attr('data-secret');
+                var setPlatformVal={
+                	id:ids
+                }
+                postEvent('/manage/enable_user', setPlatformVal);
+            });
         }
+
+        
+        
 
         var postEvent = function (url, obj) {
             $.post(url, obj, function (jsondata) {
-                var data = $.parseJSON(jsondata);
-                if (data.status === 1) {
-                    alert(data.tips);
-                    fetchRegData(1, cur_status);
+                var data = jsondata;
+                if (data.code == 200) {
+                    alert('操作成功');
+                    $('#add').modal('hide');
+                    $('#set').modal('hide');
+                    fetchConfigData(cur_page);
                 } else {
-                    alert(data.tips);
+                    alert("输入有误噢~");
                 }
-            });
+            },"json");
         }
 
-        fetchRegData(1);
+        fetchConfigData(1);
+        btnEvent();
     });
 </script>
-<div class="reset-tip" style="display:none;top:200px;left:200px;position:absolute;">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">亲爱的，你真的要重置他的密码么~</h4>
-            </div>
-            <div class="modal-body">
-                <form action="" method="post">
-                    <div class="form-group">
-                        <label for="title" class="control-label">用户名：<p class="this_user"></p>昵称：<p class="this_nick"></p>学校：<p class="this_sch"></p></label>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" id="reset-btn-default">取消</button>
-                <button type="button" class="btn btn-primary" onclick="" id="reset-btn-primary">确认</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="del-tip" style="display:none;top:200px;left:200px;position:absolute;">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">亲爱的你真的要删除这个小伙伴么~</h4>
-            </div>
-            <div class="modal-body">
-                <form action="" method="post">
-                    <div class="form-group">
-                        <label for="title" class="control-label">用户名：<p class="this_user"></p>昵称：<p class="this_nick"></p>学校：<p class="this_sch"></p></label>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" id="del-btn-default">取消</button>
-                <button type="button" class="btn btn-primary" onclick="" id="del-btn-primary">确认</button>
-            </div>
-        </div>
-    </div>
-</div>
 </body>
 </html>
