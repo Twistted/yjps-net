@@ -25,6 +25,7 @@
    	 <link rel="shortcut icon" type="image/x-icon" href="#" />
      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
      <script src="../public/js/manager.min.js"></script>
+     <script src="../public/js/laypage.min.js"></script>
     
  
 </head>
@@ -430,15 +431,14 @@
 			<div class="title">
 				我的发布</div>
 				<div class="check_wrap">
-					<form class="navbar-form navbar-left" role="search">
-						<div class="form-group">
-							<input id="table_search"type="text" class="form-control field" placeholder="请输入搜索条件">
+					 
+						<div class="form-group"  style="display:block;">
+							<input id="table_search"type="text" class="form-control field" placeholder="请输入搜索条件" style="width:300px;display:inline-block;">
 							<button type="submit" class="btn btn-default" id="search-bt">搜索</button>
 						</div>
 						
-					</form>
 					<div class="check_list">
-							<table id="table" style="display:block;">
+							<table id="table_list" style="display:block;">
 								<thead>
 									<tr>
 										<th style="width:100px;">房源编号</th>
@@ -446,6 +446,7 @@
 										<th style="width:200px;">小区户型</th>
 										<th style="width:100px;">首付</th>
 										<th style="width:150px;">总价</th>
+										<th style="width:100px;">操作</th>
 
 									</tr>
 
@@ -455,31 +456,28 @@
 									<td>3</td>
 									<td>3  </td>
 									<td>34</td>
-									<td>Unemployed <span class="modify_btn" style="float:right;">修改</span></td>
+									<td>Unemployed </td>
+									<td><span class="modify_btn">修改</span></td>
 								</tr>
 								<tr>
 									<td>1</td>
 									<td>3</td>
 									<td>3  </td>
 									<td>34</td>
-									<td>Unemployed <span class="modify_btn" style="float:right;">修改</span></td>
+									<td>Unemployed </td>
+									<td><span class="modify_btn">修改</span></td>
 								</tr>
-								<tr>
+									<tr>
 									<td>1</td>
 									<td>3</td>
 									<td>3  </td>
 									<td>34</td>
-									<td>Unemployed <span class="modify_btn" style="float:right;">修改</span></td>
+									<td>Unemployed </td>
+									<td><span class="modify_btn">修改</span></td>
 								</tr>
 							</table>
-							 
- 
- 
-							<script type="text/javascript">
-							$(function() {
-								$("#table").slimtable();
-							});
-							</script>
+							<div class="page" id="page"></div>
+						 
 					</div>
 				</div>
 			</div>		 
