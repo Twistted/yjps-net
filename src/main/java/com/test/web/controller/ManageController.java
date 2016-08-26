@@ -129,7 +129,7 @@ public class ManageController {
 		if (managerList == null || managerList.isEmpty()) 
 			result.setCode(500);
 		else result.setCode(200);
-		result.setManagerList(allManagerList);
+		result.setManagerList(managerList);
 		result.setPageSize(pageSize);
 		return result;
 	}
@@ -153,7 +153,7 @@ public class ManageController {
 			result.setCode(500);
 		else result.setCode(200);
 		result.setPageSize(pageSize);
-		result.setUserList(allUserList);
+		result.setUserList(userList);
 		return result;
 
 	}
@@ -176,7 +176,7 @@ public class ManageController {
 		if(agentList == null || agentList.isEmpty())
 			result.setCode(500);
 		else result.setCode(200);
-		result.setAgentList(allAgentList);
+		result.setAgentList(agentList);
 		result.setPageSize(pageSize);
 		return result;
 	}

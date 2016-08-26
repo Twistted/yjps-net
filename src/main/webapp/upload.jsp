@@ -11,7 +11,7 @@
         <title>file upload test</title>  
     </head>  
     <body>  
-        <form method="post" action="<%=path %>/fileUpload/uploadFile" enctype="multipart/form-data">  
+        <form method="post" action="<%=path %>/upload/file" enctype="multipart/form-data">  
             文件名: <input type="text" name="fileName" /><br/>  
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
             <input type="file" name="clientFile" /><br/>  

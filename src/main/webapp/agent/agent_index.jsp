@@ -1,6 +1,6 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -438,7 +438,9 @@
 						</div>
 						
 					<div class="check_list">
+
 							<table id="table_list" style="display:block;">
+
 								<thead>
 									<tr>
 										<th style="width:100px;">房源编号</th>
@@ -446,11 +448,13 @@
 										<th style="width:200px;">小区户型</th>
 										<th style="width:100px;">首付</th>
 										<th style="width:150px;">总价</th>
+
 										<th style="width:100px;">操作</th>
 
-									</tr>
 
+									</tr>
 								</thead>
+								
 								<tr>
 									<td>1</td>
 									<td>3</td>
