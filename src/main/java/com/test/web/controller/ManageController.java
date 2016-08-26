@@ -6,6 +6,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -53,11 +55,19 @@ public class ManageController {
 	}
 
 	@RequestMapping("modify_manager")
-	public ModelAndView modifyManager(ManagerEntity managerEntity, HttpSession httpSession) {
-		ModelAndView model = new ModelAndView();
+	public @ResponseBody Result modifyManager(ManagerEntity managerEntity, HttpSession httpSession) {
+		Result result = new Result();
 		IManagerService managerService = new ManagerService();
-
-		return model;
+		ManagerEntity manager = (ManagerEntity) httpSession.getAttribute("managerSession");
+		managerEntity.setManagerId(managerEntity.getManagerId());
+		boolean ok = managerService.modifyManager(managerEntity);
+		if (ok) {
+			result.setCode(200);
+			result.setManagerEntity(manager);
+		} else {
+			result.setCode(500);
+		}
+		return result;
 	}
 	
 	@RequestMapping("findManager")
@@ -102,48 +112,71 @@ public class ManageController {
 		return result;
 	}
 
-	@RequestMapping("list_manager")
-	public @ResponseBody Result listManager(Integer page, HttpSession httpSession) {
-		if (page == null || page == 0)
-			page = 1;
-		IManagerService managerService = new ManagerService();
-		List<ManagerEntity> managerList = managerService.listManager(page, 3);
-		if (managerList == null || managerList.isEmpty()) {
-			return new Result(500, managerList);
+	@RequestMapping(value="list_manager",method=RequestMethod.POST)
+	public @ResponseBody Result listManager(@RequestParam(value="page", required=false) String page, HttpSession httpSession) {
+		int pageOffset,pageSize;
+		Result result = new Result();
+		if (page == null) {
+			pageOffset = 1;
+		} else {
+			pageOffset = Integer.valueOf(page);
 		}
-		return new Result(200, managerList);
+		IManagerService managerService = new ManagerService();
+		List<ManagerEntity> managerList = managerService.listManager(pageOffset, 3);
+		List<ManagerEntity> allManagerList = managerService.findAll();
+		pageSize = (int) Math.ceil(allManagerList.size()*1.0/3);
+		
+		if (managerList == null || managerList.isEmpty()) 
+			result.setCode(500);
+		else result.setCode(200);
+		result.setManagerList(allManagerList);
+		result.setPageSize(pageSize);
+		return result;
 	}
 
-	@RequestMapping("list_user")
-	public @ResponseBody Result listUser(Integer page, HttpSession httpSession) {
+	@RequestMapping(value="list_user",method=RequestMethod.POST)
+	public @ResponseBody Result listUser(@RequestParam(value="page", required=false) String page, HttpSession httpSession) {
 		Result result = new Result();
-		if (page == null || page == 0)
-			page = 1;
+		int pageOffset,pageSize;
+		if (page == null) {
+			pageOffset = 1;
+		} else {
+			pageOffset = Integer.valueOf(page);
+		}
+		
 		IUserService userService = new UserService();
-		List<UserEntity> userList = userService.listUser(page, 3);
+		List<UserEntity> userList = userService.listUser(pageOffset, 3);
+		List<UserEntity> allUserList = userService.findAll();
+		pageSize = (int) Math.ceil(allUserList.size()*1.0/3);
+		
 		if (userList == null || userList.isEmpty())
 			result.setCode(500);
 		else result.setCode(200);
-		result.setUserList(userList);
+		result.setPageSize(pageSize);
+		result.setUserList(allUserList);
 		return result;
 
 	}
 	
-	@RequestMapping("list_agent")
-	public @ResponseBody Result listAgent(Integer page,HttpSession httpSession){
+	@RequestMapping(value="list_agent",method=RequestMethod.POST)
+	public @ResponseBody Result listAgent(@RequestParam(value="page", required=false) String page,HttpSession httpSession){
 		Result result = new Result();
-		if( page == null || page == 0)
-			page = 1;
-		List<AgentEntity> agentList;
+		int pageOffset,pageSize;
+		if (page == null) {
+			pageOffset = 1;
+		} else {
+			pageOffset = Integer.valueOf(page);
+		}
+		List<AgentEntity> agentList,allAgentList;
 		IAgentService agentService = new AgentService();
-		agentList = agentService.listAgent(page, 3);
+		agentList = agentService.listAgent(pageOffset, 3);
+		allAgentList = agentService.allAgent();
+		pageSize = (int) Math.ceil(allAgentList.size()*1.0/3);
 		if(agentList == null || agentList.isEmpty())
 			result.setCode(500);
 		else result.setCode(200);
-		result.setAgentList(agentList);
-		for(int i = 0;i < agentList.size();i++){
-			System.out.println(agentList.get(i));
-		}
+		result.setAgentList(allAgentList);
+		result.setPageSize(pageSize);
 		return result;
 	}
 
