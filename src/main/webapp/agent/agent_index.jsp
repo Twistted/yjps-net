@@ -25,7 +25,7 @@
    	 <link rel="shortcut icon" type="image/x-icon" href="#" />
      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
      <script src="../public/js/manager.min.js"></script>
-     <script src="../public/js/laypage.min.js"></script>
+     <script src="../public/js/laypage.js"></script>
     
  
 </head>
@@ -440,7 +440,6 @@
 					<div class="check_list">
 
 							<table id="table_list" style="display:block;">
-
 								<thead>
 									<tr>
 										<th style="width:100px;">房源编号</th>
@@ -448,37 +447,12 @@
 										<th style="width:200px;">小区户型</th>
 										<th style="width:100px;">首付</th>
 										<th style="width:150px;">总价</th>
-
 										<th style="width:100px;">操作</th>
-
-
 									</tr>
 								</thead>
-								
-								<tr>
-									<td>1</td>
-									<td>3</td>
-									<td>3  </td>
-									<td>34</td>
-									<td>Unemployed </td>
-									<td><span class="modify_btn">修改</span></td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>3</td>
-									<td>3  </td>
-									<td>34</td>
-									<td>Unemployed </td>
-									<td><span class="modify_btn">修改</span></td>
-								</tr>
-									<tr>
-									<td>1</td>
-									<td>3</td>
-									<td>3  </td>
-									<td>34</td>
-									<td>Unemployed </td>
-									<td><span class="modify_btn">修改</span></td>
-								</tr>
+								<tbody>
+									 
+								</tbody>
 							</table>
 							<div class="page" id="page"></div>
 						 
