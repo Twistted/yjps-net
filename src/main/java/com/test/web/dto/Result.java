@@ -22,6 +22,7 @@ public class Result implements Serializable {
 	private AgentEntity agentEntity;
 	private HouseEntity houseEntity;
 	private int pageSize;
+	private int houseListSize;
 	
 	public int getPageSize() {
 		return pageSize;
@@ -118,6 +119,14 @@ public class Result implements Serializable {
 
 	public void setUserEntity(UserEntity userEntity) {
 		this.userEntity = userEntity;
+	}
+
+	public int getHouseListSize() {
+		return houseListSize;
+	}
+
+	public void setHouseListSize(int houseListSize) {
+		this.houseListSize = houseListSize;
 	}
 	
 	
