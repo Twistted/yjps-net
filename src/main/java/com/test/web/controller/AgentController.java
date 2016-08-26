@@ -97,6 +97,28 @@ public class AgentController {
 		return model;
 	}
 	
+	@RequestMapping("modify_house")
+	public @ResponseBody Result modifyHouse(HouseEntity houseEntity,HttpSession httpSession){
+		Result result = new Result();
+		IHouseService houseService = new HouseService();
+		if(houseService.update(houseEntity))
+			result.setCode(200);
+		else result.setCode(500);
+		result.setHouseEntity(houseEntity);;
+		return result;
+	}
+	
+	@RequestMapping("delete_house")
+	public @ResponseBody Result deleteHouse(HouseEntity houseEntity,HttpSession httpSession){
+		Result result = new Result();
+		IHouseService houseService = new HouseService();
+		if(houseService.delete(houseEntity.getHouseId()))
+			result.setCode(200);
+		else result.setCode(500);
+		result.setHouseEntity(houseEntity);;
+		return result;
+	}
+	
 	@RequestMapping(value="modify_password", method=RequestMethod.POST) 
 	public @ResponseBody Result modifyPassword(@RequestParam("oldPassword") String oldPassword, 
 			@RequestParam("newPassword") String newPassword, HttpSession httpSession) {
@@ -149,6 +171,21 @@ public class AgentController {
 		for(int i = 0;i < agentList.size();i++){
 			System.out.println(agentList.get(i));
 		}
+		return result;
+	}
+	
+	@RequestMapping("list_house")
+	public @ResponseBody Result listHouse(HttpSession httpSession){
+		Result result = new Result();
+		int agentId;
+		agentId = ((AgentEntity) httpSession.getAttribute("agentSession")).getAgentId();
+		List<HouseEntity> houseList = null;
+		IHouseService houseService = new HouseService();
+		houseList = houseService.getByAgentId(agentId);
+		if(houseList == null)
+			result.setCode(500);
+		else result.setCode(200);
+		result.setHouseList(houseList);
 		return result;
 	}
 }

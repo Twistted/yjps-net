@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.test.web.entity.AgentEntity;
+import com.test.web.entity.HouseEntity;
 import com.test.web.entity.ManagerEntity;
 import com.test.web.entity.UserEntity;
+import com.test.web.service.impl.HouseService;
 
 public class Result implements Serializable {
 	/**
@@ -18,9 +20,27 @@ public class Result implements Serializable {
 	private List<AgentEntity> agentList;
 	private List<UserEntity> userList;
 	private AgentEntity agentEntity;
+	private HouseEntity houseEntity;
+	public HouseEntity getHouseEntity() {
+		return houseEntity;
+	}
+
+	public void setHouseEntity(HouseEntity houseEntity) {
+		this.houseEntity = houseEntity;
+	}
+
 	private ManagerEntity managerEntity;
 	private UserEntity userEntity;
+	private List<HouseEntity> houseList;
 	
+	public List<HouseEntity> getHouseList() {
+		return houseList;
+	}
+
+	public void setHouseList(List<HouseEntity> houseList) {
+		this.houseList = houseList;
+	}
+
 	public AgentEntity getAgentEntity() {
 		return agentEntity;
 	}
