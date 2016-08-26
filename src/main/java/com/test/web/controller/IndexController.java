@@ -39,7 +39,7 @@ public class IndexController {
 		model.addObject("houseList", houseList);
 		model.addObject("listSize", houseList.size());
 		model.addObject("currentPage", pageOffset);
-		model.addObject("pageSize", (allHouseList.size() / 3) + 1 );
+		model.addObject("pageSize", (Math.ceil(allHouseList.size() * 1.0 / 3)));
 		model.addObject("allHouseSize",allHouseList.size());
 		IAdvertisementService advertisementService = new AdvertisementService();
 		List<AdvertisementEntity> advertisementList = advertisementService.getAdvertisementList(4);

@@ -186,6 +186,7 @@ public class AgentController {
 			result.setCode(500);
 		else result.setCode(200);
 		result.setHouseList(houseList);
+		
 		return result;
 	}
 }
