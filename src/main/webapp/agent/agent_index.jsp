@@ -7,6 +7,7 @@
      <title>易居网_经纪人中心</title>
      <link href="../public/css/manager.css" rel="stylesheet">
      <link rel="stylesheet" href="../public/css/slimtable.css">
+      <script  type="text/javascript" src="../public/js/manager.min.js"></script>
 	 
      <!-- 新 Bootstrap 核心 CSS 文件 -->
 <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
@@ -19,12 +20,11 @@
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../public/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../public/js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="../public/js/slimtable.min.js"></script>
    	 <link rel="shortcut icon" type="image/x-icon" href="#" />
      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-     
-     <script src="../public/js/manager.min.js"></script>
+    
  
 </head>
 <body>
@@ -437,143 +437,41 @@
 						
 					</form>
 					<div class="check_list">
-							<table id="table">
+							<table id="table" style="display:block;">
 								<thead>
 									<tr>
-										<th>ID</th>
-										<th>First name</th>
-										<th>Last name</th>
-										<th>Age</th>
-										<th>Company</th>
+										<th style="width:100px;">房源编号</th>
+										<th style="width:250px;">小区名称</th>
+										<th style="width:200px;">小区户型</th>
+										<th style="width:100px;">首付</th>
+										<th style="width:150px;">总价</th>
+
 									</tr>
+
 								</thead>
 								<tr>
 									<td>1</td>
-									<td>Alisa</td>
-									<td>Smith</td>
-									<td>34</td>
-									<td>Unemployed</td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>Eamon</td>
-									<td>Jones</td>
-									<td>26</td>
-									<td>Example corp</td>
-								</tr>
-								<tr>
 									<td>3</td>
-									<td>David</td>
-									<td>Brown</td>
-									<td>22</td>
-									<td>Example corp</td>
+									<td>3  </td>
+									<td>34</td>
+									<td>Unemployed <span class="modify_btn" style="float:right;">修改</span></td>
 								</tr>
 								<tr>
-									<td>4</td>
-									<td>Joseph</td>
-									<td>Taylor</td>
-									<td>43</td>
-									<td>Example corp</td>
+									<td>1</td>
+									<td>3</td>
+									<td>3  </td>
+									<td>34</td>
+									<td>Unemployed <span class="modify_btn" style="float:right;">修改</span></td>
 								</tr>
 								<tr>
-									<td>5</td>
-									<td>Thomas</td>
-									<td>Moore</td>
-									<td>67</td>
-									<td>Nextgen corp</td>
-								</tr>
-								<tr>
-									<td>6</td>
-									<td>Daniel</td>
-									<td>White</td>
-									<td>19</td>
-									<td>Unemployed</td>
-								</tr>
-								<tr>
-									<td>7</td>
-									<td>Steven</td>
-									<td>Harris</td>
-									<td>38</td>
-									<td>Nextgen corp</td>
-								</tr>
-								<tr>
-									<td>8</td>
-									<td>Brian</td>
-									<td>Clark</td>
-									<td>82</td>
-									<td>Metalking</td>
-								</tr>
-								<tr>
-									<td>9</td>
-									<td>朱国栋</td>
-									<td>Lewis</td>
-									<td>71</td>
-									<td>Metalking</td>
-								</tr>
-								<tr>
-									<td>10</td>
-									<td>Jason</td>
-									<td>Allen</td>
-									<td>58</td>
-									<td>Example corp</td>
-								</tr>
-								<tr>
-									<td>11</td>
-									<td>Mary</td>
-									<td>Walker</td>
-									<td>32</td>
-									<td>Prevgen</td>
-								</tr>
-								<tr>
-									<td>12</td>
-									<td>Lisa</td>
-									<td>Young</td>
-									<td>33</td>
-									<td>Example corp</td>
-								</tr>
-								<tr>
-									<td>13</td>
-									<td>Nancy</td>
-									<td>King</td>
-									<td>64</td>
-									<td>Fakecorp</td>
-								</tr>
-								<tr>
-									<td>14</td>
-									<td>Brian</td>
-									<td>White</td>
-									<td>38</td>
-									<td>Prevgen</td>
-								</tr>
-								<tr>
-									<td>15</td>
-									<td>Stewen</td>
-									<td>Lewis</td>
-									<td>22</td>
-									<td>Fakecorp</td>
-								</tr>
-								<tr>
-									<td>15</td>
-									<td>Stewen</td>
-									<td>Lewis</td>
-									<td>22</td>
-									<td>Fakecorp</td>
-								</tr>
-								<tr>
-									<td>15</td>
-									<td>Stewen</td>
-									<td>Lewis</td>
-									<td>22</td>
-									<td>Fakecorp</td>
-								</tr>
-								<tr>
-									<td>15</td>
-									<td>Stewen</td>
-									<td>Lewis</td>
-									<td>22</td>
-									<td>Fakecorp</td>
+									<td>1</td>
+									<td>3</td>
+									<td>3  </td>
+									<td>34</td>
+									<td>Unemployed <span class="modify_btn" style="float:right;">修改</span></td>
 								</tr>
 							</table>
+							<button class="btn btn-default" id="testBtn">add</button>
  
  
 							<script type="text/javascript">
