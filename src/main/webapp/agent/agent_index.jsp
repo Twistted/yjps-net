@@ -438,7 +438,7 @@
 						
 					</form>
 					<div class="check_list">
-							<table id="table" style="display:block;">
+							<table id="house_list" style="display:block;">
 								<thead>
 									<tr>
 										<th style="width:100px;">房源编号</th>
@@ -446,40 +446,14 @@
 										<th style="width:200px;">小区户型</th>
 										<th style="width:100px;">首付</th>
 										<th style="width:150px;">总价</th>
-
 									</tr>
-
 								</thead>
-								<tr>
-									<td>1</td>
-									<td>3</td>
-									<td>3  </td>
-									<td>34</td>
-									<td>Unemployed <span class="modify_btn" style="float:right;">修改</span></td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>3</td>
-									<td>3  </td>
-									<td>34</td>
-									<td>Unemployed <span class="modify_btn" style="float:right;">修改</span></td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>3</td>
-									<td>3  </td>
-									<td>34</td>
-									<td>Unemployed <span class="modify_btn" style="float:right;">修改</span></td>
-								</tr>
+						 
 							</table>
 							 
  
  
-							<script type="text/javascript">
-							$(function() {
-								$("#table").slimtable();
-							});
-							</script>
+						 
 					</div>
 				</div>
 			</div>		 

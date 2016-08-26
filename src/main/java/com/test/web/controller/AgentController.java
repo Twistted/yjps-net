@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -156,7 +157,7 @@ public class AgentController {
 		return result;
 	}
 	
-	@RequestMapping("list_agent")
+	@RequestMapping(value="list_agent",method=RequestMethod.POST)
 	public @ResponseBody Result listAgent(Integer page,HttpSession httpSession){
 		Result result = new Result();
 		if( page == null || page == 0)
@@ -186,7 +187,8 @@ public class AgentController {
 			result.setCode(500);
 		else result.setCode(200);
 		result.setHouseList(houseList);
-		
+		result.setHouseListSize(houseList.size());
+		System.out.println(houseList.size());
 		return result;
 	}
 }
