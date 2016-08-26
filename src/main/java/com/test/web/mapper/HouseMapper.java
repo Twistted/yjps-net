@@ -11,6 +11,7 @@ public interface HouseMapper {
 	public HouseEntity findById(int id);
 	public List<HouseEntity> findAll();
 	public List<HouseEntity> queryPage(@Param("offset") int offset, @Param("size") int size);
+	public List<HouseEntity> queryPageByAgentId(@Param("offset") int offset, @Param("size") int size,@Param("agentId") int agentId);
     public List<HouseEntity> findByAgentId(int agentId);
 	public List<HouseEntity> queryAdvertisementList(int id);
 	public int update(HouseEntity house);

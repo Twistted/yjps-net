@@ -139,5 +139,18 @@ public class HouseService implements IHouseService {
 	public List<HouseEntity> getAllHouse() {
 		return findAll();
 	}
+
+	public List<HouseEntity> getPageByAgentId(int page, int size, int agentId) {
+		List<HouseEntity> houseList = null;
+		SqlSession session = DBUtil.getSession();
+		try {
+			HouseMapper mapper = session.getMapper(HouseMapper.class);
+			
+			houseList = mapper.queryPageByAgentId((page-1)*3, 3, agentId);
+		} finally {
+			DBUtil.closeSession();
+		}
+		return houseList;
+	}
 	
 }

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans">
 <head>
@@ -6,7 +8,6 @@
     <title>易居网络系统后台</title>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="public/css/adminSys.css">
-    <link rel="icon" href="/Public/vdoou.ico" type="image/x-icon"/>
 
 </head>
 <body>
@@ -54,16 +55,15 @@
             <li class="mainnav"><a href="javascript:void(0)" target="adminFrame">系统管理<span class="caret"></span></a>
             </li>
             <ul class="subnav">
-                <li><a href="reg_agent.html" target="adminFrame">经纪人管理</a></li>
-                <present name="isShowRegManage">
-                    <li><a href="reg_user.html" target="adminFrame">用户管理</a></li>
-                </present>
+                <li><a href="/manage_system/reg_agent.jsp" target="adminFrame">经纪人管理</a></li>
+                <li><a href="/manage_system/reg_user.jsp" target="adminFrame">用户管理</a></li>
+                <li><a href="/manage_system/reg_manage.jsp" target="adminFrame">管理员管理</a></li>
             </ul>
 
 
         </nav>
 
-        <iframe class="col-md-10 col-xs-12" id="adminFrame" src="reg_agent.html" name="adminFrame"
+        <iframe class="col-md-10 col-xs-12" id="adminFrame" src="/manage_system/reg_agent.jsp" name="adminFrame"
                 scrolling="auto"></iframe>
     </div>
 </div>
