@@ -24,6 +24,7 @@
 <script type="text/javascript" src="../public/js/slimtable.min.js"></script>
    	 <link rel="shortcut icon" type="image/x-icon" href="#" />
      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+     <script src="../public/js/manager.min.js"></script>
     
  
 </head>
@@ -471,7 +472,7 @@
 									<td>Unemployed <span class="modify_btn" style="float:right;">修改</span></td>
 								</tr>
 							</table>
-							<button class="btn btn-default" id="testBtn">add</button>
+							 
  
  
 							<script type="text/javascript">
