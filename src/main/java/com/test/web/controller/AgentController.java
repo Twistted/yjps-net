@@ -174,7 +174,7 @@ public class AgentController {
 		return result;
 	}
 	
-	@RequestMapping("list_house")
+	@RequestMapping(value="list_house",method=RequestMethod.POST)
 	public @ResponseBody Result listHouse(HttpSession httpSession){
 		Result result = new Result();
 		int agentId;
@@ -186,6 +186,7 @@ public class AgentController {
 			result.setCode(500);
 		else result.setCode(200);
 		result.setHouseList(houseList);
+		
 		return result;
 	}
 }
