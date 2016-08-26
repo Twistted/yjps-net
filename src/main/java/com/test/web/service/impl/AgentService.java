@@ -129,7 +129,9 @@ public class AgentService implements IAgentService {
 
 	public boolean addAgent(AgentEntity agentEntity) {
 		// TODO Auto-generated method stub
-		return false;
+		if(insert(agentEntity) > 0)
+			return true;
+		else return false;
 	}
 
 	public boolean modifyAgent(AgentEntity agentEntity) {

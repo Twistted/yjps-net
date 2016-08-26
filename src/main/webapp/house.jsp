@@ -75,7 +75,9 @@
 								<i>/${house.area}㎡</i>
 							</span>
 						</dd>
-						<button class="btn btn-primary btn-collect">收藏</button>
+						<c:if test="${!empty sessionScope.userSession }">
+							<button class="btn btn-primary btn-collect">收藏</button>
+						</c:if>
 					</dl>
 					<dl>
 						<dt>单价：</dt>
@@ -374,6 +376,7 @@
 		     return  str;
 		    }
 		}
+		
 	</script>
 </body>
 </html>

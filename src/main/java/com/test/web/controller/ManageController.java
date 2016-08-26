@@ -156,6 +156,7 @@ public class ManageController {
 	@RequestMapping(value="add_agent",method=RequestMethod.POST)
 	public @ResponseBody Result addAgent(AgentEntity agentEntity,HttpSession httpSesion){
 		Result result = new Result();
+		System.out.println("this" + agentEntity);
 		IAgentService agentService = new AgentService();
 		if(agentService.addAgent(agentEntity))
 			result.setCode(200);
