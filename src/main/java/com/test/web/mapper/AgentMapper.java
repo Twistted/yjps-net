@@ -13,6 +13,8 @@ public interface AgentMapper {
 	public List<AgentEntity> findAll();
 	public List<AgentEntity> queryPage(@Param("offset")int offset, @Param("size") int size);
 	public int update(AgentEntity agentEntity);
+	public int enable(int userId);
+	public int disable(int userId);
 	public AgentEntity findByAccount(String account);
 
 }
