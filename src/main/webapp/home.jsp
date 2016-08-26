@@ -26,7 +26,7 @@
 				<div class="view-type">
 					
 					<div class="modeshows">
-						<span id="lshow" class="l-show view-mod" data-type="real">
+						<span id="lshow" class="l-show view-mod  onshow" data-type="real">
 							<i></i>
 							实景图模型
 						</span>
@@ -162,7 +162,7 @@
 	<script>
 		var page_html="";
 		var cur_page="${currentPage}";
-		var totalpage="${pageSize}";
+		var totalpage="${pageSize.intValue()}";
 		var next_page="${currentPage+1}";
 		var pre_page="${currentPage-1}";
 		$(document).ready(function(){
@@ -171,21 +171,34 @@
 			};
 			if (totalpage<=3) {
 				for (var i = 1 ; i <= totalpage; i++) {
-					page_html+="<a href='/home/index?page="+i+"'>"+i+"</a>";
+					if (i==cur_page) {
+						page_html+="<a style='font-weight: bold;text-decoration: none;cursor: default;color: #39ac6a;border-color: #39ac6a;' href='/home/index?page="+i+"'>"+i+"</a>"
+					}
+					else{
+						page_html+="<a href='/home/index?page="+i+"'>"+i+"</a>";
+					}
 				}
 			}
 			else if(cur_page<=3){
 				for (var i = 1 ; i <= 3; i++) {
-					page_html+="<a href='/home/index?page="+i+"'>"+i+"</a>";
+					if (i==cur_page) {
+						page_html+="<a style='font-weight: bold;text-decoration: none;cursor: default;color: #39ac6a;border-color: #39ac6a;' href='/home/index?page="+i+"'>"+i+"</a>"
+					}
+					else{
+						page_html+="<a href='/home/index?page="+i+"'>"+i+"</a>";
+					}
 				}
 				page_html+="<span>...</span>";
 				page_html+="<a href='/home/index?page="+totalpage+"'>"+totalpage+"</a>";
 			}
 			else if(cur_page==4){
-				for (var i = 1 ; i <= 4; i++) {
+				for (var i = 1 ; i <= 3; i++) {
 					page_html+="<a href='/home/index?page="+i+"'>"+i+"</a>";
 				}
+				page_html+="<a style='font-weight: bold;text-decoration: none;cursor: default;color: #39ac6a;border-color: #39ac6a;' href='/home/index?page="+i+"'>"+i+"</a>"
+				if (totalpage>5) {
 				page_html+="<span>...</span>";
+				}
 				page_html+="<a href='/home/index?page="+totalpage+"'>"+totalpage+"</a>";
 			}
 			else if ((totalpage-cur_page)<=3) {
@@ -194,14 +207,20 @@
 				totalpage-=3;
 				for (var i = 1 ; i <= 3; i++) {
 					totalpage++;
-					page_html+="<a href='/home/index?page="+totalpage+"'>"+totalpage+"</a>";
+					if (cur_page==totalpage) {
+						page_html+="<a style='font-weight: bold;text-decoration: none;cursor: default;color: #39ac6a;border-color: #39ac6a;' href='/home/index?page="+totalpage+"'>"+totalpage+"</a>"
+					}
+					else{
+						page_html+="<a href='/home/index?page="+totalpage+"'>"+totalpage+"</a>";
+					}
 				}
 			}
 			else if ((totalpage-cur_page)==4) {
 				page_html+="<a href='/home/index?page=1'>1</a>";
 				page_html+="<span>...</span>";
-				totalpage-=4;
-				for (var i = 1 ; i <= 4; i++) {
+				page_html+="<a style='font-weight: bold;text-decoration: none;cursor: default;color: #39ac6a;border-color: #39ac6a;' href='/home/index?page="+cur_page+"'>"+cur_page+"</a>"
+				totalpage-=3;
+				for (var i = 1 ; i <= 3; i++) {
 					totalpage++;
 					page_html+="<a href='/home/index?page="+totalpage+"'>"+totalpage+"</a>";
 				}
@@ -210,7 +229,12 @@
 				page_html+="<span>...</span>";
 				cur_page--;
 				for (var i = 0 ; i <= 2; i++) {
-					page_html+="<a href='/home/index?page="+cur_page+"'>"+cur_page+"</a>";
+					if (i==2) {
+						page_html+="<a style='font-weight: bold;text-decoration: none;cursor: default;color: #39ac6a;border-color: #39ac6a;' href='/home/index?page="+totalpage+"'>"+totalpage+"</a>"
+					}
+					else{
+						page_html+="<a href='/home/index?page="+totalpage+"'>"+totalpage+"</a>";
+					}
 					cur_page++;
 				}
 				cur_page--;
@@ -225,11 +249,15 @@
 		});
 
 		$("#hshow").click(function(){
+				$("#hshow").addClass("onshow");
+				$("#lshow").removeClass("onshow");
 				$(".lj-lazy:eq(0)").attr("src","${houseList[0].houseTypeUrl}");
 				$(".lj-lazy:eq(1)").attr("src","${houseList[1].houseTypeUrl}");
 				$(".lj-lazy:eq(2)").attr("src","${houseList[2].houseTypeUrl}");
 		});
 		$("#lshow").click(function(){
+				$("#lshow").addClass("onshow");
+				$("#hshow").removeClass("onshow");
 				$(".lj-lazy:eq(0)").attr("src","${houseList[0].houseViewUrl}");
 				$(".lj-lazy:eq(1)").attr("src","${houseList[1].houseViewUrl}");
 				$(".lj-lazy:eq(2)").attr("src","${houseList[2].houseViewUrl}");

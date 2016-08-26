@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="shortcut icon" type="image/x-icon" href="http://lianjia.com/favicon.ico" />
 	<link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/public/css/style.css" rel="stylesheet">
 	<link href="/public/css/reset.css" rel="stylesheet">
@@ -74,6 +75,7 @@
 								<i>/${house.area}㎡</i>
 							</span>
 						</dd>
+						<button class="btn btn-primary btn-collect">收藏</button>
 					</dl>
 					<dl>
 						<dt>单价：</dt>
@@ -273,16 +275,6 @@
 									</li>
 								</c:forEach>
 							</ul>
-							<div>
-								<a href="#"><span class="sub-text" id="btn-expand-album" href="#">查看更多图片>></span></a>
-							</div>
-							<ul class="album-more" style="display:none">
-								<li class="actShowImg">
-									<a href="/public/img/house04.jpg">
-										<img src="/public/img/house04.jpg">
-									</a>
-								</li>
-							</ul>
 						</div>
 					</div>
 					<div id="house-map">
@@ -346,6 +338,12 @@
 				  $(".text-comment-all").show();
 				  $(".actShowMore").hide();
 				  $(".text-comment").hide();
+			  });
+			  $(".btn-collect").click(function(){
+				  $.post('/house/interest', {
+               			id: "${house.houseId}",
+            		}, function (res) {
+		            },"json");
 			  });
 			});	
 		
