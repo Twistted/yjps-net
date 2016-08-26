@@ -15,5 +15,7 @@ public interface UserMapper {
 	public List<UserEntity> findAll();
 	public int insert(UserEntity userEntity);
 	public int update(UserEntity userEntity);
+	public int enable(int userId);
+	public int disable(int userId);
 	
 }

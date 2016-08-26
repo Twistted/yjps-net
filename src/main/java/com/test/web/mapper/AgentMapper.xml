@@ -30,6 +30,14 @@
 		select * from agent order by agent_id limit #{offset}, #{size}
 	</select>
 	
+	<update id="enable" parameterType="int">
+	    update agent set state = 1 where agent_id = #{agentId}
+	</update>
+	
+	<update id="disable" parameterType="int">
+	    update agent set state = 2 where agent_id = #{agentId}
+	</update>
+	
 	<update id="update" parameterType="AgentEntity">
 	    update agent
 	    <set>

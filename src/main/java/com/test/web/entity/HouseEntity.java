@@ -7,7 +7,7 @@ public class HouseEntity {
 	private double prize;
 	private double downPayment;
 	private double monthlyPayment;
-	private int orientation;
+	private String orientation;
 	private int floor;
 	private int year;
 	private String houseDescribe;
@@ -58,10 +58,10 @@ public class HouseEntity {
 	public void setMonthlyPayment(double monthlyPayment) {
 		this.monthlyPayment = monthlyPayment;
 	}
-	public int getOrientation() {
+	public String getOrientation() {
 		return orientation;
 	}
-	public void setOrientation(int orientation) {
+	public void setOrientation(String orientation) {
 		this.orientation = orientation;
 	}
 	public int getFloor() {
@@ -178,7 +178,13 @@ public class HouseEntity {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
+	public String getHouseViewUrl() {
+		return houseViewUrl;
+	}
+	public void setHouseViewUrl(String houseViewUrl) {
+		this.houseViewUrl = houseViewUrl;
+	}
+
 	@Override
 	public String toString() {
 		return "House [houseId=" + houseId + ", title=" + title + ", prize=" + prize + ",downPayment=" + downPayment + 
@@ -189,11 +195,5 @@ public class HouseEntity {
 				",province=" + province + ",city=" + city + ",town=" + town + ",zone=" + zone + ",villageName=" + villageName +
 				",address=" + address;
 	}
-	public String getHouseViewUrl() {
-		return houseViewUrl;
-	}
-	public void setHouseViewUrl(String houseViewUrl) {
-		this.houseViewUrl = houseViewUrl;
-	}
-
+	
 }

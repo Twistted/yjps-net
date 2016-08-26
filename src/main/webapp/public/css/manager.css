@@ -564,3 +564,12 @@ a.lj-btn{
 	display: inline-block;
 	vertical-align: top;
 }
+.tabbable .tab-content #mtab5 .check_wrap .check_list table tr td .modify_btn{
+	color:#4fac6a;
+	font-size: 13px;
+	margin-top: 1px;
+}
+.tabbable .tab-content #mtab5 .check_wrap .check_list table tr td .modify_btn:hover{
+	text-decoration: underline;
+	cursor:pointer;
+}

@@ -25,6 +25,14 @@
 		values (#{account}, #{password}, #{name}, #{state}, #{sex}, #{age}, #{photoUrl}, #{timestamp}, #{contact})
 	</insert>
 
+	<update id="enable" parameterType="int">
+	    update user set state = 1 where user_id = #{userId}
+	</update>
+	
+	<update id="disable" parameterType="int">
+	    update user set state = 2 where user_id = #{userId}
+	</update>
+	
 	<update id="update" parameterType="UserEntity">
 		update user
 			<set>
