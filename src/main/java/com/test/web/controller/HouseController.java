@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.test.web.dto.Result;
 import com.test.web.entity.AdvertisementEntity;
 import com.test.web.entity.AgentEntity;
 import com.test.web.entity.HouseEntity;
@@ -63,13 +65,13 @@ public class HouseController {
 		return model;
 	}
 	
-	@RequestMapping(value="interest", method=RequestMethod.GET)
-	public ModelAndView interest(@RequestParam("id") String id, HttpSession httpSession) {
-		ModelAndView model = new ModelAndView();
+	@RequestMapping(value="interest", method=RequestMethod.POST)
+	public @ResponseBody Result interest(@RequestParam("id") String id, HttpSession httpSession) {
+		Result result = new Result();
 		UserEntity userEntity = (UserEntity) httpSession.getAttribute("userSession");
 		if (userEntity == null) {
-			model.setViewName("user/login");
-			return model;
+			result.setCode(500);
+			return result;
 		} else {
 			IInterestService interestService = new InterestService();
 			InterestEntity interestEntity = new InterestEntity();
@@ -80,18 +82,18 @@ public class HouseController {
 			if (ok) {
 				IHouseService houseService = new HouseService();
 				HouseEntity houseEntity = houseService.getHouseById(Integer.valueOf(id));
-				model.addObject("house", houseEntity);
+				result.setHouseEntity(houseEntity);
 				
 				IAgentService agentService = new AgentService();
 				AgentEntity agentEntity = agentService.getAgentById(houseEntity.getAgentId());
 				System.out.println(agentService);
-				model.addObject("agent", agentEntity);
+				result.setAgentEntity(agentEntity);
 				
-				model.setViewName("house");
+				
 			} else {
 				System.out.println("Interest Failure");
 			}
-			return model;
+			return result;
 		}
 	}
 	
