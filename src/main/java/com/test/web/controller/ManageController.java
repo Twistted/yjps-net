@@ -59,14 +59,14 @@ public class ManageController {
 		return model;
 	}
 	
-	@RequestMapping("add_manager")
-	public ModelAndView addManager(ManagerEntity managerEntity, HttpSession httpSession) {
-		ModelAndView model = new ModelAndView();
-		ManagerEntity manager = (ManagerEntity) httpSession.getAttribute("managerSession");
+	@RequestMapping(value="add_manager",method=RequestMethod.POST)
+	public @ResponseBody Result addManager(ManagerEntity managerEntity,HttpSession httpSesion){
+		Result result = new Result();
 		IManagerService managerService = new ManagerService();
-		boolean ok = managerService.addManager(managerEntity);
-
-		return model;
+		if(managerService.addManager(managerEntity))
+			result.setCode(200);
+		else result.setCode(500);	
+		return result;
 	}
 
 	@RequestMapping("modify_manager")
@@ -150,6 +150,16 @@ public class ManageController {
 		}
 		else result.setCode(500);
 		result.setAgentEntity(agentEntity);
+		return result;
+	}
+	
+	@RequestMapping(value="add_agent",method=RequestMethod.POST)
+	public @ResponseBody Result addAgent(AgentEntity agentEntity,HttpSession httpSesion){
+		Result result = new Result();
+		IAgentService agentService = new AgentService();
+		if(agentService.addAgent(agentEntity))
+			result.setCode(200);
+		else result.setCode(500);	
 		return result;
 	}
 	
