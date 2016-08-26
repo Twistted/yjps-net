@@ -73,15 +73,31 @@ public class ManageController {
 	public @ResponseBody Result modifyManager(ManagerEntity managerEntity, HttpSession httpSession) {
 		Result result = new Result();
 		IManagerService managerService = new ManagerService();
-		ManagerEntity manager = (ManagerEntity) httpSession.getAttribute("managerSession");
-		managerEntity.setManagerId(managerEntity.getManagerId());
 		boolean ok = managerService.modifyManager(managerEntity);
-		if (ok) {
+		if(ok) result.setCode(200);
+		else result.setCode(500);
+		return result;
+	}
+	
+	@RequestMapping("modify_agent")
+	public @ResponseBody Result modifyAgent(AgentEntity agentEntity, HttpSession httpSession) {
+		Result result = new Result();
+		IAgentService agentService = new AgentService();
+		boolean ok = agentService.modifyAgent(agentEntity);
+		if (ok)
 			result.setCode(200);
-			result.setManagerEntity(manager);
-		} else {
-			result.setCode(500);
-		}
+	    else result.setCode(500);
+		return result;
+	}
+	
+	@RequestMapping("modify_user")
+	public @ResponseBody Result modifyUser(UserEntity userEntity, HttpSession httpSession) {
+		Result result = new Result();
+		IUserService userService = new UserService();
+		boolean ok = userService.modify(userEntity);
+		if (ok)
+			result.setCode(200);
+	    else result.setCode(500);
 		return result;
 	}
 	
