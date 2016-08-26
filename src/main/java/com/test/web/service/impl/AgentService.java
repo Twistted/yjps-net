@@ -28,7 +28,7 @@ public class AgentService implements IAgentService {
 		List<AgentEntity> agentList = null;
 		SqlSession session = DBUtil.getSession();
 		try{
-			int offset = (page-1)*size;
+			int offset = (page - 1) * size;
 			AgentMapper mapper = session.getMapper(AgentMapper.class);
 			System.out.println(offset);
 			agentList = mapper.queryPage(offset, size);
