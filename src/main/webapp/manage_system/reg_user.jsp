@@ -243,7 +243,6 @@
         //加载表格
         var createTable = function (res) {
             var data = res.userList;
-            console.log(data);
             $('#platform_config .table tbody').empty();
             for (var i in data) {
                 var tr_id = data[i].userId,              //ID
@@ -381,8 +380,9 @@
         		var set_row = $(this).parent('td').parent('tr'),
                 ids = set_row.attr('data-secret');
                 var setPlatformVal={
-                	userIds:ids
+                	userId:ids
                 }
+                console.log(ids);
                 postEvent('/manage/enable_user', setPlatformVal);
             });
         }
