@@ -450,7 +450,7 @@
         		var set_row = $(this).parent('td').parent('tr'),
                 ids = set_row.attr('data-secret');
                 var setPlatformVal={
-                	id:ids
+                	agentId:ids
                 }
                 postEvent('/manage/disable_agent', setPlatformVal);
             });
@@ -458,7 +458,7 @@
         		var set_row = $(this).parent('td').parent('tr'),
                 ids = set_row.attr('data-secret');
                 var setPlatformVal={
-                	id:ids
+                	agentId:ids
                 }
                 postEvent('/manage/enable_agent', setPlatformVal);
             });
