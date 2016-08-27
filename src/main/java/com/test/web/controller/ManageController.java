@@ -278,7 +278,6 @@ public class ManageController {
 		IAgentService agentService = new AgentService();
 		agentList = agentService.listAgent(pageOffset, 3);
 		allAgentList = agentService.allAgent();
-		System.out.println(allAgentList.size());
 		pageSize = (int) Math.ceil(allAgentList.size()*1.0/3);
 		if(agentList == null || agentList.isEmpty())
 			result.setCode(500);
