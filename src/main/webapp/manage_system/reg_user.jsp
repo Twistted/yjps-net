@@ -373,7 +373,7 @@
         		var set_row = $(this).parent('td').parent('tr'),
                 ids = set_row.attr('data-secret');
                 var setPlatformVal={
-                	id:ids
+                	userId:ids
                 }
                 postEvent('/manage/disable_user', setPlatformVal);
             });
@@ -381,7 +381,7 @@
         		var set_row = $(this).parent('td').parent('tr'),
                 ids = set_row.attr('data-secret');
                 var setPlatformVal={
-                	id:ids
+                	userIds
                 }
                 postEvent('/manage/enable_user', setPlatformVal);
             });
