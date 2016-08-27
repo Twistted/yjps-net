@@ -90,7 +90,7 @@ public class UserService implements IUserService {
 		} finally {
 			DBUtil.closeSession();
 		}
-		return false;
+		return ret;
 	}
 
 	public List<UserEntity> listUser(int page, int size) {
@@ -104,12 +104,11 @@ public class UserService implements IUserService {
 			UserMapper userMapper = session.getMapper(UserMapper.class);
 			int i = userMapper.enable(userId);
 			ret = i > 0 ? true : false;
-			
 			session.commit();
 		} finally {
 			DBUtil.closeSession();
 		}
-		return false;
+		return ret;
 	}
 
 	public boolean disableUser(int userId) {
@@ -124,7 +123,7 @@ public class UserService implements IUserService {
 		} finally {
 			DBUtil.closeSession();
 		}
-		return false;
+		return ret;
 	}
 	
 }
