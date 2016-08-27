@@ -18,7 +18,7 @@
         <div class="dropdown">
             <a id="dLabe2" data-target="#" href="javascript:void(0)" data-toggle="dropdown" role="button"
                aria-haspopup="true" aria-expanded="false">
-                ${sessionScope.managerSession.account}
+                ${sessionScope.managerSession.name}
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="dLabe2">
