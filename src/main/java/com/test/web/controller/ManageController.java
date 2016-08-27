@@ -144,28 +144,22 @@ public class ManageController {
 	}
 
 	@RequestMapping(value="enable_agent",method=RequestMethod.POST)
-	public @ResponseBody Result enableAgent(AgentEntity agentEntity,HttpSession httpSession){
+	public @ResponseBody Result enableAgent(int agentId,HttpSession httpSession){
 		Result result = new Result();
 		IAgentService agentService = new AgentService();
-		if(agentService.enableAgent(agentEntity.getAgentId())){
+		if(agentService.enableAgent(agentId))
 			result.setCode(200);
-			agentEntity.setState(1);
-		}
 		else result.setCode(500);
-		result.setAgentEntity(agentEntity);
 		return result;
 	}
 	
 	@RequestMapping(value="disable_agent",method=RequestMethod.POST)
-	public @ResponseBody Result disableAgent(AgentEntity agentEntity,HttpSession httpSession){
+	public @ResponseBody Result disableAgent(int agentId,HttpSession httpSession){
 		Result result = new Result();
 		IAgentService agentService = new AgentService();
-		if(agentService.disableAgent(agentEntity.getAgentId())){
+		if(agentService.disableAgent(agentId))
 			result.setCode(200);
-			agentEntity.setState(2);
-		}
 		else result.setCode(500);
-		result.setAgentEntity(agentEntity);
 		return result;
 	}
 	
@@ -181,28 +175,22 @@ public class ManageController {
 	}
 	
 	@RequestMapping(value="enable_user",method=RequestMethod.POST)
-	public @ResponseBody Result enableUser(UserEntity userEntity,HttpSession httpSession){
+	public @ResponseBody Result enableUser(int userId,HttpSession httpSession){
 		Result result = new Result();
 		IUserService userService = new UserService();
-		if(userService.enableUser(userEntity.getUserId())){
+		if(userService.enableUser(userId))
 			result.setCode(200);
-			userEntity.setState(1);
-		}
 		else result.setCode(500);
-		result.setUserEntity(userEntity);
 		return result;
 	}
 	
 	@RequestMapping(value="disable_user",method=RequestMethod.POST)
-	public @ResponseBody Result disableUser(UserEntity userEntity,HttpSession httpSession){
+	public @ResponseBody Result disableUser(int userId,HttpSession httpSession){
 		Result result = new Result();
 		IUserService userService = new UserService();
-		if(userService.disableUser(userEntity.getUserId())){
+		if(userService.disableUser(userId))
 			result.setCode(200);
-			userEntity.setState(2);
-		}
 		else result.setCode(500);
-		result.setUserEntity(userEntity);
 		return result;
 	}
 	
@@ -220,15 +208,12 @@ public class ManageController {
 	}
 	
 	@RequestMapping(value="disable_manager",method=RequestMethod.POST)
-	public @ResponseBody Result disableManager(ManagerEntity managerEntity,HttpSession httpSession){
+	public @ResponseBody Result disableManager(int managerId,HttpSession httpSession){
 		Result result = new Result();
 		IManagerService managerService = new ManagerService();
-		if(managerService.disableManager(managerEntity.getManagerId())){
+		if(managerService.disableManager(managerId))
 			result.setCode(200);
-			managerEntity.setState(2);
-		}
 		else result.setCode(500);
-		result.setManagerEntity(managerEntity);
 		return result;
 	}
 	
