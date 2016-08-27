@@ -5,6 +5,8 @@ public class ManagerEntity {
 	private int managerId;
 	private String account;
 	private String password;
+	private String name;
+
 	private int state;
 	private int level;
 	private String photoUrl;
@@ -25,6 +27,12 @@ public class ManagerEntity {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public int getState() {
 		return state;
@@ -47,7 +55,7 @@ public class ManagerEntity {
 	
 	@Override
 	public String toString(){
-		return "Manager [managerId=" + managerId + ", account=" + account + ", password=" + password + ",state=" + state + 
+		return "Manager [managerId=" + managerId + ", account=" + account + ",name=" + name + ", password=" + password + ",state=" + state + 
 			    ",level=" + level + ",photoUrl=" + photoUrl;
 	}
 

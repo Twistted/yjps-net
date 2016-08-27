@@ -54,7 +54,7 @@ public class ManageController {
 	public ModelAndView logout(HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
 		httpSession.setAttribute("managerSession", null);
-		model.setViewName("manager/login");
+		model.setViewName("manage_system/login");
 		return model;
 	}
 	
