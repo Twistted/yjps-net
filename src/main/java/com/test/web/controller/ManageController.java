@@ -33,7 +33,7 @@ public class ManageController {
 		return model;
 	}
 
-	@RequestMapping("login")
+	@RequestMapping(value="login",method=RequestMethod.POST)
 	public ModelAndView login(ManagerEntity managerEntity, HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
 		IManagerService managerService = new ManagerService();
@@ -68,7 +68,7 @@ public class ManageController {
 		return result;
 	}
 
-	@RequestMapping("modify_manager")
+	@RequestMapping(value="modify_manager",method=RequestMethod.POST)
 	public @ResponseBody Result modifyManager(ManagerEntity managerEntity, HttpSession httpSession) {
 		Result result = new Result();
 		IManagerService managerService = new ManagerService();
@@ -78,7 +78,7 @@ public class ManageController {
 		return result;
 	}
 	
-	@RequestMapping("modify_agent")
+	@RequestMapping(value="modify_agent",method=RequestMethod.POST)
 	public @ResponseBody Result modifyAgent(AgentEntity agentEntity, HttpSession httpSession) {
 		Result result = new Result();
 		IAgentService agentService = new AgentService();
@@ -89,7 +89,7 @@ public class ManageController {
 		return result;
 	}
 	
-	@RequestMapping("modify_user")
+	@RequestMapping(value="modify_user",method=RequestMethod.POST)
 	public @ResponseBody Result modifyUser(UserEntity userEntity, HttpSession httpSession) {
 		Result result = new Result();
 		System.out.println("haha" + userEntity);
