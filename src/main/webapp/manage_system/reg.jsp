@@ -6,9 +6,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>欢迎登录后台管理系统</title>
-    <link href="public/css/style.css" rel="stylesheet" type="text/css"/>
-    <script src="public/js/jquery.js" language="JavaScript"></script>
-    <!--<script src="public/js/cloud.js" type="text/javascript"></script>-->
+    <link href="/manage_system/public/css/style.css" rel="stylesheet" type="text/css"/>
+    <script src="/manage_system/public/js/jquery.js" language="JavaScript"></script>
+    <!--<script src="/manage_system/public/js/cloud.js" type="text/javascript"></script>-->
 
     <script language="javascript">
         $(function () {
@@ -21,7 +21,7 @@
 
 </head>
 
-<body style="background-color:#1c77ac; background-image:url('public/images/light.png'); background-repeat:no-repeat; background-position:center top; overflow:hidden;">
+<body style="background-color:#1c77ac; background-image:url('/manage_system/public/images/light.png'); background-repeat:no-repeat; background-position:center top; overflow:hidden;">
 
 
 <div id="mainBody">

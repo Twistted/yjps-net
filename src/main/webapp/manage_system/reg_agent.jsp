@@ -8,7 +8,7 @@
     <title>经纪人管理</title>
 
     <link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="public/css/adminSys.css">
+    <link rel="stylesheet" href="/manage_system/public/css/adminSys.css">
     <style>
         .btn-group {
             margin-left: 20px;
@@ -269,7 +269,7 @@
 <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 
 <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="/public/js/laypage.js"></script>
+<script src="//manage_system/public/js/laypage.js"></script>
 <script>
 
     $(function () {
@@ -384,7 +384,7 @@
                 introduction: $('#add_introduction').val()||"宋吉吉是傻*",
                 company: $('#add_company').val()||"四川华迪公司",
                 yaer: $('#add_year').val()||"",
-                photoUrl:$('#add_photo').val()||"/public/img/logo.jpg"
+                photoUrl:$('#add_photo').val()||"//manage_system/public/img/logo.jpg"
             };
             postEvent('/manage/add_agent', addVal);
         });
@@ -438,7 +438,7 @@
                     sex:sexs,
                     phone:$('#set_phone').val()||"",
                     email:$('#set_email').val()||"",
-                    photoUrl:$('#set_photo').val()||"/public/img/logo.jpg",
+                    photoUrl:$('#set_photo').val()||"//manage_system/public/img/logo.jpg",
                     company:$('#set_company').val()||"四川华迪公司",
                     introduction:$('#set_introduction').val()||"宋吉吉是傻*",
                     year:$('#set_year').val()||""

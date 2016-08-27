@@ -8,7 +8,7 @@
     <title>用户管理</title>
 
     <link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="public/css/adminSys.css">
+    <link rel="stylesheet" href="/manage_system/public/css/adminSys.css">
     <style>
         .btn-group {
             margin-left: 20px;
@@ -212,7 +212,7 @@
 <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 
 <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="/public/js/laypage.js"></script>
+<script src="//manage_system/public/js/laypage.js"></script>
 <script>
 
     $(function () {
@@ -316,7 +316,7 @@
                 age: $('#add_password').val()||0,
                 sex: sexs,
                 contact: $('#add_contact').val()||"",
-                photoUrl:$('#add_photo').val()||"/public/img/logo.jpg"
+                photoUrl:$('#add_photo').val()||"//manage_system/public/img/logo.jpg"
             };
             postEvent('/manage/add_user', addVal);
         });
@@ -360,9 +360,8 @@
                     name:$('#set_name').val(),
                     age:$('#set_age').val()||0,
                     sex:sexs,
-                    timestamp:1472177080000,
                     contact:$('#set_contact').val()||"",
-                    photoUrl:$('#set_photo').val()||"/public/img/logo.jpg"
+                    photoUrl:$('#set_photo').val()||"//manage_system/public/img/logo.jpg"
                 };
                 console.log(setPlatformVal);
                 postEvent('/manage/modify_user', setPlatformVal);

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>易居网络系统后台</title>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="public/css/adminSys.css">
+    <link rel="stylesheet" href="/manage_system/public/css/adminSys.css">
 
 </head>
 <body>
