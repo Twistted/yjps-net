@@ -18,32 +18,17 @@
         <div class="dropdown">
             <a id="dLabe2" data-target="#" href="javascript:void(0)" data-toggle="dropdown" role="button"
                aria-haspopup="true" aria-expanded="false">
-                {$now_operator_nickname}
+                ${sessionScope.managerSession.account}
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="dLabe2">
                 <!--<li><a href="#">设置</a></li>-->
-                <li><a href="/Operation/Index/logout">退出</a></li>
+                <li><a href="/manage/logout">退出</a></li>
                 <li><a href="#" id="btn-changePsw">修改密码</a></li>
                 <li><a href="#" id="btn-setOp">修改资料</a></li>
                 <!--<li><a href="/Operation/Operator/changePassword" id="btn-changePsw">修改密码</a></li>
                 <li><a href="/Operation/Operator/setOperator" id="btn-setOp">修改资料</a></li>-->
             </ul>
-
-        </div>
-        <div class="dropdown">
-            <a id="dLabel" data-target="#" href="" data-toggle="dropdown" role="button" aria-haspopup="true"
-               aria-expanded="false">
-                {$now_wechat_name}
-                <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="dLabel">
-
-                <volist name="platform_info" id="vo">
-                    <li><a href="/Operation/Index/switchPID?pid={$vo.platform_id}&redirect=1">{$vo.wechat_name}</a></li>
-                </volist>
-            </ul>
-
         </div>
     </div>
     <span class="glyphicon glyphicon-th-list menu-icon" data-toggle="collapse" data-target=".nav-collapse"></span>
