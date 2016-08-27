@@ -100,6 +100,7 @@ public class AgentService implements IAgentService {
 			AgentMapper mapper = session.getMapper(AgentMapper.class);
 			if(mapper.enable(agentId) > 0)
 				ret = true;
+			session.commit();
 		} finally {
 			DBUtil.closeSession();
 		}
@@ -113,6 +114,7 @@ public class AgentService implements IAgentService {
 			AgentMapper mapper = session.getMapper(AgentMapper.class);
 			if(mapper.disable(agentId) > 0)
 				ret = true;
+			session.commit();
 		} finally {
 			DBUtil.closeSession();
 		}

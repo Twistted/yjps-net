@@ -177,6 +177,7 @@ public class ManageController {
 	@RequestMapping(value="enable_user",method=RequestMethod.POST)
 	public @ResponseBody Result enableUser(int userId,HttpSession httpSession){
 		Result result = new Result();
+		System.out.println(userId);
 		IUserService userService = new UserService();
 		if(userService.enableUser(userId))
 			result.setCode(200);
@@ -187,6 +188,7 @@ public class ManageController {
 	@RequestMapping(value="disable_user",method=RequestMethod.POST)
 	public @ResponseBody Result disableUser(int userId,HttpSession httpSession){
 		Result result = new Result();
+		System.out.println(userId);
 		IUserService userService = new UserService();
 		if(userService.disableUser(userId))
 			result.setCode(200);
