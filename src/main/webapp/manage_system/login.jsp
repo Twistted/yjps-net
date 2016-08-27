@@ -36,7 +36,7 @@
     <span>欢迎回来易居网络平台系统</span>
     <ul>
         <li><a href="/manage_system/reg">注册</a></li>
-        <li><a href="#" onclick="alert('我是不是很萌!!')">关于易居</a></li>
+        <li><a href="#" onclick="alert('宋奇星最萌!!')">关于易居</a></li>
     </ul>
 </div>
 
@@ -44,11 +44,11 @@
 
     <span class="systemlogo" style="background: transparent"></span>
 
-    <form action="/Operation/Index/login" method="post">
+    <form action="/manage/login" method="post">
         <div class="loginbox">
 
             <ul>
-                <li><input name="username" type="text" class="loginuser" value placeholder="请输入用户名" /></li>
+                <li><input name="account" type="text" class="loginuser" value placeholder="请输入用户名" /></li>
                 <li><input name="password" type="password" class="loginpwd" value placeholder="请输入密码" /></li>
                 <li>
                     <input name="" type="submit" class="loginbtn" value="登录"/>
@@ -62,7 +62,7 @@
 </div>
 
 
-<div class="loginbm">- 微豆萌萌哒 -</div>
+<div class="loginbm">- 易居网络平台 -</div>
 
 
 </body>
