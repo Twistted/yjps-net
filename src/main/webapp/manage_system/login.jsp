@@ -35,7 +35,7 @@
 <div class="logintop">
     <span>欢迎回来易居网络平台系统</span>
     <ul>
-        <li><a href="/manage_system/reg">注册</a></li>
+        <!--<li><a href="/manage_system/reg">注册</a></li>-->
         <li><a href="#" onclick="alert('宋奇星最萌!!')">关于易居</a></li>
     </ul>
 </div>
