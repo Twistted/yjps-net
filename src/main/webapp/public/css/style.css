@@ -387,8 +387,8 @@
 	height: auto;
 }
 .wrapper .panel-box-content .tab-content #detail-album .detail-album-box .actShowImg{
-	width: 49%;
-	height: auto;
+	width: 490px;
+	height: 370px;
 	margin: 0.5%;
 }
 .wrapper .panel-box-content .tab-content #detail-album .detail-album-box .sub-text{
@@ -499,4 +499,15 @@
 	height: 12px;
 	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","微软雅黑",'Segoe UI',Tahoma,"宋体b8b\4f53",SimSun,sans-serif;
 	font-size: 0.8em;
+}
+
+#show{
+	float: none;
+	width: auto;
+	height: auto;
+}
+#show *{
+	float: none;
+	width: auto;
+	height: auto;
 }

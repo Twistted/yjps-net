@@ -260,18 +260,18 @@
 						<div class="detail-album-box">
 							<ul>
 								<li class="actShowImg">
-									<a href="${house.houseViewUrl}">
+									<a href="${house.houseViewUrl}" style="cursor:pointer" data-toggle="modal" data-target="#show">
 											<img src="${house.houseViewUrl}">
 									</a>
 								</li>
 								<li class="actShowImg">
-									<a href="${house.houseTypeUrl}">
+									<a href="${house.houseTypeUrl}" style="cursor:pointer" data-toggle="modal" data-target="#show">
 											<img src="${house.houseTypeUrl}">
 									</a>
 								</li>
 								<c:forEach var="photo" items="${housePhotoList}">
 									<li class="actShowImg">
-										<a href="${photo.photoUrl}">
+										<a href="${photo.photoUrl}" style="cursor:pointer" data-toggle="modal" data-target="#show">
 											<img src="${photo.photoUrl}">
 										</a>
 									</li>
@@ -315,7 +315,19 @@
 			</div>
 		</div>
 	</div>
-	
+	<div class="modal fade" id="show" tabindex="-1" role="dialog" aria-labelledby="addTitle">
+        <div class="modal-dialog" role="document">
+	         <div class="modal-header">
+	         	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+	         </div>
+            <div class="modal-content">
+                <div class="modal-body" style="float:none;margin:0 auto">
+                    <img src="/public/img/logo.jpg" style="width:80%;height:auto;float:none;margin-left:10%;">
+                </div>
+            </div>
+        </div>
+    </div>
 	<jsp:include page="/footer.jsp"></jsp:include>
 	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
