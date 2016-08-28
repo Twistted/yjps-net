@@ -114,23 +114,23 @@
 						</li>
 						<li>
 							<span class="info_title" id="name">姓名:</span>
-							<div class="info_c"><span class="user_name">朱国栋</span></div>
+							<div class="info_c"><span class="user_name">${sessionScope.userSession.name}</span></div>
 						</li>
 						<li>
 							<span class="info_title">性别:</span>
-							<div class="info_c"><span class="user_sex">男</span></div>
+							<div class="info_c"><span class="user_sex">${sessionScope.userSession.sex}</span></div>
 						</li>
 						<li>
 							<span class="info_title">年龄:</span>
-							<div class="info_c"><span class="user_age">2008-10-20<span></div>
+							<div class="info_c"><span class="user_age">${sessionScope.userSession.age}<span></div>
 						</li>
 						<li>
 							<span class="info_title">注册日期：</span>
-							<div class="info_c"><span class="user_date">2008-10-20<span></div>
+							<div class="info_c"><span class="user_date"> <span></div>
 						</li>
 						<li>
 							<span class="info_title">联系方式:</span>
-							<div class="info_c"><span class="user_contact">2008-10-20<span></div>
+							<div class="info_c"><span class="user_contact">${sessionScope.userSession.contact}<span></div>
 						</li>
 						 
 					</ul>
