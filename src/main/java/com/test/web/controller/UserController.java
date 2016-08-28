@@ -46,7 +46,7 @@ public class UserController {
 		return model;
 	}
 	
-	@RequestMapping("login")
+	@RequestMapping(value="login",method=RequestMethod.POST)
 	public ModelAndView login(UserEntity userEntity, HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
 		
@@ -96,7 +96,7 @@ public class UserController {
 		return result;
 	}
 	
-	@RequestMapping("modify_user")
+	@RequestMapping(value="modify_user",method=RequestMethod.POST)
 	public @ResponseBody Result modifyUser(UserEntity userEntity, HttpSession httpSession) {
 		Result result = new Result();
 		System.out.println(userEntity);
@@ -122,9 +122,7 @@ public class UserController {
 			model.setViewName("user/register");
 			return model;
 		}
-		
 		IUserService userService = new UserService();
-		
 		boolean ok = userService.register(userEntity);
 		System.out.println(ok);
 		if (ok) {
@@ -159,14 +157,14 @@ public class UserController {
 		return result;
 	}
 	
-	@RequestMapping("delete_interest")
-	public @ResponseBody Result deleteInterest(HttpSession httpSession, InterestEntity interestEntity) {
+	@RequestMapping(value="delete_interest",method=RequestMethod.POST)
+	public @ResponseBody Result deleteInterest(HttpSession httpSession,Integer houseId) {
 		UserEntity user = (UserEntity) httpSession.getAttribute("userSession");
-		if (user == null || interestEntity.getInterestId() <= 0) {
+		if (user == null || houseId == null) {
 			return new Result(500);
 		} 
 		IInterestService interestService = new InterestService();
-		boolean ok = interestService.deleteInterest(interestEntity);
+		boolean ok = interestService.deleteInterest(houseId,user.getUserId());
 		if (ok) {
 			return new Result(200);
 		} else {

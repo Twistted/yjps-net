@@ -12,8 +12,8 @@
 		values(#{userId},#{houseId})
     </insert>
     
-    <delete id="delete" parameterType="InterestEntity">
-    	delete from interest where interest_id=#{interestId}
+    <delete id="delete" parameterType="int">
+    	delete from interest where hosue_id=#{houseId} and user=#{userId}
     </delete>
     
 	<select id="findById" parameterType="int" resultType="InterestEntity">
