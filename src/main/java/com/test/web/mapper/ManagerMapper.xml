@@ -3,12 +3,12 @@
 <mapper namespace="com.test.web.mapper.ManagerMapper">
 	
     <insert id="insert" parameterType="ManagerEntity">
-        insert into manager (account, password, state, level, photo_url)
-		values(#{account},#{password},#{state},#{level},#{photoUrl})
+        insert into manager (account, password,name, state, level, photo_url)
+		values(#{account},#{password},#{name},#{state},#{level},#{photoUrl})
     </insert>
     
-    <select id="login" parameterType="ManagerEntity">
-    	select * from manager where account=#{account} and password=#{password}
+    <select id="login" parameterType="String" resultType="ManagerEntity">
+    	select * from manager where account=#{account}
     </select>
     
 	<select id="findById" parameterType="int" resultType="ManagerEntity">
@@ -39,6 +39,9 @@
 				</if>
 				<if test="password != null">
 					password = #{password},
+				</if>
+				<if test="name != null">
+					name = #{name},
 				</if>
 				<if test="state != null">
 					state = #{state},

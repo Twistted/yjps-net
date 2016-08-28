@@ -14,5 +14,5 @@ public interface ManagerMapper {
 	public int update(ManagerEntity managerEntity);
 	public int enable(int managerId);
 	public int diaable(int managerId);
-	public ManagerEntity login(ManagerEntity managerEntity);
+	public ManagerEntity login(String account);
 }

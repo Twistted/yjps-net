@@ -29,33 +29,32 @@ public class ManageController {
 	@RequestMapping("index")
 	public ModelAndView index() {
 		ModelAndView model = new ModelAndView();
-		
+		model.setViewName("manage_system/login");
 		return model;
 	}
 
-	@RequestMapping("login")
-	public @ResponseBody Result login(ManagerEntity managerEntity, HttpSession httpSession) {
-		Result result = new Result();
+	@RequestMapping(value="login",method=RequestMethod.POST)
+	public ModelAndView login(ManagerEntity managerEntity, HttpSession httpSession) {
+		ModelAndView model = new ModelAndView();
 		IManagerService managerService = new ManagerService();
-
 		ManagerEntity manager = managerService.login(managerEntity);
-		System.out.println(manager);
-		if (manager == null) {
-			httpSession.setAttribute("managerSession", null);
-			result.setCode(500);
-		} else {
-			result.setManagerEntity(manager);
+		if (managerEntity.getPassword().equals(manager.getPassword())){
+			model.setViewName("manage_system/admin_main");
 			httpSession.setAttribute("managerSession", manager);
-			result.setCode(200);
+		}	
+		else{
+			model.setViewName("manage_system/login");
+			httpSession.setAttribute("managerSession", null);
 		}
-		return result;
+		System.out.println("this:" + managerEntity);
+		return model;
 	}
 	
 	@RequestMapping("logout")
 	public ModelAndView logout(HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
 		httpSession.setAttribute("managerSession", null);
-		model.setViewName("manager/login");
+		model.setViewName("manage_system/login");
 		return model;
 	}
 	
@@ -69,7 +68,7 @@ public class ManageController {
 		return result;
 	}
 
-	@RequestMapping("modify_manager")
+	@RequestMapping(value="modify_manager",method=RequestMethod.POST)
 	public @ResponseBody Result modifyManager(ManagerEntity managerEntity, HttpSession httpSession) {
 		Result result = new Result();
 		IManagerService managerService = new ManagerService();
@@ -79,7 +78,7 @@ public class ManageController {
 		return result;
 	}
 	
-	@RequestMapping("modify_agent")
+	@RequestMapping(value="modify_agent",method=RequestMethod.POST)
 	public @ResponseBody Result modifyAgent(AgentEntity agentEntity, HttpSession httpSession) {
 		Result result = new Result();
 		IAgentService agentService = new AgentService();
@@ -90,9 +89,10 @@ public class ManageController {
 		return result;
 	}
 	
-	@RequestMapping("modify_user")
+	@RequestMapping(value="modify_user",method=RequestMethod.POST)
 	public @ResponseBody Result modifyUser(UserEntity userEntity, HttpSession httpSession) {
 		Result result = new Result();
+		System.out.println("haha" + userEntity);
 		IUserService userService = new UserService();
 		boolean ok = userService.modify(userEntity);
 		if (ok)
@@ -278,7 +278,6 @@ public class ManageController {
 		IAgentService agentService = new AgentService();
 		agentList = agentService.listAgent(pageOffset, 3);
 		allAgentList = agentService.allAgent();
-		System.out.println(allAgentList.size());
 		pageSize = (int) Math.ceil(allAgentList.size()*1.0/3);
 		if(agentList == null || agentList.isEmpty())
 			result.setCode(500);

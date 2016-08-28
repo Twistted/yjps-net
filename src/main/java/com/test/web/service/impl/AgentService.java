@@ -17,7 +17,6 @@ public class AgentService implements IAgentService {
 		try {
 			AgentMapper mapper = session.getMapper(AgentMapper.class);
 			agentList = mapper.findAll();
-			System.out.println(agentList);
 		} finally {
 			DBUtil.closeSession();
 		}
@@ -30,7 +29,6 @@ public class AgentService implements IAgentService {
 		try{
 			int offset = (page - 1) * size;
 			AgentMapper mapper = session.getMapper(AgentMapper.class);
-			System.out.println(offset);
 			agentList = mapper.queryPage(offset, size);
 			System.out.println(agentList.size());
 		}finally{
@@ -45,7 +43,6 @@ public class AgentService implements IAgentService {
 		try {
 			AgentMapper mapper = session.getMapper(AgentMapper.class);
 			agent = mapper.findById(id);
-			System.out.println(agent);
 		} finally {
 			DBUtil.closeSession();
 		}
@@ -58,7 +55,6 @@ public class AgentService implements IAgentService {
 		try {
 			AgentMapper mapper = session.getMapper(AgentMapper.class);
 			i = mapper.update(agentEntity);
-			System.out.println(i);
 			session.commit();
 		} finally {
 			DBUtil.closeSession();

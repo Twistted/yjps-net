@@ -43,28 +43,28 @@
 				password = #{password},
 				</if>
 				<if test="name != null">
-				name = #{name}
+				name = #{name},
 				</if>
-				<if test="state != null">
-				state = #{state}
+				<if test="state != 0">
+				state = #{state},
 				</if>
-				<if test="sex != null">
-				sex = #{sex}
+				<if test="sex != 0">
+				sex = #{sex},
 				</if>
-				<if test="age != null">
-				age = #{age}
+				<if test="age != 0">
+				age = #{age},
 				</if>
 				<if test="photoUrl != null">
-				photo_url = #{photoUrl}
+				photo_url = #{photoUrl},
 				</if>
 				<if test="timestamp != null">
-				timestamp = #{timestamp}
+				timestamp = #{timestamp},
 				</if>
 				<if test="contact != null">
 				contact = #{contact}
 				</if>
 			</set>
-		where userid = #{userid}
+		where user_id = #{userId}
 	</update>
 	
 </mapper>
