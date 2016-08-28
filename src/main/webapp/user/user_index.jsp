@@ -47,7 +47,7 @@
 			<div class="main-left fl">
 				<div class="name" >
 					<img src="../public/img/p3.png" style="border-radius:5px;width:100px;height:100px;"></img>
-					<div class="user-name">欢迎你，用户1</div>
+					<div class="user-name"><span>欢迎你<span><br /><span id="span_username">用户1</span></div>
 				</div>
 				 <div class="tabbable"> 
 					<ul class="">
