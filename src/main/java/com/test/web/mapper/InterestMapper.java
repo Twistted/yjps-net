@@ -13,5 +13,5 @@ public interface InterestMapper {
 	public List<InterestEntity> queryPage(@Param("userId") int userId,@Param("offset")int offset,@Param("size") int size);
 	public int update(InterestEntity interestEntity);
 	public List<InterestEntity> getInterestList(int usrId);
-	public int delete(InterestEntity interestEntity);
+	public int delete(@Param("houseId")int houseId,@Param("userId")int userId);
 }

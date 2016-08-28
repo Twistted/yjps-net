@@ -366,7 +366,7 @@
 								</ul>
 							</form>
 							<div class="ok-btn">
-								<a class="lj-btn" >提交</a>
+								<a class="agent_personalInfo_btn lj-btn" >提交</a>
 							</div> 
 						</div>
 					</div>

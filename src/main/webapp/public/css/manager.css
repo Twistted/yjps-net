@@ -569,9 +569,10 @@ a.lj-btn{
 	font-size: 13px;
 	margin-top: 1px;
 }
-.tabbable .tab-content #mtab5 .check_wrap .check_list table tr td .actionForList:hover{
+.tabbable .tab-content  .check_wrap .check_list table tr td .actionForList:hover{
 	text-decoration: underline;
 	cursor:pointer;
+	background-color: #4fac6a;
 }
 .tabbable .tab-content #mtab5 .check_wrap .check_list table{
 	border:1px solid #e8e8e8;

@@ -39,12 +39,12 @@ public class InterestService implements IInterestService{
 		return interestEntity;
 	}
 	
-	public boolean deleteInterest(InterestEntity interestEntity) {
+	public boolean deleteInterest(int houseId,int userId) {
 		boolean ret = false;
 		SqlSession session = DBUtil.getSession();
 		try {
 			InterestMapper mapper = session.getMapper(InterestMapper.class);
-			int i = mapper.delete(interestEntity);
+			int i = mapper.delete(houseId,userId);
 			ret = i > 0 ? true : false;
 			session.commit();
 		} finally {

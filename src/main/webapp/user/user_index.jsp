@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%  
+    String path = request.getContextPath();  
+    String basePath = request.getScheme() + "://"  
+            + request.getServerName() + ":" + request.getServerPort()  
+            + path + "/";  
+%> 
 <html>
 <head>
 	<title>易居网_用户中心</title>
@@ -26,7 +32,7 @@
 							<span class="log" style="display:none">注册</span>
 						</a>
 						<a href="user/register.html">
-							<span class="log">${ sessionScope.userSession.name }</span>
+							<span id="right_username" class="log">${sessionScope.userSession.name }</span>
 						</a>
 						|
 						<a href="user/login" style="display:none">>
@@ -47,7 +53,7 @@
 			<div class="main-left fl">
 				<div class="name" >
 					<img src="../public/img/p3.png" style="border-radius:5px;width:100px;height:100px;"></img>
-					<div class="user-name"><span>欢迎你<span><br /><span id="span_username">用户1</span></div>
+					<div class="user-name">欢迎你<br /><span id="user_left_username">${sessionScope.userSession.name}</span></div>
 				</div>
 				 <div class="tabbable"> 
 					<ul class="">
@@ -61,7 +67,7 @@
 							<a href="#tab3" data-toggle="tab" id="li_3">编辑资料</a>
 						</li>
 						<li class="hover">
-							<a href="#tab4" data-toggle="tab" id="li_4">关注房源</a>
+							<a href="#tab4" data-toggle="tab" id="li_4" class="user_folInterestList">关注房源</a>
 						</li>
 						<li class="hover">
 							<a href="#tab5" data-toggle="tab" id="li_5">关注小区</a>
@@ -122,15 +128,15 @@
 						</li>
 						<li>
 							<span class="info_title">年龄:</span>
-							<div class="info_c"><span class="user_age">${sessionScope.userSession.age}<span></div>
+							<div class="info_c"><span class="user_age">${sessionScope.userSession.age}</span></div>
 						</li>
 						<li>
 							<span class="info_title">注册日期：</span>
-							<div class="info_c"><span class="user_date"> <span></div>
+							<div class="info_c"><span class="user_date"> ${sessionScope.userSession.timestamp}</span></div>
 						</li>
 						<li>
 							<span class="info_title">联系方式:</span>
-							<div class="info_c"><span class="user_contact">${sessionScope.userSession.contact}<span></div>
+							<div class="info_c"><span class="user_contact">${sessionScope.userSession.contact}</span></div>
 						</li>
 						 
 					</ul>
@@ -163,7 +169,8 @@
 						<!--改头像-->
 				 	<h3>请选择图片文件：JPG/GIF</h3>
 				 		<div class="uploadPic_wrap">
-							<form name="form0" id="form0" >
+				 			<!-- 带预览 -->
+						<!-- 	<form name="form0" id="form0" >
 								<div class="uploadPic_btn">选择图片</div>
 								<div class="uploadPic_input" style="position:absolute;">
 									<input type="file" name="file0" id="file0" multiple="multiple" /><br>
@@ -173,7 +180,14 @@
 								 		<img src="http://static1.ljcdn.com/pc/asset/img/user/default-pic.png?_v=20160819150834" id="img0" >
 								 	</div>
 								 </div>
-							</form>
+							</form> -->
+							<!-- 新既 -->
+							 <form enctype="multipart/form-data"  style="border:1px solid #e8e8e8;"  >  
+					            文件名: <input id="picUploadfileName" type="text" name="fileName" /><br/>  
+					            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+					            <input id="picUploadClientFile" type="file" name="clientFile" /><br/>  
+					            <input id="user_logoUpload_btn" type="submit" value="确定"/>  
+					        </form>  
 						</div>
 						<div class="clearfix"></div>
 						<div class="suc">
@@ -225,7 +239,7 @@
 						<!--个人信息修改-->
 					<div class="tab-pane" id="user_personalInfo">
 						<div class="personalInfo_wrap user_personalInfo_wrap">
-							<form id="updateInfo" action="agent/modify_agent" method="post">
+							<form id="updateInfo"  method="post">
 								<ul>
 									<li>
 										<span class="info_title">姓名:</span>
@@ -249,14 +263,11 @@
 										<span class="info_title">电话:</span>
 										<input type="text" id="phone" name="contact" class="form-control" />
 									</li>
-									<li>
-										<span class="info_title" style="margin-left:-28px;">注册时间:</span>
-										<input type="text" id="timestamp" name="timestamp" class="form-control" style="margin-left:30px;" />
-							 		</li>
+									 
 								</ul>
 							</form>
 							<div class="ok-btn">
-								<a class="lj-btn" >提交</a>
+								<a class="user_personalInfo_btn lj-btn" >提交</a>
 							</div> 
 						</div>
 					</div>
@@ -436,12 +447,13 @@
 	
 	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 	<script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
-	<script src="../public/js/manager.min.js"></script>
+	<script type="text/javascript" src="../public/js/manager.min.js"></script>
 	
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../public/js/jquery-1.8.3.min.js"></script>
 	<script type="text/javascript" src="../public/js/slimtable.min.js"></script>
-	<script type="text/javascript" src="../public/js/manager.min.js"></script>
+	<script type="text/javascript" src="../public/js/laypage.js"></script>
+	
 </body>
 </html>

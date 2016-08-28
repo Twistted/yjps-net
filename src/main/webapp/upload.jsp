@@ -14,7 +14,7 @@
         <form method="post" action="<%=path %>/upload/file" enctype="multipart/form-data">  
             文件名: <input type="text" name="fileName" /><br/>  
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-            <input type="file" name="clientFile" /><br/>  
+            <input id= ""type="file" name="clientFile" /><br/>  
             <input type="submit" value="上传文件 "/>  
         </form>  
     </body>  

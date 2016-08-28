@@ -13,7 +13,7 @@
     </insert>
     
     <delete id="delete" parameterType="InterestEntity">
-    	delete from interest where interest_id=#{interestId}
+    	delete from interest where house_id=#{houseId} and user_id=#{userId}
     </delete>
     
 	<select id="findById" parameterType="int" resultType="InterestEntity">
@@ -29,7 +29,7 @@
 	</select>
 	
 	<select id="queryPage" parameterType="int" resultType="InterestEntity">
-		select * from interest where user_id = #{userId} order by interest_id limit #{offset} #{size}
+		select * from interest where user_id = #{userId} order by interest_id limit #{offset} , #{size}
 	</select>
 	
 	<update id="update" parameterType="InterestEntity">

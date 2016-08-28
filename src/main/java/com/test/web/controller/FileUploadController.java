@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.test.web.dto.Result;
 import com.test.web.util.FileUploadUtil;
 
 @Controller
@@ -41,32 +42,36 @@ public class FileUploadController {
      * @return 
      */  
     @RequestMapping(value="/file", method=RequestMethod.POST)     
-    public @ResponseBody String uploadFile(@RequestParam("fileName") String fileName,     
+    public @ResponseBody Result uploadFile(@RequestParam("fileName") String fileName,     
             @RequestParam("clientFile") MultipartFile fileData, HttpSession session){  
     	// 判断图片大小是否大于2M
         if (fileData.getSize() > 2 * 1024 * 1024) {
-            return "";
+            System.out.println("fail");
+            return new Result(500);
         }
         // 判断司机是否已存在
         // 在这里就可以对file进行处理了，可以根据自己的需求把它存到数据库或者服务器的某个文件夹
         String filePath = FileUploadUtil.saveFile(fileData);
         System.out.println(filePath);
         filePath = filePath.replace("src\\main\\webapp\\assets\\uploads","/assets/uploads");
-        return filePath;     
+        System.out.println("yes");   
+        return new Result(200);
     } 
     
     @RequestMapping(value="/delete", method=RequestMethod.POST)
-    public @ResponseBody String deleteFile(@RequestParam("fileName") String fileName,     
+    public ModelAndView deleteFile(@RequestParam("fileName") String fileName,     
             @RequestParam("clientFile") MultipartFile fileData, HttpSession session){  
+    	ModelAndView view = new ModelAndView();
     	// 判断图片大小是否大于2M
         if (fileData.getSize() > 2 * 1024 * 1024) {
-            return "";
+            return view;
         }
         // 判断司机是否已存在
         // 在这里就可以对file进行处理了，可以根据自己的需求把它存到数据库或者服务器的某个文件夹
         String filePath = FileUploadUtil.saveFile(fileData);
         System.out.println(filePath);
-        return filePath;     
+        view.setViewName("upload");
+        return view;     
     } 
    
 }

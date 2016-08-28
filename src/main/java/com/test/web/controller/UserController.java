@@ -1,5 +1,6 @@
 package com.test.web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -53,7 +54,6 @@ public class UserController {
 		IUserService userService = new UserService();
 		
 		UserEntity user = userService.login(userEntity);
-		System.out.println(user);
 		if (user == null) {
 			httpSession.setAttribute("userSession", null);
 			model.setViewName("user/login");
@@ -96,11 +96,10 @@ public class UserController {
 		return result;
 	}
 	
-	@RequestMapping("modify_user")
+	@RequestMapping(value="modify_user", method=RequestMethod.POST)
 	public @ResponseBody Result modifyUser(UserEntity userEntity, HttpSession httpSession) {
 		Result result = new Result();
 		System.out.println(userEntity);
-		
 		UserEntity user = (UserEntity) httpSession.getAttribute("userSession");
 		userEntity.setUserId(user.getUserId());
 		IUserService userService = new UserService();
@@ -111,6 +110,7 @@ public class UserController {
 		} else {
 			result.setCode(500);
 		}
+		result.setUserEntity(userEntity);
 		return result;
 	}
 	
@@ -142,7 +142,7 @@ public class UserController {
 		if(page == null || page == 0)
 			page = 1;
 		UserEntity user = (UserEntity) httpSession.getAttribute("userSession");
-		List<HouseEntity> houseList = null;
+		List<HouseEntity> houseList = new ArrayList<HouseEntity>();
 		if (user == null) {
 			result.setCode(500);
 		} else {
@@ -150,23 +150,26 @@ public class UserController {
 			IHouseService houseService = new HouseService();
 			List<InterestEntity> interestList = interestService.queryPage(user.getUserId(), page, 3);
 			result.setCode(200);
-			result.setPageSize(interestService.getInterestList(user.getUserId()).size());
+			result.setPageSize((int) Math.ceil(interestService.getInterestList(user.getUserId()).size()*1.0/3));
+			HouseEntity house = new HouseEntity();
 			for(int i = 0;i < interestList.size();i++){
-				houseList.add(houseService.getHouseById(interestList.get(i).getHouseId()));
+				house = houseService.getHouseById(interestList.get(i).getHouseId());
+				houseList.add(house);
 			}
 			result.setHouseList(houseList);
+			result.setHouseListSize(houseList.size());
 		}
 		return result;
 	}
 	
-	@RequestMapping("delete_interest")
-	public @ResponseBody Result deleteInterest(HttpSession httpSession, InterestEntity interestEntity) {
+	@RequestMapping(value="delete_interest",method=RequestMethod.POST)
+	public @ResponseBody Result deleteInterest(HttpSession httpSession, int houseId) {
 		UserEntity user = (UserEntity) httpSession.getAttribute("userSession");
-		if (user == null || interestEntity.getInterestId() <= 0) {
+		if (user == null || houseId <= 0) {
 			return new Result(500);
 		} 
 		IInterestService interestService = new InterestService();
-		boolean ok = interestService.deleteInterest(interestEntity);
+		boolean ok = interestService.deleteInterest(houseId,user.getUserId());
 		if (ok) {
 			return new Result(200);
 		} else {

@@ -15,8 +15,15 @@ public class UserEntity {
 	private int state;
 	private int sex;
 	private int age;
+	public String getTimestamp() {
+		return timestamp;
+	}
+	public void setTimestamp(String timestamp) {
+		this.timestamp = timestamp;
+	}
+
 	private String photoUrl;
-	private Date timestamp;
+	private String timestamp;
 	private String contact;
 	
 	public int getUserId() {
@@ -67,12 +74,7 @@ public class UserEntity {
 	public void setPhotoUrl(String photoUrl) {
 		this.photoUrl = photoUrl;
 	}
-	public Date getTimeStamp() {
-		return timestamp;
-	}
-	public void setTimeStamp(Date timestamp) {
-		this.timestamp = timestamp;
-	}
+	
 	public String getContact() {
 		return contact;
 	}
