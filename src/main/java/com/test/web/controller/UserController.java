@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -71,7 +72,7 @@ public class UserController {
 		return model;
 	}
 	
-	@RequestMapping("modify_password")
+	@RequestMapping(value="modify_password", method=RequestMethod.POST)
 	public @ResponseBody Result modifyPassword(@RequestParam("oldPassword") String oldPassword, 
 			@RequestParam("newPassword") String newPassword, HttpSession httpSession) {
 		Result result = new Result();

@@ -299,7 +299,7 @@
 								</li>
 								<li>
 									<span></span>
-									<a class="actSubmit lj-btn">保存修改</a>
+									<a class="actSubmit agent_pwd_btn lj-btn">保存修改</a>
 								</li>
 							</ul>
 						</form>
@@ -384,31 +384,31 @@
 						</li>
 						<li>
 							<span class="info_title">姓名:</span>
-							<div class="info_c"><span>${sessionScope.agentSession.name}</span></div>
+							<div class="info_c"><span id="personalInfo_name">${sessionScope.agentSession.name}</span></div>
 						</li>
 						<li>
 							<span class="info_title">性别:</span>
-							<div class="info_c"><span>${sessionScope.agentSession.sex}</span></div>
+							<div class="info_c"><span id="personalInfo_sex">${sessionScope.agentSession.sex}</span></div>
 						</li>
 						<li>
 							<span class="info_title">年龄:</span>
-							<div class="info_c"><span>${sessionScope.agentSession.age}</span></div>
+							<div class="info_c"><span id="personalInfo_age">${sessionScope.agentSession.age}</span></div>
 						</li>
 						<li>
 							<span class="info_title">电话:</span>
-							<div class="info_c"><span>${sessionScope.agentSession.phone}</span></div>
+							<div class="info_c"><span id="personalInfo_phone">${sessionScope.agentSession.phone}</span></div>
 						</li>
 						<li>
 							<span class="info_title">邮箱:</span>
-							<div class="info_c"><span>${sessionScope.agentSession.email}<span></div>
-						</li>g
+							<div class="info_c"><span id="personalInfo_email">${sessionScope.agentSession.email}<span></div>
+						</li>
 						<li>
 							<span class="info_title">入行年份:</span>
-							<div class="info_c"><span>${sessionScope.agentSession.year}</span></div>
+							<div class="info_c"><span id="personalInfo_year">${sessionScope.agentSession.year}</span></div>
 						</li>
 						<li>
 							<span class="info_title">所属公司:</span>
-							<div class="info_c"><span>${sessionScope.agentSession.company}</span></div>
+							<div class="info_c"><span id="personalInfo_company">${sessionScope.agentSession.company}</span></div>
 						</li>
 						<li>
 							<span class="info_title">状态:</span>
@@ -416,7 +416,7 @@
 						</li>
 						<li>
 							<span class="info_title">自我介绍:</span>
-							<div class="info_c"><span>${sessionScope.agentSession.introduction}</span></div>
+							<div class="info_c"><span id="personalInfo_selfIntro">${sessionScope.agentSession.introduction}</span></div>
 						 </li>
 						
 					</ul>

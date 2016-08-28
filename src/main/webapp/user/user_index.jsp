@@ -114,40 +114,25 @@
 						</li>
 						<li>
 							<span class="info_title" id="name">姓名:</span>
-							<div class="info_c"><span>朱国栋</span></div>
+							<div class="info_c"><span class="user_name">朱国栋</span></div>
 						</li>
 						<li>
 							<span class="info_title">性别:</span>
-							<div class="info_c"><span>男</span></div>
+							<div class="info_c"><span class="user_sex">男</span></div>
 						</li>
 						<li>
-							<span class="info_title">生日:</span>
-							<div class="info_c"><span>1994-10-28</span></div>
-						</li>
-						<li>
-							<span class="info_title">居住地:</span>
-							<div class="info_c"><span>郫县</span></div>
+							<span class="info_title">年龄:</span>
+							<div class="info_c"><span class="user_age">2008-10-20<span></div>
 						</li>
 						<li>
 							<span class="info_title">注册日期：</span>
-							<div class="info_c"><span>2008-10-20<span></div>
+							<div class="info_c"><span class="user_date">2008-10-20<span></div>
 						</li>
 						<li>
-							<span class="info_title">发布房源数目:</span>
-							<div class="info_c"><span class="redspan">22</span><span>套<span></div>
+							<span class="info_title">联系方式:</span>
+							<div class="info_c"><span class="user_contact">2008-10-20<span></div>
 						</li>
-						<li>
-							<span class="info_title">在售套数:</span>
-							<div class="info_c"><span class="redspan">22</span><span>套<span></div>
-						</li>
-						<li>
-							<span class="info_title">已售套数:</span>
-							<div class="info_c"><span class="redspan">22</span><span>套<span></div>
-						</li>
-						<li>
-							<span class="info_title">出售率:</span>
-							<div class="info_c"><span class="redspan">22%</span></div>
-						</li>
+						 
 					</ul>
 				</div>
 				</div>
@@ -164,6 +149,7 @@
 				        <li id="li1" class="active"><a href="#user_logo" data-toggle="tab" style="text-decoration:none;outline:none;">上传头像</a></li>
 				        <li id="li2"><a href="#user_name" data-toggle="tab" style="text-decoration:none;outline:none;">修改昵称</a></li>
 				        <li id="li3"><a href="#user_pwd" data-toggle="tab" style="text-decoration:none;outline:none;">修改密码</a></li>
+				        <li id="li4"><a href="#user_personalInfo" data-toggle="tab" style="text-decoration:none;outline:none;">修改个人信息</a></li>
 				      </ul>
 					  </div>
 
@@ -207,15 +193,15 @@
 								</li>
 								<li>
 									<span>设置新密码:</span>
-									<input id="password1" name="newPassword" placeholder="请输入新密码" validate="notNull,minLength" validatedata="minLength=6" validatename="密码" type="password"></input>
+									<input id="password_1" name="newPassword" placeholder="请输入新密码" validate="notNull,minLength" validatedata="minLength=6" validatename="密码" type="password"></input>
 								</li>
 								<li>
 									<span>确认新密码：</span>
-									<input placeholder="请输入新密码" validate="notNull,isSame" validatedata="isSame=#password1" validatename="确认新密码" type="password" />
+									<input id="password_2" placeholder="请输入新密码" validate="notNull,isSame" validatedata="isSame=#password1" validatename="确认新密码" type="password" />
 								</li>
 								<li>
 									<span></span>
-									<a class="actSubmit lj-btn">保存修改</a>
+									<a class="user_pwd_btn actSubmit lj-btn">保存修改</a>
 								</li>
 							</ul>
 						</form>
@@ -236,6 +222,44 @@
 							</ul>
 						</form>
 					</div>
+						<!--个人信息修改-->
+					<div class="tab-pane" id="user_personalInfo">
+						<div class="personalInfo_wrap user_personalInfo_wrap">
+							<form id="updateInfo" action="agent/modify_agent" method="post">
+								<ul>
+									<li>
+										<span class="info_title">姓名:</span>
+										<input type="text" id="username" name="name" class="form-control" /> 
+									</li>
+									<li>
+										<span class="info_title">性别:</span>
+										<div class="checkbox">
+											<input class="radioInput" name="sex" value="1" checked="checked" type="radio"></input>
+											<span class="chosespan">男</span>
+											<input class="radioInput" name="sex" value="2" checked="checked" type="radio"></input>
+											<span class="chosespan">女</span>
+										</div>
+									</li>
+									<li>
+										<span class="info_title">年龄:</span>
+										<input type="text" id="age" name="age" class="form-control" />
+										 
+									</li>
+									<li>
+										<span class="info_title">电话:</span>
+										<input type="text" id="phone" name="contact" class="form-control" />
+									</li>
+									<li>
+										<span class="info_title" style="margin-left:-28px;">注册时间:</span>
+										<input type="text" id="timestamp" name="timestamp" class="form-control" style="margin-left:30px;" />
+							 		</li>
+								</ul>
+							</form>
+							<div class="ok-btn">
+								<a class="lj-btn" >提交</a>
+							</div> 
+						</div>
+					</div>
 				</div>
 				</div>
 				<!--关注房源-->
@@ -246,44 +270,26 @@
 
 					<div class="house_followlist">
 						<div class="check_wrap">
-							<form class="navbar-form navbar-left" role="search">
-								<div class="form-group">
-									<input id="table_search"type="text" class="form-control field" placeholder="请输入搜索条件">
-									<button type="submit" class="btn btn-default" id="search-bt">搜索</button>
-								</div>
-							
-							</form>
+							<div class="form-group"  style="display:block;">
+								<input id="table_search"type="text" class="form-control field" placeholder="请输入搜索条件" style="width:300px;display:inline-block;">
+								<button type="submit" class="btn btn-default" id="search-bt">搜索</button>
+							</div>
 							<div class="check_list">
-									<table id="table">
-										<thead>
-											<tr>
-												<th>所属小区</th>
-												<th>单位名称</th>
-												<th>小区户型</th>
-												<th>总价</th>
-												<th>联系方式</th>
-											</tr>
-										</thead>
+								<table id="fol_houstList" style="display:block;">
+									<thead>
 										<tr>
-											<td>弘吉雅居</td>
-											<td>4栋3单元</td>
-											<td>一厅两房</td>
-											<td>34万元</td>
-											<td>137000000</td>
+											<th style="width:100px;">房源编号</th>
+											<th style="width:250px;">小区名称</th>
+											<th style="width:200px;">小区户型</th>
+											<th style="width:100px;">首付</th>
+											<th style="width:150px;">总价</th>
+											<th style="width:100px;">操作</th>
 										</tr>
-										<tr>
-											<td>2</td>
-											<td>Eamon</td>
-											<td>Jones</td>
-											<td>26</td>
-											<td>Example corp</td>
-										</tr>
-									</table>
-										<script type="text/javascript">
-										$(function() {
-											$("#table").slimtable();
-										});
-										</script>
+									</thead>
+									<tbody>										 
+									</tbody>
+								</table>
+								<div class="page" id="fol_houseList_page"></div>
 							</div>
 						</div>
 					</div>
@@ -294,48 +300,29 @@
 						我关注的小区
 					</div>
 					<div class="vil_followlist">
-						<div class="check_wrap">
-							<form class="navbar-form navbar-left" role="search">
-								<div class="form-group">
-									<input id="table_searchfor2" type="text" class="form-control field" placeholder="请输入搜索条件">
-									<button type="submit" class="btn btn-default" id="search-bt_2">搜索</button>
-								</div>
-							
-							</form>
+							<div class="check_wrap">
+							<div class="form-group"  style="display:block;">
+								<input id="table_search"type="text" class="form-control field" placeholder="请输入搜索条件" style="width:300px;display:inline-block;">
+								<button type="submit" class="btn btn-default" id="search-bt">搜索</button>
+							</div>
 							<div class="check_list">
-									<table id="table2">
-										<thead>
-											<tr>
-												<th>ID</th>
-												<th>First name</th>
-												<th>Last name</th>
-												<th>Age</th>
-												<th>Company</th>
-											</tr>
-										</thead>
+								<table id="fol_vilList" style="display:block;">
+									<thead>
 										<tr>
-											<td>1</td>
-											<td>Alisa</td>
-											<td>Smith</td>
-											<td>34</td>
-											<td>Unemployed</td>
+											<th style="width:100px;">房源编号</th>
+											<th style="width:250px;">小区名称</th>
+											<th style="width:200px;">小区户型</th>
+											<th style="width:100px;">首付</th>
+											<th style="width:150px;">总价</th>
+											<th style="width:100px;">操作</th>
 										</tr>
-										<tr>
-											<td>2</td>
-											<td>Eamon</td>
-											<td>Jones</td>
-											<td>26</td>
-											<td>Example corp</td>
-										</tr>
-									</table>
-										<script type="text/javascript">
-										$(function() {
-											$("#table2").slimtable();
-										});
-										</script>
+									</thead>
+									<tbody>										 
+									</tbody>
+								</table>
+								<div class="page" id="fol_VilList_page"></div>
 							</div>
 						</div>
-
 					</div>
 				</div>
 				<!--我的委托-->
@@ -344,45 +331,29 @@
 						我的委托
 					</div>
 					<div class="entrust_list">
-						<div class="check_wrap">
-							<form class="navbar-form navbar-left" role="search">
-								<div class="form-group">
-									<input id="table_searchfor3" type="text" class="form-control field" placeholder="请输入搜索条件">
-									<button type="submit" class="btn btn-default" id="search-bt_3">搜索</button>
+						<div class="vil_followlist">
+							<div class="check_wrap">
+								<div class="form-group"  style="display:block;">
+									<input id="table_search"type="text" class="form-control field" placeholder="请输入搜索条件" style="width:300px;display:inline-block;">
+									<button type="submit" class="btn btn-default" id="search-bt">搜索</button>
 								</div>
-							
-							</form>
-							<div class="check_list">
-									<table id="table3">
+								<div class="check_list">
+									<table id="fol_vilList" style="display:block;">
 										<thead>
 											<tr>
-												<th>ID</th>
-												<th>First name</th>
-												<th>Last name</th>
-												<th>Age</th>
-												<th>Company</th>
+												<th style="width:100px;">房源编号</th>
+												<th style="width:250px;">小区名称</th>
+												<th style="width:200px;">小区户型</th>
+												<th style="width:100px;">首付</th>
+												<th style="width:150px;">总价</th>
+												<th style="width:100px;">操作</th>
 											</tr>
 										</thead>
-										<tr>
-											<td>1</td>
-											<td>Alisa</td>
-											<td>Smith</td>
-											<td>34</td>
-											<td>Unemployed</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Eamon</td>
-											<td>Jones</td>
-											<td>26</td>
-											<td>Example corp</td>
-										</tr>
+										<tbody>										 
+										</tbody>
 									</table>
-										<script type="text/javascript">
-										$(function() {
-											$("#table3").slimtable();
-										});
-										</script>
+									<div class="page" id="fol_VilList_page"></div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -393,55 +364,38 @@
 						我的评论
 					</div>
 					<div class="comment_list">
-						<div class="check_wrap">
-							<form class="navbar-form navbar-left" role="search">
-								<div class="form-group">
-									<input id="table_searchfor4" type="text" class="form-control field" placeholder="请输入搜索条件">
-									<button type="submit" class="btn btn-default" id="search-bt_4">搜索</button>
+						<div class="vil_followlist">
+							<div class="check_wrap">
+								<div class="form-group"  style="display:block;">
+									<input id="table_search"type="text" class="form-control field" placeholder="请输入搜索条件" style="width:300px;display:inline-block;">
+									<button type="submit" class="btn btn-default" id="search-bt">搜索</button>
 								</div>
-							
-							</form>
-							<div class="check_list">
-									<table id="table4">
+								<div class="check_list">
+									<table id="fol_vilList" style="display:block;">
 										<thead>
 											<tr>
-												<th>ID</th>
-												<th>First name</th>
-												<th>Last name</th>
-												<th>Age</th>
-												<th>Company</th>
+												<th style="width:100px;">房源编号</th>
+												<th style="width:250px;">小区名称</th>
+												<th style="width:200px;">小区户型</th>
+												<th style="width:100px;">首付</th>
+												<th style="width:150px;">总价</th>
+												<th style="width:100px;">操作</th>
 											</tr>
 										</thead>
-										<tr>
-											<td>1</td>
-											<td>Alisa</td>
-											<td>Smith</td>
-											<td>34</td>
-											<td>Unemployed</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Eamon</td>
-											<td>Jones</td>
-											<td>26</td>
-											<td>Example corp</td>
-										</tr>
+										<tbody>										 
+										</tbody>
 									</table>
-										<script type="text/javascript">
-										$(function() {
-											$("#table4").slimtable();
-										});
-										</script>
+									<div class="page" id="fol_VilList_page"></div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-
 			<div class="clearfix"></div>
 	</div>
 	</div>
-	<footer>
+</div>
+	<footer style="margin-top:40px;">
 		<div class="wrapper">
 			<div class="f-title">
 				<div class="fl">
