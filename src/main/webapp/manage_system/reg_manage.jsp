@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <title>成员管理</title>
+    <title>管理员管理</title>
 
     <link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/manage_system/public/css/adminSys.css">
@@ -20,7 +20,7 @@
 
 <ol class="breadcrumb">
     <li><a href="#">系统管理</a></li>
-    <li class="active">经纪人管理</li>
+    <li class="active">管理员管理</li>
 </ol>
 <div id="platform_config">
     <form class="search-box" id="searchbox" onsubmit="return false">
@@ -32,12 +32,10 @@
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>平台id</th>
-            <th>微信名称</th>
-            <th>微信号</th>
-            <th>原始ID</th>
-            <th>开发者ID</th>
-            <th>角色</th>
+            <th>姓名</th>
+            <th>账号</th>
+            <th>等级</th>
+            <th>照片</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -48,8 +46,8 @@
 
     </table>
     <div class="btn-group">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPlatform">
-            添加经纪人
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
+            添加管理员
         </button>
     </div>
     <form class="search-box" id="jumpbox" onsubmit="return false">
@@ -58,130 +56,123 @@
         <input type="submit" value="跳转"  id="jump_btn" >
     </form>
 
-    <!--添加平台 -->
-    <div class="modal fade" id="addPlatform" tabindex="-1" role="dialog" aria-labelledby="addPlaftormTitle">
+    <!--添加 -->
+    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="addTitle">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="addPlatformTitle">添加平台</h4>
+                    <h4 class="modal-title" id="addPlatformTitle">添加管理员</h4>
                 </div>
 
                 <div class="modal-body">
                     <form class="form-horizontal">
                         <div class="form-group">
-                            <label for="add_original_id" class="col-sm-3 control-label"><span class=".muted">*</span>原始ID</label>
+                            <label for="add_account" class="col-sm-3 control-label"><span class=".muted">*</span>账户名称</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="add_original_id" placeholder="原始ID">
+                                <input type="text" class="form-control" id="add_account" placeholder="账户名称">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="add_wechat_appid" class="col-sm-3 control-label">开发者ID</label>
+                            <label for="add_name" class="col-sm-3 control-label"><span class=".muted">*</span>姓名</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="add_wechat_appid" placeholder="开发者ID">
+                                <input type="text" class="form-control" id="add_name" placeholder="姓名">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="add_wechat_appsecret" class="col-sm-3 control-label">开发者密钥</label>
+                            <label for="add_password" class="col-sm-3 control-label"><span class=".muted">*</span>密码</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="add_wechat_appsecret" placeholder="开发者密钥">
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="add_wechat_account_id" class="col-sm-3 control-label">微信号</label>
-
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="add_wechat_account_id" placeholder="微信号">
+                                <input type="password" class="form-control" id="add_password" placeholder="密码">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="add_wechat_name" class="col-sm-3 control-label">微信名称</label>
+                            <label for="add_level" class="col-sm-3 control-label">权限等级</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="add_wechat_name" placeholder="微信名称">
+                                <input type="text" class="form-control" id="add_level" placeholder="权限等级">
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="add_photo" class="col-sm-3 control-label">照片</label>
 
-
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="add_photo" placeholder="照片">
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary" id="sure-addPlatform">确认</button>
+                    <button type="button" class="btn btn-primary" id="sure-add">确认</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="setPlatform" tabindex="-1" role="dialog" aria-labelledby="setPlaftormTitle">
+    <!--修改-->
+    <div class="modal fade" id="set" tabindex="-1" role="dialog" aria-labelledby="setTitle">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="setPlatformTitle">修改平台配置</h4>
+                    <h4 class="modal-title" id="setPlatformTitle">修改信息</h4>
                 </div>
 
                 <div class="modal-body">
                     <form class="form-horizontal">
-                        <div class="form-group">
-                            <label for="set_platform_id" class="col-sm-3 control-label"><span class=".muted">*</span>平台id</label>
+                        <div class="form-group" style="display:none">
+                            <label for="set_id" class="col-sm-3 control-label">ID</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="set_platform_id" placeholder="平台id"
-                                       value="1" readonly>
+                                <input type="text" class="form-control" id="set_id" placeholder="ID">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="set_original_id" class="col-sm-3 control-label"><span class=".muted">*</span>原始ID</label>
+                            <label for="set_account" class="col-sm-3 control-label"><span class=".muted">*</span>账户名称</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="set_original_id" placeholder="原始ID">
+                                <input type="text" class="form-control" id="set_account" placeholder="账户名称">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="set_wechat_appid" class="col-sm-3 control-label">开发者ID</label>
+                            <label for="set_name" class="col-sm-3 control-label"><span class=".muted">*</span>姓名</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="set_wechat_appid" placeholder="开发者ID">
+                                <input type="text" class="form-control" id="set_name" placeholder="姓名">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="set_wechat_appsecret" class="col-sm-3 control-label">开发者密钥</label>
+                            <label for="set_password" class="col-sm-3 control-label"><span class=".muted">*</span>密码</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="set_wechat_appsecret" placeholder="开发者密钥">
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="set_wechat_account_id" class="col-sm-3 control-label">微信号</label>
-
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="set_wechat_account_id" placeholder="微信号">
+                                <input type="password" class="form-control" id="set_password" placeholder="密码">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="set_wechat_name" class="col-sm-3 control-label">微信名称</label>
+                            <label for="set_level" class="col-sm-3 control-label">权限等级</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="set_wechat_name" placeholder="微信名称">
+                                <input type="text" class="form-control" id="set_level" placeholder="权限等级">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_photo" class="col-sm-3 control-label">照片</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="set_photo" placeholder="照片">
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary" id="sure-setPlatform">确认</button>
+                    <button type="button" class="btn btn-primary" id="sure-set">确认</button>
                 </div>
             </div>
         </div>
@@ -197,20 +188,19 @@
 
     $(function () {
         var cur_page = 1;
-        var cur_keyword='';
-        var cur_totalpage=9999;
+            var cur_keyword='';
+            var cur_totalpage=9999;
         //分页
         var fetchConfigData = function (curr) {
-            $.getJSON('/agent/list_agent', {
+            $.post('/manage/list_manager', {
                 page: curr || 1,
             }, function (res) {
-                console.log(res);
-                cur_page = curr;
-                cur_totalpage = res.total_page;
+                createTable(res);
+                cur_totalpage = res.pageSize;
                 //显示分页
                 laypage({
                     cont: 'page', //分页容器
-                    pages: res.total_page, //总页数
+                    pages: cur_totalpage, //总页数
                     curr: curr || 1, //当前页
                     jump: function (obj, first) { //分页后的回调，点击跳页触发函数自身，并传递当前页：obj.curr
                         //一定要加此判断，否则初始时会无限刷新
@@ -219,53 +209,137 @@
                         }
                     }
                 });
-            });
+            },"json");
         };
         //加载表格
-        /*var createTable = function (res) {
-            var data = res.data;
+        var createTable = function (res) {
+            var data = res.managerList;
             $('#platform_config .table tbody').empty();
             for (var i in data) {
-                var tr_operator_id = data[i].operator_id,              //开发者应用ID
-                        tr_original_id = data[i].original_id,              //原始ID
-                        tr_platform_id = data[i].platform_id,              //平台id
-                        tr_type = data[i].type,                            //角色
-                        tr_wechat_account_id = data[i].wechat_account_id,  //微信号
-                        tr_wechat_appid = data[i].wechat_appid,            //开发者ID
-                        tr_wechat_appsecret = data[i].wechat_appsecret,    //开发者密钥
-                        tr_wechat_name = data[i].wechat_name,              //微信名称
-
-                        table_content = '<tr data-secret="' + tr_wechat_appsecret + '">\
-                                    <td class="tr_platform_id">' + tr_platform_id + '</td>\
-                                    <td class="tr_wechat_name">' + tr_wechat_name + '</td>\
-                                    <td class="tr_wechat_account_id">' + tr_wechat_account_id + '</td>\
-                                    <td class="tr_original_id">' + tr_original_id + '</td>\
-                                    <td class="tr_wechat_appid">' + tr_wechat_appid + '</td>',
-
-                        table_type = '',
+                var tr_id = data[i].managerId,              //ID
+                        tr_name = data[i].name,                            //姓名
+                        tr_account = data[i].account,       //账户
+                        tr_password = data[i].password,     //密码
+                        tr_level = data[i].level,       //权限等级
+                        tr_photoUrl = data[i].photoUrl,             //照片地址
+                        tr_state = data[i].state, //启用与否
+                        table_content = '<tr data-secret="' + tr_id + '" data-password="'+ tr_password+'">\
+                                    <td class="tr_name">' + tr_name + '</td>\
+                                    <td class="tr_account">'+ tr_account+'</td>\
+                                    <td class="tr_level">' + tr_level + '</td>\
+                                    <td class="tr_photoUrl"><img width="80px" src="' + tr_photoUrl + '"></td>',
                         table_operation = '',
                         table_row = '';
-                if (tr_type == 1) { //运营
-                    table_type = '<td>运营者</td>';
-                    table_operation = '<td></td>';
-                } else if (tr_type == 2) { //管理员
-                    table_type = '<td>管理员</td>';
+                if (tr_state == 2) { //被禁用
                     table_operation = '<td>\
-                                    <a href="/Operation/Platform/platform_authority?pid='+tr_platform_id+'">授权</a>\
-                                    <a class="switchPID" style="cursor:pointer">切换至</a>\
-                                    <a class="tr_setPlatform" style="cursor:pointer" data-toggle="modal" data-target="#setPlatform">修改</a>\
-                                </td>'
+                                    <a class="tr_allow" style="cursor:pointer" data-toggle="modal">启用</a>&nbsp;<a class="tr_set" style="cursor:pointer" data-toggle="modal" data-target="#set">修改</a>\
+                                </td>';
+                } else if (tr_state == 1) { //已启用
+                    table_operation = '<td>\
+                                    <a class="tr_forbid" style="cursor:pointer" data-toggle="modal">禁用</a>&nbsp;<a class="tr_set" style="cursor:pointer" data-toggle="modal" data-target="#set">修改</a>\
+                                </td>';
                 } else {
-                    table_type = '<td>未知生物</td>';
+                    table_state = '<td>你谁啊</td>';
                     table_operation = '<td></td>';
                 }
-                table_row = table_content + table_type + table_operation + '</tr>';
+                table_row = table_content + table_operation + '</tr>';
                 $('#platform_config .table tbody').append(table_row);
                 btnEvent();
-
             }
-        }*/
+        }
+
+        $('#platform_config #jump_btn').click(function () {
+            var cpage=$('#jump_input').val();
+            if (cpage<=cur_totalpage) {
+                fetchConfigData(cpage);
+                cur_page=cpage;
+            }
+            else
+            {
+                alert("页码超出范围");
+            }
+            $('#jump_input').val('');
+        });
+
+        $('#sure-add').click(function () {
+            var addVal = {
+                account: $('#add_account').val(),
+                name: $('#add_name').val(),
+                password: $('#add_password').val(),
+                level: $('#add_level').val()||"1",
+                photoUrl:$('#add_photo').val()||"/public/img/logo.jpg"
+            };
+            postEvent('/manage/add_manager', addVal);
+        });
+
+        var btnEvent = function () {
+            //修改,填充表单
+            $('.tr_set').unbind().click(function () {
+                var set_row = $(this).parent('td').parent('tr'),
+                id = set_row.attr('data-secret'),
+                account =  set_row.children('.tr_account').text(),
+                name = set_row.children('.tr_name').text(),
+                password = set_row.attr('data-password'),
+                level = set_row.children('.tr_level').text(),
+                photoUrl = set_row.children('.tr_photoUrl').children().attr('src');
+                $('#set_id').val(id);
+                $('#set_account').val(account);
+                $('#set_name').val(name);
+                $('#set_password').val(password);
+                $('#set_level').val(level);
+                $('#set_photo').val(photoUrl);
+            });
+
+            $('#sure-set').unbind().click(function () {
+                var setPlatformVal = {
+                    managerId: $('#set_id').val(),
+                    account:$('#set_account').val(),
+                    password:$('#set_password').val(),
+                    name:$('#set_name').val(),
+                    photoUrl:$('#set_photo').val()||"/public/img/logo.jpg",
+                    level:$('#set_level').val()||""
+                };
+                postEvent('/manage/modify_manager', setPlatformVal);
+            });
+            
+            $('.tr_forbid').unbind().click(function () {
+                var set_row = $(this).parent('td').parent('tr'),
+                ids = set_row.attr('data-secret');
+                var setPlatformVal={
+                    managerId:ids
+                }
+                postEvent('/manage/disable_manager', setPlatformVal);
+            });
+            $('.tr_allow').unbind().click(function () {
+                var set_row = $(this).parent('td').parent('tr'),
+                ids = set_row.attr('data-secret');
+                var setPlatformVal={
+                    managerId:ids
+                }
+                postEvent('/manage/enable_manager', setPlatformVal);
+            });
+        }
+
+        
+        
+
+        var postEvent = function (url, obj) {
+            $.post(url, obj, function (jsondata) {
+                console.log(obj);
+                var data = jsondata;
+                if (data.code == 200) {
+                    alert('操作成功');
+                    $('#add').modal('hide');
+                    $('#set').modal('hide');
+                    fetchConfigData(cur_page);
+                } else {
+                    alert("输入有误噢~");
+                }
+            },"json");
+        }
+
         fetchConfigData(1);
+        btnEvent();
     });
 </script>
 </body>
