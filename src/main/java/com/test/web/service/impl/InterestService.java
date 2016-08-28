@@ -76,4 +76,16 @@ public class InterestService implements IInterestService{
 		return null;
 	}
 
+	public List<InterestEntity> queryPage(int userId, int page, int size) {
+		SqlSession session = DBUtil.getSession();
+		try {
+			int offset = (int) Math.ceil((page - 1) * size);
+			InterestMapper mapper = session.getMapper(InterestMapper.class);
+			interestList = mapper.queryPage(userId, offset, size);
+		} finally {
+			DBUtil.closeSession();
+		}
+		return interestList;
+	}
+
 }

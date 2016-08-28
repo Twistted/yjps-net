@@ -1,4 +1,4 @@
-package com.test.web.service.impl;
+package com.test.web.service;
 
 import java.util.List;
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.test.web.entity.AgentEntity;
 import com.test.web.entity.HouseEntity;
+import com.test.web.entity.InterestEntity;
 import com.test.web.entity.ManagerEntity;
 import com.test.web.entity.UserEntity;
 import com.test.web.service.impl.HouseService;
@@ -23,7 +24,16 @@ public class Result implements Serializable {
 	private HouseEntity houseEntity;
 	private int pageSize;
 	private int houseListSize;
+	private List<InterestEntity> interestList;
 	
+	public List<InterestEntity> getInterestList() {
+		return interestList;
+	}
+
+	public void setInterestList(List<InterestEntity> interestList) {
+		this.interestList = interestList;
+	}
+
 	public int getPageSize() {
 		return pageSize;
 	}

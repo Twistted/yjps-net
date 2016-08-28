@@ -14,12 +14,15 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.test.web.dto.Result;
 import com.test.web.entity.AgentEntity;
+import com.test.web.entity.HouseEntity;
 import com.test.web.entity.InterestEntity;
 import com.test.web.entity.UserEntity;
 import com.test.web.service.IAgentService;
+import com.test.web.service.IHouseService;
 import com.test.web.service.IInterestService;
 import com.test.web.service.IUserService;
 import com.test.web.service.impl.AgentService;
+import com.test.web.service.impl.HouseService;
 import com.test.web.service.impl.InterestService;
 import com.test.web.service.impl.UserService;
 
@@ -133,18 +136,27 @@ public class UserController {
 		return model;
 	}
 	
-	@RequestMapping("list_interest")
-	public ModelAndView listInterest(UserEntity userEntity, HttpSession httpSession) {
-		ModelAndView model = new ModelAndView();
+	@RequestMapping(value="list_interest",method=RequestMethod.POST)
+	public @ResponseBody Result listInterest(Integer page, HttpSession httpSession) {
+		Result result = new Result();
+		if(page == null || page == 0)
+			page = 1;
 		UserEntity user = (UserEntity) httpSession.getAttribute("userSession");
+		List<HouseEntity> houseList = null;
 		if (user == null) {
-			model.setView(new RedirectView("home"));
+			result.setCode(500);
 		} else {
 			IInterestService interestService = new InterestService();
-			List<InterestEntity> interestList = interestService.getInterestList(user.getUserId());
-			model.addObject("interestList", interestList);
+			IHouseService houseService = new HouseService();
+			List<InterestEntity> interestList = interestService.queryPage(user.getUserId(), page, 3);
+			result.setCode(200);
+			result.setPageSize(interestService.getInterestList(user.getUserId()).size());
+			for(int i = 0;i < interestList.size();i++){
+				houseList.add(houseService.getHouseById(interestList.get(i).getHouseId()));
+			}
+			result.setHouseList(houseList);
 		}
-		return model;
+		return result;
 	}
 	
 	@RequestMapping("delete_interest")

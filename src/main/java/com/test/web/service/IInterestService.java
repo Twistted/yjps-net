@@ -9,6 +9,7 @@ public interface IInterestService {
 	boolean deleteInterest(InterestEntity interestEntity);
 	boolean addInterest(InterestEntity interestEntity);
 	List<InterestEntity> getInterestList(int userId);
+	List<InterestEntity> queryPage(int userId,int page,int size);
 	InterestEntity getInterest(int id);
 
 }

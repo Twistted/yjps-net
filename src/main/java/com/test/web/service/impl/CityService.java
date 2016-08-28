@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.test.web.entity.CityEntity;
 import com.test.web.mapper.CityMapper;
+import com.test.web.service.ICityService;
 import com.test.web.util.DBUtil;
 
 public class CityService implements ICityService{

@@ -25,11 +25,11 @@
 	</select>
 	
 	<select id="getInterestList" parameterType="int" resultType="InterestEntity">
-		select * from interest order by interest_id
+		select * from interest where user_id = #{userId}
 	</select>
 	
 	<select id="queryPage" parameterType="int" resultType="InterestEntity">
-		select * from interest order by interest_id limit #{offset} #{size}
+		select * from interest where user_id = #{userId} order by interest_id limit #{offset} #{size}
 	</select>
 	
 	<update id="update" parameterType="InterestEntity">
