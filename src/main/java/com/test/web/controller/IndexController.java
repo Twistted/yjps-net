@@ -1,14 +1,19 @@
 package com.test.web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.test.web.dto.Result;
 import com.test.web.entity.AdvertisementEntity;
 import com.test.web.entity.HouseEntity;
 import com.test.web.service.IAdvertisementService;
@@ -46,16 +51,21 @@ public class IndexController {
 		IAdvertisementService advertisementService = new AdvertisementService();
 		List<AdvertisementEntity> advertisementList = advertisementService.getAdvertisementList(4);
 		model.addObject("advertisementList", advertisementList);
-		int[] interestList = new int[houseList.size()];
+		List<Integer> interestList = new ArrayList<Integer>() ;
 		IInterestService interestService = new InterestService();
 		for(int i = 0;i < houseList.size();i++){
-			interestList[i] = interestService.countByHouseId(houseList.get(i).getHouseId());
-			System.out.println(interestList[i]);
+			interestList.add(i,interestService.countByHouseId(houseList.get(i).getHouseId()));
+			System.out.println(interestList.get(i));
 		}
-		
 		model.addObject("interestList", interestList);
 		model.setViewName("home");
 		return model;
+	}
+	
+	@RequestMapping(value="logout", method=RequestMethod.POST)
+	public @ResponseBody Result logout(HttpSession httpSession){
+		httpSession.setAttribute("userSession", null);
+		return new Result(200);
 	}
 	
 	@RequestMapping(value="page/{id}/{size}", method=RequestMethod.GET) 
