@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,7 +95,7 @@
 		</div>
 		<div class="wrapper">
 			<div class="bg-image">
-				<img src="../public/img/login-bg.jpg">
+				<img src="../public/img/login-bg1.jpg">
 			</div>
 			<div class="logo"></div>
 			<div class="login-cun">
@@ -109,14 +109,14 @@
 								<label></label> 
 								<input id="username" name="account" validatename="账号" autocomplete="off" placeholder="请输入账号"
 									class="phonecode" type="text" validate="notNull,isTel" value="">
-								<p>账号不能为空</p>
+								<p class="tipForAccount" style="display:none;">账号不能为空</p>
 							</div>
 						</li>
 						<li class="pwd">
 							<div class="li-bg error">
 								<label></label> <input id="password" name="password"
 									validatename="密码" placeholder="请输入登录密码" validate="notNull" type="password" value="">
-								<p>密码不能为空</p>
+								<p class="tipForPwd" style="display:none;">密码不能为空</p>
 							</div>
 						</li>
 						<li class="user-phone">
@@ -142,17 +142,36 @@
 	</div>
 
 	<div class="footer-simple">
-		易居房地产经纪有限公司 / 网络经营许可证 京ICP备11024601号-12<br>易居房地产经纪有限公司保留全部权利&nbsp;
+		 
 	</div>
 
 	<div id="only" data-city="login" data-page="login_register"></div>
-	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-	<script type="text/javascript">
-		$(function(){
-			$(".actDoSubmit").click(function(){
+	<script type="text/javascript" src="../public/js/jquery-2.1.4.min.js"></script>
+	<script>
+		 $(document).ready(function(){
+		  
+		 	 $(".actDoSubmit").click(function(){
+		 		if(($("input#username").val())==""){
+		 			$(".tipForAccount").css("display","block");
+		 		}
+		 		if(($("input#password").val())==""){
+		 			$(".tipForPwd").css("display","block");
+		 		}
+			 });
+			$("input").bind("change",function(){
 				
+				if(($("input#username").val())!=" "){
+		 			$(".tipForAccount").css("display","none");
+		 		}
+		 		if(($("input#password").val())!=" "){
+		 			$(".tipForPwd").css("display","none");
+		 		}
+		 		else{
+		 			return false;
+		 		}
 			});
-		});
+		 });
+		
 	</script>
 </body>
 </html>

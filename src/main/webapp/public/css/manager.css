@@ -339,7 +339,15 @@ img{
 .user-main .main-right .change-pwd li{
 	padding-top:15px;
 	clear:both;
+	width:500px;
  
+}
+.comeup{
+	display:inline-block;
+}
+.tipSpan{
+	color:red;
+	font-size: 12px;
 }
 a.lj-btn{
 	text-decoration: none;
@@ -461,7 +469,7 @@ a.lj-btn{
 	display: inline-block;
 	margin-left: 10px;
 }
-.user-main .main-right .info_wrap ul li .info_c .redspan{
+.redspan{
 	color:red;
 	font-weight: bold;
 }
