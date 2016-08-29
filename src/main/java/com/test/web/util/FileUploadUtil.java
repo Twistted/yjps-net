@@ -17,13 +17,18 @@ public class FileUploadUtil {
      * @return 上传文件路径 （如果为null表示操作失败）
      *
      */
-	public static String saveFile(MultipartFile fileData) {
+	public static String saveFile(MultipartFile fileData,String directory) {
 		/* 构建文件目录 */
-		File fileDirectory = new File(SAVE_FILE_DIRECTORY);
+		String tempDirectory = SAVE_FILE_DIRECTORY + "/" + directory;
+		System.out.println(tempDirectory);
+		File fileDirectory = new File(tempDirectory);
 		if (! fileDirectory.exists()) {
+			System.out.println("ok");
 			if (! fileDirectory.mkdirs()) {
 				return null;
 			}
+		} else {
+			System.out.println("No exist");
 		}
 		/* 构建文件名 */
 		String newFileName = null;
@@ -38,7 +43,8 @@ public class FileUploadUtil {
         }
 
 		/* 保存文件 */
-		String saveFilePath = fileDirectory + "/" + newFileName;
+		String saveFilePath = tempDirectory + "/" + newFileName;
+		System.out.println(saveFilePath);
 		try {
             FileOutputStream out = new FileOutputStream(saveFilePath);
             // 写入文件

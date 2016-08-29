@@ -50,18 +50,26 @@ public class UserController {
 	@RequestMapping(value="login",method=RequestMethod.POST)
 	public ModelAndView login(UserEntity userEntity, HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
-		
+		httpSession.setAttribute("userLoginFail", null);
 		IUserService userService = new UserService();
-		
 		UserEntity user = userService.login(userEntity);
 		if (user == null) {
 			httpSession.setAttribute("userSession", null);
+			httpSession.setAttribute("userLoginFail", true);
 			model.setViewName("user/login");
-		} else {
-			model.addObject("user", user);
-			httpSession.setAttribute("userSession", user);
-			model.setViewName("user/user_index");
+		} 
+		else if(userEntity.getPassword().equals(user.getPassword())){
+			httpSession.setAttribute("userSession", null);
+			httpSession.setAttribute("userLoginFail", true);
+			model.setViewName("user/login");
 		}
+		else if(userEntity.getState() != 1){
+			httpSession.setAttribute("userLoginFail", false);
+			httpSession.setAttribute("userSession", null);
+			model.setViewName("user/login");
+		}
+		httpSession.setAttribute("userSession", user);
+		model.setViewName("user/user_index");
 		return model;
 	}
 	
@@ -71,6 +79,7 @@ public class UserController {
 	public ModelAndView logout(HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
 		httpSession.setAttribute("userSession", null);
+		httpSession.setAttribute("userLoginFail", null);
 		model.setViewName("user/login");
 		return model;
 	}
