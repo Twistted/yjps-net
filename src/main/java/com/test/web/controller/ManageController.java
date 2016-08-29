@@ -13,12 +13,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.test.web.dto.Result;
 import com.test.web.entity.AgentEntity;
+import com.test.web.entity.LabelEntity;
 import com.test.web.entity.ManagerEntity;
 import com.test.web.entity.UserEntity;
 import com.test.web.service.IAgentService;
+import com.test.web.service.ILabelService;
 import com.test.web.service.IManagerService;
 import com.test.web.service.IUserService;
 import com.test.web.service.impl.AgentService;
+import com.test.web.service.impl.LabelService;
 import com.test.web.service.impl.ManagerService;
 import com.test.web.service.impl.UserService;
 
@@ -316,6 +319,46 @@ public class ManageController {
 		result.setAgentList(agentList);
 		result.setPageSize(pageSize);
 		return result;
+	}
+	
+	@RequestMapping(value="list_label",method=RequestMethod.POST)
+	public @ResponseBody Result listLabel(@RequestParam(value="page", required=false) String page,HttpSession httpSession){
+		Result result = new Result();
+		int pageOffset,pageSize;
+		if(page == null){
+			pageOffset = 1;
+		}else{
+			pageOffset = Integer.valueOf(page);
+		}
+		List<LabelEntity> labelList,allLabelList;
+		ILabelService labelService = new LabelService();
+		allLabelList = labelService.getAllLabel();
+		labelList = labelService.queryByPage(pageOffset, 3);
+		pageSize = (int)Math.ceil(allLabelList.size()*1.0/3);
+		if(labelList == null || labelList.isEmpty())
+			result.setCode(500);
+		else result.setCode(500);
+		result.setLabelList(labelList);
+		result.setPageSize(pageSize);
+		return result;
+	}
+	
+	@RequestMapping(value="add_label",method=RequestMethod.POST)
+	public @ResponseBody Result addLabel(LabelEntity labelEntity,HttpSession httpSession){
+		ILabelService labelService = new LabelService();
+		if(labelService.addLabel(labelEntity))
+			return new Result(200);
+		else return new Result(500);
+	}
+	
+	@RequestMapping(value="delete_label",method=RequestMethod.POST)
+	public @ResponseBody Result deleteLabel(Integer labelId,HttpSession httpSession){
+		if(labelId == null || labelId <= 0)
+			return new Result(500);
+		ILabelService labelService = new LabelService();
+		if(labelService.deleteByLabelId(labelId))
+			return new Result(200);
+		else return new Result(500);
 	}
 
 }

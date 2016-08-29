@@ -7,12 +7,20 @@
         select * from label where label_id = #{labelId};
     </select>
     
+    <select id="findAll" resultType="LabelEntity">
+        select * from label
+    </select>
+    
+    <select id="queryPage" parameterType="int" resultType="LabelEntity">
+        select * from label order by label_id limit #{offset} ,#{size}
+    </select>
+    
     <delete id="delete" parameterType="int">
         delete from label where label_id = #{labelId};
     </delete>
     
     <insert id="insert" parameterType="LabelEntity">
-        insert into label(label_id,label) values (#{labelId},#{label})
+        insert into label(label) values (#{label})
     </insert>
     
 </mapper>

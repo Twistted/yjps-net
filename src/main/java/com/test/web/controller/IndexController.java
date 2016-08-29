@@ -57,6 +57,7 @@ public class IndexController {
 			interestList.add(i,interestService.countByHouseId(houseList.get(i).getHouseId()));
 			System.out.println(interestList.get(i));
 		}
+		System.out.println(interestList);
 		model.addObject("interestList", interestList);
 		model.setViewName("home");
 		return model;

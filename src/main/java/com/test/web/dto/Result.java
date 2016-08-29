@@ -6,6 +6,7 @@ import java.util.List;
 import com.test.web.entity.AgentEntity;
 import com.test.web.entity.HouseEntity;
 import com.test.web.entity.InterestEntity;
+import com.test.web.entity.LabelEntity;
 import com.test.web.entity.ManagerEntity;
 import com.test.web.entity.UserEntity;
 import com.test.web.service.impl.HouseService;
@@ -26,7 +27,25 @@ public class Result implements Serializable {
 	private int houseListSize;
 	private List<InterestEntity> interestList;
 	private String filePath;
+	private List<LabelEntity> labelList;
+	private LabelEntity labelEntity;
 	
+	public List<LabelEntity> getLabelList() {
+		return labelList;
+	}
+
+	public void setLabelList(List<LabelEntity> labelList) {
+		this.labelList = labelList;
+	}
+
+	public LabelEntity getLabelEntity() {
+		return labelEntity;
+	}
+
+	public void setLabelEntity(LabelEntity labelEntity) {
+		this.labelEntity = labelEntity;
+	}
+
 	public String getFilePath() {
 		return filePath;
 	}

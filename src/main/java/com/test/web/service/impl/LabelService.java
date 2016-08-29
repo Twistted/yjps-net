@@ -59,6 +59,29 @@ public class LabelService implements ILabelService{
 		return i;
 	}
 	
+	private List<LabelEntity> findAll(){
+		SqlSession session = DBUtil.getSession();
+		try{
+			LabelMapper labelMapper = session.getMapper(LabelMapper.class);
+			labelList = labelMapper.findAll();
+		}finally{
+			DBUtil.closeSession();
+		}
+		return labelList;
+	}
+	
+	private List<LabelEntity> queryPage(int page,int size){
+		SqlSession session = DBUtil.getSession();
+		try{
+			int offset = (page - 1) * size;
+			LabelMapper labelMapper = session.getMapper(LabelMapper.class);
+			labelList = labelMapper.queryPage(offset,size);
+		}finally{
+			DBUtil.closeSession();
+		}
+		return labelList;
+	}
+	
 	public List<LabelEntity> getLabelById(int id) {
 		return findByHouseId(id);
 	}
@@ -75,6 +98,16 @@ public class LabelService implements ILabelService{
 		if(delete(labelId) > 0)
 			return true;
 		else return false;
+	}
+
+	public List<LabelEntity> getAllLabel() {
+		// TODO Auto-generated method stub
+		return findAll();
+	}
+
+	public List<LabelEntity> queryByPage(int page, int size) {
+		// TODO Auto-generated method stub
+		return queryPage(page,size);
 	}
 
 }
