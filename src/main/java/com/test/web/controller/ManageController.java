@@ -36,7 +36,7 @@ public class ManageController {
 	@RequestMapping(value="login",method=RequestMethod.POST)
 	public ModelAndView login(ManagerEntity managerEntity, HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
-		httpSession.setAttribute("loginFail", false);
+		httpSession.setAttribute("loginFail", null);
 		IManagerService managerService = new ManagerService();
 		ManagerEntity manager = managerService.login(managerEntity);
 		if(manager == null){
@@ -44,14 +44,19 @@ public class ManageController {
 			httpSession.setAttribute("loginFail", true);
 			httpSession.setAttribute("managerSession", null);
 		}
-		else if (managerEntity.getPassword().equals(manager.getPassword())){
-			model.setViewName("manage_system/admin_main");
-			httpSession.setAttribute("managerSession", manager);
-		}	
-		else{
+		else if (!managerEntity.getPassword().equals(manager.getPassword())){
 			model.setViewName("manage_system/login");
 			httpSession.setAttribute("loginFail", true);
 			httpSession.setAttribute("managerSession", null);
+		}	
+		else if(manager.getState() != 1){
+			model.setViewName("manage_system/login");
+			httpSession.setAttribute("loginFail", false);
+			httpSession.setAttribute("managerSession", null);
+		}
+		else{
+			model.setViewName("manage_system/admin_main");
+			httpSession.setAttribute("managerSession", manager);
 		}
 		return model;
 	}
