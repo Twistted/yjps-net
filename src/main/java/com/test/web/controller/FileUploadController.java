@@ -50,7 +50,7 @@ public class FileUploadController {
      * @param session 
      * @return 
      */  
-    @RequestMapping(value="/file", method=RequestMethod.POST)     
+    /*@RequestMapping(value="/file", method=RequestMethod.POST)     
     public @ResponseBody Result uploadFile(@RequestParam("clientFile") MultipartFile fileData, HttpSession session){  
     	// 判断图片大小是否大于2M
         if (fileData.getSize() > 2 * 1024 * 1024) {
@@ -64,7 +64,7 @@ public class FileUploadController {
         filePath = filePath.replace("src/main/webapp/assets/uploads","/assets/uploads");
         System.out.println("yes");   
         return new Result(200);
-    } 
+    } */
     
     @RequestMapping(value="/user_file", method=RequestMethod.POST)     
     public @ResponseBody Result uploadUserFile(@RequestParam("clientFile") MultipartFile fileData, HttpSession session){  
@@ -86,6 +86,7 @@ public class FileUploadController {
         	session.setAttribute("userSession", user);
         	Result result = new Result(200);
         	result.setUserEntity(user);
+        	result.setFilePath(filePath);
         	return result;
         }
         else return new Result(500);
@@ -101,16 +102,20 @@ public class FileUploadController {
         // 判断司机是否已存在
         // 在这里就可以对file进行处理了，可以根据自己的需求把它存到数据库或者服务器的某个文件夹
         String filePath = FileUploadUtil.saveFile(fileData,"agent");
-        filePath = filePath.replace("src\\main\\webapp\\assets\\uploads","/assets/uploads/agent");
+        Result result = new Result();
+        filePath = filePath.replace("src/main/webapp/assets/uploads","/assets/uploads");
         System.out.println("yes");
         IAgentService agentService = new AgentService();
         AgentEntity agent = (AgentEntity)session.getAttribute("agentSession");
         agent.setPhotoUrl(filePath);
         if(agentService.modifyAgent(agent)){
         	session.setAttribute("agentSession", agent);
-        	return new Result(200);
+        	result.setCode(200);
+        	result.setFilePath(filePath);
+        	result.setAgentEntity(agent);
         }
-        else return new Result(500);
+        else result.setCode(500);
+        return result;
     } 
     
     @RequestMapping(value="/mnager_file", method=RequestMethod.POST)     
@@ -123,16 +128,20 @@ public class FileUploadController {
         // 判断司机是否已存在
         // 在这里就可以对file进行处理了，可以根据自己的需求把它存到数据库或者服务器的某个文件夹
         String filePath = FileUploadUtil.saveFile(fileData,"manager");
-        filePath = filePath.replace("src\\main\\webapp\\assets\\uploads","/assets/uploads/manager");
+        Result result = new Result();
+        filePath = filePath.replace("src/main/webapp/assets/uploads","/assets/uploads");
         System.out.println("yes");
         IManagerService managerService = new ManagerService();
         ManagerEntity manager = (ManagerEntity)session.getAttribute("managerSession");
         manager.setPhotoUrl(filePath);
         if(managerService.modifyManager(manager)){
         	session.setAttribute("managerSession", manager);
-        	return new Result(200);
+        	result.setCode(200);
+        	result.setFilePath(filePath);
+        	result.setManagerEntity(manager);
         }
-        else return new Result(500);
+        else result.setCode(500);
+        return result;
     } 
     
     @RequestMapping(value="/delete", method=RequestMethod.POST)

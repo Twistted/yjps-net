@@ -25,8 +25,16 @@ public class Result implements Serializable {
 	private int pageSize;
 	private int houseListSize;
 	private List<InterestEntity> interestList;
-	//private String filePath;
+	private String filePath;
 	
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
 	public List<InterestEntity> getInterestList() {
 		return interestList;
 	}
