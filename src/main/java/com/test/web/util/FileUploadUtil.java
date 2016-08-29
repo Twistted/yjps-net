@@ -25,7 +25,6 @@ public class FileUploadUtil {
 				return null;
 			}
 		}
-		
 		/* 构建文件名 */
 		String newFileName = null;
 		if (fileData != null && !fileData.isEmpty()) {  
