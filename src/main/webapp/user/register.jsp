@@ -71,20 +71,14 @@
 		</div>
 		<div class="wrapper">
 			<div class="bg-image">
-				<img src="../public/img/login-bg.jpg">
+				<img src="../public/img/login-bg1.jpg">
 			</div>
 			<div class="logo"></div>
 			<div class="reset-pwd registerred">
 				<form action="#" method="post" id="registerForm">
 					<input type="hidden" name="redirect" id="r" value="#">
 					<ul>
-						<li class=""><input type="text" name="mobile"
-							placeholder="请输入手机号" validate="notNull,isTel" validatename="手机号"
-							class="phonecode"> <a onclick="javascript:;"
-							class="send actRegisterSMS"> 发送验证码 </a> <i>*</i></li>
-						<li><input type="text" placeholder="请输短信验证码"
-							name="verifyCode" class="actCheckVerify" validatename="短信验证码"
-							validate="notNull"> <i>*</i></li>
+		 
 						<li><input type="text" name="nickName" placeholder="昵称">
 						</li>
 						<li><input type="password" name="password" id="password"
@@ -107,7 +101,7 @@
 		</div>
 
 		<div class="footer-simple">
-			易居房地产经纪有限公司 / 网络经营许可证 京ICP备11024601号-12<br>易居房地产经纪有限公司保留全部权利&nbsp;
+			 
 		</div>
 
 		<div id="only" data-city="login" data-page="login_register"></div>

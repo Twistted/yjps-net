@@ -7,7 +7,7 @@
      <title>易居网_经纪人中心</title>
      <link href="../public/css/manager.css" rel="stylesheet">
      <link rel="stylesheet" href="../public/css/slimtable.css">
-      <script  type="text/javascript" src="../public/js/manager.min.js"></script>
+     <link rel="stylesheet" href="../public/css/xcConfirm.css">
 	 
      <!-- 新 Bootstrap 核心 CSS 文件 -->
 <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
@@ -26,6 +26,7 @@
      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
      <script src="../public/js/manager.min.js"></script>
      <script src="../public/js/laypage.js"></script>
+     <script src="../public/js/xcConfirm.js"></script>
     
  
 </head>
@@ -34,7 +35,7 @@
 		<div class="nav-wrap">
 			<div class="wrapper">
 				<div class="fl">
-					<a href="home.html" class="logo" title="易居网络平台" style="float:left;"></a>
+					<a href="../home.jsp" class="logo" title="易居网络平台" style="float:left;"></a>
 					<span>易居二手房网上交易平台</span>
 				</div>
 				<div class="fr">
@@ -43,7 +44,7 @@
 							<span class="log" style="display:none">注册</span>
 						</a>
 						<a href="#">
-							<span class="log">${sessionScope.agentSession.name}</span>
+							<span class="log log_name">${sessionScope.agentSession.name}</span>
 						</a>
 						|
 						<a href="/agent/index" style="display:none">>
@@ -101,37 +102,37 @@
 					<p class="Fyh1">房源基本信息</p>
 				</div>
 				<div class="fy_contain">
-					<form>
+					<form autocomplete="off">
 						<ul>
 							<li>
 									<span class="Fyh2"><span class="star">*</span>标题</span>
-									<input class="textInput" type="text" id="FyTitle"></input>
+									<input class="textInput" type="text" id="FyTitle" maxlength="20" ></input>
 							</li>
 							<li>
 								<span class="Fyh2"><span class="star">*</span>房源编码</span>
-									<input name="houseNumber" class="textInput" type="text" id="houseNumber"  ></input>
+									<input name="houseNumber" class="textInput" type="text" id="houseNumber" maxlength="20"  ></input>
 							</li>
 							 
 							<li>
 								<span class="Fyh2"><span class="star">*</span>小区名称</span>
-									<input name="villageName" class="textInput" type="text" id="villageName"  placeholder="只填写小区名，例万达华府"></input>
+									<input name="villageName" class="textInput" type="text" id="villageName"  placeholder="只填写小区名，例万达华府" maxlength="20"></input>
 							</li>
 							<li>
 								<span class="Fyh2"><span class="star">*</span>小区户型</span>
-									<input class="textInput huxing" name="roomAmount" type="text" id="shi"><span class="huxingspan">室</span></input>
-									<input class="textInput huxing" name="livingroomAmount" type="text" id="ting"><span class="huxingspan">厅</span></input>
-									<input class="textInput huxing" name="toiletAmount" type="text" id="wei"><span class="huxingspan">卫</span></input>
-									<input class="textInput huxing" name="balconyAmount" type="text" id="yang"><span class="huxingspan">阳</span></input>
-									<input class="textInput huxing" name="area" type="text" id="mianji" placeholder="      建筑面积"style="width:120px;"><span class="t1" style="margin-left:-10px;">共</span><span class="huxingspan1" style="margin-left:8px;">㎡</span></input>
+									<input class="textInput huxing" name="roomAmount" type="text" id="shi" maxlength="2"><span class="huxingspan">室</span></input>
+									<input class="textInput huxing" name="livingroomAmount" type="text" id="ting" maxlength="2"><span class="huxingspan">厅</span></input>
+									<input class="textInput huxing" name="toiletAmount" type="text" id="wei" maxlength="2"><span class="huxingspan">卫</span></input>
+									<input class="textInput huxing" name="balconyAmount" type="text" id="yang" maxlength="2"><span class="huxingspan">阳</span></input>
+									<input class="textInput huxing" name="area" type="text" id="mianji" placeholder="      建筑面积" maxlength="4" style="width:120px;"><span class="t1" style="margin-left:-10px;">共</span><span class="huxingspan1" style="margin-left:8px;">㎡</span></input>
 							</li>
 							<li>
 								<span class="Fyh2"><span class="star">*</span>年份</span>
-									<input type="text" class="textInput" name="year" id="FyYear"  />
+									<input type="text" class="textInput" name="year" id="FyYear" maxlength="10" />
 									 
 							</li>
 							<li>
 									<span class="Fyh2"><span class="star">*</span>楼层</span>
-									<input class="textInput" name="floor" type="text" id="floor" style="width:100px;"><span class="huxingspan">层</span></input>
+									<input class="textInput" name="floor" type="text" id="floor" style="width:100px;" maxlength="3"><span class="huxingspan">层</span></input>
 							</li>
 							<li>
 									<span class="Fyh2"><span class="star">*</span>朝向</span>
@@ -148,15 +149,15 @@
 							</li>
 							<li style="display:inline-block;">
 									<span class="Fyh2"><span class="star">*</span>总价</span>
-									<input class="textInput" name="prize" type="text" id="prize" style="width:100px;"><span class="huxingspan" >万</span></input>
+									<input class="textInput" name="prize" type="text" id="prize" style="width:100px;" maxlength="6"><span class="huxingspan" >万</span></input>
 							</li>
 							<li>
 									<span class="Fyh2"><span class="star">*</span>首付</span>
-									<input class="textInput" name="downPayment" type="text" id="downPayment" style="width:100px;"><span class="huxingspan">万</span></input>
+									<input class="textInput" name="downPayment" type="text" id="downPayment" style="width:100px;" maxlength="6"><span class="huxingspan">万</span></input>
 							</li>
 							<li>
 									<span class="Fyh2"><span class="star">*</span>月供</span>
-									<input class="textInput" name="monthlyPayment" type="text" id="monPayment" style="width:100px;"><span class="huxingspan">万</span></input>
+									<input class="textInput" name="monthlyPayment" type="text" id="monPayment" style="width:100px;" maxlength="6"><span class="huxingspan">万</span></input>
 							</li>
 							
 						</ul>
@@ -180,13 +181,13 @@
 						<ul>
 							<li>
 								<span class="Fyh2"><span class="star">*</span>地理位置</span>
-									<input class="textInput huxing" name="province" type="text" id="province" style="width:100px;text-align: center;"><span class="huxingspan">省</span></input>
-									<input class="textInput huxing" name="city" type="text" id="city" style="width:100px;text-align: center;"><span class="huxingspan">市</span></input>
-									<input class="textInput huxing" name="town" type="text" id="town" style="width:100px;text-align: center;"><span class="huxingspan">镇</span></input>
+									<input class="textInput huxing" name="province" type="text" id="province" style="width:100px;text-align: center;" maxlength="3"><span class="huxingspan">省</span></input>
+									<input class="textInput huxing" name="city" type="text" id="city" style="width:100px;text-align: center;" maxlength="3"><span class="huxingspan">市</span></input>
+									<input class="textInput huxing" name="town" type="text" id="town" style="width:100px;text-align: center;" maxlength="3"><span class="huxingspan">镇</span></input>
 							</li>
 							<li>
 									<span class="Fyh2"><span class="star">*</span>地址</span>
-									<input class="textInput" name="address" type="text" id="FyAddress" style="width:320px;"></input>
+									<input class="textInput" name="address" type="text" id="FyAddress" style="width:320px;" maxlength="20"></input>
 							</li>
 						</ul>
 							 
@@ -257,8 +258,9 @@
 						<div class="update">
 						<!--改头像-->
 				 		<h3>请选择图片文件：JPG/GIF</h3>
-				 		<div class="uploadPic_wrap">
-							<form name="form0" action="" id="form0" >
+				 		 		<div class="uploadPic_wrap">
+				 			<!-- 带预览 -->
+						<!-- 	<form name="form0" id="form0" >
 								<div class="uploadPic_btn">选择图片</div>
 								<div class="uploadPic_input" style="position:absolute;">
 									<input type="file" name="file0" id="file0" multiple="multiple" /><br>
@@ -268,7 +270,15 @@
 								 		<img src="http://static1.ljcdn.com/pc/asset/img/user/default-pic.png?_v=20160819150834" id="img0" >
 								 	</div>
 								 </div>
-							</form>
+							</form> -->
+							<!-- 新既 -->
+							 <form id="upload_1" action="/upload/file" method="post" enctype="multipart/form-data"  style="border:1px solid #e8e8e8;" target="upload" >  
+					            文件名: <input id="picUploadfileName" type="text" name="fileName" /><br/>  
+					            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+					            <input id="picUploadClientFile" type="file" name="clientFile" /><br/>  
+					            <input id="user_logoUpload_btn" type="submit" value="确定"/>  
+					        </form>  
+					        <iframe name="upload" style="display:none;"></iframe>
 						</div>
 						<div class="clearfix"></div>
 						<div class="suc">
@@ -286,7 +296,7 @@
 							<ul class="change-pwd">
 								<li>
 									<span>输入旧密码:</span>
-									<input id="password" name="password" placeholder="请输入密码" validate="notNull,minLength" validatedata="minLength=6" validatename="密码" type="password" class="form-control" style="display:inline-block;" /><span class="tipSpan">&nbsp&nbsp密码不正确</span>
+									<input id="password" name="password" placeholder="请输入密码" validate="notNull,minLength" validatedata="minLength=6" validatename="密码" type="password" class="form-control" style="display:inline-block;" />
 								</li>
 								<li>
 									<span>设置新密码:</span>
@@ -313,7 +323,7 @@
 								<ul>
 									<li>
 										<span class="info_title">姓名:</span>
-										<input type="text" id="username" name="name" class="form-control" value="${seesionScope.agentSession.name}" />
+										<input type="text" id="username" name="name" class="form-control" value= ${sessionScope.agentSession.name} />
 									</li>
 									<li>
 										<span class="info_title">性别:</span>
@@ -326,24 +336,24 @@
 									</li>
 									<li>
 										<span class="info_title">年龄:</span>
-										<input type="text" id="age" name="age" class="form-control" value="${seesionScope.agentSession.age}" />
+										<input type="text" id="age" name="age" class="form-control" value=${seesionScope.agentSession.age} />
 										 
 									</li>
 									<li>
 										<span class="info_title">电话:</span>
-										<input type="text" id="phone" name="phone" class="form-control" value="${seesionScope.agentSession.phone}" />
+										<input type="text" id="phone" name="phone" class="form-control" value=${seesionScope.agentSession.phone} />
 									</li>
 									<li>
 										<span class="info_title">邮箱:</span>
-										<input type="text" id="email" name="email" class="form-control" value="${seesionScope.agentSession.email}"/>
+										<input type="text" id="email" name="email" class="form-control" value=${seesionScope.agentSession.email} />
 									</li>
 									<li>
 										<span class="info_title" style="margin-left:-28px;">入行年份:</span>
-										<input type="text" id="year" name="year" class="form-control" style="margin-left:30px;" value="${seesionScope.agentSession.year}"/>
+										<input type="text" id="year" name="year" class="form-control" style="margin-left:30px;" value=${seesionScope.agentSession.year}/>
 									</li>
 									<li>
 										<span class="info_title" style="margin-left:-28px;">所属公司:</span>
-										<input type="text" id="company"  name="company" class="form-control" value="${seesionScope.agentSession.company}"/>
+										<input type="text" id="company"  name="company" class="form-control" value=${seesionScope.agentSession.company} />
 									</li>
 									<li>
 										<span class="info_title" style="margin-left:-28px;">自我介绍:</span>
