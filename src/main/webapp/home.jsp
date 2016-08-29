@@ -111,10 +111,10 @@
 								<div class="col-2">
 									<div class="square">
 										<div>
-											<span class="num">82</span>
+											<span class="num"></span>
 											人
 										</div>
-										<div class="col-look">看过此房</div>
+										<div class="col-look">关注此房</div>
 									</div>
 								</div>
 								

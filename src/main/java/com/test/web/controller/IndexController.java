@@ -13,8 +13,10 @@ import com.test.web.entity.AdvertisementEntity;
 import com.test.web.entity.HouseEntity;
 import com.test.web.service.IAdvertisementService;
 import com.test.web.service.IHouseService;
+import com.test.web.service.IInterestService;
 import com.test.web.service.impl.AdvertisementService;
 import com.test.web.service.impl.HouseService;
+import com.test.web.service.impl.InterestService;
 
 @Controller
 @RequestMapping("/home")
@@ -44,7 +46,14 @@ public class IndexController {
 		IAdvertisementService advertisementService = new AdvertisementService();
 		List<AdvertisementEntity> advertisementList = advertisementService.getAdvertisementList(4);
 		model.addObject("advertisementList", advertisementList);
+		int[] interestList = new int[houseList.size()];
+		IInterestService interestService = new InterestService();
+		for(int i = 0;i < houseList.size();i++){
+			interestList[i] = interestService.countByHouseId(houseList.get(i).getHouseId());
+			System.out.println(interestList[i]);
+		}
 		
+		model.addObject(interestList);
 		model.setViewName("home");
 		return model;
 	}

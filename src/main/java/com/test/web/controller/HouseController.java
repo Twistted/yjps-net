@@ -76,7 +76,7 @@ public class HouseController {
 			IInterestService interestService = new InterestService();
 			InterestEntity interestEntity = new InterestEntity();
 			interestEntity.setHouseId(Integer.valueOf(id));
-			interestEntity.setInterestId(userEntity.getUserId());
+			interestEntity.setUserId(userEntity.getUserId());
 			boolean ok = interestService.addInterest(interestEntity);
 			System.out.println("ok" + ok);
 			if (ok) {

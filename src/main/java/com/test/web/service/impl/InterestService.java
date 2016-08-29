@@ -88,4 +88,16 @@ public class InterestService implements IInterestService{
 		return interestList;
 	}
 
+	public int countByHouseId(int houseId) {
+		SqlSession session = DBUtil.getSession();
+		int count = 0;
+		try {
+			InterestMapper mapper = session.getMapper(InterestMapper.class);
+			count = mapper.countByHouseId(houseId);
+		} finally {
+			DBUtil.closeSession();
+		}
+		return count;
+	}
+
 }

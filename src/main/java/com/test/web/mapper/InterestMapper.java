@@ -14,5 +14,6 @@ public interface InterestMapper {
 	public int update(InterestEntity interestEntity);
 	public List<InterestEntity> getInterestList(int usrId);
 	public int delete(@Param("houseId")int houseId,@Param("userId")int userId);
+	public int countByHouseId(int houseId);
 
 }

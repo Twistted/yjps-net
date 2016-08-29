@@ -28,6 +28,10 @@
 		select * from interest where user_id = #{userId}
 	</select>
 	
+	<select id="countByHouseId" parameterType="int" resultType="int">
+	    select count(user_id) from interest where house_id = #{houseId}
+	</select>
+	
 	<select id="queryPage" parameterType="int" resultType="InterestEntity">
 		select * from interest where user_id = #{userId} order by interest_id limit #{offset} , #{size}
 	</select>
