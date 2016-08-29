@@ -1,0 +1,28 @@
+.container{
+	width: 600px;
+	margin: 100px auto 0 auto;
+	height: 400px;
+}
+.error{
+	width: 100%;
+	font-size: 240px;
+	font-weight: 100px;
+	text-align: center;
+	color: #39AC6A;
+}
+.link{
+	float: right;
+	border:solid 1px #39AC6A;
+	font-size: 20px;
+	font-weight: bold;
+	color: #39AC6A;
+	border-radius:5px;
+}
+.person{
+	position: relative;
+	left:-50px;
+	bottom: 50px;
+	overflow: hidden;
+	width: 275px;
+	height: auto;
+}
