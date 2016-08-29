@@ -9,6 +9,7 @@
    <link href="/public/css/sh-house-css.css" rel="stylesheet">
    <link href="/public/css/reset.css" rel="stylesheet">
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <script src="/public/js/jquery-2.1.4.min.js"></script>
 </head>
 <body>
 	<!--导航-->
@@ -158,7 +159,7 @@
 	</div>
 	<!--最后-->
 	<jsp:include page="/footer.jsp"></jsp:include>
-	<script src="/public/js/jquery-2.1.4.min.js"></script>
+	
 	<script>
 		var page_html="";
 		var cur_page="${currentPage}";
@@ -167,7 +168,7 @@
 		var pre_page="${currentPage-1}";
 		$(document).ready(function(){
 			for (var i = 0; i <"${interestList}".length ; i++) {
-				$(".num").text("${interestList[i]}");
+				$(".square .num").text("${interestList[i]}");
 			};
 
 			if (cur_page>1) {

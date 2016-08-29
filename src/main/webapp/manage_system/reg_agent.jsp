@@ -135,10 +135,21 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="add_photo" class="col-sm-3 control-label">照片</label>
-
+                            <label for="add_photoUrl" class="col-sm-3 control-label">选择图片</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="add_photo" placeholder="照片">
+                            <input type="file" id="add_photoUrl" class="form-control add_photoUrl" name="add_photoUrl" multiple="multiple"/>  
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="photo_url" class="col-sm-3 control-label">图片地址</label>
+                            <div class="col-sm-9">
+                            <input type="text" class="form-control mod_banner_url photo_url" name="mod_banner_url"  id="mod_banner_url" disabled="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="photo" class="col-sm-3 control-label">图片预览</label>
+                            <div class="col-sm-9">
+                            <img class="photo_img" class="form-control"/>  
                             </div>
                         </div>
                         <div class="form-group">
