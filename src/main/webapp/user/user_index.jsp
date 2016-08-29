@@ -182,12 +182,13 @@
 								 </div>
 							</form> -->
 							<!-- 新既 -->
-							 <form enctype="multipart/form-data"  style="border:1px solid #e8e8e8;"  >  
+							 <form id="upload_1" action="/upload/file" method="post" enctype="multipart/form-data"  style="border:1px solid #e8e8e8;" target="upload" >  
 					            文件名: <input id="picUploadfileName" type="text" name="fileName" /><br/>  
 					            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
 					            <input id="picUploadClientFile" type="file" name="clientFile" /><br/>  
 					            <input id="user_logoUpload_btn" type="submit" value="确定"/>  
 					        </form>  
+					        <iframe name="upload" style="display:none;"></iframe>
 						</div>
 						<div class="clearfix"></div>
 						<div class="suc">
@@ -451,7 +452,7 @@
 	
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../public/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 	<script type="text/javascript" src="../public/js/slimtable.min.js"></script>
 	<script type="text/javascript" src="../public/js/laypage.js"></script>
 	

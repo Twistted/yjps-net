@@ -42,8 +42,7 @@ public class FileUploadController {
      * @return 
      */  
     @RequestMapping(value="/file", method=RequestMethod.POST)     
-    public @ResponseBody Result uploadFile(@RequestParam("fileName") String fileName,     
-            @RequestParam("clientFile") MultipartFile fileData, HttpSession session){  
+    public @ResponseBody Result uploadFile(@RequestParam("clientFile") MultipartFile fileData, HttpSession session){  
     	// 判断图片大小是否大于2M
         if (fileData.getSize() > 2 * 1024 * 1024) {
             System.out.println("fail");
