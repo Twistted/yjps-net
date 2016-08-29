@@ -9,6 +9,7 @@
    <link rel="shortcut icon" type="image/x-icon" href="http://lianjia.com/favicon.ico" />
 
     <link href="/manage_system/public/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <script src="/manage_system/public/js/jquery.js" language="JavaScript"></script>
     <script src="/manage_system/public/js/cloud.js" type="text/javascript"></script>
 
@@ -18,15 +19,24 @@
             $(window).resize(function () {
                 $('.loginbox').css({'position': 'absolute', 'left': ($(window).width() - 692) / 2});
             })
-            if ("${sessionScope.loginFail}"=="true") {alert("密码或账号有误，请重新检查~");}
-            else if ("${sessionScope.loginFail}"=="false") {alert("你已经被禁用了，快回去反省！");}
+            $('.close').click(function () {
+                $('.tip').fadeOut(400);
+            });
+            if ("${sessionScope.loginFail}"=="true") {
+                $('#modal-fault').fadeIn(400);
+                //alert("密码或账号有误，请重新检查~");
+            }
+            else if ("${sessionScope.loginFail}"=="false") {
+                $('#modal-forbid').fadeIn(400);
+                //alert("你已经被禁用了，快回去反省！");
+            }
         });
     </script>
 
 </head>
 
 <body style="background-color:#1c77ac; background-image:url(images/light.png); background-repeat:no-repeat; background-position:center top; overflow:hidden;">
-
+<div class="all-contain">
 
 <div id="mainBody">
     <div id="cloud1" class="cloud"></div>
@@ -62,7 +72,40 @@
         </div>
     </form>
 </div>
+</div>
+<div class="tip" id="modal-fault" style="display:none;height:auto;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">错误提示</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label class="control-label">密码或账号有误，请重新检查~</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+</div>
 
+<div class="tip" id="modal-forbid" style="display:none;height:auto;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">错误提示</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label class="control-label">你已经被禁用了，快回去反省！</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+</div>
 
 <div class="loginbm">- 易居网络平台 -</div>
 

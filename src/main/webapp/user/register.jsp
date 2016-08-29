@@ -71,7 +71,7 @@
 		</div>
 		<div class="wrapper">
 			<div class="bg-image">
-				<img src="../public/img/login-bg.jpg">
+				<img src="../public/img/login-bg1.jpg">
 			</div>
 			<div class="logo"></div>
 			<div class="reset-pwd registerred">
@@ -108,7 +108,7 @@
 		</div>
 
 		<div class="footer-simple">
-			易居房地产经纪有限公司 / 网络经营许可证 京ICP备11024601号-12<br>易居房地产经纪有限公司保留全部权利&nbsp;
+			 
 		</div>
 
 		<div id="only" data-city="login" data-page="login_register"></div>
