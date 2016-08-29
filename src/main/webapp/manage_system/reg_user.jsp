@@ -316,7 +316,7 @@
                 age: $('#add_password').val()||0,
                 sex: sexs,
                 contact: $('#add_contact').val()||"",
-                photoUrl:$('#add_photo').val()||"//manage_system/public/img/logo.jpg"
+                photoUrl:$('#add_photo').val()||"/public/img/logo.jpg"
             };
             postEvent('/manage/add_user', addVal);
         });
@@ -361,7 +361,7 @@
                     age:$('#set_age').val()||0,
                     sex:sexs,
                     contact:$('#set_contact').val()||"",
-                    photoUrl:$('#set_photo').val()||"//manage_system/public/img/logo.jpg"
+                    photoUrl:$('#set_photo').val()||"/public/img/logo.jpg"
                 };
                 console.log(setPlatformVal);
                 postEvent('/manage/modify_user', setPlatformVal);

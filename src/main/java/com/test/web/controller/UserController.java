@@ -47,7 +47,7 @@ public class UserController {
 		return model;
 	}
 	
-	@RequestMapping("login")
+	@RequestMapping(value="login",method=RequestMethod.POST)
 	public ModelAndView login(UserEntity userEntity, HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
 		
@@ -96,7 +96,11 @@ public class UserController {
 		return result;
 	}
 	
+<<<<<<< HEAD
 	@RequestMapping(value="modify_user", method=RequestMethod.POST)
+=======
+	@RequestMapping(value="modify_user",method=RequestMethod.POST)
+>>>>>>> 19a96a995271f43f83e910c333bb8d3486b53849
 	public @ResponseBody Result modifyUser(UserEntity userEntity, HttpSession httpSession) {
 		Result result = new Result();
 		System.out.println(userEntity);
@@ -122,9 +126,7 @@ public class UserController {
 			model.setViewName("user/register");
 			return model;
 		}
-		
 		IUserService userService = new UserService();
-		
 		boolean ok = userService.register(userEntity);
 		System.out.println(ok);
 		if (ok) {
@@ -163,9 +165,15 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="delete_interest",method=RequestMethod.POST)
+<<<<<<< HEAD
 	public @ResponseBody Result deleteInterest(HttpSession httpSession, int houseId) {
 		UserEntity user = (UserEntity) httpSession.getAttribute("userSession");
 		if (user == null || houseId <= 0) {
+=======
+	public @ResponseBody Result deleteInterest(HttpSession httpSession,Integer houseId) {
+		UserEntity user = (UserEntity) httpSession.getAttribute("userSession");
+		if (user == null || houseId == null) {
+>>>>>>> 19a96a995271f43f83e910c333bb8d3486b53849
 			return new Result(500);
 		} 
 		IInterestService interestService = new InterestService();

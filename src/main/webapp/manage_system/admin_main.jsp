@@ -24,8 +24,8 @@
             <ul class="dropdown-menu" aria-labelledby="dLabe2">
                 <!--<li><a href="#">设置</a></li>-->
                 <li><a href="/manage/logout">退出</a></li>
-                <li><a href="#" id="btn-changePsw">修改密码</a></li>
-                <li><a href="#" id="btn-setOp">修改资料</a></li>
+                <!--<li><a href="#" id="btn-changePsw">修改密码</a></li>-->
+                <!--<li><a href="#" id="btn-setOp">修改资料</a></li>-->
                 <!--<li><a href="/Operation/Operator/changePassword" id="btn-changePsw">修改密码</a></li>
                 <li><a href="/Operation/Operator/setOperator" id="btn-setOp">修改资料</a></li>-->
             </ul>

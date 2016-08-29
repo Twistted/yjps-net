@@ -384,7 +384,7 @@
                 introduction: $('#add_introduction').val()||"宋吉吉是傻*",
                 company: $('#add_company').val()||"四川华迪公司",
                 yaer: $('#add_year').val()||"",
-                photoUrl:$('#add_photo').val()||"//manage_system/public/img/logo.jpg"
+                photoUrl:$('#add_photo').val()||"/public/img/logo.jpg"
             };
             postEvent('/manage/add_agent', addVal);
         });
@@ -438,7 +438,7 @@
                     sex:sexs,
                     phone:$('#set_phone').val()||"",
                     email:$('#set_email').val()||"",
-                    photoUrl:$('#set_photo').val()||"//manage_system/public/img/logo.jpg",
+                    photoUrl:$('#set_photo').val()||"/public/img/logo.jpg",
                     company:$('#set_company').val()||"四川华迪公司",
                     introduction:$('#set_introduction').val()||"宋吉吉是傻*",
                     year:$('#set_year').val()||""

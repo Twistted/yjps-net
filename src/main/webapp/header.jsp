@@ -16,7 +16,7 @@
 							<span style="display:none">朱国栋</span>
 						</a>
 						|
-						<a href="/user/login">
+						<a href="/user/login.jsp">
 							<span class="user-reg">登录</span>
 						</a>
 						<a href="/home/index">
