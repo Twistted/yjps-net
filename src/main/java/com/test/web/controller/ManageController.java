@@ -36,17 +36,23 @@ public class ManageController {
 	@RequestMapping(value="login",method=RequestMethod.POST)
 	public ModelAndView login(ManagerEntity managerEntity, HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
+		httpSession.setAttribute("loginFail", false);
 		IManagerService managerService = new ManagerService();
 		ManagerEntity manager = managerService.login(managerEntity);
-		if (managerEntity.getPassword().equals(manager.getPassword())){
+		if(manager == null){
+			model.setViewName("manage_system/login");
+			httpSession.setAttribute("loginFail", true);
+			httpSession.setAttribute("managerSession", null);
+		}
+		else if (managerEntity.getPassword().equals(manager.getPassword())){
 			model.setViewName("manage_system/admin_main");
 			httpSession.setAttribute("managerSession", manager);
 		}	
 		else{
 			model.setViewName("manage_system/login");
+			httpSession.setAttribute("loginFail", true);
 			httpSession.setAttribute("managerSession", null);
 		}
-		System.out.println("this:" + managerEntity);
 		return model;
 	}
 	
@@ -75,6 +81,26 @@ public class ManageController {
 		boolean ok = managerService.modifyManager(managerEntity);
 		if(ok) result.setCode(200);
 		else result.setCode(500);
+		return result;
+	}
+	
+	@RequestMapping(value="modify_password", method=RequestMethod.POST) 
+	public @ResponseBody Result modifyPassword(@RequestParam("oldPassword") String oldPassword, 
+			@RequestParam("newPassword") String newPassword, HttpSession httpSession) {
+		Result result = new Result();
+		ManagerEntity managerSession = (ManagerEntity) httpSession.getAttribute("managerSession");
+		if (managerSession.getPassword().equals(oldPassword)) {
+			managerSession.setPassword(newPassword);
+			IManagerService managerService = new ManagerService();
+			if (managerService.modifyManager(managerSession)) {
+				httpSession.setAttribute("managerSession", managerSession);
+				result.setCode(200);
+			} else {
+				result.setCode(500);
+			}
+		} else {
+			result.setCode(500);
+		}
 		return result;
 	}
 	

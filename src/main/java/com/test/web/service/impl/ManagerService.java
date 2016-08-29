@@ -115,7 +115,7 @@ public class ManagerService implements IManagerService {
 		SqlSession session = DBUtil.getSession();
 		try{
 			ManagerMapper mapper = session.getMapper(ManagerMapper.class);
-			ret = mapper.diaable(managerId) > 0 ? true : false;
+			ret = mapper.disable(managerId) > 0 ? true : false;
 			session.commit();
 		}finally{
 			DBUtil.closeSession();

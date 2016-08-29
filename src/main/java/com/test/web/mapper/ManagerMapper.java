@@ -13,6 +13,6 @@ public interface ManagerMapper {
 	public List<ManagerEntity> queryPage(@Param("offset")int offset,@Param("size") int size);
 	public int update(ManagerEntity managerEntity);
 	public int enable(int managerId);
-	public int diaable(int managerId);
+	public int disable(int managerId);
 	public ManagerEntity login(String account);
 }

@@ -43,10 +43,10 @@
 				<if test="name != null">
 					name = #{name},
 				</if>
-				<if test="state != null">
+				<if test="state != 0">
 					state = #{state},
 				</if>
-				<if test="level != null">
+				<if test="level != 0">
 					level = #{level},
 				</if>
 				<if test="photoUrl != null">
