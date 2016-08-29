@@ -24,8 +24,8 @@
             <ul class="dropdown-menu" aria-labelledby="dLabe2">
                 <!--<li><a href="#">设置</a></li>-->
                 <li><a href="/manage/logout">退出</a></li>
-                <!--<li><a href="#" id="btn-changePsw">修改密码</a></li>-->
-                <!--<li><a href="#" id="btn-setOp">修改资料</a></li>-->
+                <li><a href="#" id="btn-changePsw">修改密码</a></li>
+                <li><a href="#" id="btn-setOp">修改资料</a></li>
                 <!--<li><a href="/Operation/Operator/changePassword" id="btn-changePsw">修改密码</a></li>
                 <li><a href="/Operation/Operator/setOperator" id="btn-setOp">修改资料</a></li>-->
             </ul>
@@ -91,22 +91,18 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label class="control-label">用户名：</label>
-                        <label class="form-control" id="mod_username"></label>
+                        <label class="control-label">姓名：</label>
+                        <input type="text" class="form-control" id="mod_name" name="name" value="${sessionScope.managerSession.name}">
                     </div>
                     <div class="form-group">
-                        <label for="banner_url" class="control-label">昵称：</label>
-                        <input type="text" class="form-control" id="mod_nickname" name="banner_url" value="">
-                    </div>
-                    <div class="form-group">
-                        <label for="banner_url" class="control-label">学校：</label>
-                        <input type="text" class="form-control" id="mod_school" name="banner_url" value="">
+                        <label for="photo_url" class="control-label">照片：</label>
+                        <input type="text" class="form-control" id="mod_photo_url" name="photo_url" value="${sessionScope.managerSession.photoUrl}">
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary" onclick="" id="btn-enter">确认</button>
+                <button type="button" class="btn btn-primary" onclick="" id="btn-enter-info">确认</button>
             </div>
         </div>
     </div>
@@ -122,21 +118,12 @@
 
 </script>
 <script type="text/javascript">
-    /*(function () {
+    (function () {
         $("#btn-changePsw").click(function () {
             $("#modal-changePsw").fadeIn(100);
         });
         $("#btn-setOp").click(function () {
             $("#modal-setOp").fadeIn(100);
-            $.post('/Operation/Operator/getMyProfile',
-                    {},
-                    function (jsondata) {
-                        var data = $.parseJSON(jsondata);
-                        $("#mod_username").html(data.username);
-                        $("#mod_nickname").val(data.nickname);
-                        $("#mod_school").val(data.schoolname);
-                    });
-
         });
         $(".modal-footer button").click(function () {
             $(".tip").fadeOut(100);
@@ -146,24 +133,40 @@
             var psw = $('#psw').val();
             var ens_psw = $('#ens_psw').val();
             if (psw == ens_psw) {
-                $.post('/Operation/Operator/changePassword',
+                $.post('/manage/modify_password',
                         {
-                            old_password: old_psw,
-                            password: psw
+                            oldPassword: old_psw,
+                            newPassword: psw
                         },
                         function (jsondata) {
-                            var data = $.parseJSON(jsondata);
-                            if (data.status === 1) {
-                                alert(data.tips);
+
+                            if (jsondata.code == 200) {
+                                alert('操作成功');
                             } else {
-                                alert(data.tips)
+                                alert("输入有误噢~")
                             }
-                        });
+                        },"json");
             } else {
                 alert("两次密码不一样噢，再试一次吧~");
             }
         });
-    })(jQuery)*/
+         $("#btn-enter-info").click(function () {
+                $.post('/manage/modify_manager',
+                        {
+                            managerId:"${sessionScope.managerSession.managerId}",
+                            name: $('#mod_name').val(),
+                            photoUrl: $('#mod_photo_url').val()
+                        },
+                        function (jsondata) {
+
+                            if (jsondata.code == 200) {
+                                alert('操作成功');
+                            } else {
+                                alert("输入有误噢~")
+                            }
+                        },"json");
+        });
+    })(jQuery)
 </script>
 </body>
 </html>

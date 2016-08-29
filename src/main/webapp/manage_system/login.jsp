@@ -18,6 +18,8 @@
             $(window).resize(function () {
                 $('.loginbox').css({'position': 'absolute', 'left': ($(window).width() - 692) / 2});
             })
+            if ("${sessionScope.loginFail}"=="true") {alert("密码或账号有误，请重新检查~");}
+            else if ("${sessionScope.loginFail}"=="false") {alert("你已经被禁用了，快回去反省！");}
         });
     </script>
 
