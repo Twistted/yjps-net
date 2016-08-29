@@ -53,7 +53,7 @@ public class IndexController {
 			System.out.println(interestList[i]);
 		}
 		
-		model.addObject(interestList);
+		model.addObject("interestList", interestList);
 		model.setViewName("home");
 		return model;
 	}

@@ -166,6 +166,10 @@
 		var next_page="${currentPage+1}";
 		var pre_page="${currentPage-1}";
 		$(document).ready(function(){
+			for (var i = 0; i <"${interestList}".length ; i++) {
+				$(".num").text("${interestList[i]}");
+			};
+
 			if (cur_page>1) {
 				page_html+="<a href='/home/index?page="+pre_page+"'>上一页</a>";
 			};
