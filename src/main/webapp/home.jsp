@@ -161,15 +161,16 @@
 	<jsp:include page="/footer.jsp"></jsp:include>
 	
 	<script>
+	
 		var page_html="";
 		var cur_page="${currentPage}";
 		var totalpage="${pageSize.intValue()}";
 		var next_page="${currentPage+1}";
 		var pre_page="${currentPage-1}";
 		$(document).ready(function(){
-			for (var i = 0; i <"${interestList}".length ; i++) {
-				$(".square .num").text("${interestList[i]}");
-			};
+				$(".square .num").html("${interestList[0]}");
+				$(".square .num").html("${interestList[1]}");
+				$(".square .num").html("${interestList[2]}");
 
 			if (cur_page>1) {
 				page_html+="<a href='/home/index?page="+pre_page+"'>上一页</a>";
