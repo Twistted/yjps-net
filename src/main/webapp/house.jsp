@@ -317,10 +317,6 @@
 	</div>
 	<div class="modal fade" id="show" tabindex="-1" role="dialog" aria-labelledby="addTitle">
         <div class="modal-dialog" role="document">
-	         <div class="modal-header">
-	         	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-	         </div>
             <div class="modal-content">
                 <div class="modal-body" style="float:none;margin:0 auto">
                     <img src="/public/img/logo.jpg" style="width:80%;height:auto;float:none;margin-left:10%;">
@@ -352,6 +348,10 @@
 				  $(".text-comment-all").show();
 				  $(".actShowMore").hide();
 				  $(".text-comment").hide();
+			  });
+			  $(".actShowImg a").unbind().click(function(){
+			  	  var set_img = $(this).children('img').attr('src');
+				  $("#show img").attr('src',set_img);
 			  });
 			  $(".btn-collect").click(function(){
 				  $.post('/house/interest', {
