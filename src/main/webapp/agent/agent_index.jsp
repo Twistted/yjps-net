@@ -243,7 +243,6 @@
 				    <div class="tabbable"> <!-- Only required for left/right tabs -->
 				      <ul class="nav nav-tabs">
 				        <li id="li1" class="active"><a href="#user_logo" data-toggle="tab" style="text-decoration:none;outline:none;">上传头像</a></li>
-				        <li id="li2"><a href="#user_name" data-toggle="tab" style="text-decoration:none;outline:none;">修改昵称</a></li>
 				        <li id="li3"><a href="#user_pwd" data-toggle="tab" style="text-decoration:none;outline:none;">修改密码</a></li>
 				        <li id="li4"><a href="#user_personalInfo" data-toggle="tab" style="text-decoration:none;outline:none;">修改个人信息</a></li>
 				      </ul>
@@ -287,15 +286,15 @@
 							<ul class="change-pwd">
 								<li>
 									<span>输入旧密码:</span>
-									<input id="password" name="password" placeholder="请输入密码" validate="notNull,minLength" validatedata="minLength=6" validatename="密码" type="password" />
+									<input id="password" name="password" placeholder="请输入密码" validate="notNull,minLength" validatedata="minLength=6" validatename="密码" type="password" class="form-control" style="display:inline-block;" /><span class="tipSpan">&nbsp&nbsp密码不正确</span>
 								</li>
 								<li>
 									<span>设置新密码:</span>
-									<input id="password1" name="newPassword" placeholder="请输入新密码" validate="notNull,minLength" validatedata="minLength=6" validatename="密码" type="password"></input>
+									<input id="password1" name="newPassword" placeholder="请输入新密码" validate="notNull,minLength" validatedata="minLength=6" validatename="密码" type="password" class="form-control" style="display:inline-block;"></input>
 								</li>
 								<li>
 									<span>确认新密码：</span>
-									<input id="password2" placeholder="请输入新密码" validate="notNull,isSame" validatedata="isSame=#password1" validatename="确认新密码" type="password" />
+									<input id="password2" placeholder="请输入新密码" validate="notNull,isSame" validatedata="isSame=#password1" validatename="确认新密码" type="password" class="form-control" style="display:inline-block;" />
 								</li>
 								<li>
 									<span></span>
@@ -306,20 +305,7 @@
 					</div>
 				<!-- 33333-->
 				<!--修改昵称-->
-					<div class="tab-pane" id="user_name">
-						<form id="updatePerson" action="agent/modify_agent" method="post">
-							<ul class="change-pwd">
-								<li>
-									<span>设置昵称:</span>
-									<input class="nickName" name="nickName" validate="notNull,numberLetter,maxLength" validatename="昵称" validatedata="maxLength=14" type="text"></input>
-								</li>
-								<li>
-									<span></span>
-									<a class="nameSubmit lj-btn">保存修改</a>
-								</li>
-							</ul>
-						</form>
-					</div>
+					 
 					<!--个人信息修改-->
 					<div class="tab-pane" id="user_personalInfo">
 						<div class="personalInfo_wrap">
@@ -327,7 +313,7 @@
 								<ul>
 									<li>
 										<span class="info_title">姓名:</span>
-										<input type="text" id="username" name="name" class="form-control" /> 
+										<input type="text" id="username" name="name" class="form-control" value="${seesionScope.agentSession.name}" />
 									</li>
 									<li>
 										<span class="info_title">性别:</span>
@@ -340,24 +326,24 @@
 									</li>
 									<li>
 										<span class="info_title">年龄:</span>
-										<input type="text" id="age" name="age" class="form-control" />
+										<input type="text" id="age" name="age" class="form-control" value="${seesionScope.agentSession.age}" />
 										 
 									</li>
 									<li>
 										<span class="info_title">电话:</span>
-										<input type="text" id="phone" name="phone" class="form-control" />
+										<input type="text" id="phone" name="phone" class="form-control" value="${seesionScope.agentSession.phone}" />
 									</li>
 									<li>
 										<span class="info_title">邮箱:</span>
-										<input type="text" id="email" name="email" class="form-control" />
+										<input type="text" id="email" name="email" class="form-control" value="${seesionScope.agentSession.email}"/>
 									</li>
 									<li>
 										<span class="info_title" style="margin-left:-28px;">入行年份:</span>
-										<input type="text" id="year" name="year" class="form-control" style="margin-left:30px;"/>
+										<input type="text" id="year" name="year" class="form-control" style="margin-left:30px;" value="${seesionScope.agentSession.year}"/>
 									</li>
 									<li>
 										<span class="info_title" style="margin-left:-28px;">所属公司:</span>
-										<input type="text" id="company"  name="company" class="form-control" />
+										<input type="text" id="company"  name="company" class="form-control" value="${seesionScope.agentSession.company}"/>
 									</li>
 									<li>
 										<span class="info_title" style="margin-left:-28px;">自我介绍:</span>

@@ -83,7 +83,8 @@
 	background: #fff;
 	width: 500px;
 	padding: 40px 12px 50px 12px;
-	box-shadow: 0 1px 14px rgba(0, 0, 0, 0.3)
+	box-shadow: 0 1px 14px rgba(0, 0, 0, 0.3);
+	border-radius: 20px;
 }
 
 .user-login .wrapper .mt10 {
@@ -532,6 +533,10 @@ transform
 	color: #fff;
 	text-align:center;
 }
+.comeup{
+	display: block;
+}
+
 
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
