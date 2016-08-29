@@ -78,13 +78,13 @@
 				<form action="#" method="post" id="registerForm">
 					<input type="hidden" name="redirect" id="r" value="#">
 					<ul>
-						<li class=""><input type="text" name="mobile"
+						<!-- <li class=""><input type="text" name="mobile"
 							placeholder="请输入手机号" validate="notNull,isTel" validatename="手机号"
 							class="phonecode"> <a onclick="javascript:;"
 							class="send actRegisterSMS"> 发送验证码 </a> <i>*</i></li>
 						<li><input type="text" placeholder="请输短信验证码"
 							name="verifyCode" class="actCheckVerify" validatename="短信验证码"
-							validate="notNull"> <i>*</i></li>
+							validate="notNull"> <i>*</i></li> --> 
 						<li><input type="text" name="nickName" placeholder="昵称">
 						</li>
 						<li><input type="password" name="password" id="password"
@@ -94,6 +94,7 @@
 							validate="notNull,isSame" validatedata="isSame=#password"
 							validatename="确认密码"> <i>*</i></li>
 						<li class="mt10"><label> <input type="checkbox"
+								value="check"
 								class="check-agreed alwayCheck" validate="isChecked"
 								validatename="易居用户使用协议"> 我已阅读并同意 <a
 								href="/user/user_protocol"
@@ -113,6 +114,17 @@
 		<div id="only" data-city="login" data-page="login_register"></div>
 
 
-	</div>
+	</div> 
+	<script type="text/javascript" src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("li input.actSubmit").click(function(e){
+				alert("clikc");
+				var check = $("li label input.check-agreed").val();
+				alert(check);
+				e.preventDefault();
+			});
+		});
+	</script>
 </body>
 </html>

@@ -58,18 +58,15 @@ public class UserController {
 			httpSession.setAttribute("userLoginFail", true);
 			model.setViewName("user/login");
 		} 
-		else if(userEntity.getPassword().equals(user.getPassword())){
-			httpSession.setAttribute("userSession", null);
-			httpSession.setAttribute("userLoginFail", true);
-			model.setViewName("user/login");
-		}
-		else if(userEntity.getState() != 1){
+		else if(user.getState() != 1){
 			httpSession.setAttribute("userLoginFail", false);
 			httpSession.setAttribute("userSession", null);
 			model.setViewName("user/login");
 		}
-		httpSession.setAttribute("userSession", user);
-		model.setViewName("user/user_index");
+		else{
+			httpSession.setAttribute("userSession", user);
+			model.setViewName("user/user_index");
+		}
 		return model;
 	}
 	
