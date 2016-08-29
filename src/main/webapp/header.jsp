@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<script type="text/javascript">
-	"${Scope}"
-</script>
 	<header>
 		<div class="nav-wrap">
 			<div class="wrapper">
@@ -26,7 +23,7 @@
 							<span >${sessionScope.userSession.name}</span>
 						</a>
 						|
-						<a href="" class=".logout">
+						<a href="" class="logout">
 							<span>退出</span>
 						</a>
 					</c:if>
