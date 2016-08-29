@@ -21,8 +21,14 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.test.web.dto.Result;
+import com.test.web.entity.AgentEntity;
+import com.test.web.entity.ManagerEntity;
 import com.test.web.entity.UserEntity;
+import com.test.web.service.IAgentService;
+import com.test.web.service.IManagerService;
 import com.test.web.service.IUserService;
+import com.test.web.service.impl.AgentService;
+import com.test.web.service.impl.ManagerService;
 import com.test.web.service.impl.UserService;
 import com.test.web.util.FileUploadUtil;
 
@@ -53,9 +59,9 @@ public class FileUploadController {
         }
         // 判断司机是否已存在
         // 在这里就可以对file进行处理了，可以根据自己的需求把它存到数据库或者服务器的某个文件夹
-        String filePath = FileUploadUtil.saveFile(fileData);
+        String filePath = FileUploadUtil.saveFile(fileData,"");
         System.out.println(filePath);
-        filePath = filePath.replace("src\\main\\webapp\\assets\\uploads","/assets/uploads");
+        filePath = filePath.replace("src/main/webapp/assets/uploads","/assets/uploads");
         System.out.println("yes");   
         return new Result(200);
     } 
@@ -63,21 +69,69 @@ public class FileUploadController {
     @RequestMapping(value="/user_file", method=RequestMethod.POST)     
     public @ResponseBody Result uploadUserFile(@RequestParam("clientFile") MultipartFile fileData, HttpSession session){  
     	// 判断图片大小是否大于2M
-        if (fileData.getSize() > 2 * 1024 * 1024) {
+        /*if (fileData.getSize() > 2 * 1024 * 1024) {
             System.out.println("fail");
             return new Result(500);
-        }
+        }*/
         // 判断司机是否已存在
         // 在这里就可以对file进行处理了，可以根据自己的需求把它存到数据库或者服务器的某个文件夹
-        String filePath = FileUploadUtil.saveFile(fileData);
-        System.out.println(filePath);
-        filePath = filePath.replace("src\\main\\webapp\\assets\\uploads","/assets/uploads/user");
+        String filePath = FileUploadUtil.saveFile(fileData,"user");
+        filePath = filePath.replace("src/main/webapp/assets/uploads","/assets/uploads");
         System.out.println("yes");
+        System.out.println(filePath);
         IUserService userService = new UserService();
-        UserEntity user = (UserEntity)session.getAttribute("userEntity");
+        UserEntity user = (UserEntity)session.getAttribute("userSession");
         user.setPhotoUrl(filePath);
-        if(userService.modify(user))
+        if(userService.modify(user)){
+        	session.setAttribute("userSession", user);
+        	Result result = new Result(200);
+        	result.setUserEntity(user);
+        	return result;
+        }
+        else return new Result(500);
+    } 
+    
+    @RequestMapping(value="/agent_file", method=RequestMethod.POST)     
+    public @ResponseBody Result uploadAgentFile(@RequestParam("clientFile") MultipartFile fileData, HttpSession session){  
+    	// 判断图片大小是否大于2M
+        /*if (fileData.getSize() > 2 * 1024 * 1024) {
+            System.out.println("fail");
+            return new Result(500);
+        }*/
+        // 判断司机是否已存在
+        // 在这里就可以对file进行处理了，可以根据自己的需求把它存到数据库或者服务器的某个文件夹
+        String filePath = FileUploadUtil.saveFile(fileData,"agent");
+        filePath = filePath.replace("src\\main\\webapp\\assets\\uploads","/assets/uploads/agent");
+        System.out.println("yes");
+        IAgentService agentService = new AgentService();
+        AgentEntity agent = (AgentEntity)session.getAttribute("agentSession");
+        agent.setPhotoUrl(filePath);
+        if(agentService.modifyAgent(agent)){
+        	session.setAttribute("agentSession", agent);
         	return new Result(200);
+        }
+        else return new Result(500);
+    } 
+    
+    @RequestMapping(value="/mnager_file", method=RequestMethod.POST)     
+    public @ResponseBody Result uploadManagerFile(@RequestParam("clientFile") MultipartFile fileData, HttpSession session){  
+    	// 判断图片大小是否大于2M
+        /*if (fileData.getSize() > 2 * 1024 * 1024) {
+            System.out.println("fail");
+            return new Result(500);
+        }*/
+        // 判断司机是否已存在
+        // 在这里就可以对file进行处理了，可以根据自己的需求把它存到数据库或者服务器的某个文件夹
+        String filePath = FileUploadUtil.saveFile(fileData,"manager");
+        filePath = filePath.replace("src\\main\\webapp\\assets\\uploads","/assets/uploads/manager");
+        System.out.println("yes");
+        IManagerService managerService = new ManagerService();
+        ManagerEntity manager = (ManagerEntity)session.getAttribute("managerSession");
+        manager.setPhotoUrl(filePath);
+        if(managerService.modifyManager(manager)){
+        	session.setAttribute("managerSession", manager);
+        	return new Result(200);
+        }
         else return new Result(500);
     } 
     
@@ -91,7 +145,7 @@ public class FileUploadController {
         }
         // 判断司机是否已存在
         // 在这里就可以对file进行处理了，可以根据自己的需求把它存到数据库或者服务器的某个文件夹
-        String filePath = FileUploadUtil.saveFile(fileData);
+        String filePath = FileUploadUtil.saveFile(fileData,"");
         System.out.println(filePath);
         view.setViewName("upload");
         return view;     

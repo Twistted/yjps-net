@@ -52,7 +52,7 @@
 		<div class="tabbable">
 			<div class="main-left fl">
 				<div class="name" >
-					<img src="../public/img/p3.png" style="border-radius:5px;width:100px;height:100px;"></img>
+					<img src="${sessionScope.userSession.photoUrl }" style="border-radius:5px;width:100px;height:100px;"></img>
 					<div class="user-name">欢迎你<br /><span id="user_left_username">${sessionScope.userSession.name}</span></div>
 				</div>
 				 <div class="tabbable"> 
@@ -116,7 +116,7 @@
 					<ul>
 						<li class="logo">
 							<span class="info_title">当前头像:</span>
-							<picturebox><img src="../public/img/p3.png" style="border-radius:5px;" ></img></picturebox>
+							<picturebox><img src="${sessionScope.userSession.photoUrl }" style="border-radius:5px;" ></img></picturebox>
 						</li>
 						<li>
 							<span class="info_title" id="name">姓名:</span>
@@ -182,7 +182,7 @@
 								 </div>
 							</form> -->
 							<!-- 新既 -->
-							 <form id="upload_1" action="/upload/file" method="post" enctype="multipart/form-data"  style="border:1px solid #e8e8e8;" target="upload" >  
+							 <form id="upload_form" action="/upload/file" method="post" enctype="multipart/form-data"  style="border:1px solid #e8e8e8;" target="upload" >  
 					            文件名: <input id="picUploadfileName" type="text" name="fileName" /><br/>  
 					            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
 					            <input id="picUploadClientFile" type="file" name="clientFile" /><br/>  
