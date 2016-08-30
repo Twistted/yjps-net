@@ -25,131 +25,146 @@ import com.test.web.service.impl.HouseService;
 @Controller
 @RequestMapping("agent")
 public class AgentController {
-	
+
 	@RequestMapping("index")
-	public ModelAndView index(HttpSession httpSession){
+	public ModelAndView index(HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("agent/login");
-		return model; 
+		return model;
 	}
-	
+
 	@RequestMapping("show_agent")
-	public ModelAndView show_agent(@RequestParam("page") Integer page,HttpSession httpSession){
+	public ModelAndView show_agent(@RequestParam("page") Integer page, HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
-		if( page == null || page == 0)
+		if (page == null || page == 0)
 			page = 1;
-		List<AgentEntity> agentList;
+		List<AgentEntity> agentList, allAgentList;
 		IAgentService agentService = new AgentService();
 		agentList = agentService.listAgent(page, 3);
-		if(agentList == null || agentList.isEmpty()) {
+		allAgentList = agentService.allAgent();
+		if (agentList == null || agentList.isEmpty()) {
 			model.setViewName("500");
 			return model;
 		}
-		
-		for(int i = 0;i < agentList.size();i++){
+		for (int i = 0; i < agentList.size(); i++) {
 			System.out.println(agentList.get(i));
 		}
+		model.addObject("allAgentSize", allAgentList.size());
+		model.addObject("pageSize", (Math.ceil(allAgentList.size() * 1.0 / 3)));
 		model.addObject("agentList", agentList);
+		model.addObject("currentPage", page);
+		model.addObject("listSize", agentList.size());
 		model.setViewName("agent/agent_list");
-		return model; 
+		return model;
 	}
-	
+
 	@RequestMapping("insert")
-	public @ResponseBody Result insert(HouseEntity houseEntity,HttpSession httpSession) {
+	public @ResponseBody Result insert(HouseEntity houseEntity, HttpSession httpSession) {
 		IHouseService houseService = new HouseService();
 		System.out.println(houseEntity);
 		return new Result(200);
 	}
-	
-	@RequestMapping(value="login",method=RequestMethod.POST)
-	public ModelAndView login(AgentEntity agentEntity,HttpSession httpSession){
+
+	@RequestMapping(value = "login", method = RequestMethod.POST)
+	public ModelAndView login(AgentEntity agentEntity, HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
 		IAgentService agentService = new AgentService();
 		AgentEntity agent = agentService.getAgentByAccount(agentEntity.getAccount());
-		System.out.println(agent);
-		model.addObject("agent", agent);
-		if (agent != null && agent.getPassword().equals(agentEntity.getPassword())){
-			model.addObject("agent",agent);
+
+		if (agent == null || !agent.getPassword().equals(agentEntity.getPassword())) {
+			httpSession.setAttribute("agentSession", null);
+			httpSession.setAttribute("agentLoginFail", true);
+			model.setViewName("agent/login");
+		}
+		else if (agent.getState() != 1) {
+			httpSession.setAttribute("agentSession", null);
+			httpSession.setAttribute("agentLoginFail", false);
+			model.setViewName("agent/login");
+		}
+		else{
+			model.addObject("agent", agent);
 			model.setViewName("agent/agent_index");
 			httpSession.setAttribute("agentSession", agent);
 		}
-		else model.setViewName("agent/login");
 		return model;
 	}
-	
+
 	@RequestMapping("logout")
-	public ModelAndView logout(HttpSession httpSession){
+	public ModelAndView logout(HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("agent/login");
 		httpSession.setAttribute("agentSession", null);
-		return model; 
-	}
-	
-	/*@RequestMapping("register")
-	public ModelAndView register(AgentEntity agentEntity,HttpSession httpSession){
-		ModelAndView model = new ModelAndView();
-		IAgentService agentService = new AgentService();
-		if(agentService.register(agentEntity)){
-			model.addObject("agent",agentEntity);
-			model.setViewName("test");
-			httpSession.setAttribute("agentSession", agentEntity);
-		}
-		else model.setViewName("agent/login");
 		return model;
-	}*/
-	
-	@RequestMapping(value="delete_house",method=RequestMethod.POST)
-	public @ResponseBody Result deleteHose(HouseEntity houseEntity,HttpSession httpSession){
-		IHouseService houseService = new HouseService();
-		if(houseService.delete(houseEntity.getHouseId()))
-			return new Result(200);
-		else return new Result(500);
 	}
-	
-	@RequestMapping(value="add_house", method=RequestMethod.POST)
-	public @ResponseBody Result addHouse(HouseEntity houseEntity,HttpSession httpSession){
+
+	/*
+	 * @RequestMapping("register") public ModelAndView register(AgentEntity
+	 * agentEntity,HttpSession httpSession){ ModelAndView model = new
+	 * ModelAndView(); IAgentService agentService = new AgentService();
+	 * if(agentService.register(agentEntity)){
+	 * model.addObject("agent",agentEntity); model.setViewName("test");
+	 * httpSession.setAttribute("agentSession", agentEntity); } else
+	 * model.setViewName("agent/login"); return model; }
+	 */
+
+	@RequestMapping(value = "delete_house", method = RequestMethod.POST)
+	public @ResponseBody Result deleteHose(HouseEntity houseEntity, HttpSession httpSession) {
+		IHouseService houseService = new HouseService();
+		if (houseService.delete(houseEntity.getHouseId()))
+			return new Result(200);
+		else
+			return new Result(500);
+	}
+
+	@RequestMapping(value = "add_house", method = RequestMethod.POST)
+	public @ResponseBody Result addHouse(HouseEntity houseEntity, HttpSession httpSession) {
 		AgentEntity agent = (AgentEntity) httpSession.getAttribute("agentSession");
 		houseEntity.setAgentId(agent.getAgentId());
 		System.out.println(houseEntity);
 		IHouseService houseService = new HouseService();
-		if(houseService.addHouse(houseEntity))
+		if (houseService.addHouse(houseEntity))
 			return new Result(200);
-		else return new Result(200);
+		else
+			return new Result(200);
 	}
-	
+
 	@RequestMapping("find_house")
-	public ModelAndView getHouseList(AgentEntity agentEntity,HttpSession httpSession){
+	public ModelAndView getHouseList(AgentEntity agentEntity, HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
 		IHouseService houseService = new HouseService();
 		List<HouseEntity> houseList = houseService.getByAgentId(agentEntity.getAgentId());
 		System.out.println(houseList.size());
 		return model;
 	}
-	
-	@RequestMapping(value="modify_house",method=RequestMethod.POST)
-	public @ResponseBody Result modifyHouse(HouseEntity houseEntity,HttpSession httpSession){
+
+	@RequestMapping(value = "modify_house", method = RequestMethod.POST)
+	public @ResponseBody Result modifyHouse(HouseEntity houseEntity, HttpSession httpSession) {
 		Result result = new Result();
 		IHouseService houseService = new HouseService();
-		if(houseService.update(houseEntity))
+		if (houseService.update(houseEntity))
 			result.setCode(200);
-		else result.setCode(500);
-		result.setHouseEntity(houseEntity);;
+		else
+			result.setCode(500);
+		result.setHouseEntity(houseEntity);
+		;
 		return result;
 	}
-	
+
 	@RequestMapping("delete_house")
-	public @ResponseBody Result deleteHouse(HouseEntity houseEntity,HttpSession httpSession){
+	public @ResponseBody Result deleteHouse(HouseEntity houseEntity, HttpSession httpSession) {
 		Result result = new Result();
 		IHouseService houseService = new HouseService();
-		if(houseService.delete(houseEntity.getHouseId()))
+		if (houseService.delete(houseEntity.getHouseId()))
 			result.setCode(200);
-		else result.setCode(500);
-		result.setHouseEntity(houseEntity);;
+		else
+			result.setCode(500);
+		result.setHouseEntity(houseEntity);
+		;
 		return result;
 	}
-	
-	@RequestMapping(value="modify_password", method=RequestMethod.POST) 
-	public @ResponseBody Result modifyPassword(@RequestParam("oldPassword") String oldPassword, 
+
+	@RequestMapping(value = "modify_password", method = RequestMethod.POST)
+	public @ResponseBody Result modifyPassword(@RequestParam("oldPassword") String oldPassword,
 			@RequestParam("newPassword") String newPassword, HttpSession httpSession) {
 		Result result = new Result();
 		AgentEntity agentSession = (AgentEntity) httpSession.getAttribute("agentSession");
@@ -162,62 +177,65 @@ public class AgentController {
 			} else {
 				result.setCode(500);
 			}
-			
+
 		} else {
 			result.setCode(500);
 		}
 		return result;
 	}
-	
-	@RequestMapping(value="modify_agent",method=RequestMethod.POST)
-	public @ResponseBody Result modifyAgent(AgentEntity agentEntity,HttpSession httpSession){
+
+	@RequestMapping(value = "modify_agent", method = RequestMethod.POST)
+	public @ResponseBody Result modifyAgent(AgentEntity agentEntity, HttpSession httpSession) {
 		Result result = new Result();
 		System.out.println(agentEntity);
 		AgentEntity agent = (AgentEntity) httpSession.getAttribute("agentSession");
 		agentEntity.setAgentId(agent.getAgentId());
 		IAgentService agentService = new AgentService();
-		if(agentService.modifyAgent(agentEntity)){
+		if (agentService.modifyAgent(agentEntity)) {
 			httpSession.setAttribute("agentSession", agentEntity);
 			result.setCode(200);
 			result.setAgentEntity(agentEntity);
-		}
-		else result.setCode(500);
+		} else
+			result.setCode(500);
 		return result;
 	}
-	
-	@RequestMapping(value="list_agent",method=RequestMethod.POST)
-	public @ResponseBody Result listAgent(Integer page,HttpSession httpSession){
+
+	@RequestMapping(value = "list_agent", method = RequestMethod.POST)
+	public @ResponseBody Result listAgent(Integer page, HttpSession httpSession) {
 		Result result = new Result();
-		if( page == null || page == 0)
+		if (page == null || page == 0)
 			page = 1;
 		List<AgentEntity> agentList;
 		IAgentService agentService = new AgentService();
 		agentList = agentService.listAgent(page, 3);
-		if(agentList == null || agentList.isEmpty())
+		if (agentList == null || agentList.isEmpty())
 			result.setCode(500);
-		else result.setCode(200);
+		else
+			result.setCode(200);
 		result.setAgentList(agentList);
-		for(int i = 0;i < agentList.size();i++){
+		for (int i = 0; i < agentList.size(); i++) {
 			System.out.println(agentList.get(i));
 		}
 		return result;
 	}
-	
-	@RequestMapping(value="list_house",method=RequestMethod.POST)
-	public @ResponseBody Result listHouse(Integer page,HttpSession httpSession){
+
+	@RequestMapping(value = "list_house", method = RequestMethod.POST)
+	public @ResponseBody Result listHouse(Integer page, HttpSession httpSession) {
 		Result result = new Result();
-		if( page == null || page == 0)
+		if (page == null || page == 0)
 			page = 1;
 		int agentId;
 		agentId = ((AgentEntity) httpSession.getAttribute("agentSession")).getAgentId();
-		List<HouseEntity> allHouseList,houseList;
+		List<HouseEntity> allHouseList, houseList;
 		IHouseService houseService = new HouseService();
 		houseList = houseService.getPageByAgentId(page, 15, agentId);
 		allHouseList = houseService.getByAgentId(agentId);
 		int pageSize = (int)Math.ceil(allHouseList.size()*1.0/15);
 		if(houseList == null)
+
 			result.setCode(500);
-		else result.setCode(200);
+		else
+			result.setCode(200);
 		result.setHouseList(houseList);
 		result.setHouseListSize(houseList.size());
 		result.setPageSize(pageSize);

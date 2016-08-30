@@ -383,7 +383,16 @@
 						</li>
 						<li>
 							<span class="info_title">性别:</span>
-							<div class="info_c"><span id="personalInfo_sex">${sessionScope.agentSession.sex}</span></div>
+							<div class="info_c">
+								<c:choose>
+									<c:when test="${sessionScope.agentSession.sex == 1 }">
+										<span> 男</span>
+									</c:when>
+									<c:otherwise>
+										<span> 女</span>
+									</c:otherwise>
+								</c:choose>
+							</div>
 						</li>
 						<li>
 							<span class="info_title">年龄:</span>

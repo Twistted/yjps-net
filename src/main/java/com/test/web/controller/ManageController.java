@@ -77,6 +77,7 @@ public class ManageController {
 		Result result = new Result();
 		IManagerService managerService = new ManagerService();
 		managerEntity.setState(1);
+		managerEntity.setLevel(managerEntity.getLevel() > 1 ? 2 : 1 );
 		if(managerService.addManager(managerEntity))
 			result.setCode(200);
 		else result.setCode(500);	
