@@ -323,7 +323,7 @@
                 account: $('#add_account').val(),
                 name: $('#add_name').val(),
                 password: $('#add_password').val(),
-                age: $('#add_password').val()||0,
+                age: $('#add_age').val()||0,
                 sex: sexs,
                 contact: $('#add_contact').val()||"",
                 photoUrl:$('#add .photo_img').attr("src")||"/public/img/logo.jpg"
@@ -354,6 +354,14 @@
             });
 
             $('#sure-set').unbind().click(function () {
+                if ($('#set_account').val()=="") {
+                alert("账户名称不能为空");
+                }else if ($('#set_name').val()=="") {
+                    alert("姓名不能为空");
+                }else if ($('#set_password').val()=="") {
+                    alert("密码不能为空");
+                }
+                else{
             	var sexs = $('#set_sex').val();
 	        	if (sexs=="男")
 	        	 {
@@ -374,6 +382,7 @@
                     photoUrl:$('#set .photo_img').attr("src")||"/public/img/logo.jpg"
                 };
                 postEvent('/manage/modify_user', setPlatformVal);
+                }
             });
 			
 			$('.tr_forbid').unbind().click(function () {
