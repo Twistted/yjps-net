@@ -76,7 +76,10 @@ public class ManageController {
 	public @ResponseBody Result addManager(ManagerEntity managerEntity,HttpSession httpSesion){
 		Result result = new Result();
 		IManagerService managerService = new ManagerService();
-		if(managerService.addManager(managerEntity))
+		if(managerService.login(managerEntity) != null){
+			return new Result(500);
+		}
+		else if(managerService.addManager(managerEntity))
 			result.setCode(200);
 		else result.setCode(500);	
 		return result;
@@ -200,8 +203,10 @@ public class ManageController {
 	@RequestMapping(value="add_agent",method=RequestMethod.POST)
 	public @ResponseBody Result addAgent(AgentEntity agentEntity,HttpSession httpSesion){
 		Result result = new Result();
-		System.out.println("this" + agentEntity);
 		IAgentService agentService = new AgentService();
+		if(agentService.getAgentByAccount(agentEntity.getAccount()) != null){
+			return new Result(500);
+		}
 		if(agentService.addAgent(agentEntity))
 			result.setCode(200);
 		else result.setCode(500);	
