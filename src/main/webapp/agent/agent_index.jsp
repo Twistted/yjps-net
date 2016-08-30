@@ -24,7 +24,7 @@
 <script type="text/javascript" src="../public/js/slimtable.min.js"></script>
    	 <link rel="shortcut icon" type="image/x-icon" href="#" />
      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-     <script src="../public/js/manager.min.js"></script>
+   
      <script src="../public/js/laypage.js"></script>
      <script src="../public/js/xcConfirm.js"></script>
     
@@ -63,7 +63,7 @@
 		<!--左侧导航-->
 		<div class="main-left fl">
 			<div class="name" >
-				<img src="../public/img/logo.jpg" style="border-radius:5px;width:100px;height:100px;"></img>
+				<img src="${sessionScope.agentSession.photoUrl }" style="border-radius:5px;width:100px;height:100px;"></img>
 				<div class="user-name">欢迎你 <br /><span>${sessionScope.agentSession.name}</span></div>
 			</div>
 			<div class="tabble">
@@ -161,6 +161,7 @@
 							</li>
 							
 						</ul>
+						</form>
 					</div>
 					<div class="FyDescri">
 						<p class="Fyh1">房源个性描述</p>
@@ -258,27 +259,15 @@
 						<div class="update">
 						<!--改头像-->
 				 		<h3>请选择图片文件：JPG/GIF</h3>
-				 		 		<div class="uploadPic_wrap">
-				 			<!-- 带预览 -->
-						<!-- 	<form name="form0" id="form0" >
-								<div class="uploadPic_btn">选择图片</div>
-								<div class="uploadPic_input" style="position:absolute;">
-									<input type="file" name="file0" id="file0" multiple="multiple" /><br>
-								 </div>
-								 <div class="previewPic">
-								 	<div class="picbox">
-								 		<img src="http://static1.ljcdn.com/pc/asset/img/user/default-pic.png?_v=20160819150834" id="img0" >
-								 	</div>
-								 </div>
-							</form> -->
-							<!-- 新既 -->
-							 <form id="upload_1" action="/upload/file" method="post" enctype="multipart/form-data"  style="border:1px solid #e8e8e8;" target="upload" >  
+				 		 <div class="uploadPic_wrap">
+				 		
+							 <form id="upload_form">  
 					            文件名: <input id="picUploadfileName" type="text" name="fileName" /><br/>  
-					            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+					           
 					            <input id="picUploadClientFile" type="file" name="clientFile" /><br/>  
 					            <input id="user_logoUpload_btn" type="submit" value="确定"/>  
 					        </form>  
-					        <iframe name="upload" style="display:none;"></iframe>
+					        
 						</div>
 						<div class="clearfix"></div>
 						<div class="suc">
@@ -328,36 +317,46 @@
 									<li>
 										<span class="info_title">性别:</span>
 										<div class="checkbox">
-											<input class="radioInput" name="sex" value="1" checked="checked" type="radio"></input>
-											<span class="chosespan">男</span>
-											<input class="radioInput" name="sex" value="2" checked="checked" type="radio"></input>
-											<span class="chosespan">女</span>
+											<c:choose>
+												<c:when test="${sessionScope.agentEntity.sex == 1}">
+													<input class="radioInput" name="sex" value="1" checked="checked" type="radio"></input>
+													<span class="chosespan">男</span>
+													<input class="radioInput" name="sex" value="2" type="radio"></input>
+													<span class="chosespan">女</span>
+												</c:when>
+												<c:otherwise>
+													<input class="radioInput" name="sex" value="1" type="radio"></input>
+													<span class="chosespan">男</span>
+													<input class="radioInput" name="sex" value="2" checked="checked" type="radio"></input>
+													<span class="chosespan">女</span>
+												</c:otherwise>
+											</c:choose>
 										</div>
 									</li>
 									<li>
 										<span class="info_title">年龄:</span>
-										<input type="text" id="age" name="age" class="form-control" value=${seesionScope.agentSession.age} />
+										<input type="text" id="age" name="age" class="form-control" value="${sessionScope.agentSession.age}" />
 										 
 									</li>
 									<li>
 										<span class="info_title">电话:</span>
-										<input type="text" id="phone" name="phone" class="form-control" value=${seesionScope.agentSession.phone} />
+										<input type="text" id="phone" name="phone" class="form-control" value="${sessionScope.agentSession.phone}" />
 									</li>
 									<li>
 										<span class="info_title">邮箱:</span>
-										<input type="text" id="email" name="email" class="form-control" value=${seesionScope.agentSession.email} />
+										<input type="text" id="email" name="email" class="form-control" value="${sessionScope.agentSession.email}" />
 									</li>
 									<li>
 										<span class="info_title" style="margin-left:-28px;">入行年份:</span>
-										<input type="text" id="year" name="year" class="form-control" style="margin-left:30px;" value=${seesionScope.agentSession.year}/>
+										<input type="text" id="year" name="year" class="form-control" style="margin-left:30px;" value="${sessionScope.agentSession.year}" />
 									</li>
 									<li>
 										<span class="info_title" style="margin-left:-28px;">所属公司:</span>
-										<input type="text" id="company"  name="company" class="form-control" value=${seesionScope.agentSession.company} />
+										<input type="text" id="company"  name="company" class="form-control" value="${sessionScope.agentSession.company}" />
 									</li>
 									<li>
 										<span class="info_title" style="margin-left:-28px;">自我介绍:</span>
-										<textarea id="selfIntro" name="introduction" class="form-control" cols="300" rows="5" placeholder="请简单介绍你自己..." style="width:300px;"></textarea>
+										<textarea id="selfIntro" name="introduction" class="form-control" cols="300" rows="5" placeholder="请简单介绍你自己..." style="width:300px;">${sessionScope.agentSession.introduction}</textarea>
 									</li>
 								</ul>
 							</form>
@@ -376,7 +375,7 @@
 					<ul>
 						<li class="logo">
 							<span class="info_title">当前头像:</span>
-							<picturebox><img src="${photourl}" style="border-radius:5px;" ></img></picturebox>
+							<picturebox><img src="${sessionScope.agentSession.photoUrl }" style="border-radius:5px;" ></img></picturebox>
 						</li>
 						<li>
 							<span class="info_title">姓名:</span>
@@ -500,5 +499,38 @@
 			</div>
 		</div>
 	</footer>
+	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+	<script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$(".sucServer").click(function() {
+				
+				var formData = new FormData($("#upload_form")[0]);
+				alert(formData);
+				$.ajax({
+					url: '/upload/agent_file',
+					data: formData,
+					type: 'post',
+					contentType: false,
+					processData: false,
+					dataType: 'json',
+					success: function (result) {
+						if (result.code == 200) {
+							
+							$(".main-left .name img").attr("src", result.agentEntity.photoUrl);
+							$(".logo picturebox img").attr("src", result.agentEntity.photoUrl);
+							
+						} else {
+							alert("fail");
+						}
+					},
+					error: function (result) {
+						alert("error");
+					}
+				});
+			});
+		});
+	</script>
+	<script src="../public/js/manager.min.js"></script>
 </body>
 </html>

@@ -471,7 +471,7 @@
 						}
 					},
 					error: function (result) {
-						alert("fail");	
+						alert("error");	
 					}
 				});
 			});

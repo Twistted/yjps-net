@@ -118,7 +118,7 @@ public class FileUploadController {
         return result;
     } 
     
-    @RequestMapping(value="/mnager_file", method=RequestMethod.POST)     
+    @RequestMapping(value="/manager_file", method=RequestMethod.POST)     
     public @ResponseBody Result uploadManagerFile(@RequestParam("clientFile") MultipartFile fileData, HttpSession session){  
     	// 判断图片大小是否大于2M
         /*if (fileData.getSize() > 2 * 1024 * 1024) {
