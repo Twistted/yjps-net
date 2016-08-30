@@ -22,16 +22,18 @@
 <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../public/js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="../public/js/slimtable.min.js"></script>
-   	 <link rel="shortcut icon" type="image/x-icon" href="#" />
-     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-     <script src="../public/js/manager.min.js"></script>
-     <script src="../public/js/laypage.js"></script>
-     <script src="../public/js/xcConfirm.js"></script>
-    
+<link rel="shortcut icon" type="image/x-icon" href="#" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="../public/js/manager.min.js"></script>
+<script src="../public/js/laypage.js"></script>
+<script src="../public/js/xcConfirm.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../public/js/jquery.validate.min.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../public/js/jquery.metadata.js"></script>
+ 
  
 </head>
 <body>
-	<header>
+	<!-- <header>
 		<div class="nav-wrap">
 			<div class="wrapper">
 				<div class="fl">
@@ -57,7 +59,8 @@
 				</div>
 			</div>
 		</div>
-	</header>
+	</header> -->
+	<jsp:include page="/sub_header.jsp"></jsp:include>
  <div class="tabbable">
 	<div class="user-main">
 		<!--左侧导航-->
@@ -102,40 +105,40 @@
 					<p class="Fyh1">房源基本信息</p>
 				</div>
 				<div class="fy_contain">
-					<form autocomplete="off">
+					<form id="agent_FyForm" autocomplete="off">
 						<ul>
 							<li>
 									<span class="Fyh2"><span class="star">*</span>标题</span>
-									<input class="textInput" type="text" id="FyTitle" maxlength="20" ></input>
+									<input name="FyTitle" class="textInput hasto required email" type="text" id="FyTitle" maxlength="20" required = "true"></input>
 							</li>
 							<li>
 								<span class="Fyh2"><span class="star">*</span>房源编码</span>
-									<input name="houseNumber" class="textInput" type="text" id="houseNumber" maxlength="20"  ></input>
+									<input name="houseNumber" class="textInput hasto {required:true,minlength:5,messages:{required:'请输入内容'}}" type="text" id="houseNumber" maxlength="20" required ></input>
 							</li>
 							 
 							<li>
 								<span class="Fyh2"><span class="star">*</span>小区名称</span>
-									<input name="villageName" class="textInput" type="text" id="villageName"  placeholder="只填写小区名，例万达华府" maxlength="20"></input>
+									<input name="villageName" class="textInput hasto" type="text" id="villageName"  placeholder="只填写小区名，例万达华府" maxlength="20" required ></input>
 							</li>
 							<li>
 								<span class="Fyh2"><span class="star">*</span>小区户型</span>
-									<input class="textInput huxing" name="roomAmount" type="text" id="shi" maxlength="2"><span class="huxingspan">室</span></input>
-									<input class="textInput huxing" name="livingroomAmount" type="text" id="ting" maxlength="2"><span class="huxingspan">厅</span></input>
-									<input class="textInput huxing" name="toiletAmount" type="text" id="wei" maxlength="2"><span class="huxingspan">卫</span></input>
-									<input class="textInput huxing" name="balconyAmount" type="text" id="yang" maxlength="2"><span class="huxingspan">阳</span></input>
-									<input class="textInput huxing" name="area" type="text" id="mianji" placeholder="      建筑面积" maxlength="4" style="width:120px;"><span class="t1" style="margin-left:-10px;">共</span><span class="huxingspan1" style="margin-left:8px;">㎡</span></input>
+									<input class="textInput huxing hasto" name="roomAmount" type="text" id="shi" maxlength="2"><span class="huxingspan" required>室</span></input>
+									<input class="textInput huxing hasto" name="livingroomAmount" type="text" id="ting" maxlength="2"><span class="huxingspan" required>厅</span></input>
+									<input class="textInput huxing hasto" name="toiletAmount" type="text" id="wei" maxlength="2"><span class="huxingspan" required>卫</span></input>
+									<input class="textInput huxing hasto" name="balconyAmount" type="text" id="yang" maxlength="2"><span class="huxingspan" required>阳</span></input>
+									<input class="textInput huxing hasto" name="area" type="text" id="mianji" placeholder="      建筑面积" maxlength="4" style="width:120px;" required><span class="t1" style="margin-left:-10px;">共</span><span class="huxingspan1" style="margin-left:8px;">㎡</span></input>
 							</li>
 							<li>
-								<span class="Fyh2"><span class="star">*</span>年份</span>
-									<input type="text" class="textInput" name="year" id="FyYear" maxlength="10" />
+								<span class="Fyh2"><span class="star" style="visibility:hidden">*</span>年份</span>
+									<input type="text" class="textInput time" name="year" id="FyYear" />
 									 
 							</li>
 							<li>
-									<span class="Fyh2"><span class="star">*</span>楼层</span>
+									<span class="Fyh2"><span class="star" style="visibility:hidden">*</span>楼层</span>
 									<input class="textInput" name="floor" type="text" id="floor" style="width:100px;" maxlength="3"><span class="huxingspan">层</span></input>
 							</li>
 							<li>
-									<span class="Fyh2"><span class="star">*</span>朝向</span>
+									<span class="Fyh2"><span class="star" style="visibility:hidden">*</span>朝向</span>
 									<select name="orientation" id="orientation">
 										<option value="1">东</option>
 										<option value="2">南</option>
@@ -149,14 +152,14 @@
 							</li>
 							<li style="display:inline-block;">
 									<span class="Fyh2"><span class="star">*</span>总价</span>
-									<input class="textInput" name="prize" type="text" id="prize" style="width:100px;" maxlength="6"><span class="huxingspan" >万</span></input>
+									<input class="textInput numberbox" name="prize" type="text" id="prize" style="width:100px;" maxlength="6"  /><span class="huxingspan" >万</span></input>
 							</li>
 							<li>
 									<span class="Fyh2"><span class="star">*</span>首付</span>
-									<input class="textInput" name="downPayment" type="text" id="downPayment" style="width:100px;" maxlength="6"><span class="huxingspan">万</span></input>
+									<input class="textInput hasto" name="downPayment" type="text" id="downPayment" style="width:100px;" maxlength="6" required><span class="huxingspan">万</span></input>
 							</li>
 							<li>
-									<span class="Fyh2"><span class="star">*</span>月供</span>
+									<span class="Fyh2"><span class="star" style="visibility:hidden">*</span>月供</span>
 									<input class="textInput" name="monthlyPayment" type="text" id="monPayment" style="width:100px;" maxlength="6"><span class="huxingspan">万</span></input>
 							</li>
 							
@@ -166,7 +169,7 @@
 						<p class="Fyh1">房源个性描述</p>
 							<div class="instro">
 										<span class="Fyh2"><span class="star">*</span>详细描述</span>
-								<textarea name="houseDescribe" id="houseDescribe" cols="80" rows="10" placeholder="个性且详尽的房源描述可以加速您出售您的房子"></textarea>
+								<textarea class="hasto" name="houseDescribe" id="houseDescribe" cols="80" rows="10" placeholder="个性且详尽的房源描述可以加速您出售您的房子"></textarea>
 							</div>
 							<!-- pic upload-->
 							<div class="FyUpload_wrap">
@@ -180,14 +183,14 @@
 						<p class="Fyh1">房源位置</p>
 						<ul>
 							<li>
-								<span class="Fyh2"><span class="star">*</span>地理位置</span>
+								<span class="Fyh2"><span class="star" style="visibility:hidden;">*</span>地理位置</span>
 									<input class="textInput huxing" name="province" type="text" id="province" style="width:100px;text-align: center;" maxlength="3"><span class="huxingspan">省</span></input>
 									<input class="textInput huxing" name="city" type="text" id="city" style="width:100px;text-align: center;" maxlength="3"><span class="huxingspan">市</span></input>
 									<input class="textInput huxing" name="town" type="text" id="town" style="width:100px;text-align: center;" maxlength="3"><span class="huxingspan">镇</span></input>
 							</li>
 							<li>
 									<span class="Fyh2"><span class="star">*</span>地址</span>
-									<input class="textInput" name="address" type="text" id="FyAddress" style="width:320px;" maxlength="20"></input>
+									<input class="textInput hasto" name="address" type="text" id="FyAddress" style="width:320px;" maxlength="20"></input>
 							</li>
 						</ul>
 							 
@@ -204,7 +207,9 @@
 						</ul>
 					</div>
 					<div class="fabu">
-						<a class=" lj-btn" href="#" style="margin-top:20px;">发布</a>
+						<a class=" lj-btn submit" href="#" style="margin-top:20px;">发布</a>
+						
+					 
 					</div>
 				</div>
 			</div>
@@ -292,7 +297,7 @@
 				<!-- 222222-->
 				<!--修改密码-->
 					<div class="tab-pane" id="user_pwd">
-						<form id="updatePwd" action="/agent/agent_modify" method="post">
+						<form id="updatePwd" action="/agent/agent_modify" method="post" autocomplete="off">
 							<ul class="change-pwd">
 								<li>
 									<span>输入旧密码:</span>
@@ -319,7 +324,7 @@
 					<!--个人信息修改-->
 					<div class="tab-pane" id="user_personalInfo">
 						<div class="personalInfo_wrap">
-							<form id="updateInfo" action="agent/modify_agent" method="post">
+							<form id="updateInfo" action="agent/modify_agent" method="post" autocomplete="off">
 								<ul>
 									<li>
 										<span class="info_title">姓名:</span>
@@ -336,24 +341,24 @@
 									</li>
 									<li>
 										<span class="info_title">年龄:</span>
-										<input type="text" id="age" name="age" class="form-control" value=${seesionScope.agentSession.age} />
+										<input type="text" id="age" name="age" class="form-control" value = ${sessionScope.agentSession.age} />
 										 
 									</li>
 									<li>
 										<span class="info_title">电话:</span>
-										<input type="text" id="phone" name="phone" class="form-control" value=${seesionScope.agentSession.phone} />
+										<input type="text" id="phone" name="phone" class="form-control" value=${sessionScope.agentSession.phone} />
 									</li>
 									<li>
 										<span class="info_title">邮箱:</span>
-										<input type="text" id="email" name="email" class="form-control" value=${seesionScope.agentSession.email} />
+										<input type="text" id="email" name="email" class="form-control" value=${sessionScope.agentSession.email} />
 									</li>
 									<li>
 										<span class="info_title" style="margin-left:-28px;">入行年份:</span>
-										<input type="text" id="year" name="year" class="form-control" style="margin-left:30px;" value=${seesionScope.agentSession.year}/>
+										<input type="text" id="year" name="year" class="form-control" style="margin-left:30px;" value=${sessionScope.agentSession.year} />
 									</li>
 									<li>
 										<span class="info_title" style="margin-left:-28px;">所属公司:</span>
-										<input type="text" id="company"  name="company" class="form-control" value=${seesionScope.agentSession.company} />
+										<input type="text" id="company"  name="company" class="form-control" value=${sessionScope.agentSession.company} />
 									</li>
 									<li>
 										<span class="info_title" style="margin-left:-28px;">自我介绍:</span>
