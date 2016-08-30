@@ -42,7 +42,9 @@
             <ul class="subnav">
                 <li><a href="/manage_system/reg_agent.jsp" target="adminFrame">经纪人管理</a></li>
                 <li><a href="/manage_system/reg_user.jsp" target="adminFrame">用户管理</a></li>
+                <c:if test="${sessionScope.managerSession.level==1}">
                 <li><a href="/manage_system/reg_manage.jsp" target="adminFrame">管理员管理</a></li>
+                </c:if>
             </ul>
 
 
@@ -89,14 +91,22 @@
                 <h4 class="modal-title" id="exampleModalLabel">修改资料</h4>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="file-upload">
                     <div class="form-group">
-                        <label class="control-label">姓名：</label>
+                        <label class="control-label">姓名</label>
                         <input type="text" class="form-control" id="mod_name" name="name" value="${sessionScope.managerSession.name}">
                     </div>
                     <div class="form-group">
-                        <label for="photo_url" class="control-label">照片：</label>
-                        <input type="text" class="form-control" id="mod_photo_url" name="photo_url" value="${sessionScope.managerSession.photoUrl}">
+                            <label for="set_photoUrl" class="control-label">选择图片</label>
+                            <div class="">
+                            <input type="file" id="add_photoUrl" class="form-control set_photoUrl" name="clientFile" multiple="multiple"/>  
+                            </div>
+                    </div>
+                    <div class="form-group">
+                            <label for="photoSet" class=" control-label">图片预览</label>
+                            <div class="">
+                            <img class="photo_img" class="form-control" style="width:100%;height:auto;" />  
+                            </div>
                     </div>
                 </form>
             </div>
@@ -155,7 +165,7 @@
                         {
                             managerId:"${sessionScope.managerSession.managerId}",
                             name: $('#mod_name').val(),
-                            photoUrl: $('#mod_photo_url').val()
+                            photoUrl: $('.photo_img').attr("src")||"/public/img/logo.jpg"
                         },
                         function (jsondata) {
 
@@ -166,6 +176,25 @@
                             }
                         },"json");
         });
+         $('.set_photoUrl').unbind().change(function(event) {  
+                var formData = new FormData( document.getElementById("file-upload") );
+                $.ajax({
+                    url:'/upload/fileOfManager',
+                    type: 'POST',  
+                      data: formData,  
+                      async: false,  
+                      cache: false,  
+                      contentType: false,  
+                      processData: false, 
+                    dataType: 'json',
+                    success : function(result) {
+                        $('.photo_img').attr("src",result.filePath);
+                    },
+                    error : function(result) {
+                        alert("fail");
+                    }
+                });                  
+            });
     })(jQuery)
 </script>
 </body>

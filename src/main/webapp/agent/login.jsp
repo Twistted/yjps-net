@@ -91,7 +91,7 @@
 	<div class="user-login">
 		<div class="back">
 			<a href="/home/index" class="fl"> 返回易居网首页 </a>
-			<div class="fr"> 还没有易居账号？ <a href="/agent/register"> 马上注册 </a></div>
+			<!-- <div class="fr"> 还没有易居账号？ <a href="/agent/register"> 马上注册 </a></div> -->
 		</div>
 		<div class="wrapper">
 			<div class="bg-image">

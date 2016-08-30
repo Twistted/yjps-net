@@ -144,6 +144,60 @@ public class FileUploadController {
         return result;
     } 
     
+    @RequestMapping(value="/fileOfAgent", method=RequestMethod.POST)     
+    public @ResponseBody Result fileOfAgent(@RequestParam("clientFile") MultipartFile fileData, HttpSession session){  
+    	// 判断图片大小是否大于2M
+        /*if (fileData.getSize() > 2 * 1024 * 1024) {
+            System.out.println("fail");
+            return new Result(500);
+        }*/
+        // 判断司机是否已存在
+        // 在这里就可以对file进行处理了，可以根据自己的需求把它存到数据库或者服务器的某个文件夹
+        String filePath = FileUploadUtil.saveFile(fileData,"agent");
+        Result result = new Result();
+        filePath = filePath.replace("src/main/webapp/assets/uploads","/assets/uploads");
+        System.out.println("yes");
+        result.setCode(200);
+        result.setFilePath(filePath);
+        return result;
+    } 
+    
+    @RequestMapping(value="/fileOfUser", method=RequestMethod.POST)     
+    public @ResponseBody Result fileOfUser(@RequestParam("clientFile") MultipartFile fileData, HttpSession session){  
+    	// 判断图片大小是否大于2M
+        /*if (fileData.getSize() > 2 * 1024 * 1024) {
+            System.out.println("fail");
+            return new Result(500);
+        }*/
+        // 判断司机是否已存在
+        // 在这里就可以对file进行处理了，可以根据自己的需求把它存到数据库或者服务器的某个文件夹
+        String filePath = FileUploadUtil.saveFile(fileData,"user");
+        Result result = new Result();
+        filePath = filePath.replace("src/main/webapp/assets/uploads","/assets/uploads");
+        System.out.println("yes");
+        result.setCode(200);
+        result.setFilePath(filePath);
+        return result;
+    }
+    
+    @RequestMapping(value="/fileOfManager", method=RequestMethod.POST)     
+    public @ResponseBody Result fileOfManager(@RequestParam("clientFile") MultipartFile fileData, HttpSession session){  
+    	// 判断图片大小是否大于2M
+        /*if (fileData.getSize() > 2 * 1024 * 1024) {
+            System.out.println("fail");
+            return new Result(500);
+        }*/
+        // 判断司机是否已存在
+        // 在这里就可以对file进行处理了，可以根据自己的需求把它存到数据库或者服务器的某个文件夹
+        String filePath = FileUploadUtil.saveFile(fileData,"manager");
+        Result result = new Result();
+        filePath = filePath.replace("src/main/webapp/assets/uploads","/assets/uploads");
+        System.out.println("yes");
+        result.setCode(200);
+        result.setFilePath(filePath);
+        return result;
+    }
+    
     @RequestMapping(value="/delete", method=RequestMethod.POST)
     public ModelAndView deleteFile(@RequestParam("fileName") String fileName,     
             @RequestParam("clientFile") MultipartFile fileData, HttpSession session){  

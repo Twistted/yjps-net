@@ -33,6 +33,27 @@ public class AgentController {
 		return model; 
 	}
 	
+	@RequestMapping("show_agent")
+	public ModelAndView show_agent(@RequestParam("page") Integer page,HttpSession httpSession){
+		ModelAndView model = new ModelAndView();
+		if( page == null || page == 0)
+			page = 1;
+		List<AgentEntity> agentList;
+		IAgentService agentService = new AgentService();
+		agentList = agentService.listAgent(page, 3);
+		if(agentList == null || agentList.isEmpty()) {
+			model.setViewName("500");
+			return model;
+		}
+		
+		for(int i = 0;i < agentList.size();i++){
+			System.out.println(agentList.get(i));
+		}
+		model.addObject("agentList", agentList);
+		model.setViewName("agent/agent_list");
+		return model; 
+	}
+	
 	@RequestMapping("insert")
 	public @ResponseBody Result insert(HouseEntity houseEntity,HttpSession httpSession) {
 		IHouseService houseService = new HouseService();

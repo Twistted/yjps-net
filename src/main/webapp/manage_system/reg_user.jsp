@@ -70,7 +70,7 @@
 
                 <div class="modal-body">
                     <form class="form-horizontal">
-                        <div class="form-group">
+                        <div class="form-group" id="file-upload">
                             <label for="add_account" class="col-sm-3 control-label"><span class=".muted">*</span>账户名称</label>
 
                             <div class="col-sm-9">
@@ -113,10 +113,15 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="add_photo" class="col-sm-3 control-label">照片</label>
-
+                            <label for="add_photoUrl" class="col-sm-3 control-label">选择图片</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="add_photo" placeholder="照片">
+                            <input type="file" id="add_photoUrl" class="form-control add_photoUrl" name="clientFile" multiple="multiple"/>  
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="photo" class="col-sm-3 control-label">图片预览</label>
+                            <div class="col-sm-9">
+                            <img class="photo_img" class="form-control" style="width:100%;height:auto;" />  
                             </div>
                         </div>
                     </form>
@@ -140,7 +145,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" id="file-upload-2">
                     	<div class="form-group" style="display:none">
                             <label for="set_id" class="col-sm-3 control-label">ID</label>
 
@@ -191,10 +196,15 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="set_photo" class="col-sm-3 control-label">照片</label>
-
+                            <label for="set_photoUrl" class="col-sm-3 control-label">选择图片</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="set_photo" placeholder="照片">
+                            <input type="file" id="add_photoUrl" class="form-control set_photoUrl" name="clientFile" multiple="multiple"/>  
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="photoSet" class="col-sm-3 control-label">图片预览</label>
+                            <div class="col-sm-9">
+                            <img class="photo_img" class="form-control" style="width:100%;height:auto;" />  
                             </div>
                         </div>
                     </form>
@@ -313,10 +323,10 @@
                 account: $('#add_account').val(),
                 name: $('#add_name').val(),
                 password: $('#add_password').val(),
-                age: $('#add_password').val()||0,
+                age: $('#add_age').val()||0,
                 sex: sexs,
                 contact: $('#add_contact').val()||"",
-                photoUrl:$('#add_photo').val()||"/public/img/logo.jpg"
+                photoUrl:$('#add .photo_img').attr("src")||"/public/img/logo.jpg"
             };
             postEvent('/manage/add_user', addVal);
         });
@@ -340,10 +350,18 @@
                 $('#set_age').val(age);
                 $('#set_sex').val(sex);
                 $('#set_contact').val(contact);
-                $('#set_photo').val(photoUrl);
+                $('#set .photo_img').attr("src",photoUrl);
             });
 
             $('#sure-set').unbind().click(function () {
+                if ($('#set_account').val()=="") {
+                alert("账户名称不能为空");
+                }else if ($('#set_name').val()=="") {
+                    alert("姓名不能为空");
+                }else if ($('#set_password').val()=="") {
+                    alert("密码不能为空");
+                }
+                else{
             	var sexs = $('#set_sex').val();
 	        	if (sexs=="男")
 	        	 {
@@ -361,10 +379,10 @@
                     age:$('#set_age').val()||0,
                     sex:sexs,
                     contact:$('#set_contact').val()||"",
-                    photoUrl:$('#set_photo').val()||"/public/img/logo.jpg"
+                    photoUrl:$('#set .photo_img').attr("src")||"/public/img/logo.jpg"
                 };
-                console.log(setPlatformVal);
                 postEvent('/manage/modify_user', setPlatformVal);
+                }
             });
 			
 			$('.tr_forbid').unbind().click(function () {
@@ -381,8 +399,47 @@
                 var setPlatformVal={
                 	userId:ids
                 }
-                console.log(ids);
                 postEvent('/manage/enable_user', setPlatformVal);
+            });
+            $('.add_photoUrl').unbind().change(function(event) {  
+                var formData = new FormData( document.getElementById("file-upload") );
+                $.ajax({
+                    url:'/upload/fileOfUser',
+                    type: 'POST',  
+                      data: formData,  
+                      async: false,  
+                      cache: false,  
+                      contentType: false,  
+                      processData: false, 
+                    dataType: 'json',
+                    success : function(result) {
+                        $('#add .photo_img').attr("src",result.filePath);
+                    },
+                    error : function(result) {
+                        alert("fail");
+                    }
+                });                  
+            });
+            $('.set_photoUrl').unbind().change(function(event) {  
+                var formData = new FormData( document.getElementById("file-upload-2") );
+                $.ajax({
+                    url:'/upload/fileOfUser',
+                    type: 'POST',  
+                      data: formData,  
+                      async: false,  
+                      cache: false,  
+                      contentType: false,  
+                      processData: false, 
+                    dataType: 'json',
+                    success : function(result) {
+                        console.log(result.filePath);
+                        console.log($('#set .photo_img').attr("src"));
+                        $('#set .photo_img').attr("src",result.filePath);
+                    },
+                    error : function(result) {
+                        alert("fail");
+                    }
+                });                  
             });
         }
 

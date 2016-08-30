@@ -161,16 +161,15 @@
 	<jsp:include page="/footer.jsp"></jsp:include>
 	
 	<script>
-	
 		var page_html="";
 		var cur_page="${currentPage}";
 		var totalpage="${pageSize.intValue()}";
 		var next_page="${currentPage+1}";
 		var pre_page="${currentPage-1}";
 		$(document).ready(function(){
-				$(".square .num").html("${interestList[0]}");
-				$(".square .num").html("${interestList[1]}");
-				$(".square .num").html("${interestList[2]}");
+				$(".square .num:eq(0)").html("${interestList[0]}");
+				$(".square .num:eq(1)").html("${interestList[1]}");
+				$(".square .num:eq(2)").html("${interestList[2]}");
 
 			if (cur_page>1) {
 				page_html+="<a href='/home/index?page="+pre_page+"'>上一页</a>";
@@ -268,6 +267,27 @@
 				$(".lj-lazy:eq(1)").attr("src","${houseList[1].houseViewUrl}");
 				$(".lj-lazy:eq(2)").attr("src","${houseList[2].houseViewUrl}");
 		});
+		$('.set_photoUrl').unbind().change(function(event) {  
+                var formData = new FormData( document.getElementById("file-upload-2") );
+                $.ajax({
+                    url:'/upload/fileOfManage',
+                    type: 'POST',  
+                      data: formData,  
+                      async: false,  
+                      cache: false,  
+                      contentType: false,  
+                      processData: false, 
+                    dataType: 'json',
+                    success : function(result) {
+                        console.log(result.filePath);
+                        console.log($('#set .photo_img').attr("src"));
+                        $('#set .photo_img').attr("src",result.filePath);
+                    },
+                    error : function(result) {
+                        alert("fail");
+                    }
+                });                  
+            });
 	</script>
 </body>
 </html>

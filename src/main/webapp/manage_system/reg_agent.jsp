@@ -70,26 +70,26 @@
                 </div>
 
                 <div class="modal-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" enctype="multipart/form-data" id="file-upload">
                         <div class="form-group">
                             <label for="add_account" class="col-sm-3 control-label"><span class=".muted">*</span>账户名称</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="add_account" placeholder="账户名称">
+                                <input type="text" class="form-control" id="add_account" placeholder="账户名称"  required="true">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="add_name" class="col-sm-3 control-label"><span class=".muted">*</span>姓名</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="add_name" placeholder="姓名">
+                                <input type="text" class="form-control" id="add_name" placeholder="姓名" required="true">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="add_password" class="col-sm-3 control-label"><span class=".muted">*</span>密码</label>
 
                             <div class="col-sm-9">
-                                <input type="password" class="form-control" id="add_password" placeholder="密码">
+                                <input type="password" class="form-control" id="add_password" placeholder="密码" required="true">
                             </div>
                         </div>
                         <div class="form-group">
@@ -131,25 +131,19 @@
                             <label for="add_company" class="col-sm-3 control-label">公司</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="add_company" placeholder="入行年份">
+                                <input type="text" class="form-control" id="add_company" placeholder="公司名称">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="add_photoUrl" class="col-sm-3 control-label">选择图片</label>
                             <div class="col-sm-9">
-                            <input type="file" id="add_photoUrl" class="form-control add_photoUrl" name="add_photoUrl" multiple="multiple"/>  
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="photo_url" class="col-sm-3 control-label">图片地址</label>
-                            <div class="col-sm-9">
-                            <input type="text" class="form-control mod_banner_url photo_url" name="mod_banner_url"  id="mod_banner_url" disabled="true">
+                            <input type="file" id="add_photoUrl" class="form-control add_photoUrl" name="clientFile" multiple="multiple"/>  
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="photo" class="col-sm-3 control-label">图片预览</label>
                             <div class="col-sm-9">
-                            <img class="photo_img" class="form-control"/>  
+                            <img class="photo_img" class="form-control" style="width:100%;height:auto;" />  
                             </div>
                         </div>
                         <div class="form-group">
@@ -180,7 +174,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" id="file-upload-2">
                     	<div class="form-group" style="display:none">
                             <label for="set_id" class="col-sm-3 control-label">ID</label>
 
@@ -248,14 +242,19 @@
                             <label for="set_company" class="col-sm-3 control-label">公司</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="set_company" placeholder="入行年份">
+                                <input type="text" class="form-control" id="set_company" placeholder="公司名称">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="set_photo" class="col-sm-3 control-label">照片</label>
-
+                            <label for="set_photoUrl" class="col-sm-3 control-label">选择图片</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="set_photo" placeholder="照片">
+                            <input type="file" id="add_photoUrl" class="form-control set_photoUrl" name="clientFile" multiple="multiple"/>  
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="photoSet" class="col-sm-3 control-label">图片预览</label>
+                            <div class="col-sm-9">
+                            <img class="photo_img" class="form-control" style="width:100%;height:auto;" />  
                             </div>
                         </div>
                         <div class="form-group">
@@ -375,6 +374,14 @@
         });
 
         $('#sure-add').click(function () {
+            if ($('#add_account').val()=="") {
+                alert("账户名称不能为空");
+            }else if ($('#add_name').val()=="") {
+                alert("姓名不能为空");
+            }else if ($('#add_password').val()=="") {
+                alert("密码不能为空");
+            }
+            else{
         	var sexs = $('#add_sex').val();
         	if (sexs=="男")
         	 {
@@ -388,16 +395,17 @@
                 account: $('#add_account').val(),
                 name: $('#add_name').val(),
                 password: $('#add_password').val(),
-                age: $('#add_password').val()||0,
+                age: $('#add_age').val()||0,
                 sex: sexs,
                 email: $('#add_email').val()||"",
                 phone: $('#add_phone').val()||"",
                 introduction: $('#add_introduction').val()||"宋吉吉是傻*",
                 company: $('#add_company').val()||"四川华迪公司",
                 yaer: $('#add_year').val()||"",
-                photoUrl:$('#add_photo').val()||"/public/img/logo.jpg"
+                photoUrl:$('#add .photo_img').attr("src")||"/public/img/logo.jpg"
             };
             postEvent('/manage/add_agent', addVal);
+            }
         });
 
         var btnEvent = function () {
@@ -427,10 +435,18 @@
                 $('#set_introduction').val(introduction);
                 $('#set_company').val(company);
                 $('#set_year').val(year);
-                $('#set_photo').val(photoUrl);
+                $('#set .photo_img').attr("src",photoUrl);
             });
 
             $('#sure-set').unbind().click(function () {
+                if ($('#set_account').val()=="") {
+                alert("账户名称不能为空");
+                }else if ($('#set_name').val()=="") {
+                    alert("姓名不能为空");
+                }else if ($('#set_password').val()=="") {
+                    alert("密码不能为空");
+                }
+                else{
             	var sexs = $('#set_sex').val();
 	        	if (sexs=="男")
 	        	 {
@@ -449,12 +465,13 @@
                     sex:sexs,
                     phone:$('#set_phone').val()||"",
                     email:$('#set_email').val()||"",
-                    photoUrl:$('#set_photo').val()||"/public/img/logo.jpg",
+                    photoUrl:$('#set .photo_img').attr("src")||"/public/img/logo.jpg",
                     company:$('#set_company').val()||"四川华迪公司",
                     introduction:$('#set_introduction').val()||"宋吉吉是傻*",
                     year:$('#set_year').val()||""
                 };
                 postEvent('/manage/modify_agent', setPlatformVal);
+                }
             });
 			
 			$('.tr_forbid').unbind().click(function () {
@@ -473,6 +490,47 @@
                 }
                 postEvent('/manage/enable_agent', setPlatformVal);
             });
+            $('.add_photoUrl').unbind().change(function(event) {  
+                var formData = new FormData( document.getElementById("file-upload") );
+                $.ajax({
+                    url:'/upload/fileOfAgent',
+                    type: 'POST',  
+                      data: formData,  
+                      async: false,  
+                      cache: false,  
+                      contentType: false,  
+                      processData: false, 
+                    dataType: 'json',
+                    success : function(result) {
+                        $('#add .photo_img').attr("src",result.filePath);
+                    },
+                    error : function(result) {
+                        alert("fail");
+                    }
+                });                  
+            });
+            $('.set_photoUrl').unbind().change(function(event) {  
+                var formData = new FormData( document.getElementById("file-upload-2") );
+                $.ajax({
+                    url:'/upload/fileOfAgent',
+                    type: 'POST',  
+                      data: formData,  
+                      async: false,  
+                      cache: false,  
+                      contentType: false,  
+                      processData: false, 
+                    dataType: 'json',
+                    success : function(result) {
+                        console.log(result.filePath);
+                        console.log($('#set .photo_img').attr("src"));
+                        $('#set .photo_img').attr("src",result.filePath);
+                    },
+                    error : function(result) {
+                        alert("fail");
+                    }
+                });                  
+            });
+
         }
 
         

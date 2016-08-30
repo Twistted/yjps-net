@@ -47,6 +47,14 @@ public class UserController {
 		return model;
 	}
 	
+	@RequestMapping(value="login", method=RequestMethod.GET)
+	public ModelAndView login(HttpSession httpSession) {
+		ModelAndView model = new ModelAndView();
+		httpSession.setAttribute("userSession", null);
+		model.setViewName("user/login");
+		return model;
+	}
+	
 	@RequestMapping(value="login",method=RequestMethod.POST)
 	public ModelAndView login(UserEntity userEntity, HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
@@ -130,15 +138,43 @@ public class UserController {
 			return model;
 		}
 		IUserService userService = new UserService();
+		UserEntity isRegister = userService.login(userEntity);
+		if (isRegister != null) {
+			model.setViewName("user/register");
+			return model;
+		}
+		userEntity.setName(userEntity.getAccount());
+		userEntity.setState(1);
+		userEntity.setPhotoUrl("/public/img/logo.jpg");
 		boolean ok = userService.register(userEntity);
 		System.out.println(ok);
 		if (ok) {
 			httpSession.setAttribute("userSession", userEntity);
-			model.setViewName("user/login");
+			model.setViewName("user/user_index");
 		} else {
 			model.setViewName("user/register");
 		}
 		return model;
+	}
+	
+	@RequestMapping(value="register_user", method=RequestMethod.POST)
+	public @ResponseBody Result register_user(UserEntity userEntity, HttpSession httpSession) {
+		Result result = new Result();
+		if ((userEntity.getAccount() == null || userEntity.getAccount().isEmpty()) || userEntity.getPassword().isEmpty() || userEntity.getPassword() == null) {
+			result.setCode(500);
+			httpSession.setAttribute("userSession", null);
+			return result;
+		} 
+		IUserService userService = new UserService();
+		boolean ok = userService.register(userEntity);
+		System.out.println(ok);
+		if (ok) {
+			httpSession.setAttribute("userSession", userEntity);
+			result.setCode(200);
+		} else {
+			
+		}
+		return result;
 	}
 	
 	@RequestMapping(value="list_interest",method=RequestMethod.POST)
