@@ -70,7 +70,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" enctype="multipart/form-data" id="file-upload">
                         <div class="form-group">
                             <label for="add_account" class="col-sm-3 control-label"><span class=".muted">*</span>账户名称</label>
 
@@ -137,7 +137,7 @@
                         <div class="form-group">
                             <label for="add_photoUrl" class="col-sm-3 control-label">选择图片</label>
                             <div class="col-sm-9">
-                            <input type="file" id="add_photoUrl" class="form-control add_photoUrl" name="add_photoUrl" multiple="multiple"/>  
+                            <input type="file" id="add_photoUrl" class="form-control add_photoUrl" name="clientFile" multiple="multiple"/>  
                             </div>
                         </div>
                         <div class="form-group">
@@ -149,7 +149,7 @@
                         <div class="form-group">
                             <label for="photo" class="col-sm-3 control-label">图片预览</label>
                             <div class="col-sm-9">
-                            <img class="photo_img" class="form-control"/>  
+                            <img class="photo_img" class="form-control" style="width:100%;height:auto;" />  
                             </div>
                         </div>
                         <div class="form-group">
@@ -473,6 +473,28 @@
                 }
                 postEvent('/manage/enable_agent', setPlatformVal);
             });
+            $('.add_photoUrl').unbind().change(function(event) {  
+                var formData = new FormData( document.getElementById("file-upload") );
+                console.log(formData);
+                $.ajax({
+                    url:'/upload/fileOfAgent',
+                    type: 'POST',  
+                      data: formData,  
+                      async: false,  
+                      cache: false,  
+                      contentType: false,  
+                      processData: false, 
+                    dataType: 'json',
+                    success : function(result) {
+                        $('.photo_img').attr("src",result.filePath);
+                        alert("ok");
+                    },
+                    error : function(result) {
+                        alert("fail");
+                    }
+                });                  
+            });
+
         }
 
         
