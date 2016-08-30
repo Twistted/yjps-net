@@ -272,6 +272,14 @@
         });
 
         $('#sure-add').click(function () {
+            if ($('#add_account').val()=="") {
+                alert("账户名称不能为空");
+                }else if ($('#add_name').val()=="") {
+                    alert("姓名不能为空");
+                }else if ($('#add_password').val()=="") {
+                    alert("密码不能为空");
+                }
+            else{
             var addVal = {
                 account: $('#add_account').val(),
                 name: $('#add_name').val(),
@@ -280,6 +288,7 @@
                 photoUrl:$('#add .photo_img').attr("src")||"/public/img/logo.jpg"
             };
             postEvent('/manage/add_manager', addVal);
+            }
         });
 
         var btnEvent = function () {
@@ -301,6 +310,14 @@
             });
 
             $('#sure-set').unbind().click(function () {
+                if ($('#set_account').val()=="") {
+                alert("账户名称不能为空");
+                }else if ($('#set_name').val()=="") {
+                    alert("姓名不能为空");
+                }else if ($('#set_password').val()=="") {
+                    alert("密码不能为空");
+                }
+                else{
                 var setPlatformVal = {
                     managerId: $('#set_id').val(),
                     account:$('#set_account').val(),
@@ -310,6 +327,7 @@
                     level:$('#set_level').val()||""
                 };
                 postEvent('/manage/modify_manager', setPlatformVal);
+                }
             });
             
             $('.tr_forbid').unbind().click(function () {
