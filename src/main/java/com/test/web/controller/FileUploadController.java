@@ -189,7 +189,7 @@ public class FileUploadController {
         }*/
         // 判断司机是否已存在
         // 在这里就可以对file进行处理了，可以根据自己的需求把它存到数据库或者服务器的某个文件夹
-        String filePath = FileUploadUtil.saveFile(fileData,"manager ");
+        String filePath = FileUploadUtil.saveFile(fileData,"manager");
         Result result = new Result();
         filePath = filePath.replace("src/main/webapp/assets/uploads","/assets/uploads");
         System.out.println("yes");
