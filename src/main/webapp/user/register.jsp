@@ -15,6 +15,7 @@
 	<link href="#" rel="shortcut icon">
 	<link rel="stylesheet" href="../public/css/register1.css">
 	<link rel="stylesheet" href="../public/css/register2.css">
+	<link rel="stylesheet" href="../public/css/xcConfirm.css" />
 	<style type="text/css">
 		#detail a.rr-taobao-big {
 			float: left;
@@ -93,10 +94,7 @@
 						<li><input type="password" placeholder="请确认新密码" id="other_password"
 							validate="notNull,isSame" validatedata="isSame=#password"
 							validatename="确认密码"> <i>*</i></li>
-						<li class="mt10"><label> <input type="checkbox"
-							
-								class="check-agreed alwayCheck" 
-								validatename="易居用户使用协议" > 我已阅读并同意 <a
+						<li class="mt10"><label> 我已阅读并同意 <a
 								href="/user/user_protocol"
 								target="_blank"> 《易居用户使用协议》 </a>
 						</label></li>
@@ -116,14 +114,16 @@
 
 	</div> 
 	<script type="text/javascript" src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script src="../public/js/xcConfirm.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			$("li input.actSubmit").click(function(e){
 				
-				if ($("#password").val() == $("#other_password").val() && $("#password").val() == '') {
+				if ($("#password").val() == $("#other_password").val() && $("#password").val() != '') {
 					
 				} else {
-					
+					var txt=  "注册失败";
+					window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.error);
 					e.preventDefault();
 				}
 			});

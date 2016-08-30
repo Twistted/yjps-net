@@ -157,7 +157,7 @@
 							</li>
 							<li>
 									<span class="Fyh2"><span class="star">*</span>月供</span>
-									<input class="textInput" name="monthlyPayment" type="text" id="monPayment" style="width:100px;" maxlength="6"><span class="huxingspan">万</span></input>
+									<input class="textInput" name="monthlyPayment" type="text" id="monPayment" style="width:100px;" maxlength="6"><span class="huxingspan">元</span></input>
 							</li>
 							
 						</ul>
@@ -407,7 +407,7 @@
 						</li>
 						<li>
 							<span class="info_title">状态:</span>
-							<div class="info_c"><span class="redspan">${sessionScope.agentSession.state}</span></div>
+							<div class="info_c"><span class="redspan">在职</span></div>
 						</li>
 						<li>
 							<span class="info_title">自我介绍:</span>
@@ -506,7 +506,7 @@
 			$(".sucServer").click(function() {
 				
 				var formData = new FormData($("#upload_form")[0]);
-				alert(formData);
+				
 				$.ajax({
 					url: '/upload/agent_file',
 					data: formData,

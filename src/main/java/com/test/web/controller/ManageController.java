@@ -76,6 +76,7 @@ public class ManageController {
 	public @ResponseBody Result addManager(ManagerEntity managerEntity,HttpSession httpSesion){
 		Result result = new Result();
 		IManagerService managerService = new ManagerService();
+		managerEntity.setState(1);
 		if(managerService.addManager(managerEntity))
 			result.setCode(200);
 		else result.setCode(500);	
@@ -265,7 +266,7 @@ public class ManageController {
 		IManagerService managerService = new ManagerService();
 		List<ManagerEntity> managerList = managerService.listManager(pageOffset, 3);
 		List<ManagerEntity> allManagerList = managerService.findAll();
-		pageSize = (int) Math.ceil(allManagerList.size()*1.0/3);
+		pageSize = (int) Math.ceil((allManagerList.size() - 1)*1.0/3);
 		if (managerList == null || managerList.isEmpty()) 
 			result.setCode(500);
 		else result.setCode(200);

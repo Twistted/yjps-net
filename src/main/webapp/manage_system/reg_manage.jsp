@@ -346,6 +346,46 @@
                 }
                 postEvent('/manage/enable_manager', setPlatformVal);
             });
+            $('.add_photoUrl').unbind().change(function(event) {  
+                var formData = new FormData( document.getElementById("file-upload") );
+                $.ajax({
+                    url:'/upload/fileOfManager',
+                    type: 'POST',  
+                      data: formData,  
+                      async: false,  
+                      cache: false,  
+                      contentType: false,  
+                      processData: false, 
+                    dataType: 'json',
+                    success : function(result) {
+                        $('#add .photo_img').attr("src",result.filePath);
+                    },
+                    error : function(result) {
+                        alert("fail");
+                    }
+                });                  
+            });
+            $('.set_photoUrl').unbind().change(function(event) {  
+                var formData = new FormData( document.getElementById("file-upload-2") );
+                $.ajax({
+                    url:'/upload/fileOfManager',
+                    type: 'POST',  
+                      data: formData,  
+                      async: false,  
+                      cache: false,  
+                      contentType: false,  
+                      processData: false, 
+                    dataType: 'json',
+                    success : function(result) {
+                        console.log(result.filePath);
+                        console.log($('#set .photo_img').attr("src"));
+                        $('#set .photo_img').attr("src",result.filePath);
+                    },
+                    error : function(result) {
+                        alert("fail");
+                    }
+                });                  
+            });
         }
 
         

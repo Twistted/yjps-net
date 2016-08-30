@@ -14,6 +14,21 @@
 	<link href="#" rel="shortcut icon">
 	<link rel="stylesheet" href="../public/css/login1.css">
 	<link rel="stylesheet" href="../public/css/login2.css">
+	<link rel="stylesheet" href="../public/css/xcConfirm.css" />
+	<script type="text/javascript" src="../public/js/jquery-2.1.4.min.js"></script>
+	<script src="../public/js/xcConfirm.js"></script>
+	<script>
+        $(function () {
+            if ("${sessionScope.agentLoginFail}" == "true") {
+            	var txt = "登录失败";
+            	window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.error);
+            }
+            else if ("${sessionScope.agentLoginFail}"=="false") {
+            	var txt = "你被禁用";
+            	window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.error);
+            }
+        });
+    </script>
 	<script>
 	    function RESIZEIMG(b,k,l,m){
 	    	var c=b.parentNode;

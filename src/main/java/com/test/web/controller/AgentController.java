@@ -212,9 +212,9 @@ public class AgentController {
 		agentId = ((AgentEntity) httpSession.getAttribute("agentSession")).getAgentId();
 		List<HouseEntity> allHouseList,houseList;
 		IHouseService houseService = new HouseService();
-		houseList = houseService.getPageByAgentId(page, 3, agentId);
+		houseList = houseService.getPageByAgentId(page, 15, agentId);
 		allHouseList = houseService.getByAgentId(agentId);
-		int pageSize = (int)Math.ceil(allHouseList.size()*1.0/3);
+		int pageSize = (int)Math.ceil(allHouseList.size()*1.0/15);
 		if(houseList == null)
 			result.setCode(500);
 		else result.setCode(200);

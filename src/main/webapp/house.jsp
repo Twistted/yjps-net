@@ -128,15 +128,22 @@
 							<a href="" alt="在线咨询"><img src="/public/img/query.png"></a>
 						</p>
 						<p class="p-02">
-							<span>店经理</span>
+							<span>经纪人</span>
 						</p>
 						<p class="p-03">
 							<span class="bold">年龄:</span>
-							<span>${agent.age}</span>
+							<span> ${agent.age}</span>
 						</p>
 						<p class="p-04">
 							<span class="bold">性别:</span>
-							<span>${agent.sex}</span>
+							<c:choose>
+								<c:when test="${agent.sex == 1 }">
+									<span> 男</span>
+								</c:when>
+								<c:otherwise>
+									<span> 女</span>
+								</c:otherwise>
+							</c:choose>
 						</p>
 					</div>
 				</div>
@@ -242,7 +249,14 @@
 											</p>
 											<p class="p-05">
 												<span class="bold">性别:</span>
-												<span>${agent.sex}</span>
+												<c:choose>
+													<c:when test="${agent.sex == 1 }">
+														<span> 男</span>
+													</c:when>
+													<c:otherwise>
+														<span> 女</span>
+													</c:otherwise>
+												</c:choose>
 											</p>
 										</div>
 									</div>
@@ -331,7 +345,7 @@
     <script type="text/javascript">
 		// 百度地图API功能
 		var map = new BMap.Map("allmap");    // 创建Map实例
-		map.centerAndZoom("成都市郫县德源镇大禹东路66号", 15);  // 初始化地图,设置中心点坐标和地图级别
+		map.centerAndZoom("${house.province}"+"${house.city}"+"${house.town}"+"${house.zone}"+"${house.address}", 15);  // 初始化地图,设置中心点坐标和地图级别
 		map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
 		map.setCurrentCity("成都");          // 设置地图显示的城市 此项是必须设置的
 		map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放

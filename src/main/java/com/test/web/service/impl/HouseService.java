@@ -146,7 +146,7 @@ public class HouseService implements IHouseService {
 		try {
 			HouseMapper mapper = session.getMapper(HouseMapper.class);
 			
-			houseList = mapper.queryPageByAgentId((page-1)*3, 3, agentId);
+			houseList = mapper.queryPageByAgentId((page-1)* size, size, agentId);
 		} finally {
 			DBUtil.closeSession();
 		}

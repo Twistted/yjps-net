@@ -29,6 +29,9 @@
 						<li>
 							<a href="/agent/show_agent">查看经纪人</a>
 						</li>
+						<li>
+							<a href="/manage/index">后台管理</a>
+						</li>
 					</ul>
 				</div>
 				<div class="fr">官方客服 1010 9666</div>
