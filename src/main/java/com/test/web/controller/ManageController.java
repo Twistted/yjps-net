@@ -255,7 +255,7 @@ public class ManageController {
 	
 	@RequestMapping(value="list_manager",method=RequestMethod.POST)
 	public @ResponseBody Result listManager(@RequestParam(value="page", required=false) String page, HttpSession httpSession) {
-		int pageOffset,pageSize;
+		int pageOffset,pageSize,level;
 		Result result = new Result();
 		if (page == null) {
 			pageOffset = 1;
@@ -266,7 +266,6 @@ public class ManageController {
 		List<ManagerEntity> managerList = managerService.listManager(pageOffset, 3);
 		List<ManagerEntity> allManagerList = managerService.findAll();
 		pageSize = (int) Math.ceil(allManagerList.size()*1.0/3);
-		
 		if (managerList == null || managerList.isEmpty()) 
 			result.setCode(500);
 		else result.setCode(200);

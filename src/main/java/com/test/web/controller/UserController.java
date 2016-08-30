@@ -122,23 +122,23 @@ public class UserController {
 	}
 	
 	@RequestMapping("register")
-	public ModelAndView register(UserEntity userEntity, HttpSession httpSession) {
-		ModelAndView model = new ModelAndView();
-		
-		if (userEntity.getAccount() == null || userEntity.getAccount().isEmpty()) {
-			model.setViewName("user/register");
-			return model;
-		}
+	public @ResponseBody Result register(UserEntity userEntity, HttpSession httpSession) {
+		Result result = new Result();
 		IUserService userService = new UserService();
+		UserEntity user = userService.getUserById(userEntity.getUserId());
+		if(user != null){
+			result.setCode(500);
+			return result;
+		}
 		boolean ok = userService.register(userEntity);
-		System.out.println(ok);
 		if (ok) {
 			httpSession.setAttribute("userSession", userEntity);
-			model.setViewName("user/login");
+			result.setCode(200);
 		} else {
-			model.setViewName("user/register");
+			httpSession.setAttribute("userSession", null);
+			result.setCode(500);
 		}
-		return model;
+		return result;
 	}
 	
 	@RequestMapping(value="list_interest",method=RequestMethod.POST)
