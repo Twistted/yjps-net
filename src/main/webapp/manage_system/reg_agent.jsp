@@ -75,21 +75,21 @@
                             <label for="add_account" class="col-sm-3 control-label"><span class=".muted">*</span>账户名称</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="add_account" placeholder="账户名称">
+                                <input type="text" class="form-control" id="add_account" placeholder="账户名称"  required="true">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="add_name" class="col-sm-3 control-label"><span class=".muted">*</span>姓名</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="add_name" placeholder="姓名">
+                                <input type="text" class="form-control" id="add_name" placeholder="姓名" required="true">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="add_password" class="col-sm-3 control-label"><span class=".muted">*</span>密码</label>
 
                             <div class="col-sm-9">
-                                <input type="password" class="form-control" id="add_password" placeholder="密码">
+                                <input type="password" class="form-control" id="add_password" placeholder="密码" required="true">
                             </div>
                         </div>
                         <div class="form-group">
@@ -374,6 +374,14 @@
         });
 
         $('#sure-add').click(function () {
+            if ($('#add_account').val()=="") {
+                alert("账户名称不能为空");
+            }else if ($('#add_name').val()=="") {
+                alert("姓名不能为空");
+            }else if ($('#add_password').val()=="") {
+                alert("密码不能为空");
+            }
+            else{
         	var sexs = $('#add_sex').val();
         	if (sexs=="男")
         	 {
@@ -387,7 +395,7 @@
                 account: $('#add_account').val(),
                 name: $('#add_name').val(),
                 password: $('#add_password').val(),
-                age: $('#add_password').val()||0,
+                age: $('#add_age').val()||0,
                 sex: sexs,
                 email: $('#add_email').val()||"",
                 phone: $('#add_phone').val()||"",
@@ -397,6 +405,7 @@
                 photoUrl:$('#add .photo_img').attr("src")||"/public/img/logo.jpg"
             };
             postEvent('/manage/add_agent', addVal);
+            }
         });
 
         var btnEvent = function () {
@@ -430,6 +439,14 @@
             });
 
             $('#sure-set').unbind().click(function () {
+                if ($('#set_account').val()=="") {
+                alert("账户名称不能为空");
+                }else if ($('#set_name').val()=="") {
+                    alert("姓名不能为空");
+                }else if ($('#set_password').val()=="") {
+                    alert("密码不能为空");
+                }
+                else{
             	var sexs = $('#set_sex').val();
 	        	if (sexs=="男")
 	        	 {
@@ -454,6 +471,7 @@
                     year:$('#set_year').val()||""
                 };
                 postEvent('/manage/modify_agent', setPlatformVal);
+                }
             });
 			
 			$('.tr_forbid').unbind().click(function () {
