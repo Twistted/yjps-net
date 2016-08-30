@@ -90,10 +90,19 @@ public class IndexController {
 		
 		model.addObject("houseList", houseList);
 		model.addObject("listSize", houseList.size());
+		model.addObject("allHouseSize",houseList.size());
 		
 		IAdvertisementService advertisementService = new AdvertisementService();
 		List<AdvertisementEntity> advertisementList = advertisementService.getAdvertisementList(4);
 		model.addObject("advertisementList", advertisementList);
+		List<Integer> interestList = new ArrayList<Integer>() ;
+		IInterestService interestService = new InterestService();
+		for(int i = 0;i < houseList.size();i++){
+			interestList.add(i,interestService.countByHouseId(houseList.get(i).getHouseId()));
+			System.out.println(interestList.get(i));
+		}
+		System.out.println(interestList);
+		model.addObject("interestList", interestList);
 		
 		model.setViewName("home");
 		return model;

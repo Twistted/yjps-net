@@ -38,18 +38,22 @@ public class AgentController {
 		ModelAndView model = new ModelAndView();
 		if( page == null || page == 0)
 			page = 1;
-		List<AgentEntity> agentList;
+		List<AgentEntity> agentList,allAgentList;
 		IAgentService agentService = new AgentService();
 		agentList = agentService.listAgent(page, 3);
+		allAgentList = agentService.allAgent();
 		if(agentList == null || agentList.isEmpty()) {
 			model.setViewName("500");
 			return model;
 		}
-		
 		for(int i = 0;i < agentList.size();i++){
 			System.out.println(agentList.get(i));
 		}
+		model.addObject("allAgentSize",allAgentList.size());
+		model.addObject("pageSize",(Math.ceil(allAgentList.size() * 1.0 / 3)));
 		model.addObject("agentList", agentList);
+		model.addObject("currentPage", page);
+		model.addObject("listSize",agentList.size());
 		model.setViewName("agent/agent_list");
 		return model; 
 	}
