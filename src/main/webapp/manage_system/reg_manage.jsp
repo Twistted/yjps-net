@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" id="file-upload">
                         <div class="form-group">
                             <label for="add_account" class="col-sm-3 control-label"><span class=".muted">*</span>账户名称</label>
 
@@ -98,10 +98,15 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="add_photo" class="col-sm-3 control-label">照片</label>
-
+                            <label for="add_photoUrl" class="col-sm-3 control-label">选择图片</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="add_photo" placeholder="照片">
+                            <input type="file" id="add_photoUrl" class="form-control add_photoUrl" name="clientFile" multiple="multiple"/>  
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="photo" class="col-sm-3 control-label">图片预览</label>
+                            <div class="col-sm-9">
+                            <img class="photo_img" class="form-control" style="width:100%;height:auto;" />  
                             </div>
                         </div>
                     </form>
@@ -125,7 +130,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" id="file-upload-2">
                         <div class="form-group" style="display:none">
                             <label for="set_id" class="col-sm-3 control-label">ID</label>
 
@@ -162,10 +167,15 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="set_photo" class="col-sm-3 control-label">照片</label>
-
+                            <label for="set_photoUrl" class="col-sm-3 control-label">选择图片</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="set_photo" placeholder="照片">
+                            <input type="file" id="add_photoUrl" class="form-control set_photoUrl" name="clientFile" multiple="multiple"/>  
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="photoSet" class="col-sm-3 control-label">图片预览</label>
+                            <div class="col-sm-9">
+                            <img class="photo_img" class="form-control" style="width:100%;height:auto;" />  
                             </div>
                         </div>
                     </form>
@@ -267,7 +277,7 @@
                 name: $('#add_name').val(),
                 password: $('#add_password').val(),
                 level: $('#add_level').val()||"1",
-                photoUrl:$('#add_photo').val()||"/public/img/logo.jpg"
+                photoUrl:$('#add .photo_img').attr("src")||"/public/img/logo.jpg"
             };
             postEvent('/manage/add_manager', addVal);
         });
@@ -287,7 +297,7 @@
                 $('#set_name').val(name);
                 $('#set_password').val(password);
                 $('#set_level').val(level);
-                $('#set_photo').val(photoUrl);
+                $('#set .photo_img').attr("src",photoUrl);
             });
 
             $('#sure-set').unbind().click(function () {
@@ -296,7 +306,7 @@
                     account:$('#set_account').val(),
                     password:$('#set_password').val(),
                     name:$('#set_name').val(),
-                    photoUrl:$('#set_photo').val()||"/public/img/logo.jpg",
+                    photoUrl:$('#set .photo_img').attr("src")||"/public/img/logo.jpg",
                     level:$('#set_level').val()||""
                 };
                 postEvent('/manage/modify_manager', setPlatformVal);
