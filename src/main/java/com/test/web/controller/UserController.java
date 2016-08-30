@@ -149,7 +149,7 @@ public class UserController {
 		boolean ok = userService.register(userEntity);
 		System.out.println(ok);
 		if (ok) {
-			httpSession.setAttribute("userSession", userEntity);
+			httpSession.setAttribute("userSession", userService.login(userEntity));
 			model.setViewName("user/user_index");
 		} else {
 			model.setViewName("user/register");

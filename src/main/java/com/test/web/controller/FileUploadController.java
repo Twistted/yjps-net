@@ -81,12 +81,14 @@ public class FileUploadController {
         System.out.println(filePath);
         IUserService userService = new UserService();
         UserEntity user = (UserEntity)session.getAttribute("userSession");
+        String oldFilePath = user.getPhotoUrl();
         user.setPhotoUrl(filePath);
         if(userService.modify(user)){
         	session.setAttribute("userSession", user);
         	Result result = new Result(200);
         	result.setUserEntity(user);
         	result.setFilePath(filePath);
+        	FileUploadUtil.deleteFile(oldFilePath);
         	return result;
         }
         else return new Result(500);
@@ -107,12 +109,14 @@ public class FileUploadController {
         System.out.println("yes");
         IAgentService agentService = new AgentService();
         AgentEntity agent = (AgentEntity)session.getAttribute("agentSession");
+        String oldFilePath = agent.getPhotoUrl();
         agent.setPhotoUrl(filePath);
         if(agentService.modifyAgent(agent)){
         	session.setAttribute("agentSession", agent);
         	result.setCode(200);
         	result.setFilePath(filePath);
         	result.setAgentEntity(agent);
+        	FileUploadUtil.deleteFile(oldFilePath);
         }
         else result.setCode(500);
         return result;
@@ -133,12 +137,14 @@ public class FileUploadController {
         System.out.println("yes");
         IManagerService managerService = new ManagerService();
         ManagerEntity manager = (ManagerEntity)session.getAttribute("managerSession");
+        String oldFilePath = manager.getPhotoUrl();
         manager.setPhotoUrl(filePath);
         if(managerService.modifyManager(manager)){
         	session.setAttribute("managerSession", manager);
         	result.setCode(200);
         	result.setFilePath(filePath);
         	result.setManagerEntity(manager);
+        	FileUploadUtil.deleteFile(oldFilePath);
         }
         else result.setCode(500);
         return result;
