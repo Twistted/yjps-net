@@ -119,11 +119,11 @@
 	<script type="text/javascript">
 		$(function(){
 			$("li input.actSubmit").click(function(e){
-				alert($("#password").val() + " | " + $("#other_password").val())
-				if ($("#password").val() == $("#other_password").val()) {
-					alert("ok");
+				
+				if ($("#password").val() == $("#other_password").val() && $("#password").val() == '') {
+					
 				} else {
-					alert("fail");
+					
 					e.preventDefault();
 				}
 			});
