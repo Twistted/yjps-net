@@ -448,6 +448,36 @@
 	
 	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 	<script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("span.sucServer").click(function(){
+				
+				var formData = new FormData($("#upload_form")[0]);
+				$.ajax({
+					url: '/upload/user_file',
+					data: formData,
+					type: 'post',
+					contentType: false,
+					processData: false,
+					dataType: 'json',
+					success: function (result) {
+						if (result.code == 200) {
+							
+							$(".main-left .name img").attr("src", result.userEntity.photoUrl);
+							$(".logo picturebox img").attr("src", result.userEntity.photoUrl);
+							
+						} else {
+							alert("failt");
+						}
+					},
+					error: function (result) {
+						alert("fail");	
+					}
+				});
+			});
+
+		});
+	</script>
 	<script type="text/javascript" src="../public/js/manager.min.js"></script>
 	
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
