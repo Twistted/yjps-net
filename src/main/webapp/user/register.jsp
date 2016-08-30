@@ -75,7 +75,7 @@
 			</div>
 			<div class="logo"></div>
 			<div class="reset-pwd registerred">
-				<form action="#" method="post" id="registerForm">
+				<form action="/user/register" method="post" id="registerForm">
 					<input type="hidden" name="redirect" id="r" value="#">
 					<ul>
 						<!-- <li class=""><input type="text" name="mobile"
@@ -85,18 +85,18 @@
 						<li><input type="text" placeholder="请输短信验证码"
 							name="verifyCode" class="actCheckVerify" validatename="短信验证码"
 							validate="notNull"> <i>*</i></li> --> 
-						<li><input type="text" name="nickName" placeholder="昵称">
+						<li><input type="text" name="account" placeholder="账号">
 						</li>
 						<li><input type="password" name="password" id="password"
 							placeholder="请输入密码" validate="notNull,passwordRule"
 							validatename="密码"> <i>*</i></li>
-						<li><input type="password" placeholder="请确认新密码"
+						<li><input type="password" placeholder="请确认新密码" id="other_password"
 							validate="notNull,isSame" validatedata="isSame=#password"
 							validatename="确认密码"> <i>*</i></li>
 						<li class="mt10"><label> <input type="checkbox"
-								value="check"
-								class="check-agreed alwayCheck" validate="isChecked"
-								validatename="易居用户使用协议"> 我已阅读并同意 <a
+							
+								class="check-agreed alwayCheck" 
+								validatename="易居用户使用协议" > 我已阅读并同意 <a
 								href="/user/user_protocol"
 								target="_blank"> 《易居用户使用协议》 </a>
 						</label></li>
@@ -119,10 +119,13 @@
 	<script type="text/javascript">
 		$(function(){
 			$("li input.actSubmit").click(function(e){
-				alert("clikc");
-				var check = $("li label input.check-agreed").val();
-				alert(check);
-				e.preventDefault();
+				alert($("#password").val() + " | " + $("#other_password").val())
+				if ($("#password").val() == $("#other_password").val()) {
+					alert("ok");
+				} else {
+					alert("fail");
+					e.preventDefault();
+				}
 			});
 		});
 	</script>

@@ -35,7 +35,7 @@
 		<div class="nav-wrap">
 			<div class="wrapper">
 				<div class="fl">
-					<a href="../home.jsp" class="logo" title="易居网络平台" style="float:left;"></a>
+					<a href="/home/index" class="logo" title="易居网络平台" style="float:left;"></a>
 					<span>易居二手房网上交易平台</span>
 				</div>
 				<div class="fr">

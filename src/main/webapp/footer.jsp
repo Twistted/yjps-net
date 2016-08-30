@@ -21,10 +21,13 @@
 							<a href="/company/privacy.jsp">隐私声明</a>
 						</li>
 						<li>
-							<a href="/agent/login.jsp">经纪人登录</a>
+							<a href="/company/link.jsp">友情链接</a>
 						</li>
 						<li>
-							<a href="/company/link.jsp">友情链接</a>
+							<a href="/agent/index">经纪人登录</a>
+						</li>
+						<li>
+							<a href="/agent/show_agent">查看经纪人</a>
 						</li>
 					</ul>
 				</div>
