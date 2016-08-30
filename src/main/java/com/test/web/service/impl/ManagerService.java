@@ -25,16 +25,16 @@ public class ManagerService implements IManagerService {
 	}
 	
 	public ManagerEntity findById(int id) {
-		ManagerEntity house = null;
+		ManagerEntity manager = null;
 		SqlSession session = DBUtil.getSession();
 		try {
 			ManagerMapper mapper = session.getMapper(ManagerMapper.class);
-			house = mapper.findById(id);
-			System.out.println(house);
+			manager = mapper.findById(id);
+			System.out.println(manager);
 		} finally {
 			DBUtil.closeSession();
 		}
-		return house;
+		return manager;
 	}
 	
 	public boolean modifyManager(ManagerEntity managerEntity){
