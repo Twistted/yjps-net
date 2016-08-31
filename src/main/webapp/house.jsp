@@ -76,7 +76,7 @@
 								<i>/${house.area}㎡</i>
 							</span>
 						</dd>
-						<button class="btn btn-primary btn-collect" style="display:none">收藏</button>
+						<button class="btn btn-primary btn-collect">收藏</button>
 						<button class="btn btn-inverse btn-discollect" style="display:none">取消</button>
 					</dl>
 					<dl>
@@ -353,19 +353,25 @@
 			  	  var set_img = $(this).children('img').attr('src');
 				  $("#show img").attr('src',set_img);
 			  });
-			  if ("${sessionScope.userSession!=null&&isInterest==true}") {
-			  	$(".btn-discollect").show();
+			  if ("${sessionScope.userSession!=null}") {
+			  	if ("${isInterest==true}") {
+				  	$(".btn-discollect").show();
+				  	$(".btn-collect").hide();
+			  	}
 			  }
-			  else if ("${sessionScope.userSession!=null&&isInterest==false}") {
-			  	$(".btn-collect").show();
 			  }
 			  $(".btn-collect").click(function(){
+			  	if ("${sessionScope.userSession!=null}"){
+			  		alert("请先登录");
+			  	}
+			  	else{
 				  $.post('/house/interest', {
                			id: "${house.houseId}",
             		}, function (res) {
 		            },"json");
 				  $(".btn-collect").hide();
 				  $(".btn-discollect").show();
+				}
 			  });
 			  $(".btn-discollect").click(function(){
 				  $.post('/house/delete_interest', {
