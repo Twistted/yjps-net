@@ -13,14 +13,14 @@ public class UserService implements IUserService {
 
 	public UserEntity login(UserEntity user) {
 		UserEntity userEntity = null;
+		boolean ret = false;
 		SqlSession session = DBUtil.getSession();
 		try {
 			UserMapper userMapper = session.getMapper(UserMapper.class);
-			userEntity = userMapper.login(user);
+			userEntity = userMapper.login(user.getAccount());
 		} finally {
 			DBUtil.closeSession();
 		}
-		
 		return userEntity;
 	}
 	

@@ -16,8 +16,8 @@
 		select * from user order by user_id limit #{offset}, #{size}
 	</select>
 	
-	<select id="login" parameterType="UserEntity" resultType="UserEntity">
-		select * from user where account=#{account} and password=#{password}
+	<select id="login" parameterType="String" resultType="UserEntity">
+		select * from user where account=#{account}
 	</select>
 	
 	<insert id="register" parameterType="UserEntity">

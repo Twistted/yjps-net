@@ -8,7 +8,7 @@ import com.test.web.entity.UserEntity;
 
 public interface UserMapper {
 	
-	UserEntity login(UserEntity user);
+	UserEntity login(String account);
 	int register(UserEntity user);
 	public UserEntity findById(int id);
 	public List<UserEntity> queryPage(@Param("offset") int offset,@Param("size") int size);

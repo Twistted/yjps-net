@@ -39,9 +39,9 @@ public class UserController {
 	}
 	
 	@RequestMapping("index")
-	public ModelAndView index() {
+	public ModelAndView index(HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
-		
+		httpSession.setAttribute("userLoginFail",null);
 		model.addObject("title", "用户登录");
 		model.setViewName("user/login");
 		return model;
@@ -51,6 +51,7 @@ public class UserController {
 	public ModelAndView login(HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
 		httpSession.setAttribute("userSession", null);
+		httpSession.setAttribute("userLoginFail", null);
 		model.setViewName("user/login");
 		return model;
 	}

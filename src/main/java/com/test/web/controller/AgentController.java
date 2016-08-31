@@ -70,7 +70,7 @@ public class AgentController {
 		ModelAndView model = new ModelAndView();
 		IAgentService agentService = new AgentService();
 		AgentEntity agent = agentService.getAgentByAccount(agentEntity.getAccount());
-
+		httpSession.setAttribute("agentLoginFail", null);
 		if (agent == null || !agent.getPassword().equals(agentEntity.getPassword())) {
 			httpSession.setAttribute("agentSession", null);
 			httpSession.setAttribute("agentLoginFail", true);
