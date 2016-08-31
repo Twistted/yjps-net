@@ -41,6 +41,7 @@ public class HouseController {
 		if (userEntity != null) {
 			// 记录浏览
 			IInterestService interestService = new InterestService();
+			System.out.println("haha:" + interestService.isInterest(userEntity.getUserId(),id) == null);
 			if(interestService.isInterest(userEntity.getUserId(),id) == null){
 				model.addObject("isInterest",true);
 			}
