@@ -359,9 +359,9 @@
 				  	$(".btn-collect").hide();
 			  	}
 			  }
-			  }
+
 			  $(".btn-collect").click(function(){
-			  	if ("${sessionScope.userSession!=null}"){
+			  	if ("${sessionScope.userSession==null}"){
 			  		alert("请先登录");
 			  	}
 			  	else{
