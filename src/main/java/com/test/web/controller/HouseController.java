@@ -70,7 +70,7 @@ public class HouseController {
 	}
 	
 	@RequestMapping(value="interest", method=RequestMethod.POST)
-	public @ResponseBody Result interest(@RequestParam("id") String id, HttpSession httpSession) {
+	public @ResponseBody Result interest(@RequestParam("id") Integer id, HttpSession httpSession) {
 		Result result = new Result();
 		UserEntity userEntity = (UserEntity) httpSession.getAttribute("userSession");
 		if (userEntity == null) {
@@ -79,20 +79,32 @@ public class HouseController {
 		} else {
 			IInterestService interestService = new InterestService();
 			InterestEntity interestEntity = new InterestEntity();
-			interestEntity.setHouseId(Integer.valueOf(id));
+			interestEntity.setHouseId(id);
 			interestEntity.setUserId(userEntity.getUserId());
 			boolean ok = interestService.addInterest(interestEntity);
 			if (ok) {
-				IHouseService houseService = new HouseService();
-				HouseEntity houseEntity = houseService.getHouseById(Integer.valueOf(id));
-				result.setHouseEntity(houseEntity);
-				
-				IAgentService agentService = new AgentService();
-				AgentEntity agentEntity = agentService.getAgentById(houseEntity.getAgentId());
-				System.out.println(agentService);
-				result.setAgentEntity(agentEntity);
+				result.setCode(200);
 			} else {
-				System.out.println("Interest Failure");
+				result.setCode(500);
+			}
+			return result;
+		}
+	}
+	
+	@RequestMapping(value="delete_interest")
+	public @ResponseBody Result delete_interest(@RequestParam("id") Integer id, HttpSession httpSession) {
+		Result result = new Result();
+		UserEntity userEntity = (UserEntity) httpSession.getAttribute("userSession");
+		if (userEntity == null) {
+			result.setCode(500);
+			return result;
+		} else {
+			IInterestService interestService = new InterestService();
+			boolean ok = interestService.deleteInterest(id, userEntity.getUserId());
+			if (ok) {
+				result.setCode(200);
+			} else {
+				result.setCode(500);
 			}
 			return result;
 		}
