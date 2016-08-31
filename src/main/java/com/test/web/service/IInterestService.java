@@ -11,6 +11,7 @@ public interface IInterestService {
 	List<InterestEntity> getInterestList(int userId);
 	List<InterestEntity> queryPage(int userId,int page,int size);
 	InterestEntity getInterest(int id);
+	InterestEntity isInterest(int userId,int houseId);
 	int countByHouseId(int houseId);
 
 }

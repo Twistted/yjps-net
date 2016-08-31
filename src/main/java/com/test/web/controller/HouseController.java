@@ -35,13 +35,17 @@ import com.test.web.service.impl.PhotoService;
 public class HouseController {
 	
 	@RequestMapping(value="house", method=RequestMethod.GET)
-	public ModelAndView house(@RequestParam("id") String id, HttpSession httpSession) {
+	public ModelAndView house(@RequestParam("id") Integer id, HttpSession httpSession) {
 		UserEntity userEntity = (UserEntity) httpSession.getAttribute("userSession");
+		ModelAndView model = new ModelAndView();
 		if (userEntity != null) {
 			// 记录浏览
+			IInterestService interestService = new InterestService();
+			if(interestService.isInterest(userEntity.getUserId(),id) == null){
+				model.addObject("isInterest",true);
+			}
+			else model.addObject("isInterest",false);
 		}
-		
-		ModelAndView model = new ModelAndView();
 		
 		IHouseService houseService = new HouseService();
 		HouseEntity houseEntity = houseService.getHouseById(Integer.valueOf(id));
@@ -78,7 +82,6 @@ public class HouseController {
 			interestEntity.setHouseId(Integer.valueOf(id));
 			interestEntity.setUserId(userEntity.getUserId());
 			boolean ok = interestService.addInterest(interestEntity);
-			System.out.println("ok" + ok);
 			if (ok) {
 				IHouseService houseService = new HouseService();
 				HouseEntity houseEntity = houseService.getHouseById(Integer.valueOf(id));
@@ -88,7 +91,6 @@ public class HouseController {
 				AgentEntity agentEntity = agentService.getAgentById(houseEntity.getAgentId());
 				System.out.println(agentService);
 				result.setAgentEntity(agentEntity);
-				
 			} else {
 				System.out.println("Interest Failure");
 			}
