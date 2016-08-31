@@ -120,6 +120,12 @@
 	background-color: #39ac6a;
 	border-color: #39ac6a;
 }
+.wrapper .panel-box-info .info-box .desc-text .btn-discollect{
+	float: right;
+	height: auto;
+	width: auto;
+	margin-right: 60px;
+}
 .wrapper .panel-box-info .info-box .countact-panel{
 	height: 68px;
 }
