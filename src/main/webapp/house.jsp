@@ -76,8 +76,8 @@
 								<i>/${house.area}㎡</i>
 							</span>
 						</dd>
-						<button class="btn btn-primary btn-collect">收藏</button>
-						<button class="btn btn-inverse btn-discollect">收藏</button>
+						<button class="btn btn-primary btn-collect" style="display:none">收藏</button>
+						<button class="btn btn-inverse btn-discollect" style="display:none">取消</button>
 					</dl>
 					<dl>
 						<dt>单价：</dt>
