@@ -24,6 +24,10 @@
 		select * from interest order by interest_id
 	</select>
 	
+	<select id="isInterest" parameterType="int" resultType="InterestEntity">
+	    select * from interest where user_id = #{userId} and house_id = #{houseId} 
+	</select>
+	
 	<select id="getInterestList" parameterType="int" resultType="InterestEntity">
 		select * from interest where user_id = #{userId}
 	</select>

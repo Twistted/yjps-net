@@ -9,21 +9,38 @@
 				</div>
 				<div class="fr">
 					<div class="login">
+					<c:if test="${sessionScope.userSession==null}">
 						<a href="/user/register">
 							<span class="log">注册</span>
 						</a>
-						<a href="/user/user_index">
-							<span style="display:none">朱国栋</span>
-						</a>
 						|
-						<a href="/user/login">
+						<a href="/user/login.jsp">
 							<span class="user-reg">登录</span>
 						</a>
-						<a href="/home/index">
-							<span style="display:none">退出</span>
+					</c:if>
+					<c:if test="${sessionScope.userSession!=null}">
+						<a href="/user/user_index.jsp">
+							<span >${sessionScope.userSession.name}</span>
 						</a>
+						|
+						<a href="" class="logout">
+							<span>退出</span>
+						</a>
+					</c:if>
 					</div>
 				</div>
 			</div>
 		</div>
 	</header>
+	<script type="text/javascript">
+		$(".logout").click(function () {
+                $.post("/home/logout", function (jsondata) {
+                var data = jsondata;
+                if (data.code == 200) {
+                    window.location = "/home/index";
+                } else {
+                    alert("输入有误噢~");
+                }
+            },"json");
+            });
+	</script>

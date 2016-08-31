@@ -12,6 +12,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+	 <script src="/public/js/jquery-2.1.4.min.js"></script>
 </head>
 <body width= screen.width>
 	<jsp:include page="/header.jsp"></jsp:include>
@@ -75,9 +76,8 @@
 								<i>/${house.area}㎡</i>
 							</span>
 						</dd>
-						<c:if test="${!empty sessionScope.userSession }">
-							<button class="btn btn-primary btn-collect">收藏</button>
-						</c:if>
+						<button class="btn btn-primary btn-collect">收藏</button>
+						<button class="btn btn-inverse btn-discollect" style="display:none">取消</button>
 					</dl>
 					<dl>
 						<dt>单价：</dt>
@@ -128,22 +128,15 @@
 							<a href="" alt="在线咨询"><img src="/public/img/query.png"></a>
 						</p>
 						<p class="p-02">
-							<span>经纪人</span>
+							<span>店经理</span>
 						</p>
 						<p class="p-03">
 							<span class="bold">年龄:</span>
-							<span> ${agent.age}</span>
+							<span>${agent.age}</span>
 						</p>
 						<p class="p-04">
 							<span class="bold">性别:</span>
-							<c:choose>
-								<c:when test="${agent.sex == 1 }">
-									<span> 男</span>
-								</c:when>
-								<c:otherwise>
-									<span> 女</span>
-								</c:otherwise>
-							</c:choose>
+							<span>${agent.sex}</span>
 						</p>
 					</div>
 				</div>
@@ -249,14 +242,7 @@
 											</p>
 											<p class="p-05">
 												<span class="bold">性别:</span>
-												<c:choose>
-													<c:when test="${agent.sex == 1 }">
-														<span> 男</span>
-													</c:when>
-													<c:otherwise>
-														<span> 女</span>
-													</c:otherwise>
-												</c:choose>
+												<span>${agent.sex}</span>
 											</p>
 										</div>
 									</div>
@@ -367,11 +353,33 @@
 			  	  var set_img = $(this).children('img').attr('src');
 				  $("#show img").attr('src',set_img);
 			  });
+			  if ("${sessionScope.userSession!=null}") {
+			  	if ("${isInterest==true}") {
+				  	$(".btn-discollect").show();
+				  	$(".btn-collect").hide();
+			  	}
+			  }
+
 			  $(".btn-collect").click(function(){
+			  	if ("${sessionScope.userSession==null}"){
+			  		alert("请先登录");
+			  	}
+			  	else{
 				  $.post('/house/interest', {
                			id: "${house.houseId}",
             		}, function (res) {
 		            },"json");
+				  $(".btn-collect").hide();
+				  $(".btn-discollect").show();
+				}
+			  });
+			  $(".btn-discollect").click(function(){
+				  $.post('/house/delete_interest', {
+               			id: "${house.houseId}",
+            		}, function (res) {
+		            },"json");
+				  $(".btn-discollect").hide();
+				  $(".btn-collect").show();
 			  });
 			});	
 		

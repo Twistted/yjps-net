@@ -234,11 +234,11 @@
 				page_html+="<span>...</span>";
 				cur_page--;
 				for (var i = 0 ; i <= 2; i++) {
-					if (i==2) {
-						page_html+="<a style='font-weight: bold;text-decoration: none;cursor: default;color: #39ac6a;border-color: #39ac6a;' href='/home/index?page="+totalpage+"'>"+totalpage+"</a>"
+					if (i==1) {
+						page_html+="<a style='font-weight: bold;text-decoration: none;cursor: default;color: #39ac6a;border-color: #39ac6a;' href='/home/index?page="+cur_page+"'>"+cur_page+"</a>"
 					}
 					else{
-						page_html+="<a href='/home/index?page="+totalpage+"'>"+totalpage+"</a>";
+						page_html+="<a href='/home/index?page="+cur_page+"'>"+cur_page+"</a>";
 					}
 					cur_page++;
 				}
@@ -267,27 +267,6 @@
 				$(".lj-lazy:eq(1)").attr("src","${houseList[1].houseViewUrl}");
 				$(".lj-lazy:eq(2)").attr("src","${houseList[2].houseViewUrl}");
 		});
-		$('.set_photoUrl').unbind().change(function(event) {  
-                var formData = new FormData( document.getElementById("file-upload-2") );
-                $.ajax({
-                    url:'/upload/fileOfManage',
-                    type: 'POST',  
-                      data: formData,  
-                      async: false,  
-                      cache: false,  
-                      contentType: false,  
-                      processData: false, 
-                    dataType: 'json',
-                    success : function(result) {
-                        console.log(result.filePath);
-                        console.log($('#set .photo_img').attr("src"));
-                        $('#set .photo_img').attr("src",result.filePath);
-                    },
-                    error : function(result) {
-                        alert("fail");
-                    }
-                });                  
-            });
 	</script>
 </body>
 </html>

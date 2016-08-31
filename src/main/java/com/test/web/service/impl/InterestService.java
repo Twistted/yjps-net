@@ -100,4 +100,15 @@ public class InterestService implements IInterestService{
 		return count;
 	}
 
+	public InterestEntity isInterest(int userId, int houseId) {
+		SqlSession session = DBUtil.getSession();
+		try{
+			InterestMapper mapper = session.getMapper(InterestMapper.class);
+			interestEntity = mapper.isInterest(userId, houseId);
+		}finally{
+			DBUtil.closeSession();
+		}
+		return interestEntity;
+	}
+
 }

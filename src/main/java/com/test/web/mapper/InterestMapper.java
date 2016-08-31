@@ -8,6 +8,7 @@ import com.test.web.entity.InterestEntity;
 
 public interface InterestMapper {
 	public int insert(InterestEntity interestEntity);
+	public InterestEntity isInterest(@Param("userId") int userId,@Param("houseId")int houseId);
 	public InterestEntity findById(int id);
 	public List<InterestEntity> findAll();
 	public List<InterestEntity> queryPage(@Param("userId") int userId,@Param("offset")int offset,@Param("size") int size);
