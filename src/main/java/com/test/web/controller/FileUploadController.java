@@ -216,7 +216,7 @@ public class FileUploadController {
     }
     
     @RequestMapping(value="/upload_house_photo", method=RequestMethod.POST)     
-    public @ResponseBody Result fileOfManager(@RequestParam("houseType") MultipartFile houseType,
+    public @ResponseBody Result uploadHousePhoto(@RequestParam("houseType") MultipartFile houseType,
     		@RequestParam("houseView") MultipartFile houseView, HttpSession session){  
     	// 判断图片大小是否大于2M
         /*if (fileData.getSize() > 2 * 1024 * 1024) {
