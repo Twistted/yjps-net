@@ -201,16 +201,21 @@ public class FileUploadController {
         }*/
         // 判断司机是否已存在
         // 在这里就可以对file进行处理了，可以根据自己的需求把它存到数据库或者服务器的某个文件夹
+    	Result result = new Result();
         String filePath = FileUploadUtil.saveFile(fileData,"user");
-        Result result = new Result();
-        filePath = filePath.replace("src/main/webapp/assets/uploads","/assets/uploads");
-        System.out.println("yes");
-        result.setCode(200);
-        result.setFilePath(filePath);
+        if (filePath == null) {
+        	result.setCode(500);
+        } else {
+        	filePath = filePath.replace("src/main/webapp/assets/uploads","/assets/uploads");
+        	System.out.println("yes");
+        	result.setCode(200);
+        	result.setFilePath(filePath);
+        }
+        
         return result;
     }
     
-    @RequestMapping(value="/fileOfManager", method=RequestMethod.POST)     
+    @RequestMapping(value="/upload_house_photo", method=RequestMethod.POST)     
     public @ResponseBody Result fileOfManager(@RequestParam("houseType") MultipartFile houseType,
     		@RequestParam("houseView") MultipartFile houseView, HttpSession session){  
     	// 判断图片大小是否大于2M

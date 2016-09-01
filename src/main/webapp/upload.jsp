@@ -11,10 +11,9 @@
         <title>file upload test</title>  
     </head>  
     <body>  
-        <form method="post" action="<%=path %>/upload/file" enctype="multipart/form-data">  
-            文件名: <input type="text" name="fileName" /><br/>  
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-            <input id= ""type="file" name="clientFile" /><br/>  
+        <form method="post" action="<%=path %>/upload/upload_house_photo" enctype="multipart/form-data">    
+            <input id="file_one" type="file" name="houseType" /><br/>  
+            <input id="file_two" type="file" name="houseView" /><br/>
             <input type="submit" value="上传文件 "/>  
         </form>  
     </body>  
