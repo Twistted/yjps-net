@@ -23,7 +23,7 @@
     <li class="active">管理员管理</li>
 </ol>
 <div id="platform_config">
-    <form class="search-box" id="searchbox" onsubmit="return false">
+    <form class="search-box" id="searchbox" onsubmit="return false"  style="display:none">
         <input type="search" placeholder="请输入搜索内容" id="search_input">
         <span class="glyphicon glyphicon-search"></span>
         <input type="submit" value="搜索"  id="search_btn" >
@@ -106,8 +106,15 @@
                         <div class="form-group">
                             <label for="photo" class="col-sm-3 control-label">图片预览</label>
                             <div class="col-sm-9">
-                            <img class="photo_img" class="form-control" style="width:100%;height:auto;" />  
+                            <img class="photo_img" class="form-control" style="width:60%;height:auto;" />  
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <!--提示-->
+                            <section class="alert  alert-info" style="position:fixed;display:none;" id="tip">
+                              <button type="button" class="close">&times;</button>
+                              <strong>Info</strong>
+                            </section>
                         </div>
                     </form>
                 </div>
@@ -175,8 +182,15 @@
                         <div class="form-group">
                             <label for="photoSet" class="col-sm-3 control-label">图片预览</label>
                             <div class="col-sm-9">
-                            <img class="photo_img" class="form-control" style="width:100%;height:auto;" />  
+                            <img class="photo_img" class="form-control" style="width:60%;height:auto;" />  
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <!--提示-->
+                            <section class="alert  alert-info" style="position:fixed;display:none;" id="tip">
+                              <button type="button" class="close">&times;</button>
+                              <strong>Info</strong>
+                            </section>
                         </div>
                     </form>
                 </div>
@@ -237,7 +251,7 @@
                         <div class="form-group">
                             <label for="photoSet" class="col-sm-3 control-label">照片</label>
                             <div class="col-sm-9">
-                            <img class="photo_img" class="form-control" style="width:100%;height:auto;" />  
+                            <img class="photo_img" class="form-control" style="width:60%;height:auto;" />  
                             </div>
                         </div>
                     </form>
@@ -256,6 +270,92 @@
 <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="/public/js/laypage.js"></script>
 <script>
+    var tip = function(str,obj){
+            obj.fadeIn();
+            obj.find("strong").text(str);
+        };
+
+        $(".alert .close").click(function(){
+            $('.alert').fadeOut();
+         }
+        );
+
+        var check = function(value,switchs,obj)  
+        {  
+            if(switchs!="introduction"&&value.length>20) {
+                    tip('输入项不能超过20个字符噢',obj);
+                    return false;
+            }
+            var reg="";
+            if(switchs=="empty")
+            {
+                if(value=="")  
+                {  
+                    tip('账号、姓名和密码不能为空~',obj);  
+                    return false;  
+                }  
+            }
+            else if(switchs=="chinaName")
+            {
+                reg=/^[\u4E00-\u9FA5]{1,}$/;
+                if(reg.test(value)==false)  
+                {  
+                    tip('真实姓名必须为中文噢~',obj);  
+                    return false;  
+                }  
+            }
+            else if(switchs=="password") 
+            { 
+                if(value.length<6)  
+                {  
+                    tip('密码要在六位以上噢~',obj);  
+                    return false;  
+                } 
+            }
+            else if(switchs=="age") 
+            {
+                //reg=/^([2-9]\d)|100$/;  
+                if(value>100||value<1)  
+                {  
+                    tip('请输入您的真实年龄~',obj);  
+                    return false;  
+                }  
+            }
+            else if(switchs=="email") 
+            {
+                reg=/^\w+(\.\w+)*@\w+(\.\w+)+$/;  
+                if(reg.test(value)==false)  
+                {  
+                    tip('您的邮箱格式不规范~',obj);  
+                    return false;  
+                } 
+            }
+            else if(switchs=="phone") 
+            {
+                reg=/^[1][358][0-9]{9}$/;  
+                if(reg.test(value)==false)  
+                {  
+                    tip('请输入规范的手机号码',obj);  
+                    return false;  
+                }  
+            }
+            else if (switchs=="year") {
+                reg=/^(19|20)\d{2}$/;
+                if(reg.test(value)==false)  
+                {  
+                    tip('请输入正确的年份',obj);  
+                    return false;  
+                }
+            }
+            else if (switchs=="introduction") {
+                if(value.indexOf("script")>0||value.indexOf("href")>0||value.indexOf("iframe")>0||value.indexOf("frameset")>0)  
+                {  
+                    tip('您的个人介绍中含有不安全代码~',obj);  
+                    return false;  
+                }
+            }
+            return true;
+        };
 
     $(function () {
         var cur_page = 1;
@@ -333,14 +433,20 @@
         });
 
         $('#sure-add').click(function () {
-            if ($('#add_account').val()=="") {
-                alert("账户名称不能为空");
-                }else if ($('#add_name').val()=="") {
-                    alert("姓名不能为空");
-                }else if ($('#add_password').val()=="") {
-                    alert("密码不能为空");
-                }
-            else{
+            var obj=$(this).parent().parent().find("section");
+            if(
+                check($('#add_account').val(),"empty",obj)&&
+                check($('#add_name').val(),"empty",obj)&&
+                check($('#add_password').val(),"empty",obj)&&
+                check($('#add_name').val(),"chinaName",obj)&&
+                check($('#add_password').val(),"password",obj)
+            ){
+                var level=$('#add_level').val();
+                if (level!="1"&&level!="2")
+                 {
+                    tip("请输入1或2作为权限等级",obj);
+                    return false;
+                 }
             var addVal = {
                 account: $('#add_account').val(),
                 name: $('#add_name').val(),
@@ -387,14 +493,19 @@
             });
 
             $('#sure-set').unbind().click(function () {
-                if ($('#set_account').val()=="") {
-                alert("账户名称不能为空");
-                }else if ($('#set_name').val()=="") {
-                    alert("姓名不能为空");
-                }else if ($('#set_password').val()=="") {
-                    alert("密码不能为空");
-                }
-                else{
+                if(
+                check($('#set_account').val(),"empty",obj)&&
+                check($('#set_name').val(),"empty",obj)&&
+                check($('#set_password').val(),"empty",obj)&&
+                check($('#set_name').val(),"chinaName",obj)&&
+                check($('#set_password').val(),"password",obj)
+                ){
+                    var level=$('#add_level').val();
+                    if (level!="1"&&level!="2")
+                     {
+                        tip("请输入1或2作为权限等级",obj);
+                        return false;
+                     }
                 var setPlatformVal = {
                     managerId: $('#set_id').val(),
                     account:$('#set_account').val(),

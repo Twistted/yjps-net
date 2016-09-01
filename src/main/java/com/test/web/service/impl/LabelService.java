@@ -39,6 +39,7 @@ public class LabelService implements ILabelService{
 		try{
 			LabelMapper labelMapper = session.getMapper(LabelMapper.class);
 			i = labelMapper.delete(labelId);
+			session.commit();
 			System.out.println(i);
 		}finally{
 			DBUtil.closeSession();
@@ -52,7 +53,7 @@ public class LabelService implements ILabelService{
 		try{
 			LabelMapper labelMapper = session.getMapper(LabelMapper.class);
 			i = labelMapper.insert(label);
-			System.out.println(i);
+			session.commit();
 		}finally{
 			
 		}

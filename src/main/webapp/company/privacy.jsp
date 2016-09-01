@@ -11,12 +11,9 @@
 		<meta name="viewport" content="width=device-width">
 		<link rel="stylesheet "  href="../public/css/bootstrap.min.css" />
 		<link href="../public/css/reset.css" rel="stylesheet">
-		<link rel="stylesheet" href="../public/css/classify.css">
+		<link rel="stylesheet" href="../public/css/detail.css">
 		<link rel="stylesheet" href="../public/css/main.css">
-		<link rel="stylesheet" href="../public/css/new_file.css">
-		<link rel="stylesheet" href="../public/css/class.css">
-		<link rel="stylesheet" href="../public/css/luntang.css" />
-      
+    <script src="../public/js/jquery-2.1.4.min.js"></script>
         <style type="text/css">
         a:hover{
          text-decoration:underline;
