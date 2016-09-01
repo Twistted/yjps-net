@@ -199,8 +199,8 @@
 						 <div id="w">
 						    <div id="content">
 						      <center ><a href="#loginmodal" class="flatbtn" id="modaltrigger" style="background-color:#4fac6a;font-weight:bold;font-size:14px;">上传图片</a></center>
-						      <input type="text" id="urlForHx" style="display:none;" />
-						      <input type="text" id="urlForSj" style="display:none;"/>
+						      <input type="hidden" id="houseTypeUrlId" value="" />
+						      <input type="hidden" id="houseViewUrlId" value="" />
 						    </div>
 						  </div>
 						  <div id="loginmodal" style="width:648px;display:none;left:23%;height:330px;">
@@ -209,13 +209,13 @@
 						      <div class="fl">
 							      <label for="hxPic">户型图:</label>
 							      <div class="chose_pic" style="width:100px;height:20px;background-color:#4fac6a;text-align:center;vertical-align:middle;font-size:14px;cursor: pointer;border-radius:10px;color:#fff;position:absolute;top:91px;;left:79px;">选择图片</div>
-							      <input type="file" name="hxPic" id="hxPic" class="" tabindex="1" style="margin-top:-29px;margin-left:70px;opacity:0;cursor:pointer;width:97px;">
+							      <input type="file" name="houseType" id="hxPic" class="" tabindex="1" style="margin-top:-29px;margin-left:70px;opacity:0;cursor:pointer;width:97px;">
 							      <img src="http://static1.ljcdn.com/pc/asset/img/user/default-pic.png?_v=20160830171602" id="hxPicImg" style="width:158px;height:154px;">
 						      </div>
 						      <div class="fr">
 							      <label for="sjPic">实景图:</label>
 							      <div class="chose_pic" style="width:100px;height:20px;background-color:#4fac6a;text-align:center;vertical-align:middle;font-size:14px;cursor:pointer;border-radius:10px;color:#fff;cursor: pointer;position:absolute;left:438px;top:91px;">选择图片</div>
-							      <input type="file" name="sjPic" id="sjPic" class="" tabindex="2" style="margin-top:-24px;margin-left:18px;opacity:0;cursor:pointer;">
+							      <input type="file" name="houseView" id="sjPic" class="" tabindex="2" style="margin-top:-24px;margin-left:18px;opacity:0;cursor:pointer;">
 							      <img src="http://static1.ljcdn.com/pc/asset/img/user/default-pic.png?_v=20160830171602" id="sjPicImg" style="width:158px;height:154px;">
 							   </div>
 						      <div class="center" style="position:absolute;bottom:0;margin-left:38%;">
@@ -507,6 +507,23 @@
 								</tbody>
 							</table>
 							<div class="page" id="page"></div>
+							
+							<div id="add_pic" style="width:648px;display:none;left:23%;height:330px;">
+							    <h1>上传图片</h1>
+							    <form id="add_pic_form" name="loginform" method="post" action="">
+							      <div class="fl">
+								      <label for="hxPic">户型图:</label>
+								     
+							      </div>
+							      <div class="fr">
+								      <label for="sjPic">实景图:</label>
+								    
+								   </div>
+							      <div class="center" style="position:absolute;bottom:0;margin-left:38%;">
+							      	 
+							      </div>
+							    </form>				  
+						  </div>
 						 
 					</div>
 				</div>
@@ -636,16 +653,28 @@
 		$("#loginbtn").click(function(){
 			alert("action");
 			var formData = new FormData($("#loginform")[0]);
-			$.post("/upload/",{'houseTypeUrl': ,'houseViewUrl': },function(result){
-				if(result.code == 200){
-					$("#urlForHx").val(result.houseEntity.houseTypeUrl);
-					$("#urlForSj").val(result.houseEntity.houseViewurl);
-					alert("上传成功");
+
+			$.ajax({
+				url: '/upload/upload_house_photo',
+				data: formData,
+				type: 'post',
+				contentType: false,
+				processData: false,
+				dataType: 'json',
+				success: function (result) {
+					if (result.code == 200) {
+						$("#houseTypeUrlId").val(result.houseEntity.houseTypeUrl);
+						$("#houseViewUrlId").val(result.houseEntity.houseViewUrl);
+						
+					} else {
+						alert("fail");
+					}
+				},
+				error: function (result) {
+					alert("error");
 				}
-				else{
-					alert("上传失败");
-				}
-			},'json');
+			}); 
+				
 		});
 	});
 
