@@ -126,16 +126,16 @@
 									<input class="textInput huxing" name="area" type="text" id="mianji" placeholder="      建筑面积" maxlength="4" style="width:120px;"><span class="t1" style="margin-left:-10px;">共</span><span class="huxingspan1" style="margin-left:8px;">㎡</span></input>
 							</li>
 							<li>
-								<span class="Fyh2"><span class="star">*</span>年份</span>
+								<span class="Fyh2"><span class="star" style="visibility:hidden;">*</span>年份</span>
 									<input type="text" class="textInput" name="year" id="FyYear" maxlength="10" />
 									 
 							</li>
 							<li>
-									<span class="Fyh2"><span class="star">*</span>楼层</span>
+									<span class="Fyh2"><span class="star" style="visibility:hidden;">*</span>楼层</span>
 									<input class="textInput" name="floor" type="text" id="floor" style="width:100px;" maxlength="3"><span class="huxingspan">层</span></input>
 							</li>
 							<li>
-									<span class="Fyh2"><span class="star">*</span>朝向</span>
+									<span class="Fyh2"><span class="star" style="visibility:hidden;">*</span>朝向</span>
 									<select name="orientation" id="orientation">
 										<option value="1">东</option>
 										<option value="2">南</option>
@@ -156,7 +156,7 @@
 									<input class="textInput" name="downPayment" type="text" id="downPayment" style="width:100px;" maxlength="6"><span class="huxingspan">万</span></input>
 							</li>
 							<li>
-									<span class="Fyh2"><span class="star">*</span>月供</span>
+									<span class="Fyh2"><span class="star" style="visibility:hidden;">*</span>月供</span>
 									<input class="textInput" name="monthlyPayment" type="text" id="monPayment" style="width:100px;" maxlength="6"><span class="huxingspan">元</span></input>
 							</li>
 							
@@ -166,7 +166,7 @@
 					<div class="FyDescri">
 						<p class="Fyh1">房源个性描述</p>
 							<div class="instro">
-										<span class="Fyh2"><span class="star">*</span>详细描述</span>
+										<span class="Fyh2"><span class="star" style="visibility:hidden;">*</span>详细描述</span>
 								<textarea name="houseDescribe" id="houseDescribe" cols="80" rows="10" placeholder="个性且详尽的房源描述可以加速您出售您的房子"></textarea>
 							</div>
 							<!-- pic upload-->
@@ -181,7 +181,7 @@
 						<p class="Fyh1">房源位置</p>
 						<ul>
 							<li>
-								<span class="Fyh2"><span class="star">*</span>地理位置</span>
+								<span class="Fyh2"><span class="star" style="visibility:hidden;">*</span>地理位置</span>
 									<input class="textInput huxing" name="province" type="text" id="province" style="width:100px;text-align: center;" maxlength="3"><span class="huxingspan">省</span></input>
 									<input class="textInput huxing" name="city" type="text" id="city" style="width:100px;text-align: center;" maxlength="3"><span class="huxingspan">市</span></input>
 									<input class="textInput huxing" name="town" type="text" id="town" style="width:100px;text-align: center;" maxlength="3"><span class="huxingspan">镇</span></input>
@@ -254,28 +254,45 @@
 			<div class="tab-content">
 				<!-- 1111111111111111111 -->
 				<div class="tab-pane active" id="user_logo">
-				<div id="updatePortrait" class="change-portrait">
-					<!--存放item-->
+					<div id="updatePortrait" class="change-portrait">
+						<!--存放item-->
 						<div class="update">
 						<!--改头像-->
-				 		<h3>请选择图片文件：JPG/GIF</h3>
-				 		 <div class="uploadPic_wrap">
-				 		
-							 <form id="upload_form">  
-					            文件名: <input id="picUploadfileName" type="text" name="fileName" /><br/>  
-					           
-					            <input id="picUploadClientFile" type="file" name="clientFile" /><br/>  
-					            <input id="user_logoUpload_btn" type="submit" value="确定"/>  
-					        </form>  
-					        
-						</div>
-						<div class="clearfix"></div>
-						<div class="suc">
-							<span class="sucServer">确定</span>
+					 		<h3>请选择图片文件：JPG/GIF</h3>
+					 		 <div class="uploadPic_wrap">
+								 <form id="upload_form">  
+						            选择图片 <input id="picUploadfileName" type="text" name="fileName" /><br/>        
+						            <input id="picUploadClientFile" type="file" name="clientFile" /><br/>  
+						            <!-- <input id="user_logoUpload_btn" type="submit" value="确定"/>  --> 
+						        </form>  
+							</div>
+							<div class="preview_wrap">
+					            <div class="fl" style="line-height:273px;width:273px;text-align:center;vertical-align:middle;float:left;background-color:#f5f5f5;">
+						            <img src="http://static1.ljcdn.com/pc/asset/img/user/default-pic.png?_v=20160830171602" id="img_preview"  />
+						        </div>
+					            <div class="preview_three" style="float:right;width:400px;background-color:#f5f5f5;">					     
+						           <div class="img1">
+										<img src="http://static1.ljcdn.com/pc/asset/img/user/default-avatar.png?_v=20160830171602" id="img_preview_big" style="width:120px;height:120px;" />
+						           	</div>
+						           	<div class="img2">
+							            <img src="http://static1.ljcdn.com/pc/asset/img/user/default-avatar.png?_v=20160830171602" id="img_preview_middle" style="width:80px;height:80px;" />
+							        </div>
+							        <div class="img3">
+						          	    <img src="http://static1.ljcdn.com/pc/asset/img/user/default-avatar.png?_v=20160830171602" id="img_preview_small" style="width:34px;height:34px;" />		
+						            </div>
+						            <div class="preview_span"><span>120px*120px</span></div>	
+						            <div class="preview_span"><span>80px*80px</span></div>	
+						            <div class="preview_span"><span>34px*34px</span></div>					        
+						        </div>
+						        <div class="clearfix"></div>
+						    </div>
+							<div class="clearfix"></div>
+							<div class="suc">
+								<span id="uploadPic_suc" class="sucServer" style="margin-top:50px;">确定</span>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 						
 						
 				<!-- 222222-->
@@ -528,17 +545,21 @@
 							
 							$(".main-left .name img").attr("src", result.agentEntity.photoUrl);
 							$(".logo picturebox img").attr("src", result.agentEntity.photoUrl);
+							var txt=  "头像修改成功";
+							window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
 							
 						} else {
 							alert("fail");
 						}
 					},
 					error: function (result) {
-						alert("error");
+						var txt=  "头像修改失败";
+						window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.error);
 					}
 				});
 			});
 		});
+
 	</script>
 	<script src="../public/js/manager.min.js"></script>
 </body>

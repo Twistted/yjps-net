@@ -39,7 +39,7 @@
         <nav class="col-md-2 col-xs-12 nav-collapse collapse">
             <li class="mainnav"><a href="javascript:void(0)" target="adminFrame">系统管理<span class="caret"></span></a>
             </li>
-            <ul class="subnav">
+            <ul class="subnav" style="display:block;">
                 <li><a href="/manage_system/reg_agent.jsp" target="adminFrame">经纪人管理</a></li>
                 <li><a href="/manage_system/reg_user.jsp" target="adminFrame">用户管理</a></li>
                 <c:if test="${sessionScope.managerSession.level==1}">

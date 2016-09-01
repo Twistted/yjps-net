@@ -69,15 +69,15 @@
 						<li class="hover">
 							<a href="#tab4" data-toggle="tab" id="li_4" class="user_folInterestList">关注房源</a>
 						</li>
-						<li class="hover">
+					<!-- 	<li class="hover">
 							<a href="#tab5" data-toggle="tab" id="li_5">关注小区</a>
 						</li>
 						<li class="hover">
 							<a href="#tab6" data-toggle="tab" id="li_6">我的委托</a>
-						</li>
-						<li class="hover">
+						</li> -->
+						<!-- <li class="hover">
 							<a href="#tab7" data-toggle="tab" id="li_7">我的评论</a>
-						</li>
+						</li> -->
 
 					</ul>
 				</div>
@@ -110,8 +110,7 @@
 				</div>
 				<!--个人信息-->
 				<div class="main-right fr tab-pane" id="tab2">
-				<div class="title">
-				个人信息</div>
+				<div class="title">个人信息</div>
 				<div class="info_wrap">
 					<ul>
 						<li class="logo">
@@ -153,7 +152,7 @@
 				    <div class="tabbable"> <!-- Only required for left/right tabs -->
 				      <ul class="nav nav-tabs">
 				        <li id="li1" class="active"><a href="#user_logo" data-toggle="tab" style="text-decoration:none;outline:none;">上传头像</a></li>
-				        <li id="li2"><a href="#user_name" data-toggle="tab" style="text-decoration:none;outline:none;">修改昵称</a></li>
+				        <!-- <li id="li2"><a href="#user_name" data-toggle="tab" style="text-decoration:none;outline:none;">修改昵称</a></li> -->
 				        <li id="li3"><a href="#user_pwd" data-toggle="tab" style="text-decoration:none;outline:none;">修改密码</a></li>
 				        <li id="li4"><a href="#user_personalInfo" data-toggle="tab" style="text-decoration:none;outline:none;">修改个人信息</a></li>
 				      </ul>
@@ -163,116 +162,116 @@
 			<div class="tab-content">
 				<!-- 1111111111111111111 -->
 				<div class="tab-pane active" id="user_logo">
-				<div id="updatePortrait" class="change-portrait">
-					<!--存放item-->
-					<div class="update">
-						<!--改头像-->
-				 	<h3>请选择图片文件：JPG/GIF</h3>
-				 		<div class="uploadPic_wrap">
-				 			<!-- 带预览 -->
-						<!-- 	<form name="form0" id="form0" >
-								<div class="uploadPic_btn">选择图片</div>
-								<div class="uploadPic_input" style="position:absolute;">
-									<input type="file" name="file0" id="file0" multiple="multiple" /><br>
-								 </div>
-								 <div class="previewPic">
-								 	<div class="picbox">
-								 		<img src="http://static1.ljcdn.com/pc/asset/img/user/default-pic.png?_v=20160819150834" id="img0" >
-								 	</div>
-								 </div>
-							</form> -->
-							<!-- 新既 -->
-							 <form id="upload_form" action="/upload/file" method="post" enctype="multipart/form-data"  style="border:1px solid #e8e8e8;" target="upload" >  
-					            文件名: <input id="picUploadfileName" type="text" name="fileName" /><br/>  
-					            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-					            <input id="picUploadClientFile" type="file" name="clientFile" /><br/>  
-					            <input id="user_logoUpload_btn" type="submit" value="确定"/>  
-					        </form>  
-					        <iframe name="upload" style="display:none;"></iframe>
+					<div id="updatePortrait" class="change-portrait">
+						<!--存放item-->
+						<div class="update">
+							<!--改头像-->
+					 	<h3>请选择图片文件：JPG/GIF</h3>
+					 		<div class="uploadPic_wrap">
+					 			<!-- 带预览 -->
+							<!-- 	<form name="form0" id="form0" >
+									<div class="uploadPic_btn">选择图片</div>
+									<div class="uploadPic_input" style="position:absolute;">
+										<input type="file" name="file0" id="file0" multiple="multiple" /><br>
+									 </div>
+									 <div class="previewPic">
+									 	<div class="picbox">
+									 		<img src="http://static1.ljcdn.com/pc/asset/img/user/default-pic.png?_v=20160819150834" id="img0" >
+									 	</div>
+									 </div>
+								</form> -->
+								<!-- 新既 -->
+								 <form id="upload_form" action="/upload/file" method="post" enctype="multipart/form-data"  style="border:1px solid #e8e8e8;" target="upload" >  
+						            文件名: <input id="picUploadfileName" type="text" name="fileName" /><br/>  
+						            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+						            <input id="picUploadClientFile" type="file" name="clientFile" /><br/>  
+						            <input id="user_logoUpload_btn" type="submit" value="确定"/>  
+						        </form>  
+						        <iframe name="upload" style="display:none;"></iframe>
+							</div>
+							<div class="clearfix"></div>
+							<div class="suc">
+								<span class="sucServer">确定</span>
+							</div>
 						</div>
-						<div class="clearfix"></div>
-						<div class="suc">
-							<span class="sucServer">确定</span>
-						</div>
+					</div>
+				</div>
+				<!-- 222222-->
+				<!--修改密码-->
+				<div class="tab-pane" id="user_pwd">
+					<form id="updatePwd" action="" method="post">
+						<ul class="change-pwd">
+							<li>
+								<span>输入旧密码:</span>
+								<input id="password" name="password" placeholder="请输入密码" validate="notNull,minLength" validatedata="minLength=6" validatename="密码" type="password" />
+							</li>
+							<li>
+								<span>设置新密码:</span>
+								<input id="password_1" name="newPassword" placeholder="请输入新密码" validate="notNull,minLength" validatedata="minLength=6" validatename="密码" type="password"></input>
+							</li>
+							<li>
+								<span>确认新密码：</span>
+								<input id="password_2" placeholder="请输入新密码" validate="notNull,isSame" validatedata="isSame=#password1" validatename="确认新密码" type="password" />
+							</li>
+							<li>
+								<span></span>
+								<a class="user_pwd_btn actSubmit lj-btn">保存修改</a>
+							</li>
+						</ul>
+					</form>
+				</div>
+				<!-- 33333-->
+				<!--修改昵称-->
+		<!-- 		<div class="tab-pane" id="user_name">
+					<form id="updatePerson" action="" method="post">
+						<ul class="change-pwd">
+							<li>
+								<span>设置昵称:</span>
+								<input class="nickName" name="nickName" validate="notNull,numberLetter,maxLength" validatename="昵称" validatedata="maxLength=14" type="text"></input>
+							</li>
+							<li>
+								<span></span>
+								<a class="nameSubmit lj-btn">保存修改</a>
+							</li>
+						</ul>
+					</form>
+				</div> -->
+						<!--个人信息修改-->
+				<div class="tab-pane" id="user_personalInfo">
+					<div class="personalInfo_wrap user_personalInfo_wrap">
+						<form id="updateInfo"  method="post">
+							<ul>
+								<li>
+									<span class="info_title">姓名:</span>
+									<input type="text" id="username" name="name" class="form-control" /> 
+								</li>
+								<li>
+									<span class="info_title">性别:</span>
+									<div class="checkbox">
+										<input class="radioInput" name="sex" value="1" checked="checked" type="radio"></input>
+										<span class="chosespan">男</span>
+										<input class="radioInput" name="sex" value="2" checked="checked" type="radio"></input>
+										<span class="chosespan">女</span>
+									</div>
+								</li>
+								<li>
+									<span class="info_title">年龄:</span>
+									<input type="text" id="age" name="age" class="form-control" />
+									 
+								</li>
+								<li>
+									<span class="info_title">电话:</span>
+									<input type="text" id="phone" name="contact" class="form-control" />
+								</li>
+								 
+							</ul>
+						</form>
+						<div class="ok-btn">
+							<a class="user_personalInfo_btn lj-btn" >提交</a>
+						</div> 
 					</div>
 				</div>
 			</div>
-				<!-- 222222-->
-				<!--修改密码-->
-					<div class="tab-pane" id="user_pwd">
-						<form id="updatePwd" action="" method="post">
-							<ul class="change-pwd">
-								<li>
-									<span>输入旧密码:</span>
-									<input id="password" name="password" placeholder="请输入密码" validate="notNull,minLength" validatedata="minLength=6" validatename="密码" type="password" />
-								</li>
-								<li>
-									<span>设置新密码:</span>
-									<input id="password_1" name="newPassword" placeholder="请输入新密码" validate="notNull,minLength" validatedata="minLength=6" validatename="密码" type="password"></input>
-								</li>
-								<li>
-									<span>确认新密码：</span>
-									<input id="password_2" placeholder="请输入新密码" validate="notNull,isSame" validatedata="isSame=#password1" validatename="确认新密码" type="password" />
-								</li>
-								<li>
-									<span></span>
-									<a class="user_pwd_btn actSubmit lj-btn">保存修改</a>
-								</li>
-							</ul>
-						</form>
-					</div>
-				<!-- 33333-->
-				<!--修改昵称-->
-					<div class="tab-pane" id="user_name">
-						<form id="updatePerson" action="" method="post">
-							<ul class="change-pwd">
-								<li>
-									<span>设置昵称:</span>
-									<input class="nickName" name="nickName" validate="notNull,numberLetter,maxLength" validatename="昵称" validatedata="maxLength=14" type="text"></input>
-								</li>
-								<li>
-									<span></span>
-									<a class="nameSubmit lj-btn">保存修改</a>
-								</li>
-							</ul>
-						</form>
-					</div>
-						<!--个人信息修改-->
-					<div class="tab-pane" id="user_personalInfo">
-						<div class="personalInfo_wrap user_personalInfo_wrap">
-							<form id="updateInfo"  method="post">
-								<ul>
-									<li>
-										<span class="info_title">姓名:</span>
-										<input type="text" id="username" name="name" class="form-control" /> 
-									</li>
-									<li>
-										<span class="info_title">性别:</span>
-										<div class="checkbox">
-											<input class="radioInput" name="sex" value="1" checked="checked" type="radio"></input>
-											<span class="chosespan">男</span>
-											<input class="radioInput" name="sex" value="2" checked="checked" type="radio"></input>
-											<span class="chosespan">女</span>
-										</div>
-									</li>
-									<li>
-										<span class="info_title">年龄:</span>
-										<input type="text" id="age" name="age" class="form-control" />
-										 
-									</li>
-									<li>
-										<span class="info_title">电话:</span>
-										<input type="text" id="phone" name="contact" class="form-control" />
-									</li>
-									 
-								</ul>
-							</form>
-							<div class="ok-btn">
-								<a class="user_personalInfo_btn lj-btn" >提交</a>
-							</div> 
-						</div>
-					</div>
-				</div>
 				</div>
 				<!--关注房源-->
 				<div class="main-right fr tab-pane hasList" id="tab4">
@@ -307,7 +306,7 @@
 					</div>
 				</div>
 				<!--关注小区-->
-				<div class="main-right fr tab-pane hasList" id="tab5">
+		<!-- 		<div class="main-right fr tab-pane hasList" id="tab5">
 					<div class="title">
 						我关注的小区
 					</div>
@@ -336,9 +335,9 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!--我的委托-->
-				<div class="main-right fr tab-pane" id="tab6">
+				<!-- <div class="main-right fr tab-pane" id="tab6">
 					<div class="title">
 						我的委托
 					</div>
@@ -369,9 +368,9 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!--我的评论-->
-				<div class="main-right fr tab-pane" id="tab7">
+				<!-- <div class="main-right fr tab-pane" id="tab7">
 					<div class="title">
 						我的评论
 					</div>
@@ -405,7 +404,8 @@
 				</div>
 			<div class="clearfix"></div>
 	</div>
-	</div>
+	</div>-->
+</div> 
 </div>
 	<footer style="margin-top:40px;">
 		<div class="wrapper">

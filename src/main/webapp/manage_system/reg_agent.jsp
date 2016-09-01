@@ -82,56 +82,56 @@
                             <label for="add_name" class="col-sm-3 control-label"><span class=".muted">*</span>姓名</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="add_name" placeholder="姓名" required="true">
+                                <input type="text" class="form-control" id="add_name" placeholder="姓名" required="true" name="chinaName">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="add_password" class="col-sm-3 control-label"><span class=".muted">*</span>密码</label>
 
                             <div class="col-sm-9">
-                                <input type="password" class="form-control" id="add_password" placeholder="密码" required="true">
+                                <input type="password" class="form-control" id="add_password" placeholder="密码" required="true" name="password">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="add_age" class="col-sm-3 control-label">年龄</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="add_age" placeholder="年龄">
+                                <input type="text" class="form-control" id="add_age" placeholder="年龄" name="age">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="add_sex" class="col-sm-3 control-label">性别</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="add_sex" placeholder="性别">
+                                <input type="text" class="form-control" id="add_sex" placeholder="性别" name="sex">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="add_email" class="col-sm-3 control-label">邮箱</label>
 
                             <div class="col-sm-9">
-                                <input type="email" class="form-control" id="add_email" placeholder="邮箱">
+                                <input type="email" class="form-control" id="add_email" placeholder="邮箱" name="email">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="add_phone" class="col-sm-3 control-label">联系方式</label>
 
                             <div class="col-sm-9">
-                                <input type="tel" class="form-control" id="add_phone" placeholder="联系方式">
+                                <input type="tel" class="form-control" id="add_phone" placeholder="联系方式" name="mobile">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="add_year" class="col-sm-3 control-label">入行年份</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="add_year" placeholder="入行年份">
+                                <input type="text" class="form-control" id="add_year" placeholder="入行年份" name="year">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="add_company" class="col-sm-3 control-label">公司</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="add_company" placeholder="公司名称">
+                                <input type="text" class="form-control" id="add_company" placeholder="公司名称" name="company">
                             </div>
                         </div>
                         <div class="form-group">
@@ -150,7 +150,7 @@
                             <label for="add_introduction" class="col-sm-3 control-label">个人介绍</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="add_introduction" placeholder="个人介绍">
+                                <textarea  class="form-control" id="add_introduction" placeholder="个人介绍" style="min-height:100px"></textarea>
                             </div>
                         </div>
                     </form>
@@ -193,14 +193,14 @@
                             <label for="set_name" class="col-sm-3 control-label"><span class=".muted">*</span>姓名</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="set_name" placeholder="姓名">
+                                <input type="text" class="form-control" id="set_name" placeholder="姓名" name="chinaName">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="set_password" class="col-sm-3 control-label"><span class=".muted">*</span>密码</label>
 
                             <div class="col-sm-9">
-                                <input type="password" class="form-control" id="set_password" placeholder="密码">
+                                <input type="password" class="form-control" id="set_password" placeholder="密码" name="password">
                             </div>
                         </div>
                         <div class="form-group">
@@ -261,7 +261,7 @@
                             <label for="set_introduction" class="col-sm-3 control-label">个人介绍</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="set_introduction" placeholder="个人介绍">
+                                <textarea class="form-control" id="set_introduction" placeholder="个人介绍"></textarea>
                             </div>
                         </div>
                     </form>
@@ -277,10 +277,46 @@
     <div class="text-center" id="page"></div>
 </div>
 <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-
 <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="/public/js/laypage.js"></script>
 <script>
+    function check()  
+    {  
+        var reg=/^[\u4E00-\u9FA5]{1,}$/;  
+        if(reg.test(document.all.chinaName.value)==false)  
+        {  
+            alert('真实姓名必须为中文!');  
+            document.all.chinaName.focus();  
+            return false;  
+        }  
+        reg=/^\w{6,}$/;  
+        if(reg.test(document.all.password.value)==false)  
+        {  
+            alert('密码不合法');  
+            document.all.password1.focus();  
+            return false;  
+        } 
+        reg=/^\w+(\.\w+)*@\w+(\.\w+)+$/;  
+        if(reg.test(document.all.email.value)==false)  
+        {  
+            alert('邮箱不合法');  
+            return false;  
+        } 
+        reg=/^([2-9]\d)|100$/;  
+        if(reg.test(document.all.age.value)==false)  
+        {  
+            alert('年龄不合法!');  
+            return false;  
+        }  
+        reg=/^1[358]\d{9}$/;  
+        if(reg.test(document.all.mobile.value)==false)  
+        {  
+            alert('请输入规范的手机号码');  
+            return false;  
+        }  
+          
+        return true;  
+    }  
 
     $(function () {
         var cur_page = 1;
@@ -374,6 +410,10 @@
         });
 
         $('#sure-add').click(function () {
+            check();
+            if ($('.modal input').val().length>15){
+                alert("不能超过15个字符噢");
+            } 
             if ($('#add_account').val()=="") {
                 alert("账户名称不能为空");
             }else if ($('#add_name').val()=="") {
@@ -404,7 +444,7 @@
                 yaer: $('#add_year').val()||"",
                 photoUrl:$('#add .photo_img').attr("src")||"/public/img/logo.jpg"
             };
-            postEvent('/manage/add_agent', addVal);
+            //postEvent('/manage/add_agent', addVal);
             }
         });
 
@@ -439,14 +479,13 @@
             });
 
             $('#sure-set').unbind().click(function () {
-                if ($('#set_account').val()=="") {
+                /*if ($('#set_account').val()=="") {
                 alert("账户名称不能为空");
                 }else if ($('#set_name').val()=="") {
                     alert("姓名不能为空");
                 }else if ($('#set_password').val()=="") {
                     alert("密码不能为空");
-                }
-                else{
+                }*/
             	var sexs = $('#set_sex').val();
 	        	if (sexs=="男")
 	        	 {
@@ -471,7 +510,6 @@
                     year:$('#set_year').val()||""
                 };
                 postEvent('/manage/modify_agent', setPlatformVal);
-                }
             });
 			
 			$('.tr_forbid').unbind().click(function () {
