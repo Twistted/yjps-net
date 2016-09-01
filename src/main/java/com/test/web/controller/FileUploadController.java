@@ -240,6 +240,30 @@ public class FileUploadController {
         return result;
     }
     
+    @RequestMapping(value="/add_house_photo", method=RequestMethod.POST)
+    public @ResponseBody Result addHousePhoto(@RequestParam("houseId") int houseId, 
+    		@RequestParam("housePhoto") MultipartFile housePhoto, HttpSession session) {
+    	Result result = new Result();
+    	String filePath = FileUploadUtil.saveFile(housePhoto, "house");
+    	if (filePath == null) {
+    		result.setCode(400);
+    	} else {
+    		filePath = filePath.replace("src/main/webapp/assets/uploads","/assets/uploads");
+            System.out.println("yes");
+    		IPhotoService photoService = new PhotoService();
+    		HousePhotoEntity photoEntity = new HousePhotoEntity();
+            photoEntity.setHouseId(houseId);
+            photoEntity.setPhotoUrl(filePath);
+            if(photoService.addPhotoService(photoEntity)){
+            	result.setCode(200);
+            	result.setFilePath(filePath);
+            } else {
+            	result.setCode(500);
+            }
+    	}
+    	return result;
+    }
+    
     @RequestMapping(value="/fileOfManager", method=RequestMethod.POST)     
     public @ResponseBody Result fileOfManager(@RequestParam("clientFile") MultipartFile fileData, HttpSession session){  
     	// 判断图片大小是否大于2M

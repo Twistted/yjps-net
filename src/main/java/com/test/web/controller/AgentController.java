@@ -34,7 +34,7 @@ public class AgentController {
 	}
 
 	@RequestMapping("show_agent")
-	public ModelAndView show_agent(@RequestParam("page") Integer page, HttpSession httpSession) {
+	public ModelAndView showAgent(@RequestParam(value="page", required=false) Integer page, HttpSession httpSession) {
 		ModelAndView model = new ModelAndView();
 		if (page == null || page == 0)
 			page = 1;
@@ -55,6 +55,39 @@ public class AgentController {
 		model.addObject("currentPage", page);
 		model.addObject("listSize", agentList.size());
 		model.setViewName("agent/agent_list");
+		return model;
+	}
+	
+	@RequestMapping("show_agent_detail")
+	public ModelAndView showAgentDetail(@RequestParam("agentId") int agentId, @RequestParam(value="page", required=false) Integer page, HttpSession httpSession) {
+		ModelAndView model = new ModelAndView();
+		
+		IAgentService agentService = new AgentService();
+		AgentEntity agentEntity = agentService.getAgentById(agentId);
+		if (agentEntity == null) {
+			model.setViewName("500");
+			return model;
+		} 
+		if (page == null || page == 0)
+			page = 1;
+		
+		List<HouseEntity> allHouseList, houseList;
+		IHouseService houseService = new HouseService();
+		houseList = houseService.getPageByAgentId(page, 15, agentId);
+		allHouseList = houseService.getByAgentId(agentId);
+		int pageSize = (int)Math.ceil(allHouseList.size()*1.0/15);
+		if(houseList == null) {
+			model.setViewName("500");
+			return model;
+		}
+		
+		System.out.println(agentService);
+		model.addObject("agent", agentEntity);
+		model.addObject("houseList", houseList);
+		model.addObject("pageSize", pageSize);
+		model.addObject("currentPage", page);
+		
+		model.setViewName("agent/show_agent_detail");
 		return model;
 	}
 
