@@ -47,7 +47,7 @@ public class HouseController {
 			}
 			else model.addObject("isInterest",false);
 		}
-		
+		else model.addObject("isInterest",true);
 		IHouseService houseService = new HouseService();
 		HouseEntity houseEntity = houseService.getHouseById(Integer.valueOf(id));
 		// System.out.println(houseEntity);
@@ -73,6 +73,7 @@ public class HouseController {
 	@RequestMapping(value="interest", method=RequestMethod.POST)
 	public @ResponseBody Result interest(@RequestParam("id") Integer id, HttpSession httpSession) {
 		Result result = new Result();
+		System.out.println("interest");
 		UserEntity userEntity = (UserEntity) httpSession.getAttribute("userSession");
 		if (userEntity == null) {
 			result.setCode(500);
@@ -95,6 +96,7 @@ public class HouseController {
 	@RequestMapping(value="delete_interest")
 	public @ResponseBody Result delete_interest(@RequestParam("id") Integer id, HttpSession httpSession) {
 		Result result = new Result();
+		System.out.println("delete interest");
 		UserEntity userEntity = (UserEntity) httpSession.getAttribute("userSession");
 		if (userEntity == null) {
 			result.setCode(500);

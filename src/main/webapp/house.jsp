@@ -329,6 +329,7 @@
     <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=uDVWfbR5FdPofCih1zstBN3YQRyX8dLS"></script>
     <script type="text/javascript">
+    console.log("${sessionScope.userSession!=null}");
 		// 百度地图API功能
 		var map = new BMap.Map("allmap");    // 创建Map实例
 		map.centerAndZoom("${house.province}"+"${house.city}"+"${house.town}"+"${house.zone}"+"${house.address}", 15);  // 初始化地图,设置中心点坐标和地图级别
@@ -353,15 +354,15 @@
 			  	  var set_img = $(this).children('img').attr('src');
 				  $("#show img").attr('src',set_img);
 			  });
-			  if ("${sessionScope.userSession!=null}") {
-			  	if ("${isInterest==true}") {
+			   if ("${sessionScope.userSession!=null}"=="true") {
+			  	if ("${isInterest==false}"=="true") {
 				  	$(".btn-discollect").show();
 				  	$(".btn-collect").hide();
 			  	}
-			  }
+			  } 
 
 			  $(".btn-collect").click(function(){
-			  	if ("${sessionScope.userSession==null}"){
+			  	if ("${sessionScope.userSession==null}"=="true"){
 			  		alert("请先登录");
 			  	}
 			  	else{
