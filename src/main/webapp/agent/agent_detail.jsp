@@ -1,20 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		
 		<meta charset="utf-8">
-		<script src="js/jquery-2.1.4.min.js"></script>
+		<script src="..public/js/jquery-2.1.4.min.js"></script>
 		
 		<title>【果冻_成都房产经纪人】果冻电话18080066000-易居网</title>
 		
-		<link rel="stylesheet" href="css/detail.css">
-		<link rel="stylesheet" href="css/list.css">
-		<link rel="stylesheet" href="css/common.css">
-		<link rel="stylesheet" href="css/reset.css" >
+		<link rel="stylesheet" href="..public/css/detail.css">
+		<link rel="stylesheet" href="..public/css/list.css">
+		<link rel="stylesheet" href="..public/css/common.css">
+		<link rel="stylesheet" href="..public/css/reset.css" >
 		
 		
 </head>
-
+<jsp:include page="/sub_header.jsp"></jsp:include>
 	<body>
 		<div style="position: absolute; left: -1px; bottom: -1px; z-index: 0; width: 0px; height: 0px; overflow: hidden; visibility: hidden; display: none;" id="BAIDU_DUP_fp_wrapper">
 			<iframe style="width: 0px; height: 0px; visibility: hidden; display: none;" src="//pos.baidu.com/wh/o.htm?ltr=" id="BAIDU_DUP_fp_iframe"></iframe>
@@ -251,45 +253,7 @@
 		</div>
 		
 		
- <footer>
-		<div class="wrapper">
-			<div class="f-title">
-				<div class="fl">
-					<ul>
-						<li>
-							<a href="aboutUs.html">了解易居网</a>
-						</li>
-						<li>
-							<a href="index.html">关于易居</a>
-						</li>
-						<li>
-							<a href="contact.html">联系我们</a>
-						</li>
-						<li>
-							<a href="joinUs.html">加入我们</a>
-						</li>
-						<li>
-							<a href="privacy.html">隐私声明</a>
-						</li>
-					
-						<li>
-							<a href="link.html">友情链接</a>
-						</li>
-						<li>
-						<a href="">经纪人登录</a>
-					</li>
-					<li>
-						<a href="jingji.html">经纪人查看</a>
-					</li>
-					</ul>
-				</div>
-				<div class="fr">官方客服 1010 9666</div>
-			</div>
-			<div class="bottom">
-				<div class="copyright">北京易居房地产经纪有限公司 | 网络经营许可证 京ICP备11024601号-12 | © Copyright©2010-2016 易居网Yiju.com版权所有</div>
-			</div>
-		 </div>
-		</footer>
+ <jsp:include page="/footer.jsp"></jsp:include>
 
 
 </body>
