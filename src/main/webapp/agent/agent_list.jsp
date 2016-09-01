@@ -121,13 +121,6 @@
 
 <!--尾部-->
 	   <jsp:include page="/footer.jsp"></jsp:include>
-<script type="text/javascript">
-	console.log("${agentList}");
-	console.log("${pageSize}");
-	console.log("${currentPage}");
-	console.log("${listSize}");
-	console.log("${allAgentSize}");
-</script>
 <script>
 		var page_html="";
 		var cur_page="${currentPage}";
