@@ -94,6 +94,27 @@ public class FileUploadController {
         else return new Result(500);
     } 
     
+    @RequestMapping(value="/house_photo", method=RequestMethod.POST)
+    public @ResponseBody Result uploadHousePhoto(@RequestParam("clientFile") MultipartFile fileData, HttpSession session) {
+    	String filePath = FileUploadUtil.saveFile(fileData,"house_photo");
+        Result result = new Result();
+        filePath = filePath.replace("src/main/webapp/assets/uploads","/assets/uploads");
+        System.out.println("yes");
+        IAgentService agentService = new AgentService();
+        AgentEntity agent = (AgentEntity)session.getAttribute("agentSession");
+        String oldFilePath = agent.getPhotoUrl();
+        agent.setPhotoUrl(filePath);
+        if(agentService.modifyAgent(agent)){
+        	session.setAttribute("agentSession", agent);
+        	result.setCode(200);
+        	result.setFilePath(filePath);
+        	result.setAgentEntity(agent);
+        	FileUploadUtil.deleteFile(oldFilePath);
+        }
+        else result.setCode(500);
+        return result;
+    }
+    
     @RequestMapping(value="/agent_file", method=RequestMethod.POST)     
     public @ResponseBody Result uploadAgentFile(@RequestParam("clientFile") MultipartFile fileData, HttpSession session){  
     	// 判断图片大小是否大于2M

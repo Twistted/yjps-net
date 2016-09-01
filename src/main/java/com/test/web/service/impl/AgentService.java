@@ -126,43 +126,43 @@ public class AgentService implements IAgentService {
 	}
 
 	public boolean addAgent(AgentEntity agentEntity) {
-		// TODO Auto-generated method stub
+		
 		if(insert(agentEntity) > 0)
 			return true;
 		else return false;
 	}
 
 	public boolean modifyAgent(AgentEntity agentEntity) {
-		// TODO Auto-generated method stub
+		
 		if(update(agentEntity) > 0)
 			return true;
 		else return false;
 	}
 
 	public AgentEntity getAgentByAccount(String account) {
-		// TODO Auto-generated method stub
+		
 		return findByAccount(account);
 	}
 
 	public boolean register(AgentEntity agentEntity) {
-		// TODO Auto-generated method stub
+		
 		if(insert(agentEntity) > 0)
 			return true;
 		else return false;
 	}
 
 	public List<AgentEntity> allAgent() {
-		// TODO Auto-generated method stub
+		
 		return findAll();
 	}
 
 	public boolean enableAgent(int agentId) {
-		// TODO Auto-generated method stub
+		
 		return enable(agentId);
 	}
 
 	public boolean disableAgent(int agentId) {
-		// TODO Auto-generated method stub
+		
 		return disable(agentId);
 	}
 	
