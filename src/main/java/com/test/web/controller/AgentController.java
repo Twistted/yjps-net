@@ -87,7 +87,7 @@ public class AgentController {
 		model.addObject("pageSize", pageSize);
 		model.addObject("currentPage", page);
 		
-		model.setViewName("agent/show_agent_detail");
+		model.setViewName("agent/agent_detail");
 		return model;
 	}
 
