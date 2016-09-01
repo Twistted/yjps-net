@@ -22,13 +22,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.test.web.dto.Result;
 import com.test.web.entity.AgentEntity;
+import com.test.web.entity.HousePhotoEntity;
 import com.test.web.entity.ManagerEntity;
 import com.test.web.entity.UserEntity;
 import com.test.web.service.IAgentService;
 import com.test.web.service.IManagerService;
+import com.test.web.service.IPhotoService;
 import com.test.web.service.IUserService;
 import com.test.web.service.impl.AgentService;
 import com.test.web.service.impl.ManagerService;
+import com.test.web.service.impl.PhotoService;
 import com.test.web.service.impl.UserService;
 import com.test.web.util.FileUploadUtil;
 
@@ -95,21 +98,20 @@ public class FileUploadController {
     } 
     
     @RequestMapping(value="/house_photo", method=RequestMethod.POST)
-    public @ResponseBody Result uploadHousePhoto(@RequestParam("clientFile") MultipartFile fileData, HttpSession session) {
+    public @ResponseBody Result uploadHousePhoto(@RequestParam("houseId") int houseId, @RequestParam("clientFile") MultipartFile fileData, HttpSession session) {
     	String filePath = FileUploadUtil.saveFile(fileData,"house_photo");
         Result result = new Result();
         filePath = filePath.replace("src/main/webapp/assets/uploads","/assets/uploads");
         System.out.println("yes");
-        IAgentService agentService = new AgentService();
+        IPhotoService photoService = new PhotoService();
         AgentEntity agent = (AgentEntity)session.getAttribute("agentSession");
-        String oldFilePath = agent.getPhotoUrl();
-        agent.setPhotoUrl(filePath);
-        if(agentService.modifyAgent(agent)){
-        	session.setAttribute("agentSession", agent);
+        HousePhotoEntity photoEntity = new HousePhotoEntity();
+        photoEntity.setHouseId(houseId);
+        photoEntity.setPhotoUrl(filePath);
+        if(photoService.addPhotoService(photoEntity)){
         	result.setCode(200);
         	result.setFilePath(filePath);
         	result.setAgentEntity(agent);
-        	FileUploadUtil.deleteFile(oldFilePath);
         }
         else result.setCode(500);
         return result;
