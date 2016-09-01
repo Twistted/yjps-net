@@ -72,21 +72,21 @@
                 <div class="modal-body">
                     <form class="form-horizontal" enctype="multipart/form-data" id="file-upload">
                         <div class="form-group">
-                            <label for="add_account" class="col-sm-3 control-label"><span class=".muted">*</span>账户名称</label>
+                            <label for="add_account" class="col-sm-3 control-label">账户名称</label>
 
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="add_account" placeholder="账户名称"  required="true">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="add_name" class="col-sm-3 control-label"><span class=".muted">*</span>姓名</label>
+                            <label for="add_name" class="col-sm-3 control-label">姓名</label>
 
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="add_name" placeholder="姓名" required="true" name="chinaName">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="add_password" class="col-sm-3 control-label"><span class=".muted">*</span>密码</label>
+                            <label for="add_password" class="col-sm-3 control-label">密码</label>
 
                             <div class="col-sm-9">
                                 <input type="password" class="form-control" id="add_password" placeholder="密码" required="true" name="password">
@@ -143,7 +143,7 @@
                         <div class="form-group">
                             <label for="photo" class="col-sm-3 control-label">图片预览</label>
                             <div class="col-sm-9">
-                            <img class="photo_img" class="form-control" style="width:100%;height:auto;" />  
+                            <img class="photo_img" class="form-control" style="width:60%;height:auto;" />  
                             </div>
                         </div>
                         <div class="form-group">
@@ -155,10 +155,10 @@
                         </div>
                          <div class="form-group">
                             <!--提示-->
-                            <div class="alert  alert-info" style="position:fixed;display:none;" id="tip">
+                            <section class="alert  alert-info" style="position:fixed;display:none;" id="tip">
                               <button type="button" class="close">&times;</button>
                               <strong>Info</strong>
-                            </div>
+                            </section>
                         </div>
                     </form>
                 </div>
@@ -190,21 +190,21 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="set_account" class="col-sm-3 control-label"><span class=".muted">*</span>账户名称</label>
+                            <label for="set_account" class="col-sm-3 control-label">账户名称</label>
 
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="set_account" placeholder="账户名称">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="set_name" class="col-sm-3 control-label"><span class=".muted">*</span>姓名</label>
+                            <label for="set_name" class="col-sm-3 control-label">姓名</label>
 
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="set_name" placeholder="姓名" name="chinaName">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="set_password" class="col-sm-3 control-label"><span class=".muted">*</span>密码</label>
+                            <label for="set_password" class="col-sm-3 control-label">密码</label>
 
                             <div class="col-sm-9">
                                 <input type="password" class="form-control" id="set_password" placeholder="密码" name="password">
@@ -261,7 +261,7 @@
                         <div class="form-group">
                             <label for="photoSet" class="col-sm-3 control-label">图片预览</label>
                             <div class="col-sm-9">
-                            <img class="photo_img" class="form-control" style="width:100%;height:auto;" />  
+                            <img class="photo_img" class="form-control" style="width:60%;height:auto;" />  
                             </div>
                         </div>
                         <div class="form-group">
@@ -270,6 +270,13 @@
                             <div class="col-sm-9">
                                 <textarea class="form-control" id="set_introduction" placeholder="个人介绍"></textarea>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <!--提示-->
+                            <section class="alert  alert-info" style="position:fixed;display:none;" id="tip">
+                              <button type="button" class="close">&times;</button>
+                              <strong>Info</strong>
+                            </section>
                         </div>
                     </form>
                 </div>
@@ -365,7 +372,7 @@
                         <div class="form-group">
                             <label for="photoSet" class="col-sm-3 control-label">照片</label>
                             <div class="col-sm-9">
-                            <img class="photo_img" class="form-control" style="width:100%;height:auto;" />  
+                            <img class="photo_img" class="form-control" style="width:60%;height:auto;" />  
                             </div>
                         </div>
                         <div class="form-group">
@@ -396,23 +403,28 @@
     
 
     $(function () {
-        var tips = function(str){
-            $('#tip').fadeIn();
-            $("#tip strong").text(str);
-        }
-         $("#tip .close").click(function(){
-            $('#tip').fadeOut();
+        var tip = function(str,obj){
+            obj.fadeIn();
+            obj.find("strong").text(str);
+        };
+
+        $(".alert .close").click(function(){
+            $('.alert').fadeOut();
          }
         );
 
-        var check = function(value,switchs)  
+        var check = function(value,switchs,obj)  
         {  
+            if(switchs!="introduction"&&value.length>20) {
+                    tip('除了个人简介之外，输入项不能超过20个字符噢',obj);
+                    return false;
+            }
             var reg="";
             if(switchs=="empty")
             {
                 if(value=="")  
                 {  
-                    tips('账号、姓名和密码不能为空~');  
+                    tip('账号、姓名和密码不能为空~',obj);  
                     return false;  
                 }  
             }
@@ -421,51 +433,62 @@
                 reg=/^[\u4E00-\u9FA5]{1,}$/;
                 if(reg.test(value)==false)  
                 {  
-                    alert('真实姓名必须为中文噢~');  
-                    document.all.chinaName.focus();  
+                    tip('请输入您的真实姓名~',obj);  
                     return false;  
                 }  
             }
             else if(switchs=="password") 
-            {
-                reg=/^\w{6,}$/;  
-                if(reg.test(value)==false)  
+            { 
+                if(value.length<6)  
                 {  
-                    alert('密码要在六位以上噢~');  
-                    document.all.password1.focus();  
+                    tip('密码要在六位以上噢~',obj);  
                     return false;  
                 } 
+            }
+            else if(switchs=="age") 
+            {
+                //reg=/^([2-9]\d)|100$/;  
+                if(value>100||value<1)  
+                {  
+                    tip('请输入您的真实年龄~',obj);  
+                    return false;  
+                }  
             }
             else if(switchs=="email") 
             {
                 reg=/^\w+(\.\w+)*@\w+(\.\w+)+$/;  
                 if(reg.test(value)==false)  
                 {  
-                    alert('您的邮箱格式不规范~');  
+                    tip('您的邮箱格式不规范~',obj);  
                     return false;  
                 } 
             }
-            else if(switchs=="age") 
-            {
-                reg=/^([2-9]\d)|100$/;  
-                if(reg.test(value)==false)  
-                {  
-                    alert('请输入您的真实年龄~');  
-                    return false;  
-                }  
-            }
             else if(switchs=="phone") 
             {
-                reg=/^1[358]\d{9}$/;  
+                reg=/^[1][358][0-9]{9}$/;  
                 if(reg.test(value)==false)  
                 {  
-                    alert('请输入规范的手机号码');  
+                    tip('请输入规范的手机号码',obj);  
                     return false;  
                 }  
             }
-              
-            return true;  
-        } 
+            else if (switchs=="year") {
+                reg=/^(19|20)\d{2}$/;
+                if(reg.test(value)==false)  
+                {  
+                    tip('请输入正确的年份',obj);  
+                    return false;  
+                }
+            }
+            else if (switchs=="introduction") {
+                if(value.indexOf("script")>0||value.indexOf("href")>0||value.indexOf("iframe")>0||value.indexOf("frameset")>0)  
+                {  
+                    tip('您的个人介绍中含有不安全代码~',obj);  
+                    return false;  
+                }
+            }
+            return true;
+        };
         
         var cur_page = 1;
 	        var cur_keyword='';
@@ -558,36 +581,45 @@
         });
 
         $('#sure-add').click(function () {
+            var obj=$(this).parent().parent().find("section");
             if(
-            check($('#add_account').val(),"empty")&&
-            check($('#add_name').val(),"empty")&&
-            check($('#add_password').val(),"empty")&&
-            check($('#add_name').val(),"chinaName")
+            check($('#add_account').val(),"empty",obj)&&
+            check($('#add_name').val(),"empty",obj)&&
+            check($('#add_password').val(),"empty",obj)&&
+            check($('#add_name').val(),"chinaName",obj)&&
+            check($('#add_password').val(),"password",obj)&&
+            check($('#add_age').val(),"age",obj)&&
+            check($('#add_email').val(),"email",obj)&&
+            check($('#add_phone').val(),"phone",obj)&&
+            check($('#add_company').val(),"company",obj)&&
+            check($('#add_year').val(),"year",obj)&&
+            check($('#add_introduction').val(),"introduction",obj)
             ){
-        	var sexs = $('#add_sex').val();
-        	if (sexs=="男")
-        	 {
-        	 	sexs="1";
-        	 }else if(sexs=="女"){
-        	 	sexs="2";
-        	 }else{
-        	 	sexs="3"
-        	 }
-            var addVal = {
-                account: $('#add_account').val(),
-                name: $('#add_name').val(),
-                password: $('#add_password').val(),
-                age: $('#add_age').val()||0,
-                sex: sexs,
-                email: $('#add_email').val()||"",
-                phone: $('#add_phone').val()||"",
-                introduction: $('#add_introduction').val()||"宋吉吉是傻*",
-                company: $('#add_company').val()||"四川华迪公司",
-                yaer: $('#add_year').val()||"",
-                photoUrl:$('#add .photo_img').attr("src")||"/public/img/logo.jpg"
-            };
+            	var sexs = $('#add_sex').val();
+            	if (sexs=="男")
+            	 {
+            	 	sexs="1";
+            	 }else if(sexs=="女"){
+            	 	sexs="2";
+            	 }else{
+            	 	tip("请输入您的真实性别",obj);
+                    return false;
+            	 }
+                var addVal = {
+                    account: $('#add_account').val(),
+                    name: $('#add_name').val(),
+                    password: $('#add_password').val(),
+                    age: $('#add_age').val()||0,
+                    sex: sexs,
+                    email: $('#add_email').val()||"",
+                    phone: $('#add_phone').val()||"",
+                    introduction: $('#add_introduction').val()||"",
+                    company: $('#add_company').val().replace(/\s*on[a-z]+\s*=\s*("[^"]+"|'[^']+'|[^\s]+)\s*/ig,"")||"四川华迪公司",
+                    yaer: $('#add_year').val()||"",
+                    photoUrl:$('#add .photo_img').attr("src")||"/public/img/logo.jpg"
+                };
+                postEvent('/manage/add_agent', addVal);
             }
-            //postEvent('/manage/add_agent', addVal);
         });
 
         var btnEvent = function () {
@@ -648,37 +680,45 @@
             });
 
             $('#sure-set').unbind().click(function () {
-                /*if ($('#set_account').val()=="") {
-                alert("账户名称不能为空");
-                }else if ($('#set_name').val()=="") {
-                    alert("姓名不能为空");
-                }else if ($('#set_password').val()=="") {
-                    alert("密码不能为空");
-                }*/
-            	var sexs = $('#set_sex').val();
-	        	if (sexs=="男")
-	        	 {
-	        	 	sexs="1";
-	        	 }else if(sexs=="女"){
-	        	 	sexs="2";
-	        	 }else{
-	        	 	sexs="3"
-	        	 }
-                var setPlatformVal = {
-                    agentId: $('#set_id').val(),
-                    account:$('#set_account').val(),
-                    password:$('#set_password').val(),
-                    name:$('#set_name').val(),
-                    age:$('#set_age').val()||0,
-                    sex:sexs,
-                    phone:$('#set_phone').val()||"",
-                    email:$('#set_email').val()||"",
-                    photoUrl:$('#set .photo_img').attr("src")||"/public/img/logo.jpg",
-                    company:$('#set_company').val()||"四川华迪公司",
-                    introduction:$('#set_introduction').val()||"宋吉吉是傻*",
-                    year:$('#set_year').val()||""
-                };
-                postEvent('/manage/modify_agent', setPlatformVal);
+                var obj=$(this).parent().parent().find("section");
+                if(
+                check($('#set_account').val(),"empty",obj)&&
+                check($('#set_name').val(),"empty",obj)&&
+                check($('#set_password').val(),"empty",obj)&&
+                check($('#set_name').val(),"chinaName",obj)&&
+                check($('#set_password').val(),"password",obj)&&
+                check($('#set_age').val(),"age",obj)&&
+                check($('#set_email').val(),"email",obj)&&
+                check($('#set_phone').val(),"phone",obj)&&
+                check($('#set_company').val(),"company",obj)&&
+                check($('#set_year').val(),"year",obj)&&
+                check($('#set_introduction').val(),"introduction",obj)
+                ){
+                	var sexs = $('#set_sex').val();
+    	        	if (sexs=="男")
+    	        	 {
+    	        	 	sexs="1";
+    	        	 }else if(sexs=="女"){
+    	        	 	sexs="2";
+    	        	 }else{
+    	        	 	sexs="3"
+    	        	 }
+                    var setPlatformVal = {
+                        agentId: $('#set_id').val(),
+                        account:$('#set_account').val(),
+                        password:$('#set_password').val(),
+                        name:$('#set_name').val(),
+                        age:$('#set_age').val()||0,
+                        sex:sexs,
+                        phone:$('#set_phone').val()||"",
+                        email:$('#set_email').val()||"",
+                        photoUrl:$('#set .photo_img').attr("src")||"/public/img/logo.jpg",
+                        company:$('#set_company').val()||"四川华迪公司",
+                        introduction:$('#set_introduction').val().replace(/\s*on[a-z]+\s*=\s*("[^"]+"|'[^']+'|[^\s]+)\s*/ig,"")||"",
+                        year:$('#set_year').val()||""
+                    };
+                    postEvent('/manage/modify_agent', setPlatformVal);
+                }
             });
 			
 			$('.tr_forbid').unbind().click(function () {

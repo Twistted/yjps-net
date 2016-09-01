@@ -121,8 +121,15 @@
                         <div class="form-group">
                             <label for="photo" class="col-sm-3 control-label">图片预览</label>
                             <div class="col-sm-9">
-                            <img class="photo_img" class="form-control" style="width:100%;height:auto;" />  
+                            <img class="photo_img" class="form-control" style="width:60%;height:auto;" />  
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <!--提示-->
+                            <section class="alert  alert-info" style="position:fixed;display:none;" id="tip">
+                              <button type="button" class="close">&times;</button>
+                              <strong>Info</strong>
+                            </section>
                         </div>
                     </form>
                 </div>
@@ -204,8 +211,15 @@
                         <div class="form-group">
                             <label for="photoSet" class="col-sm-3 control-label">图片预览</label>
                             <div class="col-sm-9">
-                            <img class="photo_img" class="form-control" style="width:100%;height:auto;" />  
+                            <img class="photo_img" class="form-control" style="width:60%;height:auto;" />  
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <!--提示-->
+                            <section class="alert  alert-info" style="position:fixed;display:none;" id="tip">
+                              <button type="button" class="close">&times;</button>
+                              <strong>Info</strong>
+                            </section>
                         </div>
                     </form>
                 </div>
@@ -280,7 +294,7 @@
                         <div class="form-group">
                             <label for="photoSet" class="col-sm-3 control-label">照片</label>
                             <div class="col-sm-9">
-                            <img class="photo_img" class="form-control" style="width:100%;height:auto;" />  
+                            <img class="photo_img" class="form-control" style="width:60%;height:auto;" />  
                             </div>
                         </div>
                     </form>
@@ -301,6 +315,93 @@
 <script>
 
     $(function () {
+        var tip = function(str,obj){
+            obj.fadeIn();
+            obj.find("strong").text(str);
+        };
+
+        $(".alert .close").click(function(){
+            $('.alert').fadeOut();
+         }
+        );
+
+        var check = function(value,switchs,obj)  
+        {  
+            if(switchs!="introduction"&&value.length>20) {
+                    tip('输入项不能超过20个字符噢',obj);
+                    return false;
+            }
+            var reg="";
+            if(switchs=="empty")
+            {
+                if(value=="")  
+                {  
+                    tip('账号、姓名和密码不能为空~',obj);  
+                    return false;  
+                }  
+            }
+            else if(switchs=="chinaName")
+            {
+                reg=/^[\u4E00-\u9FA5]{1,}$/;
+                if(reg.test(value)==false)  
+                {  
+                    tip('真实姓名必须为中文噢~',obj);  
+                    return false;  
+                }  
+            }
+            else if(switchs=="password") 
+            { 
+                if(value.length<6)  
+                {  
+                    tip('密码要在六位以上噢~',obj);  
+                    return false;  
+                } 
+            }
+            else if(switchs=="age") 
+            {
+                //reg=/^([2-9]\d)|100$/;  
+                if(value>100||value<1)  
+                {  
+                    tip('请输入您的真实年龄~',obj);  
+                    return false;  
+                }  
+            }
+            else if(switchs=="email") 
+            {
+                reg=/^\w+(\.\w+)*@\w+(\.\w+)+$/;  
+                if(reg.test(value)==false)  
+                {  
+                    tip('您的邮箱格式不规范~',obj);  
+                    return false;  
+                } 
+            }
+            else if(switchs=="phone") 
+            {
+                reg=/^[1][358][0-9]{9}$/;  
+                if(reg.test(value)==false)  
+                {  
+                    tip('请输入规范的手机号码',obj);  
+                    return false;  
+                }  
+            }
+            else if (switchs=="year") {
+                reg=/^(19|20)\d{2}$/;
+                if(reg.test(value)==false)  
+                {  
+                    tip('请输入正确的年份',obj);  
+                    return false;  
+                }
+            }
+            else if (switchs=="introduction") {
+                if(value.indexOf("script")>0||value.indexOf("href")>0||value.indexOf("iframe")>0||value.indexOf("frameset")>0)  
+                {  
+                    tip('您的个人介绍中含有不安全代码~',obj);  
+                    return false;  
+                }
+            }
+            return true;
+        };
+
         var cur_page = 1;
 	        var cur_keyword='';
 	        var cur_totalpage=9999;
@@ -385,25 +486,37 @@
         });
 
         $('#sure-add').click(function () {
-        	var sexs = $('#add_sex').val();
-        	if (sexs=="男")
-        	 {
-        	 	sexs="1";
-        	 }else if(sexs=="女"){
-        	 	sexs="2";
-        	 }else{
-        	 	sexs="3"
-        	 }
-            var addVal = {
-                account: $('#add_account').val(),
-                name: $('#add_name').val(),
-                password: $('#add_password').val(),
-                age: $('#add_age').val()||0,
-                sex: sexs,
-                contact: $('#add_contact').val()||"",
-                photoUrl:$('#add .photo_img').attr("src")||"/public/img/logo.jpg"
-            };
-            postEvent('/manage/add_user', addVal);
+            var obj=$(this).parent().parent().find("section");
+            if(
+            check($('#add_account').val(),"empty",obj)&&
+            check($('#add_name').val(),"empty",obj)&&
+            check($('#add_password').val(),"empty",obj)&&
+            check($('#add_name').val(),"chinaName",obj)&&
+            check($('#add_password').val(),"password",obj)&&
+            check($('#add_age').val(),"age",obj)&&
+            check($('#add_contact').val(),"phone",obj)
+            ){
+            	var sexs = $('#add_sex').val();
+            	if (sexs=="男")
+            	 {
+            	 	sexs="1";
+            	 }else if(sexs=="女"){
+            	 	sexs="2";
+            	 }else{
+            	 	tip("请输入您的真实性别",obj);
+                    return false;
+            	 }
+                var addVal = {
+                    account: $('#add_account').val(),
+                    name: $('#add_name').val(),
+                    password: $('#add_password').val(),
+                    age: $('#add_age').val()||0,
+                    sex: sexs,
+                    contact: $('#add_contact').val()||"",
+                    photoUrl:$('#add .photo_img').attr("src")||"/public/img/logo.jpg"
+                };
+                postEvent('/manage/add_user', addVal);
+            }
         });
 
         var btnEvent = function () {
@@ -449,14 +562,16 @@
             });
 
             $('#sure-set').unbind().click(function () {
-                if ($('#set_account').val()=="") {
-                alert("账户名称不能为空");
-                }else if ($('#set_name').val()=="") {
-                    alert("姓名不能为空");
-                }else if ($('#set_password').val()=="") {
-                    alert("密码不能为空");
-                }
-                else{
+                var obj=$(this).parent().parent().find("section");
+                if(
+                    check($('#set_account').val(),"empty",obj)&&
+                    check($('#set_name').val(),"empty",obj)&&
+                    check($('#set_password').val(),"empty",obj)&&
+                    check($('#set_name').val(),"chinaName",obj)&&
+                    check($('#set_password').val(),"password",obj)&&
+                    check($('#set_age').val(),"age",obj)&&
+                    check($('#set_contact').val(),"phone",obj)
+                ){
             	var sexs = $('#set_sex').val();
 	        	if (sexs=="男")
 	        	 {
@@ -464,7 +579,8 @@
 	        	 }else if(sexs=="女"){
 	        	 	sexs="2";
 	        	 }else{
-	        	 	sexs="3"
+	        	 	tip("请输入您的真实性别",obj);
+                    return false;
 	        	 }
                 var setPlatformVal = {
                     userId: $('#set_id').val(),

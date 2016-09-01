@@ -107,7 +107,7 @@
 						<dt>小区：</dt>
 						<dd>西郡香林五大花园</dd>
 						<p>　</p>
-						<span>${house.year}</span>
+						<span>${house.year}年建</span>
 					</dl>
 				</div>
 				<div class="countact-panel">
