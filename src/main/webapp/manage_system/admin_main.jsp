@@ -37,7 +37,7 @@
 <div class="container-fluid ">
     <div class="row" style="height:100%;">
         <nav class="col-md-2 col-xs-12 nav-collapse collapse">
-            <li class="mainnav"><a href="javascript:void(0)" target="adminFrame">系统管理<span class="caret"></span></a>
+            <li class="mainnav"><a href="javascript:void(0)" target="adminFrame">人员管理<span class="caret"></span></a>
             </li>
             <ul class="subnav" style="display:block;">
                 <li><a href="/manage_system/reg_agent.jsp" target="adminFrame">经纪人管理</a></li>
@@ -45,6 +45,11 @@
                 <c:if test="${sessionScope.managerSession.level==1}">
                 <li><a href="/manage_system/reg_manage.jsp" target="adminFrame">管理员管理</a></li>
                 </c:if>
+            </ul>
+            <li class="mainnav"><a href="javascript:void(0)" target="adminFrame">平台管理<span class="caret"></span></a>
+            </li>
+            <ul class="subnav" style="display:block;">
+                <li><a href="/manage_system/reg_label.jsp" target="adminFrame">标签管理</a></li>
             </ul>
 
 

@@ -16,12 +16,14 @@
 
 	<link href="/favicon.ico" type="image/x-icon" rel="shortcut icon">
 
-	<link rel="stylesheet" href="http://static1.ljcdn.com/pc/asset/common.css?_v=20160818201350">
+
 	
 	<link rel="stylesheet" type="text/css" href="http://static1.ljcdn.com/pc/asset/bbs/css/detail.css?_v=20160818201350">
 	<link rel="stylesheet "  href="../public/css/bootstrap.min.css" />
 		<link href="../public/css/reset.css" rel="stylesheet">
-	<link rel="stylesheet" href="http://static1.ljcdn.com/dep/ueditor/themes/iframe.css?_v=20160818201350">
+
+ 
+    <script src="../public/js/jquery-2.1.4.min.js"></script>
 	</head>
 
 <body>
@@ -76,14 +78,5 @@
 </div>
 
 	   <jsp:include page="/footer.jsp"></jsp:include>
-		<script type="text/javascript" async="" src="http://static.mediav.com/mv.js"></script>
-	
-	<script type="text/javascript" async="" src="http://material.mediav.com/bjjs/mba.js"></script>
-	<script type="text/javascript" async="" charset="utf-8" src="http://c.cnzz.com/core.php?web_id=1255633284&amp;t=q"></script>
-	<script type="text/javascript" async="" charset="utf-8" src="http://c.cnzz.com/core.php?web_id=1254525948&amp;t=q"></script>
-	<script type="text/javascript" async="" charset="utf-8" src="http://c.cnzz.com/core.php?web_id=1253477541&amp;t=q"></script><script type="text/javascript" async="" src="http://static.mediav.com/mvl.js"></script>
-	<script async="" src="//www.google-analytics.com/analytics.js"></script>
-
-	<script src="http://dig.lianjia.com/lianjiaUlog.js?t=20160818"></script>
 </body>
 </html>

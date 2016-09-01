@@ -23,7 +23,7 @@
     <li class="active">管理员管理</li>
 </ol>
 <div id="platform_config">
-    <form class="search-box" id="searchbox" onsubmit="return false">
+    <form class="search-box" id="searchbox" onsubmit="return false"  style="display:none">
         <input type="search" placeholder="请输入搜索内容" id="search_input">
         <span class="glyphicon glyphicon-search"></span>
         <input type="submit" value="搜索"  id="search_btn" >
