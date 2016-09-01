@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.test.web.dto.Result;
 import com.test.web.entity.AgentEntity;
+import com.test.web.entity.HouseEntity;
 import com.test.web.entity.HousePhotoEntity;
 import com.test.web.entity.ManagerEntity;
 import com.test.web.entity.UserEntity;
@@ -206,6 +207,31 @@ public class FileUploadController {
         System.out.println("yes");
         result.setCode(200);
         result.setFilePath(filePath);
+        return result;
+    }
+    
+    @RequestMapping(value="/fileOfManager", method=RequestMethod.POST)     
+    public @ResponseBody Result fileOfManager(@RequestParam("houseType") MultipartFile houseType,
+    		@RequestParam("houseView") MultipartFile houseView, HttpSession session){  
+    	// 判断图片大小是否大于2M
+        /*if (fileData.getSize() > 2 * 1024 * 1024) {
+            System.out.println("fail");
+            return new Result(500);
+        }*/
+        // 判断司机是否已存在
+        // 在这里就可以对file进行处理了，可以根据自己的需求把它存到数据库或者服务器的某个文件夹
+        String houseTypeUrl = FileUploadUtil.saveFile(houseType, "house");
+        String houseViewUrl = FileUploadUtil.saveFile(houseView, "house");
+        
+        Result result = new Result();
+        houseTypeUrl = houseTypeUrl.replace("src/main/webapp/assets/uploads", "/assets/uploads");
+        houseViewUrl = houseViewUrl.replace("src/main/webapp/assets/uploads", "/assets/uploads");
+        System.out.println("yes");
+        HouseEntity houseEntity = new HouseEntity();
+        houseEntity.setHouseTypeUrl(houseTypeUrl);
+        houseEntity.setHouseViewUrl(houseViewUrl);
+        result.setCode(200);
+        result.setHouseEntity(houseEntity);
         return result;
     }
     
