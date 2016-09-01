@@ -153,6 +153,13 @@
                                 <textarea  class="form-control" id="add_introduction" placeholder="个人介绍" style="min-height:100px"></textarea>
                             </div>
                         </div>
+                         <div class="form-group">
+                            <!--提示-->
+                            <div class="alert  alert-info" style="position:fixed;display:none;" id="tip">
+                              <button type="button" class="close">&times;</button>
+                              <strong>Info</strong>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -274,27 +281,109 @@
         </div>
     </div>
 
-    <!--提示-->
-    <div class="modal fade" id="tip" tabindex="-1" role="dialog" aria-labelledby="tipTitle">
+    <!--详情-->
+    <div class="modal fade" id="info" tabindex="-1" role="dialog" aria-labelledby="infoTitle">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="setPlatformTitle">温馨提示</h4>
+                    <h4 class="modal-title" id="setPlatformTitle">详细信息</h4>
                 </div>
 
                 <div class="modal-body">
-                    啊啊啊啊！
+                    <form class="form-horizontal" id="file-upload-2">
+                        <div class="form-group">
+                            <label for="set_account" class="col-sm-3 control-label">账户名称</label>
+
+                            <div class="col-sm-9">
+                                <label class="control-label" id="info_account"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_name" class="col-sm-3 control-label">姓名</label>
+
+                            <div class="col-sm-9">
+                                <label class="control-label" id="info_name"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_password" class="col-sm-3 control-label">密码</label>
+
+                            <div class="col-sm-9">
+                                <label class="control-label" id="info_password"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_age" class="col-sm-3 control-label">年龄</label>
+
+                            <div class="col-sm-9">
+                                <label class="control-label"  id="info_age"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_sex" class="col-sm-3 control-label">性别</label>
+                            <div class="col-sm-9">
+                                <label class="control-label" id="info_sex"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_email" class="col-sm-3 control-label">邮箱</label>
+
+                            <div class="col-sm-9">
+                                <label class="control-label" id="info_email"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_phone" class="col-sm-3 control-label">联系方式</label>
+
+                            <div class="col-sm-9">
+                                <label class="control-label" id="info_phone"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_year" class="col-sm-3 control-label">入行年份</label>
+
+                            <div class="col-sm-9">
+                                <label class="control-label" id="info_year"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_company" class="col-sm-3 control-label">公司</label>
+
+                            <div class="col-sm-9">
+                                <label  class="control-label"  id="info_company"></label>
+                            </div>
+                        </div>
+                        <div class="form-group" style="display:none">
+                            <label for="set_photoUrl" class="col-sm-3 control-label">选择图片</label>
+                            <div class="col-sm-9">
+                            <input type="file" id="add_photoUrl" class="form-control info_photoUrl" name="clientFile" multiple="multiple"/>  
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="photoSet" class="col-sm-3 control-label">照片</label>
+                            <div class="col-sm-9">
+                            <img class="photo_img" class="form-control" style="width:100%;height:auto;" />  
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_introduction" class="col-sm-3 control-label">个人介绍</label>
+
+                            <div class="col-sm-9">
+                                <label class="control-label" id="info_introduction"></label>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary" id="sure-set">确认</button>
                 </div>
             </div>
         </div>
     </div>
+
 
     <div class="text-center" id="page"></div>
 </div>
@@ -302,61 +391,82 @@
 <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="/public/js/laypage.js"></script>
 <script>
-    function check(value,switchs)  
-    {  
-        var reg="";
-        if(switchs=="chinaName")
-        {
-            reg=/^[\u4E00-\u9FA5]{1,}$/;
-            if(reg.test(value)==false)  
-            {  
-                alert('真实姓名必须为中文噢~');  
-                document.all.chinaName.focus();  
-                return false;  
-            }  
-        }
-        else if(switchs=="password") 
-        {
-            reg=/^\w{6,}$/;  
-            if(reg.test(value)==false)  
-            {  
-                alert('密码要在六位以上噢~');  
-                document.all.password1.focus();  
-                return false;  
-            } 
-        }
-        else if(switchs=="email") 
-        {
-            reg=/^\w+(\.\w+)*@\w+(\.\w+)+$/;  
-            if(reg.test(value)==false)  
-            {  
-                alert('您的邮箱格式不规范~');  
-                return false;  
-            } 
-        }
-        else if(switchs=="age") 
-        {
-            reg=/^([2-9]\d)|100$/;  
-            if(reg.test(value)==false)  
-            {  
-                alert('请输入您的真实年龄~');  
-                return false;  
-            }  
-        }
-        else if(switchs=="phone") 
-        {
-            reg=/^1[358]\d{9}$/;  
-            if(reg.test(value)==false)  
-            {  
-                alert('请输入规范的手机号码');  
-                return false;  
-            }  
-        }
-          
-        return true;  
-    }  
+     
+
+    
 
     $(function () {
+        var tips = function(str){
+            $('#tip').fadeIn();
+            $("#tip strong").text(str);
+        }
+         $("#tip .close").click(function(){
+            $('#tip').fadeOut();
+         }
+        );
+
+        var check = function(value,switchs)  
+        {  
+            var reg="";
+            if(switchs=="empty")
+            {
+                if(value=="")  
+                {  
+                    tips('账号、姓名和密码不能为空~');  
+                    return false;  
+                }  
+            }
+            else if(switchs=="chinaName")
+            {
+                reg=/^[\u4E00-\u9FA5]{1,}$/;
+                if(reg.test(value)==false)  
+                {  
+                    alert('真实姓名必须为中文噢~');  
+                    document.all.chinaName.focus();  
+                    return false;  
+                }  
+            }
+            else if(switchs=="password") 
+            {
+                reg=/^\w{6,}$/;  
+                if(reg.test(value)==false)  
+                {  
+                    alert('密码要在六位以上噢~');  
+                    document.all.password1.focus();  
+                    return false;  
+                } 
+            }
+            else if(switchs=="email") 
+            {
+                reg=/^\w+(\.\w+)*@\w+(\.\w+)+$/;  
+                if(reg.test(value)==false)  
+                {  
+                    alert('您的邮箱格式不规范~');  
+                    return false;  
+                } 
+            }
+            else if(switchs=="age") 
+            {
+                reg=/^([2-9]\d)|100$/;  
+                if(reg.test(value)==false)  
+                {  
+                    alert('请输入您的真实年龄~');  
+                    return false;  
+                }  
+            }
+            else if(switchs=="phone") 
+            {
+                reg=/^1[358]\d{9}$/;  
+                if(reg.test(value)==false)  
+                {  
+                    alert('请输入规范的手机号码');  
+                    return false;  
+                }  
+            }
+              
+            return true;  
+        } 
+        
         var cur_page = 1;
 	        var cur_keyword='';
 	        var cur_totalpage=9999;
@@ -416,11 +526,11 @@
                         table_operation = '',
                         table_row = '';
                 if (tr_state == 2) { //被禁用
-                    table_operation = '<td>\
+                    table_operation = '<td><a class="tr_info" style="cursor:pointer" data-toggle="modal" data-target="#info">详情</a>\
                                     <a class="tr_allow" style="cursor:pointer" data-toggle="modal">启用</a>&nbsp;<a class="tr_set" style="cursor:pointer" data-toggle="modal" data-target="#set">修改</a>\
                                 </td>';
                 } else if (tr_state == 1) { //已启用
-                    table_operation = '<td>\
+                    table_operation = '<td><a class="tr_info" style="cursor:pointer" data-toggle="modal" data-target="#info">详情</a>\
                                     <a class="tr_forbid" style="cursor:pointer" data-toggle="modal">禁用</a>&nbsp;<a class="tr_set" style="cursor:pointer" data-toggle="modal" data-target="#set">修改</a>\
                                 </td>';
                 } else {
@@ -448,16 +558,12 @@
         });
 
         $('#sure-add').click(function () {
-            
-            if ($('#add_account').val()=="") {
-                alert("账户名称不能为空");
-            }else if ($('#add_name').val()=="") {
-                alert("姓名不能为空");
-            }else if ($('#add_password').val()=="") {
-                alert("密码不能为空");
-            }
-            else{
-            check($('#add_name').val(),"chinaName");
+            if(
+            check($('#add_account').val(),"empty")&&
+            check($('#add_name').val(),"empty")&&
+            check($('#add_password').val(),"empty")&&
+            check($('#add_name').val(),"chinaName")
+            ){
         	var sexs = $('#add_sex').val();
         	if (sexs=="男")
         	 {
@@ -480,8 +586,8 @@
                 yaer: $('#add_year').val()||"",
                 photoUrl:$('#add .photo_img').attr("src")||"/public/img/logo.jpg"
             };
-            //postEvent('/manage/add_agent', addVal);
             }
+            //postEvent('/manage/add_agent', addVal);
         });
 
         var btnEvent = function () {
@@ -512,6 +618,33 @@
                 $('#set_company').val(company);
                 $('#set_year').val(year);
                 $('#set .photo_img').attr("src",photoUrl);
+            });
+            $('.tr_info').unbind().click(function () {
+                var set_row = $(this).parent('td').parent('tr'),
+                id = set_row.attr('data-secret'),
+                account =  set_row.attr('data-account'),
+                name = set_row.children('.tr_name').text(),
+                password = set_row.attr('data-password'),
+                age = set_row.children('.tr_age').text(),
+                sex = set_row.children('.tr_sex').text(),
+                email = set_row.attr('data-email'),
+                phone = set_row.children('.tr_phone').text(),
+                introduction = set_row.children('.tr_introduction').text(),
+                company = set_row.children('.tr_company').text(),
+                year = set_row.attr('data-year'),
+                photoUrl = set_row.children('.tr_photoUrl').children().attr('src');
+                $('#info_id').text(id);
+                $('#info_account').text(account);
+                $('#info_name').text(name);
+                $('#info_password').text(password);
+                $('#info_age').text(age);
+                $('#info_sex').text(sex);
+                $('#info_email').text(email);
+                $('#info_phone').text(phone);
+                $('#info_introduction').text(introduction);
+                $('#info_company').text(company);
+                $('#info_year').text(year);
+                $('#info .photo_img').attr("src",photoUrl);
             });
 
             $('#sure-set').unbind().click(function () {

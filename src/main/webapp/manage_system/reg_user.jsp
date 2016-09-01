@@ -217,6 +217,81 @@
         </div>
     </div>
 
+     <!--详情-->
+    <div class="modal fade" id="info" tabindex="-1" role="dialog" aria-labelledby="infoTitle">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="setPlatformTitle">详细信息</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form class="form-horizontal" id="file-upload-2">
+                        <div class="form-group">
+                            <label for="set_account" class="col-sm-3 control-label">账户名称</label>
+
+                            <div class="col-sm-9">
+                                <label class="control-label" id="info_account"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_name" class="col-sm-3 control-label">姓名</label>
+
+                            <div class="col-sm-9">
+                                <label class="control-label" id="info_name"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_password" class="col-sm-3 control-label">密码</label>
+
+                            <div class="col-sm-9">
+                                <label class="control-label" id="info_password"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_age" class="col-sm-3 control-label">年龄</label>
+
+                            <div class="col-sm-9">
+                                <label class="control-label"  id="info_age"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_sex" class="col-sm-3 control-label">性别</label>
+                            <div class="col-sm-9">
+                                <label class="control-label" id="info_sex"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="set_phone" class="col-sm-3 control-label">联系方式</label>
+
+                            <div class="col-sm-9">
+                                <label class="control-label" id="info_phone"></label>
+                            </div>
+                        </div>
+                        <div class="form-group" style="display:none">
+                            <label for="set_photoUrl" class="col-sm-3 control-label">选择图片</label>
+                            <div class="col-sm-9">
+                            <input type="file" id="add_photoUrl" class="form-control info_photoUrl" name="clientFile" multiple="multiple"/>  
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="photoSet" class="col-sm-3 control-label">照片</label>
+                            <div class="col-sm-9">
+                            <img class="photo_img" class="form-control" style="width:100%;height:auto;" />  
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="text-center" id="page"></div>
 </div>
 <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
@@ -279,11 +354,11 @@
                         table_operation = '',
                         table_row = '';
                 if (tr_state == 2) { //被禁用
-                    table_operation = '<td>\
+                    table_operation = '<td><a class="tr_info" style="cursor:pointer" data-toggle="modal" data-target="#info">详情</a>\
                                     <a class="tr_allow" style="cursor:pointer" data-toggle="modal">恢复</a>&nbsp;<a class="tr_set" style="cursor:pointer" data-toggle="modal" data-target="#set">修改</a>\
                                 </td>';
                 } else if (tr_state == 1) { //已启用
-                    table_operation = '<td>\
+                    table_operation = '<td><a class="tr_info" style="cursor:pointer" data-toggle="modal" data-target="#info">详情</a>\
                                     <a class="tr_forbid" style="cursor:pointer" data-toggle="modal">删除</a>&nbsp;<a class="tr_set" style="cursor:pointer" data-toggle="modal" data-target="#set">修改</a>\
                                 </td>';
                 } else {
@@ -351,6 +426,26 @@
                 $('#set_sex').val(sex);
                 $('#set_contact').val(contact);
                 $('#set .photo_img').attr("src",photoUrl);
+            });
+
+            $('.tr_info').unbind().click(function () {
+                var set_row = $(this).parent('td').parent('tr'),
+                id = set_row.attr('data-secret'),
+                account =  set_row.attr('data-account'),
+                name = set_row.children('.tr_name').text(),
+                password = set_row.attr('data-password'),
+                age = set_row.children('.tr_age').text(),
+                sex = set_row.children('.tr_sex').text(),
+                phone = set_row.children('.tr_contact').text(),
+                photoUrl = set_row.children('.tr_photoUrl').children().attr('src');
+                $('#info_id').text(id);
+                $('#info_account').text(account);
+                $('#info_name').text(name);
+                $('#info_password').text(password);
+                $('#info_age').text(age);
+                $('#info_sex').text(sex);
+                $('#info_phone').text(phone);
+                $('#info .photo_img').attr("src",photoUrl);
             });
 
             $('#sure-set').unbind().click(function () {
