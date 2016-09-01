@@ -55,14 +55,14 @@
 			<c:forEach var="agent" items="${agentList}" >
 				<li class="">
 					<div class="pic-panel">
-						<a target="_blank" href="  ">
+						<a target="_blank" href="/agent/show_agent_detail?agentId=${agent.agentId}">
 							
 							<img onerror="this.src='http://static1.ljcdn.com/pc/asset/img/jingjiren/noimg.jpg?_v=20160819150834';" src="${agent.photoUrl}">
 						</a>
 					</div>
 					<div class="info-panel">
 						<div class="agent-name">
-							<a target="_blank" href="agent.html">
+							<a target="_blank" href="/agent/show_agent_detail?agentId=${agent.agentId}">
 								<h2>${agent.name}</h2>
 							</a>
 							<span class="position">经纪人</span>
@@ -128,10 +128,6 @@
 		var next_page="${currentPage+1}";
 		var pre_page="${currentPage-1}";
 		$(document).ready(function(){
-				$(".square .num:eq(0)").html("${interestList[0]}");
-				$(".square .num:eq(1)").html("${interestList[1]}");
-				$(".square .num:eq(2)").html("${interestList[2]}");
-
 			if (cur_page>1) {
 				page_html+="<a href='/agent/show_agent?page="+pre_page+"'>上一页</a>";
 			};

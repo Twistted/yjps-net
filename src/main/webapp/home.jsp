@@ -60,22 +60,16 @@
 								</h2>
 								<div class="col-1">
 									<div class="where">
-										<a class="laisuzhou" href="#" data-el="xiaoqu">
-											<span class="">弘吉雅居</span>
-										</a>
 										<span class="">
 											<span>${house.roomAmount}室${house.livingroomAmount}厅</span>
 										</span>
 										<span class="">${house.area}平</span>
-										<span>南</span>
 									</div>
 									<div class="other">
 										<div class="con">
-											<a href="#" data-el="region">五大花园二手房</a>
-											<span>/</span>
-											高楼层(共11层)
-											<span>/</span>
-											${house.year}年建板楼
+										朝向：${house.orientation}
+										<span>/</span>
+											${house.year}年建楼
 										</div>
 									</div>
 									<div class="chanquan">
