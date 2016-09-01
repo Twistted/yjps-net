@@ -65,7 +65,7 @@ public class HouseController {
 		IAdvertisementService advertisementService = new AdvertisementService();
 		List<AdvertisementEntity> advertisementList = advertisementService.getAdvertisementList(4);
 		model.addObject("advertisementList", advertisementList);
-		
+				
 		model.setViewName("house");
 		return model;
 	}

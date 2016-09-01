@@ -492,6 +492,7 @@ a.lj-btn{
 	position: relative;
 	left:0;
 	top:0;
+	cursor: pointer;
 }
 .tab-content #user_logo .update .uploadPic_wrap .uploadPic_input input{
 	display: inline-block;
@@ -603,3 +604,45 @@ a.lj-btn{
 .tabbable .tab-content #mtab5 .check_wrap .check_list table tbody tr:nth-child(2n){
 	background-color: #e8e8e8;
 }
+.tab-content .uploadPic_wrap #picUploadClientFile{
+	margin-top: -80px;
+	width:80px;
+	height:40px;
+	opacity:0;
+	cursor: pointer;
+}
+.tab-content .tab-pane .change-portrait .update .preview_wrap{
+	margin-top:40px;
+	width:100%;
+}
+.tab-content .tab-pane .change-portrait .update .preview_wrap #img_preview{
+	width:200px;
+	right:200px;
+	 
+}
+
+.tab-content .tab-pane .change-portrait .update .preview_wrap .preview_three{
+ 
+	display:inline-block;
+	height:;
+}
+.tab-content .tab-pane .change-portrait .update .preview_wrap .preview_three div{
+ 
+	display:inline-block;
+	margin-left:40px;
+	padding-top:48px;
+	padding-bottom:48px;
+}
+.tab-content .tab-pane .change-portrait .update .preview_wrap .preview_three .preview_span{
+	margin-top:-90px;
+	margin-left:55px;
+}
+.table_list_a{
+	outline: none;
+}
+.table_list a:hover{
+	color:#4fac6a;
+	text-decoration: underline;
+	cursor:pointer;
+}
+

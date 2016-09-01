@@ -22,13 +22,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.test.web.dto.Result;
 import com.test.web.entity.AgentEntity;
+import com.test.web.entity.HousePhotoEntity;
 import com.test.web.entity.ManagerEntity;
 import com.test.web.entity.UserEntity;
 import com.test.web.service.IAgentService;
 import com.test.web.service.IManagerService;
+import com.test.web.service.IPhotoService;
 import com.test.web.service.IUserService;
 import com.test.web.service.impl.AgentService;
 import com.test.web.service.impl.ManagerService;
+import com.test.web.service.impl.PhotoService;
 import com.test.web.service.impl.UserService;
 import com.test.web.util.FileUploadUtil;
 
@@ -93,6 +96,26 @@ public class FileUploadController {
         }
         else return new Result(500);
     } 
+    
+    @RequestMapping(value="/house_photo", method=RequestMethod.POST)
+    public @ResponseBody Result uploadHousePhoto(@RequestParam("houseId") int houseId, @RequestParam("clientFile") MultipartFile fileData, HttpSession session) {
+    	String filePath = FileUploadUtil.saveFile(fileData,"house_photo");
+        Result result = new Result();
+        filePath = filePath.replace("src/main/webapp/assets/uploads","/assets/uploads");
+        System.out.println("yes");
+        IPhotoService photoService = new PhotoService();
+        AgentEntity agent = (AgentEntity)session.getAttribute("agentSession");
+        HousePhotoEntity photoEntity = new HousePhotoEntity();
+        photoEntity.setHouseId(houseId);
+        photoEntity.setPhotoUrl(filePath);
+        if(photoService.addPhotoService(photoEntity)){
+        	result.setCode(200);
+        	result.setFilePath(filePath);
+        	result.setAgentEntity(agent);
+        }
+        else result.setCode(500);
+        return result;
+    }
     
     @RequestMapping(value="/agent_file", method=RequestMethod.POST)     
     public @ResponseBody Result uploadAgentFile(@RequestParam("clientFile") MultipartFile fileData, HttpSession session){  

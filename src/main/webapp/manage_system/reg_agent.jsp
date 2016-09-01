@@ -274,46 +274,84 @@
         </div>
     </div>
 
+    <!--提示-->
+    <div class="modal fade" id="tip" tabindex="-1" role="dialog" aria-labelledby="tipTitle">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="setPlatformTitle">温馨提示</h4>
+                </div>
+
+                <div class="modal-body">
+                    啊啊啊啊！
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="sure-set">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="text-center" id="page"></div>
 </div>
 <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="/public/js/laypage.js"></script>
 <script>
-    function check()  
+    function check(value,switchs)  
     {  
-        var reg=/^[\u4E00-\u9FA5]{1,}$/;  
-        if(reg.test(document.all.chinaName.value)==false)  
-        {  
-            alert('真实姓名必须为中文!');  
-            document.all.chinaName.focus();  
-            return false;  
-        }  
-        reg=/^\w{6,}$/;  
-        if(reg.test(document.all.password.value)==false)  
-        {  
-            alert('密码不合法');  
-            document.all.password1.focus();  
-            return false;  
-        } 
-        reg=/^\w+(\.\w+)*@\w+(\.\w+)+$/;  
-        if(reg.test(document.all.email.value)==false)  
-        {  
-            alert('邮箱不合法');  
-            return false;  
-        } 
-        reg=/^([2-9]\d)|100$/;  
-        if(reg.test(document.all.age.value)==false)  
-        {  
-            alert('年龄不合法!');  
-            return false;  
-        }  
-        reg=/^1[358]\d{9}$/;  
-        if(reg.test(document.all.mobile.value)==false)  
-        {  
-            alert('请输入规范的手机号码');  
-            return false;  
-        }  
+        var reg="";
+        if(switchs=="chinaName")
+        {
+            reg=/^[\u4E00-\u9FA5]{1,}$/;
+            if(reg.test(value)==false)  
+            {  
+                alert('真实姓名必须为中文噢~');  
+                document.all.chinaName.focus();  
+                return false;  
+            }  
+        }
+        else if(switchs=="password") 
+        {
+            reg=/^\w{6,}$/;  
+            if(reg.test(value)==false)  
+            {  
+                alert('密码要在六位以上噢~');  
+                document.all.password1.focus();  
+                return false;  
+            } 
+        }
+        else if(switchs=="email") 
+        {
+            reg=/^\w+(\.\w+)*@\w+(\.\w+)+$/;  
+            if(reg.test(value)==false)  
+            {  
+                alert('您的邮箱格式不规范~');  
+                return false;  
+            } 
+        }
+        else if(switchs=="age") 
+        {
+            reg=/^([2-9]\d)|100$/;  
+            if(reg.test(value)==false)  
+            {  
+                alert('请输入您的真实年龄~');  
+                return false;  
+            }  
+        }
+        else if(switchs=="phone") 
+        {
+            reg=/^1[358]\d{9}$/;  
+            if(reg.test(value)==false)  
+            {  
+                alert('请输入规范的手机号码');  
+                return false;  
+            }  
+        }
           
         return true;  
     }  
@@ -410,10 +448,7 @@
         });
 
         $('#sure-add').click(function () {
-            check();
-            if ($('.modal input').val().length>15){
-                alert("不能超过15个字符噢");
-            } 
+            
             if ($('#add_account').val()=="") {
                 alert("账户名称不能为空");
             }else if ($('#add_name').val()=="") {
@@ -422,6 +457,7 @@
                 alert("密码不能为空");
             }
             else{
+            check($('#add_name').val(),"chinaName");
         	var sexs = $('#add_sex').val();
         	if (sexs=="男")
         	 {

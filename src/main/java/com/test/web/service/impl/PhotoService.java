@@ -45,4 +45,19 @@ public class PhotoService implements IPhotoService {
 		return findMinById(houseId);
 	}
 
+	public boolean addPhotoService(HousePhotoEntity photo) {
+		boolean ret = false;
+		SqlSession session = DBUtil.getSession();
+		try {
+			PhotoMapper mapper = session.getMapper(PhotoMapper.class);
+			int i = mapper.insert(photo);
+			ret = i > 0 ? true : false;
+			
+			session.commit();
+		} finally {
+			DBUtil.closeSession();
+		}
+		return ret;
+	}
+
 }

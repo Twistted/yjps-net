@@ -8,5 +8,6 @@ public interface IPhotoService {
 	
 	List<HousePhotoEntity> getPhotoByHouseId(int houseId);
 	HousePhotoEntity getMainPhotoByHouseId(int houseId);
+	boolean addPhotoService(HousePhotoEntity photo);
 
 }

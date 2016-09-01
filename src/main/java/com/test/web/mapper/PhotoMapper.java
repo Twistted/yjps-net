@@ -8,5 +8,6 @@ public interface PhotoMapper {
 
 	public List<HousePhotoEntity> findById(int houseId);
 	public HousePhotoEntity findMinById(int houseId);
+	public int insert(HousePhotoEntity photo);
 	
 }

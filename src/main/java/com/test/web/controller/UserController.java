@@ -11,18 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import com.test.web.dto.Result;
-import com.test.web.entity.AgentEntity;
 import com.test.web.entity.HouseEntity;
 import com.test.web.entity.InterestEntity;
 import com.test.web.entity.UserEntity;
-import com.test.web.service.IAgentService;
 import com.test.web.service.IHouseService;
 import com.test.web.service.IInterestService;
 import com.test.web.service.IUserService;
-import com.test.web.service.impl.AgentService;
 import com.test.web.service.impl.HouseService;
 import com.test.web.service.impl.InterestService;
 import com.test.web.service.impl.UserService;
@@ -147,6 +143,7 @@ public class UserController {
 		userEntity.setName(userEntity.getAccount());
 		userEntity.setState(1);
 		userEntity.setPhotoUrl("/public/img/logo.jpg");
+		userEntity.setSex(1);
 		boolean ok = userService.register(userEntity);
 		System.out.println(ok);
 		if (ok) {

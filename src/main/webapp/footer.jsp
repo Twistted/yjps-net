@@ -37,7 +37,7 @@
 				<div class="fr">官方客服 1010 9666</div>
 			</div>
 			<div class="bottom">
-				<div class="copyright">北京易居房地产经纪有限公司 | 网络经营许可证 京ICP备11024601号-12 | © Copyright©2010-2016 链家网Lianjia.com版权所有</div>
+				<div class="copyright">北京易居房地产经纪有限公司 | 网络经营许可证 京ICP备11024601号-12 | © Copyright©2010-2016 易居二手房交易平台版权所有</div>
 			</div>
 		</div>
 	</footer>
