@@ -72,7 +72,7 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<span>性别:&nbsp;&nbsp;${agent.sex}</span>		
+						<span>性别:&nbsp;&nbsp;<c:if test="${agent.sex==1}">男</c:if><c:if test="${agent.sex==2}">女</c:if><c:if test="${agent.sex!=1&&agent.sex!=2}">嬲</c:if></span>		
                     </p>
 					<p>
         	            <span>电子邮箱:&nbsp;&nbsp;${agent.email}</span>
