@@ -155,6 +155,7 @@ public class AgentController {
 		houseEntity.setAgentId(agent.getAgentId());
 		System.out.println(houseEntity);
 		IHouseService houseService = new HouseService();
+		
 		if (houseService.addHouse(houseEntity))
 			return new Result(200);
 		else
