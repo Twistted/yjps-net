@@ -7,7 +7,7 @@
         <title>成都房地产经纪人_成都优秀经纪人推荐(成都易居网)</title>
         <link rel="shortcut icon" type="image/x-icon" href="http://lianjia.com/favicon.ico" />
         <link rel="stylesheet" href="/public/css/list.css">
-        <link rel="stylesheet" href="/public/css/common.css">
+        <link rel="stylesheet" href="/public/css/common.css">s
         <link href="/public/css/reset.css" rel="stylesheet">
         <script src="/public/js/jquery-2.1.4.min.js"></script>
 	</head>

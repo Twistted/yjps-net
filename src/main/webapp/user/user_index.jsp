@@ -1,11 +1,11 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%  
     String path = request.getContextPath();  
     String basePath = request.getScheme() + "://"  
             + request.getServerName() + ":" + request.getServerPort()  
             + path + "/";  
-%>  -->
+%> 
 <html>
 <head>
 	<title>易居网_用户中心</title>
@@ -21,34 +21,8 @@
 </head>
 <include 
 <body>
-<!-- 	<header>
-		<div class="nav-wrap">
-			<div class="wrapper">
-				<div class="fl">
-					<a href="/home/index" class="logo" title="易居网络平台" style="float:left;"></a>
-					<span>易居二手房网上交易平台</span>
-				</div>
-				<div class="fr">
-					<div class="login">
-						<a href="user/register.html" style="display:none">
-							<span class="log" style="display:none">注册</span>
-						</a>
-						<a href="user/register.html">
-							<span id="right_username" class="log">${sessionScope.userSession.name }</span>
-						</a>
-						|
-						<a href="user/login" style="display:none">>
-							<span class="user-reg">登录</span>
-						</a>
-						<a href="/user/logout">
-							<span class="log">退出</span>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header> -->
-	 <jsp:include page="/sub_header.jsp"></jsp:include>
+ 
+<jsp:include page="/sub_header.jsp"></jsp:include>
 	<div class="user-main">
 		<!--左侧导航-->
 		<div class="tabbable">
@@ -177,10 +151,10 @@
 						<!--存放item-->
 						<div class="update">
 							<!--改头像-->
-					 	<h3>请选择图片文件：JPG/GIF</h3>
+					 	<h3 style="color:#000;">请选择图片文件：JPG/GIF</h3>
 					 		<div class="uploadPic_wrap">
 								 <form id="upload_form" action="/upload/file" method="post" enctype="multipart/form-data"  style="height:40px;" target="upload" >  
-						            选择图片<input id="picUploadfileName" type="text" name="fileName" /><br/>  
+						            选择图片<input id="picUploadfileName" type="text" name="fileName" style="display:none;" /><br/>  
 						            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
 						            <input id="picUploadClientFile" type="file" name="clientFile" style="opacity:0;position:absolute;top:80;"/><br/>            
 						        </form>  
@@ -291,18 +265,18 @@
 			</div>
 				</div>
 				<!--关注房源-->
-				<div class="main-right fr tab-pane hasList" id="tab4" style="margin-bottom:30px;">
+				<div class="main-right fr tab-pane hasList" id="tab4" style="margin-bottom:30px;height:400px;">
 					<div class="title">
 						我关注的房源
 					</div>
 
 					<div class="house_followlist">
 						<div class="check_wrap">
-							<div class="form-group"  style="display:block;">
+							<!-- <div class="form-group"  style="display:block;">
 								<input id="table_search"type="text" class="form-control field" placeholder="请输入搜索条件" style="width:300px;display:inline-block;">
 								<button type="submit" class="btn btn-default" id="search-bt">搜索</button>
-							</div>
-							<div class="check_list">
+							</div> -->
+							<div class="check_list" style="margin-top:20px;">
 								<table id="fol_houstList" style="display:block;">
 									<thead>
 										<tr>
