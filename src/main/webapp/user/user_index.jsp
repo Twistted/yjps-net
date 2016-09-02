@@ -13,13 +13,15 @@
 	<link rel="stylesheet" href="../public/css/slimtable.css">
 	<link rel="stylesheet" href="../public/css/userindex.css">
 	<link rel="stylesheet" href="../public/css/reset.css">
+	<link rel="stylesheet" href="../public/css/xcConfirm.css">
 	<!-- 新 Bootstrap 核心 CSS 文件 -->
 	<link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="shortcut icon" type="image/x-icon" href="#" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
+<include 
 <body>
-	<header>
+<!-- 	<header>
 		<div class="nav-wrap">
 			<div class="wrapper">
 				<div class="fl">
@@ -45,12 +47,12 @@
 				</div>
 			</div>
 		</div>
-	</header>
-
+	</header> -->
+	 <jsp:include page="/sub_header.jsp"></jsp:include>
 	<div class="user-main">
 		<!--左侧导航-->
 		<div class="tabbable">
-			<div class="main-left fl">
+			<div class="main-left fl" style="height:400px;margin-bottom:30px;">
 				<div class="name" >
 					<img src="${sessionScope.userSession.photoUrl }" style="border-radius:5px;width:100px;height:100px;"></img>
 					<div class="user-name">欢迎你<br /><span id="user_left_username">${sessionScope.userSession.name}</span></div>
@@ -83,7 +85,7 @@
 				</div>
 			</div>
 
-			<div class="tab-content">
+			<div class="tab-content" style="margin-bottom:30px;">
 				<!--首页-->
 				<div class="main-right fr tab-pane active" id="tab1">
 					<div class="allList">
@@ -109,7 +111,7 @@
 				</div>
 				</div>
 				<!--个人信息-->
-				<div class="main-right fr tab-pane" id="tab2">
+				<div class="main-right fr tab-pane" id="tab2" style="margin-bottom:30px;">
 				<div class="title">个人信息</div>
 				<div class="info_wrap">
 					<ul>
@@ -123,7 +125,16 @@
 						</li>
 						<li>
 							<span class="info_title">性别:</span>
-							<div class="info_c"><span class="user_sex">${sessionScope.userSession.sex}</span></div>
+							<div class="info_c">
+								<c:choose>
+									<c:when test="${sessionScope.agentSession.sex == 1 }">
+										<span> 男</span>
+									</c:when>
+									<c:otherwise>
+										<span> 女</span>
+									</c:otherwise>
+								</c:choose>
+							</div>
 						</li>
 						<li>
 							<span class="info_title">年龄:</span>
@@ -142,7 +153,7 @@
 				</div>
 				</div>
 				<!--编辑资料-->
-				<div class="main-right fr tab-pane" id="tab3">
+				<div class="main-right fr tab-pane" id="tab3" style="margin-bottom:30px;" >
 					<div class="title">我的账户信息</div>
 				<!-- <div class="tab tabbable">
 					<span class="hover actTap">上传头像</span>
@@ -161,37 +172,43 @@
 				<div class="uploader-demo"></div>
 			<div class="tab-content">
 				<!-- 1111111111111111111 -->
-				<div class="tab-pane active" id="user_logo">
+				<div class="tab-pane active" id="user_logo" >
 					<div id="updatePortrait" class="change-portrait">
 						<!--存放item-->
 						<div class="update">
 							<!--改头像-->
 					 	<h3>请选择图片文件：JPG/GIF</h3>
 					 		<div class="uploadPic_wrap">
-					 			<!-- 带预览 -->
-							<!-- 	<form name="form0" id="form0" >
-									<div class="uploadPic_btn">选择图片</div>
-									<div class="uploadPic_input" style="position:absolute;">
-										<input type="file" name="file0" id="file0" multiple="multiple" /><br>
-									 </div>
-									 <div class="previewPic">
-									 	<div class="picbox">
-									 		<img src="http://static1.ljcdn.com/pc/asset/img/user/default-pic.png?_v=20160819150834" id="img0" >
-									 	</div>
-									 </div>
-								</form> -->
-								<!-- 新既 -->
-								 <form id="upload_form" action="/upload/file" method="post" enctype="multipart/form-data"  style="border:1px solid #e8e8e8;" target="upload" >  
-						            文件名: <input id="picUploadfileName" type="text" name="fileName" /><br/>  
+								 <form id="upload_form" action="/upload/file" method="post" enctype="multipart/form-data"  style="height:40px;" target="upload" >  
+						            选择图片<input id="picUploadfileName" type="text" name="fileName" /><br/>  
 						            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-						            <input id="picUploadClientFile" type="file" name="clientFile" /><br/>  
-						            <input id="user_logoUpload_btn" type="submit" value="确定"/>  
+						            <input id="picUploadClientFile" type="file" name="clientFile" style="opacity:0;position:absolute;top:80;"/><br/>            
 						        </form>  
 						        <iframe name="upload" style="display:none;"></iframe>
 							</div>
+							<div class="preview_wrap">
+								 <div class="fl" style="line-height:273px;width:273px;text-align:center;vertical-align:middle;float:left;background-color:#f5f5f5;">
+						            <img src="http://static1.ljcdn.com/pc/asset/img/user/default-pic.png?_v=20160830171602" id="img_preview"  />
+						        </div>
+					            <div class="preview_three" style="float:right;width:400px;background-color:#f5f5f5;">					     
+						           <div class="img1">
+										<img src="http://static1.ljcdn.com/pc/asset/img/user/default-avatar.png?_v=20160830171602" id="img_preview_big" style="width:120px;height:120px;" />
+						           	</div>
+						           	<div class="img2">
+							            <img src="http://static1.ljcdn.com/pc/asset/img/user/default-avatar.png?_v=20160830171602" id="img_preview_middle" style="width:80px;height:80px;" />
+							        </div>
+							        <div class="img3">
+						          	    <img src="http://static1.ljcdn.com/pc/asset/img/user/default-avatar.png?_v=20160830171602" id="img_preview_small" style="width:34px;height:34px;" />		
+						            </div>
+						            <div class="preview_span"><span>120px*120px</span></div>	
+						            <div class="preview_span"><span>80px*80px</span></div>	
+						            <div class="preview_span"><span>34px*34px</span></div>					        
+						        </div>
+						        <div class="clearfix"></div>
+							</div>
 							<div class="clearfix"></div>
 							<div class="suc">
-								<span class="sucServer">确定</span>
+								<span class="sucServer" style="bottom:0;">确定</span>
 							</div>
 						</div>
 					</div>
@@ -243,25 +260,25 @@
 							<ul>
 								<li>
 									<span class="info_title">姓名:</span>
-									<input type="text" id="username" name="name" class="form-control" /> 
+									<input type="text" id="username" name="name" class="form-control" value= ${sessionScope.userSession.name} /> 
 								</li>
 								<li>
 									<span class="info_title">性别:</span>
 									<div class="checkbox">
-										<input class="radioInput" name="sex" value="1" checked="checked" type="radio"></input>
-										<span class="chosespan">男</span>
-										<input class="radioInput" name="sex" value="2" checked="checked" type="radio"></input>
-										<span class="chosespan">女</span>
+										<select id= "sex_select">
+											<option value="1">男</option>
+											<option value="2">女</option>
+										</select>
 									</div>
 								</li>
 								<li>
 									<span class="info_title">年龄:</span>
-									<input type="text" id="age" name="age" class="form-control" />
+									<input type="text" id="age" name="age" class="form-control" value= ${sessionScope.userSession.age} />
 									 
 								</li>
 								<li>
 									<span class="info_title">电话:</span>
-									<input type="text" id="phone" name="contact" class="form-control" />
+									<input type="text" id="phone" name="contact" class="form-control" value= ${sessionScope.userSession.contact} />
 								</li>
 								 
 							</ul>
@@ -274,7 +291,7 @@
 			</div>
 				</div>
 				<!--关注房源-->
-				<div class="main-right fr tab-pane hasList" id="tab4">
+				<div class="main-right fr tab-pane hasList" id="tab4" style="margin-bottom:30px;">
 					<div class="title">
 						我关注的房源
 					</div>
@@ -407,7 +424,9 @@
 	</div>-->
 </div> 
 </div>
-	<footer style="margin-top:40px;">
+</div>
+       <jsp:include page="/footer.jsp"></jsp:include>
+<!-- 	<footer style="margin-top:40px;">
 		<div class="wrapper">
 			<div class="f-title">
 				<div class="fl">
@@ -441,7 +460,7 @@
 				<div class="copyright">北京易居房地产经纪有限公司 | 网络经营许可证 京ICP备11024601号-12 | © Copyright©2010-2016 链家网Lianjia.com版权所有</div>
 			</div>
 		</div>
-	</footer>
+	</footer> -->
 	
 	<!-- 可选的Bootstrap主题文件（一般不使用） -->
 	<script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap-theme.min.css"></script>
@@ -485,6 +504,7 @@
 	<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 	<script type="text/javascript" src="../public/js/slimtable.min.js"></script>
 	<script type="text/javascript" src="../public/js/laypage.js"></script>
+	<script type="text/JavaScript" src="../public/js/xcConfirm.js"></script>
 	
 </body>
 </html>

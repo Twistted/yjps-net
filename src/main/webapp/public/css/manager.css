@@ -574,7 +574,7 @@ a.lj-btn{
 	display: inline-block;
 	vertical-align: top;
 }
-.tabbable .tab-content #mtab5 .check_wrap .check_list table tr td .actionForList{
+.actionForList{
 	color:#4fac6a;
 	font-size: 13px;
 	margin-top: 1px;
@@ -584,25 +584,25 @@ a.lj-btn{
 	cursor:pointer;
 	 
 }
-.tabbable .tab-content #mtab5 .check_wrap .check_list table{
+.tabbable .tab-content  .check_wrap .check_list table{
 	border:1px solid #e8e8e8;
 }
-.tabbable .tab-content #mtab5 .check_wrap .check_list table thead{
+.tabbable .tab-content  .check_wrap .check_list table thead{
 	background-color: #4fac6a;
 	height:30px;
 	font-size:14px;
 	
 	
 }
-.tabbable .tab-content #mtab5 .check_wrap .check_list table thead th{
+.tabbable .tab-content .check_wrap .check_list table thead th{
 	border-right:1px solid #e8e8e8;
 	text-align: center;
 }
-.tabbable .tab-content #mtab5 .check_wrap .check_list table tbody tr td{
+.tabbable .tab-content .check_wrap .check_list table tbody tr td{
 	border:1px solid #e8e8e8;
 	text-align: center;
 }
-.tabbable .tab-content #mtab5 .check_wrap .check_list table tbody tr:nth-child(2n){
+.tabbable .tab-content .check_wrap .check_list table tbody tr:nth-child(2n){
 	background-color: #e8e8e8;
 }
 .tab-content .uploadPic_wrap #picUploadClientFile{
