@@ -240,9 +240,10 @@
 				page_html+="<span>...</span>";
 				page_html+="<a href='/home/index?page="+totalpage+"'>"+totalpage+"</a>";
 			}
-			if (cur_page!=totalpage) {
+			if (totalpage!=0&&cur_page!=totalpage) {
 				page_html+="<a href='/home/index?page="+next_page+"'>下一页</a>";
 			};
+			//page_html+="<a href='/home/index?page="+next_page+"'>下一页</a>";
 			$(".page-box").html(page_html);
 			
 		});

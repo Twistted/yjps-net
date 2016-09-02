@@ -483,7 +483,7 @@
             else if (switchs=="introduction") {
                 if(value.indexOf("script")>0||value.indexOf("href")>0||value.indexOf("iframe")>0||value.indexOf("frameset")>0)  
                 {  
-                    tip('您的个人介绍中含有不安全代码~',obj);  
+                    tip('您的个人介绍中含有不安全代码，如script等用语，请修改后再试~',obj);  
                     return false;  
                 }
             }
@@ -615,7 +615,7 @@
                     phone: $('#add_phone').val()||"",
                     introduction: $('#add_introduction').val()||"",
                     company: $('#add_company').val().replace(/\s*on[a-z]+\s*=\s*("[^"]+"|'[^']+'|[^\s]+)\s*/ig,"")||"四川华迪公司",
-                    yaer: $('#add_year').val()||"",
+                    year: $('#add_year').val()||"",
                     photoUrl:$('#add .photo_img').attr("src")||"/public/img/logo.jpg"
                 };
                 postEvent('/manage/add_agent', addVal);

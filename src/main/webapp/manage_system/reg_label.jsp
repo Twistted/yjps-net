@@ -97,6 +97,7 @@
 <script>
 
     $(function () {
+        //提示框
         var tip = function(str,obj){
             obj.fadeIn();
             obj.find("strong").text(str);
@@ -106,7 +107,7 @@
             $('.alert').fadeOut();
          }
         );
-
+        //输入验证
         var check = function(value,switchs,obj)  
         {  
             if(switchs=="label")
@@ -119,17 +120,17 @@
             }
             if(value.indexOf("script")>0||value.indexOf("href")>0||value.indexOf("iframe")>0||value.indexOf("frameset")>0)  
                 {  
-                    tip('您的个人介绍中含有不安全代码~',obj);  
+                    tip('您的标签内容中含有不安全代码，如script等用语，请修改后再试~',obj);  
                     return false;  
             }
             return true;
         };
 
-
+        //分页
         var cur_page = 1;
 	        var cur_keyword='';
 	        var cur_totalpage=9999;
-        //分页
+        
         var fetchConfigData = function (curr) {
             $.post('/manage/list_label', {
                 page: curr || 1,
@@ -180,7 +181,7 @@
             }
             $('#jump_input').val('');
         });
-
+        //确认添加      
         $('#sure-add').click(function () {
             var obj=$(this).parent().parent().find("section");
             if(
