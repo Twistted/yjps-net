@@ -96,6 +96,7 @@
 					<dl>
 						<dt>户型：</dt>
 						<dd>${house.roomAmount}室${house.livingroomAmount}厅</dd>
+						
 					</dl>
 					<dl>
 						<dt>朝向：</dt>
@@ -108,6 +109,10 @@
 					<dl class="clear">
 						<dt>年份：</dt>
 						<dd>${house.year}年建</dd>
+					</dl>
+					<dl>
+						<dt>地址：</dt>
+						<dd>${house.province}${house.city}${house.town}${house.address}"</dd>
 					</dl>
 				</div>
 				<div class="countact-panel">
