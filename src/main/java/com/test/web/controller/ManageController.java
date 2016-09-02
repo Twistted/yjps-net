@@ -76,10 +76,10 @@ public class ManageController {
 	public @ResponseBody Result addManager(ManagerEntity managerEntity,HttpSession httpSesion){
 		Result result = new Result();
 		IManagerService managerService = new ManagerService();
-
+		if(managerService.login(managerEntity) != null)
+			return new Result(500);
 		managerEntity.setState(1);
 		managerEntity.setLevel(managerEntity.getLevel() > 1 ? 2 : 1 );
-
 		if(managerService.login(managerEntity) != null){
 			return new Result(500);
 		}
