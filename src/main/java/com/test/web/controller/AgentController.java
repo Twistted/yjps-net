@@ -179,7 +179,7 @@ public class AgentController {
 		else
 			result.setCode(500);
 		result.setHouseEntity(houseEntity);
-		;
+		
 		return result;
 	}
 
@@ -241,10 +241,13 @@ public class AgentController {
 		List<AgentEntity> agentList;
 		IAgentService agentService = new AgentService();
 		agentList = agentService.listAgent(page, 3);
-		if (agentList == null || agentList.isEmpty())
+		if (agentList == null || agentList.isEmpty()) {
 			result.setCode(500);
-		else
+			return result;
+		} else {
 			result.setCode(200);
+		}
+			
 		result.setAgentList(agentList);
 		for (int i = 0; i < agentList.size(); i++) {
 			System.out.println(agentList.get(i));
@@ -264,11 +267,13 @@ public class AgentController {
 		houseList = houseService.getPageByAgentId(page, 15, agentId);
 		allHouseList = houseService.getByAgentId(agentId);
 		int pageSize = (int)Math.ceil(allHouseList.size()*1.0/15);
-		if(houseList == null)
-
+		if(houseList == null) {
 			result.setCode(500);
-		else
+			return result;
+		} else {
 			result.setCode(200);
+		}
+			
 		result.setHouseList(houseList);
 		result.setHouseListSize(houseList.size());
 		result.setPageSize(pageSize);
