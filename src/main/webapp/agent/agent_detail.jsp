@@ -14,32 +14,6 @@
 		<link rel="stylesheet" href="../public/css/list.css">
 		<link rel="stylesheet" href="../public/css/common.css">
 		<link rel="stylesheet" href="../public/css/reset.css" >
-		
-		<style type="text/css">
-        /*分页样式*/
-.page-box{
-	background-color: #FFF;
-	width: 100%;
-	padding: 30px 0;
-	text-align: center;
-}
-.page-box a{
-	height: 30px;
-	padding: 0 12px;
-	margin-left: 5px;
-	text-align: center;
-	line-height: 30px;
-	border:1px solid #b0b4b9;
-	overflow: hidden;
-	font-size: 12px;
-	font-weight: 700;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	color: #555;
-	display: inline-block;
-	zoom:1;
-	vertical-align: middle;
-}
-        </style>
 </head>
 
 	<body>
@@ -250,6 +224,7 @@
 <script type="text/javascript">
 		var page_html="";
 		var cur_page="${currentPage}";
+
 		var totalpage="${pageSize.intValue()}";
 		var next_page="${currentPage+1}";
 		var pre_page="${currentPage-1}";
@@ -329,7 +304,7 @@
 				page_html+="<span>...</span>";
 				page_html+="<a href='/agent/show_agent_detail?agentId=${agent.agentId}&page="+totalpage+"'>"+totalpage+"</a>";
 			}
-			if (cur_page!=totalpage) {
+			if (totalpage!=0&&cur_page!=totalpage) {
 				page_html+="<a href='/agent/show_agent_detail?agentId=${agent.agentId}&page="+next_page+"'>下一页</a>";
 			};
 			$(".page-box").html(page_html);
