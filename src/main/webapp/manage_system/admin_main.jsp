@@ -8,7 +8,9 @@
     <title>易居网络系统后台</title>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/manage_system/public/css/adminSys.css">
-
+     <script src="/public/js/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" href="/public/css/xcConfirm.css" />
+    <script src="/public/js/xcConfirm.js"></script>
 </head>
 <body>
 <header>
@@ -80,6 +82,13 @@
                         <label for="ens_psw" class="control-label">请再次输入新的密码：</label>
                         <input type="password" class="form-control" id="ens_psw" name="ens_psw">
                     </div>
+                    <div class="form-group">
+                            <!--提示-->
+                            <section class="alert  alert-info" style="position:fixed;display:none;" id="tip">
+                              <button type="button" class="close">&times;</button>
+                              <strong>Info</strong>
+                            </section>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -113,6 +122,13 @@
                             <img class="photo_img" class="form-control" style="width:100%;height:auto;" />  
                             </div>
                     </div>
+                    <div class="form-group">
+                            <!--提示-->
+                            <section class="alert  alert-info" style="position:fixed;display:none;" id="tip">
+                              <button type="button" class="close">&times;</button>
+                              <strong>Info</strong>
+                            </section>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -134,19 +150,108 @@
 </script>
 <script type="text/javascript">
     (function () {
+        var tip = function(str,obj){
+            obj.fadeIn();
+            obj.find("strong").text(str);
+        };
+
+        $(".alert .close").click(function(){
+            $('.alert').fadeOut();
+         }
+        );
+
+        var check = function(value,switchs,obj)  
+        {  
+            if(switchs!="introduction"&&value.length>20) {
+                    tip('输入项不能超过20个字符噢',obj);
+                    return false;
+            }
+            var reg="";
+            if(switchs=="empty")
+            {
+                if(value=="")  
+                {  
+                    tip('输入项不能为空~',obj);  
+                    return false;  
+                }  
+            }
+            else if(switchs=="chinaName")
+            {
+                reg=/^[\u4E00-\u9FA5]{1,}$/;
+                if(reg.test(value)==false)  
+                {  
+                    tip('真实姓名必须为中文噢~',obj);  
+                    return false;  
+                }  
+            }
+            else if(switchs=="password") 
+            { 
+                if(value.length<6)  
+                {  
+                    tip('密码要在六位以上噢~',obj);  
+                    return false;  
+                } 
+            }
+            else if(switchs=="age") 
+            {
+                //reg=/^([2-9]\d)|100$/;  
+                if(value>100||value<1)  
+                {  
+                    tip('请输入您的真实年龄~',obj);  
+                    return false;  
+                }  
+            }
+            else if(switchs=="email") 
+            {
+                reg=/^\w+(\.\w+)*@\w+(\.\w+)+$/;  
+                if(reg.test(value)==false)  
+                {  
+                    tip('您的邮箱格式不规范~',obj);  
+                    return false;  
+                } 
+            }
+            else if(switchs=="phone") 
+            {
+                reg=/^[1][358][0-9]{9}$/;  
+                if(reg.test(value)==false)  
+                {  
+                    tip('请输入规范的手机号码',obj);  
+                    return false;  
+                }  
+            }
+            else if (switchs=="year") {
+                reg=/^(19|20)\d{2}$/;
+                if(reg.test(value)==false)  
+                {  
+                    tip('请输入正确的年份',obj);  
+                    return false;  
+                }
+            }
+            else if (switchs=="introduction") {
+                if(value.indexOf("script")>0||value.indexOf("href")>0||value.indexOf("iframe")>0||value.indexOf("frameset")>0)  
+                {  
+                    tip('您的个人介绍中含有不安全代码~',obj);  
+                    return false;  
+                }
+            }
+            return true;
+        };
+
         $("#btn-changePsw").click(function () {
             $("#modal-changePsw").fadeIn(100);
         });
         $("#btn-setOp").click(function () {
             $("#modal-setOp").fadeIn(100);
         });
-        $(".modal-footer button").click(function () {
-            $(".tip").fadeOut(100);
-        });
         $("#btn-enter").click(function () {
+            var obj=$(this).parent().parent().find("section");
             var old_psw = $('#old_psw').val();
             var psw = $('#psw').val();
             var ens_psw = $('#ens_psw').val();
+            if(
+            check($('#psw').val(),"empty",obj)&&
+            check($('#psw').val(),"password",obj)
+            ){
             if (psw == ens_psw) {
                 $.post('/manage/modify_password',
                         {
@@ -156,16 +261,26 @@
                         function (jsondata) {
 
                             if (jsondata.code == 200) {
-                                alert('操作成功');
+                                var txt = "操作成功~";
+                                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                                window.location.reload();
                             } else {
-                                alert("输入有误噢~")
+                                var txt = "输入有误噢";
+                                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
                             }
                         },"json");
             } else {
-                alert("两次密码不一样噢，再试一次吧~");
+                var txt = "两次密码不同";
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+            }
             }
         });
          $("#btn-enter-info").click(function () {
+            var obj=$(this).parent().parent().find("section");
+            if(
+                                check($('#mod_name').val(),"empty",obj)&&
+                                 check($('#mod_name').val(),"chinaName",obj)
+                            ){
                 $.post('/manage/modify_manager',
                         {
                             managerId:"${sessionScope.managerSession.managerId}",
@@ -173,13 +288,16 @@
                             photoUrl: $('.photo_img').attr("src")||"/public/img/logo.jpg"
                         },
                         function (jsondata) {
-
                             if (jsondata.code == 200) {
-                                alert('操作成功');
+                                var txt = "操作成功~";
+                                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                                window.location.reload();
                             } else {
-                                alert("输入有误噢~")
+                                var txt = "输入有误噢";
+                                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
                             }
                         },"json");
+            }
         });
          $('.set_photoUrl').unbind().change(function(event) {  
                 var formData = new FormData( document.getElementById("file-upload") );
@@ -196,7 +314,8 @@
                         $('.photo_img').attr("src",result.filePath);
                     },
                     error : function(result) {
-                        alert("fail");
+                        var txt = "上传失败=_=";
+                        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
                     }
                 });                  
             });

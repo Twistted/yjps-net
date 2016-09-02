@@ -9,6 +9,7 @@
 
     <link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/manage_system/public/css/adminSys.css">
+    <link rel="stylesheet" href="/public/css/xcConfirm.css" />
     <style>
         .btn-group {
             margin-left: 20px;
@@ -91,7 +92,7 @@
     <div class="text-center" id="page"></div>
 </div>
 <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-
+<script src="/public/js/xcConfirm.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="/public/js/laypage.js"></script>
 <script>
@@ -177,7 +178,8 @@
             }
             else
             {
-                alert("页码超出范围");
+                var txt = "页码超出范围";
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
             }
             $('#jump_input').val('');
         });
@@ -216,12 +218,14 @@
             $.post(url, obj, function (jsondata) {
                 var data = jsondata;
                 if (data.code == 200) {
-                    alert('操作成功');
+                    var txt = "操作成功~";
+                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
                     $('#add').modal('hide');
                     $('#set').modal('hide');
                     fetchConfigData(cur_page);
                 } else {
-                    alert("输入有误噢~");
+                    var txt = "输入有误噢~";
+                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
                 }
             },"json");
         }

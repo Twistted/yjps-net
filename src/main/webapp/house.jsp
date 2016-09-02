@@ -13,6 +13,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
 	 <script src="/public/js/jquery-2.1.4.min.js"></script>
+	  <link rel="stylesheet" href="/public/css/xcConfirm.css" />
+	<script src="/public/js/xcConfirm.js"></script>
 </head>
 <body width= screen.width>
 	<jsp:include page="/header.jsp"></jsp:include>
@@ -101,13 +103,11 @@
 					</dl>
 					<dl>
 						<dt>楼层：</dt>
-						<dd>高楼层(共11层)</dd>
+						<dd>${house.floor}层</dd>
 					</dl>
 					<dl class="clear">
-						<dt>小区：</dt>
-						<dd>西郡香林五大花园</dd>
-						<p>　</p>
-						<span>${house.year}年建</span>
+						<dt>年份：</dt>
+						<dd>${house.year}年建</dd>
 					</dl>
 				</div>
 				<div class="countact-panel">
@@ -128,7 +128,7 @@
 							<a href="" alt="在线咨询"><img src="/public/img/query.png"></a>
 						</p>
 						<p class="p-02">
-							<span>店经理</span>
+							<span>经纪人</span>
 						</p>
 						<p class="p-03">
 							<span class="bold">年龄:</span>
@@ -136,7 +136,7 @@
 						</p>
 						<p class="p-04">
 							<span class="bold">性别:</span>
-							<span>${agent.sex}</span>
+							<span><c:if test="${agent.sex==1}">男</c:if><c:if test="${agent.sex==2}">女</c:if><c:if test="${agent.sex!=1&&agent.sex!=2}">嬲</c:if></span>
 						</p>
 					</div>
 				</div>
@@ -242,7 +242,7 @@
 											</p>
 											<p class="p-05">
 												<span class="bold">性别:</span>
-												<span>${agent.sex}</span>
+												<span><c:if test="${agent.sex==1}">男</c:if><c:if test="${agent.sex==2}">女</c:if><c:if test="${agent.sex!=1&&agent.sex!=2}">嬲</c:if></span>
 											</p>
 										</div>
 									</div>
@@ -363,7 +363,8 @@
 
 			  $(".btn-collect").click(function(){
 			  	if ("${sessionScope.userSession==null}"=="true"){
-			  		alert("请先登录");
+			  		var txt = "请先登录";
+            		window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
 			  	}
 			  	else{
 				  $.post('/house/interest', {
