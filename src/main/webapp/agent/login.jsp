@@ -21,11 +21,11 @@
         $(function () {
             if ("${sessionScope.agentLoginFail}" == "true") {
             	var txt = "登录失败";
-            	window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.error);
+            	window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
             }
             else if ("${sessionScope.agentLoginFail}"=="false") {
             	var txt = "你被禁用";
-            	window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.error);
+            	window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
             }
         });
     </script>
