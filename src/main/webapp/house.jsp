@@ -179,7 +179,7 @@
 				<div class="unic-label">
 					<p class="bold">
 						<span>房源编号：</span>
-						<span>CDWH92292663</span>
+						<span>${house.houseNumber}</span>
 					</p>
 					<p class="unic-about">
 						<span>
