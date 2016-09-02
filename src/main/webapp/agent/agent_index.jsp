@@ -138,14 +138,14 @@
 							<li>
 									<span class="Fyh2"><span class="star" style="visibility:hidden;">*</span>朝向</span>
 									<select name="orientation" id="orientation">
-										<option value="1">东</option>
-										<option value="2">南</option>
-										<option value="3">西</option>
-										<option value="4">北</option>
-										<option value="5">东北</option>
-										<option value="6">东南</option>
-										<option value="7">西北</option>
-										<option value="8">西南</option>
+										<option value="东">东</option>
+										<option value="南">南</option>
+										<option value="西">西</option>
+										<option value="北">北</option>
+										<option value="东北">东北</option>
+										<option value="东南">东南</option>
+										<option value="西北">西北</option>
+										<option value="西南">西南</option>
 									</select>
 							</li>
 							<li style="display:inline-block;">
