@@ -1,6 +1,8 @@
 package com.test.web.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -144,6 +146,11 @@ public class UserController {
 		userEntity.setState(1);
 		userEntity.setPhotoUrl("/public/img/logo.jpg");
 		userEntity.setSex(1);
+		Date date = new Date();
+		String dateString = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(date);
+		userEntity.setTimestamp(dateString);
+		System.out.println(dateString);
+		
 		boolean ok = userService.register(userEntity);
 		System.out.println(ok);
 		if (ok) {

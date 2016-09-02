@@ -9,7 +9,7 @@
 		<script src="../public/js/jquery-2.1.4.min.js"></script>
 		
 		<title>【${agent.name}_成都房产经纪人】${agent.name}电话${agent.phone}-易居网</title>
-		
+		<link rel="shortcut icon" type="image/x-icon" href="http://lianjia.com/favicon.ico" />
 		<link rel="stylesheet" href="../public/css/detail.css">
 		<link rel="stylesheet" href="../public/css/list.css">
 		<link rel="stylesheet" href="../public/css/common.css">
@@ -72,9 +72,15 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<span>性别:&nbsp;&nbsp;<c:if test="${agent.sex==1}">男</c:if><c:if test="${agent.sex==2}">女</c:if><c:if test="${agent.sex!=1&&agent.sex!=2}">嬲</c:if></span>		
+						
                     </p>
 					<p>
+						<span>性别:&nbsp;&nbsp;<c:if test="${agent.sex==1}">男</c:if><c:if test="${agent.sex==2}">女</c:if><c:if test="${agent.sex!=1&&agent.sex!=2}">嬲</c:if></span>	
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
         	            <span>电子邮箱:&nbsp;&nbsp;${agent.email}</span>
         	            	    
 								&nbsp;&nbsp;
@@ -86,7 +92,7 @@
 				<div class="tab">
 					<ul class="tab-lst">
 
-						<li  data-id="1" <!--id="p1" onclick="document.getElementById('q1').setAttribute('style', 'display:block');document.getElementById('q3').setAttribute('style', 'display:block');document.getElementById('q4').setAttribute('style', 'display:none');"-->
+						<li>  data-id="1" <!--id="p1" onclick="document.getElementById('q1').setAttribute('style', 'display:block');document.getElementById('q3').setAttribute('style', 'display:block');document.getElementById('q4').setAttribute('style', 'display:none');"-->
 							<a>
 								<span>&nbsp;&nbsp;概况&nbsp;&nbsp;</span>
 							</a>
@@ -110,7 +116,7 @@
 					
 					<!--成交房源模块 -->
 					<div class="house" id="q3">
-						<h2>${agent.name}的成交房源</h2>
+						<h2>${agent.name}的在售房源</h2>
 						<ul id="baseHouse_list" class="deal kuan">
 						<c:forEach var="house" items="${houseList}" >
 							<li class="house_l bs_house">
@@ -128,10 +134,10 @@
 										</div>
 										<div class="col-1">
 											<div class="main-plate">
-												<p>朝向：${house.orientation} / ${house.year}年建楼</p>
+												<p>朝向：${house.orientation} / 年份：${house.year}年建楼</p>
 											</div>
 											<div class="achievement">
-												<p title="双眼井小学 &nbsp;距离1号线人民北路站1027米">
+												<p title="${house.title}">
 													<span class="view-label">
 														<span>独家&nbsp;</span>
 														<span>随时看房&nbsp;</span>

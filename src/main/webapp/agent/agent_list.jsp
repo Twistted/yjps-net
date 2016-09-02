@@ -5,6 +5,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>成都房地产经纪人_成都优秀经纪人推荐(成都易居网)</title>
+        <link rel="shortcut icon" type="image/x-icon" href="http://lianjia.com/favicon.ico" />
         <link rel="stylesheet" href="/public/css/list.css">
         <link rel="stylesheet" href="/public/css/common.css">s
         <link href="/public/css/reset.css" rel="stylesheet">
@@ -181,7 +182,7 @@
 			if (totalpage!=0&&cur_page!=totalpage) {
 				page_html+="<a href='/agent/show_agent?page="+next_page+"'>下一页</a>";
 			};
-			
+
 			$(".page-box").html(page_html);
 			
 		});

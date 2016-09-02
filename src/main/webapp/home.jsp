@@ -8,8 +8,11 @@
    <link rel="shortcut icon" type="image/x-icon" href="http://lianjia.com/favicon.ico" />
    <link href="/public/css/sh-house-css.css" rel="stylesheet">
    <link href="/public/css/reset.css" rel="stylesheet">
+   
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
    <script src="/public/js/jquery-2.1.4.min.js"></script>
+   <link rel="stylesheet" href="/public/css/xcConfirm.css" />
+	<script src="/public/js/xcConfirm.js"></script>
 </head>
 <body>
 	<!--导航-->
@@ -243,7 +246,7 @@
 			if (totalpage!=0&&cur_page!=totalpage) {
 				page_html+="<a href='/home/index?page="+next_page+"'>下一页</a>";
 			};
-			//page_html+="<a href='/home/index?page="+next_page+"'>下一页</a>";
+			page_html+='<input type="search" id="jump_input" style="width:40px;"><input type="submit" value="跳转"  id="jump_btn" class="btn" style="padding-top:0;padding-bottom:0;background-color:#fff;color:#555;border-color:#b0b4b9;" onclick="jump();">';
 			$(".page-box").html(page_html);
 			
 		});
@@ -262,6 +265,21 @@
 				$(".lj-lazy:eq(1)").attr("src","${houseList[1].houseViewUrl}");
 				$(".lj-lazy:eq(2)").attr("src","${houseList[2].houseViewUrl}");
 		});
+		var jump = function(){
+				var cpage = $('#jump_input').val();
+				if (cpage=="") {
+					var txt = "请输入页码";
+            	window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+				}
+				else if (cpage<=totalpage) {
+                window.location.href="/home/index?page="+cpage;
+	            }
+	            else
+	            {
+	            	var txt = "页码超出范围";
+            	window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+	            }
+		};
 	</script>
 </body>
 </html>

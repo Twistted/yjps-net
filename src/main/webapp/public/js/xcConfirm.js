@@ -17,7 +17,7 @@
 		var eventType = window.wxc.xcConfirm.eventEnum;
 		var popType = {
 			info: {
-				title: "信息",
+				title: "温馨提示",
 				icon: "0 0",//蓝色i
 				btn: btnType.ok
 			},

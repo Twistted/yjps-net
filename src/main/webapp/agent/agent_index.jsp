@@ -32,7 +32,8 @@
  
 </head>
 <body>
-	<header>
+	<jsp:include page="/sub_header.jsp"></jsp:include>
+	<!-- <header>
 		<div class="nav-wrap">
 			<div class="wrapper">
 				<div class="fl">
@@ -58,7 +59,7 @@
 				</div>
 			</div>
 		</div>
-	</header>
+	</header> -->
  <div class="tabbable">
 	<div class="user-main">
 		<!--左侧导航-->
@@ -118,13 +119,13 @@
 								<span class="Fyh2"><span class="star">*</span>小区名称</span>
 									<input name="villageName" class="textInput" type="text" id="villageName"  placeholder="只填写小区名，例万达华府" maxlength="20"></input>
 							</li>
-							<li>
+							<li style="width:1200px;">
 								<span class="Fyh2"><span class="star">*</span>小区户型</span>
 									<input class="textInput huxing" name="roomAmount" type="text" id="shi" maxlength="2"><span class="huxingspan">室</span></input>
 									<input class="textInput huxing" name="livingroomAmount" type="text" id="ting" maxlength="2"><span class="huxingspan">厅</span></input>
 									<input class="textInput huxing" name="toiletAmount" type="text" id="wei" maxlength="2"><span class="huxingspan">卫</span></input>
 									<input class="textInput huxing" name="balconyAmount" type="text" id="yang" maxlength="2"><span class="huxingspan">阳</span></input>
-									<input class="textInput huxing" name="area" type="text" id="mianji" placeholder="      建筑面积" maxlength="4" style="width:120px;"><span class="t1" style="margin-left:-10px;">共</span><span class="huxingspan1" style="margin-left:8px;">㎡</span></input>
+									<input class="textInput huxing" name="area" type="text" id="mianji" placeholder="      建筑面积" maxlength="4" style="width:120px;"><span class="t1" style="margin-left:-10px;">共</span><span class="huxingspan1" style="margin-left:13px; ">㎡</span></input>
 							</li>
 							<li>
 								<span class="Fyh2"><span class="star" style="visibility:hidden;">*</span>年份</span>
@@ -292,7 +293,7 @@
 					 		<h3>请选择图片文件：JPG/GIF</h3>
 					 		 <div class="uploadPic_wrap">
 								 <form id="upload_form">  
-						            选择图片 <input id="picUploadfileName" type="text" name="fileName" /><br/>        
+						            选择图片 <input id="picUploadfileName" type="text" name="fileName" style="opacity:0;" /><br/>        
 						            <input id="picUploadClientFile" type="file" name="clientFile" /><br/>  
 						            <!-- <input id="user_logoUpload_btn" type="submit" value="确定"/>  --> 
 						        </form>  
@@ -538,7 +539,7 @@
 	
 		<div class="clearfix"></div>
 	<!--footer-->
-	<footer>
+<!-- 	<footer>
 		<div class="wrapper">
 			<div class="f-title">
 				<div class="fl">
@@ -572,7 +573,8 @@
 				<div class="copyright">北京易居房地产经纪有限公司 | 网络经营许可证 京ICP备11024601号-12 | © Copyright©2010-2016 链家网Lianjia.com版权所有</div>
 			</div>
 		</div>
-	</footer>
+	</footer> -->
+	   <jsp:include page="/footer.jsp"></jsp:include>
 	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 	<script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
 	<script type="text/javascript">
@@ -651,7 +653,6 @@
 	//上传实景图 到后台
 	$().ready(function(){
 		$("#loginbtn").click(function(){
-			alert("action");
 			var formData = new FormData($("#loginform")[0]);
 
 			$.ajax({

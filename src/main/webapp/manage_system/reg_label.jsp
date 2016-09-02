@@ -9,6 +9,7 @@
 
     <link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/manage_system/public/css/adminSys.css">
+    <link rel="stylesheet" href="/public/css/xcConfirm.css" />
     <style>
         .btn-group {
             margin-left: 20px;
@@ -52,6 +53,41 @@
         <span class="glyphicon glyphicon-search"></span>
         <input type="submit" value="跳转"  id="jump_btn" >
     </form>
+
+    <!--删除-->
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delTitle">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="setPlatformTitle">删除标签</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form class="form-horizontal" id="file-upload-2">
+                        <div class="form-group" style="display:none">
+                            <label for="set_id" class="col-sm-3 control-label">ID</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="del_id" placeholder="ID">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label">确定要删除这个标签吗？</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="sure-delete">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!--添加 -->
     <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="addTitle">
         <div class="modal-dialog" role="document">
@@ -87,11 +123,12 @@
                 </div>
             </div>
         </div>
+        
     </div>
     <div class="text-center" id="page"></div>
 </div>
 <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-
+<script src="/public/js/xcConfirm.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="/public/js/laypage.js"></script>
 <script>
@@ -161,7 +198,7 @@
                     table_content = '<tr data-secret="' + tr_id + '">\
                                     <td class="tr_label">' +tr_label + '</td>',
                     table_row = '',
-                    table_operation = '<td><a class="tr_forbid" style="cursor:pointer" data-toggle="modal">删除</a></td>';
+                    table_operation = '<td><a class="tr_forbid" style="cursor:pointer" data-toggle="modal" data-target="#delete">删除</a></td>';
                 
                 table_row = table_content + table_operation + '</tr>';
                 $('#platform_config .table tbody').append(table_row);
@@ -177,7 +214,8 @@
             }
             else
             {
-                alert("页码超出范围");
+                var txt = "页码超出范围";
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
             }
             $('#jump_input').val('');
         });
@@ -199,12 +237,15 @@
 
 			$('.tr_forbid').unbind().click(function () {
         		var set_row = $(this).parent('td').parent('tr'),
-                ids = set_row.attr('data-secret');
+                id = set_row.attr('data-secret');
+                $('#del_id').val(id);
+            });
+            $('#sure-delete').unbind().click(function () {
                 var setPlatformVal={
-                	labelId:ids
+                    labelId:$('#del_id').val()
                 };
-                console.log(setPlatformVal);
                 postEvent('/manage/delete_label', setPlatformVal);
+                $('#delete').modal("hide");
             });
             
         }
@@ -216,12 +257,14 @@
             $.post(url, obj, function (jsondata) {
                 var data = jsondata;
                 if (data.code == 200) {
-                    alert('操作成功');
+                    var txt = "操作成功~";
+                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
                     $('#add').modal('hide');
                     $('#set').modal('hide');
                     fetchConfigData(cur_page);
                 } else {
-                    alert("输入有误噢~");
+                    var txt = "输入有误噢~";
+                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
                 }
             },"json");
         }
