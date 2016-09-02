@@ -297,29 +297,7 @@ img{
 	margin-right: 6px;
 	float:left;
 }
-/*分页样式*/
-.page-box{
-	background-color: #FFF;
-	width: 100%;
-	padding: 30px 25px 66px 25px;
-	text-align: center;
-}
-.page-box a{
-	height: 30px;
-	padding: 0 12px;
-	margin-left: 5px;
-	text-align: center;
-	line-height: 30px;
-	border:1px solid #b0b4b9;
-	overflow: hidden;
-	font-size: 12px;
-	font-weight: 700;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	color: #555;
-	display: inline-block;
-	zoom:1;
-	vertical-align: middle;
-}
+
 /*楼房推荐*/
 .house-commend{
 	height: 310px;
