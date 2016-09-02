@@ -9,31 +9,6 @@
         <link rel="stylesheet" href="/public/css/common.css">
         <link href="/public/css/reset.css" rel="stylesheet">
         <script src="/public/js/jquery-2.1.4.min.js"></script>
-        <style type="text/css">
-        /*分页样式*/
-.page-box{
-	background-color: #FFF;
-	width: 952px;
-	padding: 30px 0;
-	text-align: center;
-}
-.page-box a{
-	height: 30px;
-	padding: 0 12px;
-	margin-left: 5px;
-	text-align: center;
-	line-height: 30px;
-	border:1px solid #b0b4b9;
-	overflow: hidden;
-	font-size: 12px;
-	font-weight: 700;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	color: #555;
-	display: inline-block;
-	zoom:1;
-	vertical-align: middle;
-}
-        </style>
 	</head>
 	
 	<body>
@@ -203,7 +178,7 @@
 				page_html+="<span>...</span>";
 				page_html+="<a href='/agent/show_agent?page="+totalpage+"'>"+totalpage+"</a>";
 			}
-			if (cur_page!=totalpage) {
+			if (totalpage!=0&&cur_page!=totalpage) {
 				page_html+="<a href='/agent/show_agent?page="+next_page+"'>下一页</a>";
 			};
 			$(".page-box").html(page_html);

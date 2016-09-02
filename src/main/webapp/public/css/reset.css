@@ -204,3 +204,26 @@ footer .wrapper .bottom .copyright{
 	font-size: 1em;
 	font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","微软雅黑",'Segoe UI',Tahoma,"宋体b8b\4f53",SimSun,sans-serif;
 }
+/*分页样式*/
+.page-box{
+	background-color: #FFF;
+	width: 100%;
+	padding: 30px 0;
+	text-align: center;
+}
+.page-box a{
+	height: 30px;
+	padding: 0 12px;
+	margin-left: 5px;
+	text-align: center;
+	line-height: 30px;
+	border:1px solid #b0b4b9;
+	overflow: hidden;
+	font-size: 12px;
+	font-weight: 700;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	color: #555;
+	display: inline-block;
+	zoom:1;
+	vertical-align: middle;
+}

@@ -615,9 +615,10 @@
                     phone: $('#add_phone').val()||"",
                     introduction: $('#add_introduction').val()||"",
                     company: $('#add_company').val().replace(/\s*on[a-z]+\s*=\s*("[^"]+"|'[^']+'|[^\s]+)\s*/ig,"")||"四川华迪公司",
-                    yaer: $('#add_year').val()||"",
+                    year: $('#add_year').val()||"",
                     photoUrl:$('#add .photo_img').attr("src")||"/public/img/logo.jpg"
                 };
+                console.log(addVal);
                 postEvent('/manage/add_agent', addVal);
             }
         });
