@@ -49,7 +49,7 @@
 							
 							</div>
 						<div class="main-plate">
-								<span class="mp-title">性别:${agent.sex}</span>
+								<span class="mp-title">性别:<c:if test="${agent.sex==1}">男</c:if><c:if test="${agent.sex==2}">女</c:if><c:if test="${agent.sex!=1&&agent.sex!=2}">嬲</c:if></span>
 							
 							</div>
 							<div class="main-plate">
@@ -181,6 +181,7 @@
 			if (totalpage!=0&&cur_page!=totalpage) {
 				page_html+="<a href='/agent/show_agent?page="+next_page+"'>下一页</a>";
 			};
+			
 			$(".page-box").html(page_html);
 			
 		});

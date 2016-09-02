@@ -120,7 +120,7 @@
             }
             if(value.indexOf("script")>0||value.indexOf("href")>0||value.indexOf("iframe")>0||value.indexOf("frameset")>0)  
                 {  
-                    tip('您的个人介绍中含有不安全代码~',obj);  
+                    tip('您的标签内容中含有不安全代码，如script等用语，请修改后再试~',obj);  
                     return false;  
             }
             return true;
