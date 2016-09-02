@@ -65,6 +65,11 @@ public class UserController {
 			httpSession.setAttribute("userLoginFail", true);
 			model.setViewName("user/login");
 		} 
+		else if (!user.getPassword().equals(userEntity.getPassword())) {
+			httpSession.setAttribute("userSession", null);
+			httpSession.setAttribute("userLoginFail", true);
+			model.setViewName("user/login");
+		} 
 		else if(user.getState() != 1){
 			httpSession.setAttribute("userLoginFail", false);
 			httpSession.setAttribute("userSession", null);
