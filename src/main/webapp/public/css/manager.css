@@ -313,6 +313,7 @@ img{
 	height: 38px;	
 	border:1px solid #c8c8c8;
 	padding-top: 0 10px;
+	text-align: left;
 	 
 }
 .user-main .main-right .change-pwd span{
@@ -556,6 +557,7 @@ a.lj-btn{
 	display: inline-block;
 	width:200px;
 	margin-left:30px;
+	text-align: left;
 
 }
 #user_personalInfo .personalInfo_wrap .checkbox{
@@ -645,6 +647,13 @@ a.lj-btn{
 	color:#4fac6a;
 	text-decoration: underline;
 	cursor:pointer;
+}
+tr td a{
+	color:#4fac6a;
+	text-decoration: none;
+}
+tr td a:hover{
+	text-decoration: underline;
 }
 
 

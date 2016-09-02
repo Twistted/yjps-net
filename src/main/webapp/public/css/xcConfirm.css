@@ -12,7 +12,7 @@
 .xcConfirm .popBox .txtBox p input{width: 364px; height: 30px; border: solid 1px #eef0f1; font-size: 18px; margin-top: 6px;}
 .xcConfirm .popBox .btnArea{border-top: solid 1px #eef0f1;}
 .xcConfirm .popBox .btnGroup{float: right;}
-.xcConfirm .popBox .btnGroup .sgBtn{margin-top: 14px; margin-right: 10px;}
+.xcConfirm .popBox .btnGroup .sgBtn{margin-top: -43px; margin-right: 10px;}
 .xcConfirm .popBox .sgBtn{display: block; cursor: pointer; float: left; width: 95px; height: 35px; line-height: 35px; text-align: center; color: #FFFFFF; border-radius: 5px;}
 .xcConfirm .popBox .sgBtn.ok{background-color: #FFFFFF; color: #39AC6A;float: right;}
 .xcConfirm .popBox .sgBtn.cancel{background-color: #546a79; color: #FFFFFF;}
