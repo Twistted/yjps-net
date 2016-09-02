@@ -211,6 +211,7 @@ public class ManageController {
 		if(agentService.getAgentByAccount(agentEntity.getAccount()) != null){
 			return new Result(500);
 		}
+		agentEntity.setState(1);
 		if(agentService.addAgent(agentEntity))
 			result.setCode(200);
 		else result.setCode(500);	
