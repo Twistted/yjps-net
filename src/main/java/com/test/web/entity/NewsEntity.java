@@ -8,7 +8,7 @@ public class NewsEntity {
 	private String title;
 	private String content;
 	private String author;
-	private Date timestamp;
+	private String timestamp;
 	private int state;
 	
 	public int getNewsId() {
@@ -35,11 +35,11 @@ public class NewsEntity {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public Date getTimestamp() {
+	public String getTimestamp() {
 		return timestamp;
 	}
-	public void setTimestamp(Date timestamp) {
-		this.timestamp = timestamp;
+	public void setTimestamp(String dateString) {
+		this.timestamp = dateString;
 	}
 	public int getState() {
 		return state;

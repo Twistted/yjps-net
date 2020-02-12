@@ -16,7 +16,7 @@
 	</select>
 	
 	<select id="queryPage" parameterType="int" resultType="NewsEntity">
-		select * from news order by news_id limit #{offset} #{size}
+		select * from news order by news_id limit #{offset}, #{size}
 	</select>
 	
 	<update id="update" parameterType="NewsEntity">

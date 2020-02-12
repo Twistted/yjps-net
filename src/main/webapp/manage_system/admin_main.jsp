@@ -48,11 +48,21 @@
                 <li><a href="/manage_system/reg_manage.jsp" target="adminFrame">管理员管理</a></li>
                 </c:if>
             </ul>
-            <li class="mainnav"><a href="javascript:void(0)" target="adminFrame">平台管理<span class="caret"></span></a>
+            <!--<li class="mainnav"><a href="javascript:void(0)" target="adminFrame">平台管理<span class="caret"></span></a>
             </li>
             <ul class="subnav" style="display:block;">
                 <li><a href="/manage_system/reg_label.jsp" target="adminFrame">标签管理</a></li>
-            </ul>
+            </ul>-->
+            <!--<li class="mainnav"><a href="javascript:void(0)" target="adminFrame">后台资讯管理<span class="caret"></span></a>
+            </li>
+            <ul class="subnav" style="display:block;">
+                <li><a href="/manage_system/reg_news.jsp" target="adminFrame">标题新闻管理</a></li>
+                <li><a href="/manage_system/reg_houseinfo.jsp" target="adminFrame">房产资讯管理</a></li>
+                <li><a href="/manage_system/reg_focus.jsp" target="adminFrame">今日关注管理</a></li>
+                <li><a href="/manage_system/reg_expert.jsp" target="adminFrame">专家访谈管理</a></li>
+                <li><a href="/manage_system/reg_guide.jsp" target="adminFrame">置业指南管理</a></li>
+
+            </ul>-->
 
 
         </nav>

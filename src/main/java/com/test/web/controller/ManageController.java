@@ -1,5 +1,7 @@
 package com.test.web.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -15,14 +17,29 @@ import com.test.web.dto.Result;
 import com.test.web.entity.AgentEntity;
 import com.test.web.entity.LabelEntity;
 import com.test.web.entity.ManagerEntity;
+import com.test.web.entity.NewsEntity;
+import com.test.web.entity.ExpertEntity;
+import com.test.web.entity.GuideEntity;
+import com.test.web.entity.FocusEntity;
+import com.test.web.entity.HouseinfoEntity;
 import com.test.web.entity.UserEntity;
 import com.test.web.service.IAgentService;
 import com.test.web.service.ILabelService;
 import com.test.web.service.IManagerService;
+import com.test.web.service.INewsService;
+import com.test.web.service.IExpertService;
+import com.test.web.service.IFocusService;
+import com.test.web.service.IGuideService;
+import com.test.web.service.IHouseinfoService;
 import com.test.web.service.IUserService;
 import com.test.web.service.impl.AgentService;
+import com.test.web.service.impl.ExpertService;
+import com.test.web.service.impl.FocusService;
+import com.test.web.service.impl.GuideService;
+import com.test.web.service.impl.HouseinfoService;
 import com.test.web.service.impl.LabelService;
 import com.test.web.service.impl.ManagerService;
+import com.test.web.service.impl.NewsService;
 import com.test.web.service.impl.UserService;
 
 @Controller
@@ -352,6 +369,7 @@ public class ManageController {
 		return result;
 	}
 	
+	
 	@RequestMapping(value="add_label",method=RequestMethod.POST)
 	public @ResponseBody Result addLabel(LabelEntity labelEntity,HttpSession httpSession){
 		ILabelService labelService = new LabelService();
@@ -369,5 +387,261 @@ public class ManageController {
 			return new Result(200);
 		else return new Result(500);
 	}
+	
+	
+	@RequestMapping(value="list_news",method=RequestMethod.POST)
+	public @ResponseBody Result listNews(@RequestParam(value="page", required=false) String page, HttpSession httpSession) {
+		Result result = new Result();
+		int pageOffset,pageSize;
+		if (page == null) {
+			pageOffset = 1;
+		} else {
+			pageOffset = Integer.valueOf(page);
+		}
+		
+		INewsService newsService = new NewsService();
+		List<NewsEntity> newsList = newsService.listNews(pageOffset, 3);
+		List<NewsEntity> allNewsList = newsService.findAll();
+		pageSize = (int) Math.ceil(allNewsList.size()*1.0/3);
+		
+		if (newsList == null || newsList.isEmpty())
+			result.setCode(500);
+		else result.setCode(200);
+		result.setPageSize(pageSize);
+		result.setNewsList(newsList);
+		return result;
 
+	}
+	@RequestMapping(value="add_news",method=RequestMethod.POST)
+	public @ResponseBody Result addNews(NewsEntity newsEntity,HttpSession httpSession){
+		INewsService newsService = new NewsService();
+		Date date = new Date();
+		String dateString = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(date);
+		newsEntity.setTimestamp(dateString);
+		if(newsService.addNews(newsEntity))
+			return new Result(200);
+		else return new Result(500);
+	}
+	
+	@RequestMapping(value="enable_news",method=RequestMethod.POST)
+	public @ResponseBody Result enableNews(NewsEntity newsEntity,HttpSession httpSession){
+		Result result = new Result();
+		INewsService newsService = new NewsService();
+		if(newsService.enableNews(newsEntity.getNewsId())){
+			result.setCode(200);
+			newsEntity.setState(1);
+		}
+		else result.setCode(500);
+		result.setNewsEntity(newsEntity);
+		return result;
+	}
+	
+	@RequestMapping(value="disable_news",method=RequestMethod.POST)
+	public @ResponseBody Result disableNews(int newsId,HttpSession httpSession){
+		Result result = new Result();
+		INewsService newsService = new NewsService();
+		if(newsService.disableNews(newsId))
+			result.setCode(200);
+		else result.setCode(500);
+		return result;
+	}
+	
+	@RequestMapping(value="modify_news",method=RequestMethod.POST)
+	public @ResponseBody Result modifyNews(NewsEntity newsEntity, HttpSession httpSession) {
+		Result result = new Result();
+		INewsService newsService = new NewsService();
+		boolean ok = newsService.modifyNews(newsEntity);
+		if (ok)
+			result.setCode(200);
+	    else result.setCode(500);
+		return result;
+	}
+	
+	@RequestMapping(value="list_expert",method=RequestMethod.POST)
+	public @ResponseBody Result listExpert(@RequestParam(value="page", required=false) String page, HttpSession httpSession) {
+		Result result = new Result();
+		int pageOffset,pageSize;
+		if (page == null) {
+			pageOffset = 1;
+		} else {
+			pageOffset = Integer.valueOf(page);
+		}
+		
+		IExpertService expertService = new ExpertService();
+		List<ExpertEntity> expertList = expertService.listExpert(pageOffset, 3);
+		List<ExpertEntity> allExpertList = expertService.findAll();
+		pageSize = (int) Math.ceil(allExpertList.size()*1.0/3);
+		
+		if (expertList == null || expertList.isEmpty())
+			result.setCode(500);
+		else result.setCode(200);
+		result.setPageSize(pageSize);
+		result.setExpertList(expertList);
+		return result;
+
+	}
+	@RequestMapping(value="add_expert",method=RequestMethod.POST)
+	public @ResponseBody Result addExpert(ExpertEntity expertEntity,HttpSession httpSession){
+		IExpertService expertService = new ExpertService();
+		if(expertService.addExpert(expertEntity))
+			return new Result(200);
+		else return new Result(500);
+	}
+	
+	@RequestMapping(value="enable_expert",method=RequestMethod.POST)
+	public @ResponseBody Result enableExpert(ExpertEntity expertEntity,HttpSession httpSession){
+		Result result = new Result();
+		IExpertService expertService = new ExpertService();
+		if(expertService.enableExpert(expertEntity.getExpertId())){
+			result.setCode(200);
+			expertEntity.setState(1);
+		}
+		else result.setCode(500);
+		result.setExpertEntity(expertEntity);
+		return result;
+	}
+	
+	@RequestMapping(value="disable_expert",method=RequestMethod.POST)
+	public @ResponseBody Result disableExpert(int expertId,HttpSession httpSession){
+		Result result = new Result();
+		IExpertService expertService = new ExpertService();
+		if(expertService.disableExpert(expertId))
+			result.setCode(200);
+		else result.setCode(500);
+		return result;
+	}
+	
+	@RequestMapping(value="modify_expert",method=RequestMethod.POST)
+	public @ResponseBody Result modifyExpert(ExpertEntity expertEntity, HttpSession httpSession) {
+		Result result = new Result();
+		IExpertService expertService = new ExpertService();
+		boolean ok = expertService.modifyExpert(expertEntity);
+		if (ok)
+			result.setCode(200);
+	    else result.setCode(500);
+		return result;
+	}
+	
+	@RequestMapping(value="list_focus",method=RequestMethod.POST)
+	public @ResponseBody Result listFocus(@RequestParam(value="page", required=false) String page, HttpSession httpSession) {
+		Result result = new Result();
+		int pageOffset,pageSize;
+		if (page == null) {
+			pageOffset = 1;
+		} else {
+			pageOffset = Integer.valueOf(page);
+		}
+		
+		IFocusService focusService = new FocusService();
+		List<FocusEntity> focusList = focusService.listFocus(pageOffset, 3);
+		List<FocusEntity> allFocusList = focusService.findAll();
+		pageSize = (int) Math.ceil(allFocusList.size()*1.0/3);
+		
+		if (focusList == null || focusList.isEmpty())
+			result.setCode(500);
+		else result.setCode(200);
+		result.setPageSize(pageSize);
+		result.setFocusList(focusList);
+		return result;
+
+	}
+	@RequestMapping(value="add_focus",method=RequestMethod.POST)
+	public @ResponseBody Result addfocus(FocusEntity focusEntity,HttpSession httpSession){
+		IFocusService focusService = new FocusService();
+		if(focusService.addFocus(focusEntity))
+			return new Result(200);
+		else return new Result(500);
+	}
+	
+	@RequestMapping(value="delete_focus",method=RequestMethod.POST)
+	public @ResponseBody Result deleteFocus(Integer focusId,HttpSession httpSession){
+		if(focusId == null || focusId <= 0)
+			return new Result(500);
+		IFocusService focusService = new FocusService();
+		if(focusService.disableFocus(focusId))
+			return new Result(200);
+		else return new Result(500);
+	}
+	
+	@RequestMapping(value="list_guide",method=RequestMethod.POST)
+	public @ResponseBody Result listGuide(@RequestParam(value="page", required=false) String page, HttpSession httpSession) {
+		Result result = new Result();
+		int pageOffset,pageSize;
+		if (page == null) {
+			pageOffset = 1;
+		} else {
+			pageOffset = Integer.valueOf(page);
+		}
+		
+		IGuideService guideService = new GuideService();
+		List<GuideEntity> guideList = guideService.listGuide(pageOffset, 3);
+		List<GuideEntity> allGuideList = guideService.findAll();
+		pageSize = (int) Math.ceil(allGuideList.size()*1.0/3);
+		
+		if (guideList == null || guideList.isEmpty())
+			result.setCode(500);
+		else result.setCode(200);
+		result.setPageSize(pageSize);
+		result.setGuideList(guideList);
+		return result;
+
+	}
+	@RequestMapping(value="add_guide",method=RequestMethod.POST)
+	public @ResponseBody Result addGuide(GuideEntity guideEntity,HttpSession httpSession){
+		IGuideService guideService = new GuideService();
+		if(guideService.addGuide(guideEntity))
+			return new Result(200);
+		else return new Result(500);
+	}
+	
+	@RequestMapping(value="delete_guide",method=RequestMethod.POST)
+	public @ResponseBody Result deleteGuide(Integer guideId,HttpSession httpSession){
+		if(guideId == null || guideId <= 0)
+			return new Result(500);
+		IGuideService guideService = new GuideService();
+		if(guideService.disableGuide(guideId))
+			return new Result(200);
+		else return new Result(500);
+	}
+	
+	@RequestMapping(value="list_houseinfo",method=RequestMethod.POST)
+	public @ResponseBody Result listHouseinfo(@RequestParam(value="page", required=false) String page, HttpSession httpSession) {
+		Result result = new Result();
+		int pageOffset,pageSize;
+		if (page == null) {
+			pageOffset = 1;
+		} else {
+			pageOffset = Integer.valueOf(page);
+		}
+		
+		IHouseinfoService houseinfoService = new HouseinfoService();
+		List<HouseinfoEntity> houseinfoList = houseinfoService.listHouseinfo(pageOffset, 3);
+		List<HouseinfoEntity> allHouseinfoList = houseinfoService.findAll();
+		pageSize = (int) Math.ceil(allHouseinfoList.size()*1.0/3);
+		
+		if (houseinfoList == null || houseinfoList.isEmpty())
+			result.setCode(500);
+		else result.setCode(200);
+		result.setPageSize(pageSize);
+		result.setHouseinfoList(houseinfoList);
+		return result;
+
+	}
+	@RequestMapping(value="add_houseinfo",method=RequestMethod.POST)
+	public @ResponseBody Result addHouseinfo(HouseinfoEntity houseinfoEntity,HttpSession httpSession){
+		IHouseinfoService houseinfoService = new HouseinfoService();
+		if(houseinfoService.addHouseinfo(houseinfoEntity))
+			return new Result(200);
+		else return new Result(500);
+	}
+	
+	@RequestMapping(value="delete_houseinfo",method=RequestMethod.POST)
+	public @ResponseBody Result deleteHouseinfo(Integer houseinfoId,HttpSession httpSession){
+		if(houseinfoId == null || houseinfoId <= 0)
+			return new Result(500);
+		IHouseinfoService houseinfoService = new HouseinfoService();
+		if(houseinfoService.disableHouseinfo(houseinfoId))
+			return new Result(200);
+		else return new Result(500);
+	}
 }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.web.mapper.ExpertMapper">
+    
+    <insert id="insert" parameterType="ExpertEntity">
+        insert into expert (news_id, title, content,author,timestamp,state)
+		values(#{newsId},#{title},#{content},#{author},#{timestamp},#{state})
+    </insert>
+    
+	<select id="findById" parameterType="int" resultType="ExpertEntity">
+		select * from expert where news_id=#{newsId}
+	</select>
+	
+	<select id="findAll" resultType="ExpertEntity">
+		select * from expert order by news_id
+	</select>
+	
+	<select id="queryPage" parameterType="int" resultType="ExpertEntity">
+		select * from expert order by news_id limit #{offset}, #{size}
+	</select>
+	
+	<update id="update" parameterType="ExpertEntity">
+	    update expert
+	    <set>
+	        <if test="title != null">
+	            title = #{title},
+	        </if>
+	        <if test="content != null">
+	            content = #{content},
+	        </if>
+	        <if test="author != null">
+	            author = #{author},
+	        </if>
+	        <if test="timestamp != null">
+	            timestamp = #{timestamp},
+	        </if>
+	        <if test="state != null">
+	            state = #{state},
+	        </if>
+	    </set>
+	    where news_id = #{newsId};
+	</update>
+	
+	<delete id="delete" parameterType="ExpertEntity">
+	    delete from expert where news_id = #{newsId}
+	</delete>
+	
+</mapper>

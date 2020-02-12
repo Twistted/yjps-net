@@ -138,7 +138,7 @@
 				<c:forEach var="ad" items="${advertisementList}" >
 					<li>
 						<a class="pic" href="/house/house?id=${ad.houseId}">
-							<img src="${ad.advertisementUrl}">
+							<img src="${ad.advertisementUrl}"  style="height:173x;width:225px;overflow:hidden;">
 							<div class="bg"></div>
 							<div class="description">
 								<span class="title" title="${ad.title}">${ad.title}</span>

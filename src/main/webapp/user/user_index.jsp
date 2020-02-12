@@ -19,7 +19,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="#" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
-<include 
+
 <body>
  
 <jsp:include page="/sub_header.jsp"></jsp:include>

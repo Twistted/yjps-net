@@ -4,10 +4,15 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.test.web.entity.AgentEntity;
+import com.test.web.entity.ExpertEntity;
+import com.test.web.entity.FocusEntity;
+import com.test.web.entity.GuideEntity;
 import com.test.web.entity.HouseEntity;
+import com.test.web.entity.HouseinfoEntity;
 import com.test.web.entity.InterestEntity;
 import com.test.web.entity.LabelEntity;
 import com.test.web.entity.ManagerEntity;
+import com.test.web.entity.NewsEntity;
 import com.test.web.entity.UserEntity;
 import com.test.web.service.impl.HouseService;
 
@@ -21,6 +26,16 @@ public class Result implements Serializable {
 	private List<ManagerEntity> managerList;
 	private List<AgentEntity> agentList;
 	private List<UserEntity> userList;
+	private List<NewsEntity> newsList;
+	private List<ExpertEntity> expertList;
+	private List<GuideEntity> guideList;
+	private List<HouseinfoEntity> houseinfoList;
+	private List<FocusEntity> focusList;
+	private NewsEntity newsEntity;
+	private ExpertEntity expertEntity;
+	private GuideEntity guideEntity;
+	private HouseinfoEntity houseinfoEntity;
+	private FocusEntity focusEntity;
 	private AgentEntity agentEntity;
 	private HouseEntity houseEntity;
 	private int pageSize;
@@ -33,7 +48,7 @@ public class Result implements Serializable {
 	public List<LabelEntity> getLabelList() {
 		return labelList;
 	}
-
+	
 	public void setLabelList(List<LabelEntity> labelList) {
 		this.labelList = labelList;
 	}
@@ -134,6 +149,8 @@ public class Result implements Serializable {
 	public void setAgentList(List<AgentEntity> agentList) {
 		this.agentList = agentList;
 	}
+	
+	
 
 	public List<UserEntity> getUserList() {
 		return userList;
@@ -167,5 +184,63 @@ public class Result implements Serializable {
 		this.houseListSize = houseListSize;
 	}
 	
+	public List<NewsEntity> getNewsList() {
+		return newsList;
+	}
 	
+	public void setNewsList(List<NewsEntity> newsList) {
+		this.newsList = newsList;
+	}
+	
+	public void setNewsEntity(NewsEntity newsEntity) {
+		this.newsEntity = newsEntity;
+	}
+
+	public List<ExpertEntity> getExpertList() {
+		return expertList;
+	}
+	
+	public void setExpertList(List<ExpertEntity> expertList) {
+		this.expertList = expertList;
+	}
+	
+	public void setExpertEntity(ExpertEntity expertEntity) {
+		this.expertEntity = expertEntity;
+	}
+	
+	public List<HouseinfoEntity> getHouseinfoList() {
+		return houseinfoList;
+	}
+	
+	public void setHouseinfoList(List<HouseinfoEntity> houseinfoList) {
+		this.houseinfoList = houseinfoList;
+	}
+	
+	public void setHouseinfoEntity(HouseinfoEntity houseinfoEntity) {
+		this.houseinfoEntity = houseinfoEntity;
+	}
+	
+	public List<GuideEntity> getGuideList() {
+		return guideList;
+	}
+	
+	public void setGuideList(List<GuideEntity> guideList) {
+		this.guideList = guideList;
+	}
+	
+	public void setGuideEntity(GuideEntity guideEntity) {
+		this.guideEntity = guideEntity;
+	}
+	
+	public List<FocusEntity> getFocusList() {
+		return focusList;
+	}
+	
+	public void setFocusList(List<FocusEntity> focusList) {
+		this.focusList = focusList;
+	}
+	
+	public void setFocusEntity(FocusEntity focusEntity) {
+		this.focusEntity = focusEntity;
+	}
 }

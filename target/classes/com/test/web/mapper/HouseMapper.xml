@@ -4,27 +4,27 @@
 
 	<insert id="insert" parameterType="HouseEntity">
 		insert into house ( title, prize, down_payment, monthly_payment, orientation, floor, year, house_describe,
-		                    area, house_type_url, room_amount, livingroom_amount, toilet_amount, balcony_amount,
-		                    state, agent_id, house_number, privince, city, town, zone, village_name, address)
+		                    area, house_type_url, house_view_url, room_amount, livingroom_amount, toilet_amount, balcony_amount,
+		                    state, agent_id, house_number, province, city, town, zone, village_name, address)
 		values(#{title},#{prize},#{downPayment},#{monthlyPayment},#{orientation},#{floor},#{year},#{houseDescribe},
-		       #{area},#{houseTypeUrl},#{roomAmount},#{livingroomAmount},#{toiletAmount},#{balconyAmount},#{state},
-		       #{agentId},#{houseNumber},#{privince},#{city},#{town},#{zone},#{villageName},#{address})
+		       #{area},#{houseTypeUrl},#{houseViewUrl},#{roomAmount},#{livingroomAmount},#{toiletAmount},#{balconyAmount},#{state},
+		       #{agentId},#{houseNumber},#{province},#{city},#{town},#{zone},#{villageName},#{address})
 	</insert>
 	
-	<select id="search" parameterType="string" resultType="HouseEntity">
-		select * from userinfo
+	<select id="search"  parameterType="string" resultType="HouseEntity">
+		select * from house 
 		<where>
-			<if test="title != null and titel != ''">
-			   	user_name like '%'#{userName}'%'
+			<if test="title != null and title != ''">
+			   	title like '%' #{title} '%'
 			</if>
 			<if test="prize != null and prize != ''">
-				or prize like '%'#{prize}'%'
+				or prize like '%' #{prize} '%'
 			</if>
 			<if test="roomAmount != null and roomAmount != ''">
-			   	or room_amount like '%'#{roomAmount} '%'
+			   	or room_amount like '%' #{roomAmount} '%'
 			</if>
 			<if test="area != null and area != ''">
-				or email like '%' #{email} '%'
+				or area like '%' #{area} '%'
 			</if>
 		</where>
 	</select>
@@ -37,8 +37,16 @@
 		select * from house order by house_id
 	</select>
 	
+	<select id="findByAgentId" parameterType="int" resultType="HouseEntity">
+	    select * from house where agent_id=#{agentId}
+	</select>
+	
 	<select id="queryPage" parameterType="int" resultType="HouseEntity">
-		select * from house order by house_id limit #{offset}, #{size}
+		select * from house order by house_id desc limit #{offset}, #{size}
+	</select>
+	
+	<select id="queryPageByAgentId" parameterType="int" resultType="HouseEntity">
+	    select * from house where agent_id = #{agentId} order by house_id desc limit #{offset}, #{size}
 	</select>
 	
 	<select id="queryAdvertisementList" parameterType="int" resultType="HouseEntity">
@@ -51,40 +59,45 @@
 				<if test="title != null">
 					title=#{title},
 				</if>
-				<if test="prize != null">
+				<if test="prize != null || prize != 0">
 					prize=#{prize},
 
 				</if>
-				<if test="down_payment != null">
+				<if test="downPayment != null">
 					down_payment=#{downPayment},
 				</if>
-				<if test="monthly_payment != null">
+				<if test="monthlyPayment != null">
 					monthly_payment=#{monthlyPayment},
 				</if>
 				<if test="orientation != null">
 					orientation=#{orientation},
 				</if>
-				<if test="floor != null">
+				<if test="floor != 0">
 					floor=#{floor},
 				</if>
-				<if test="year != null">
+				<if test="year != 0">
 					year=#{year},
 
 				</if>
-				<if test="house_describe != null">
+				<if test="houseDescribe != null">
 					house_describe=#{houseDescribe},
 				</if>
-				<if test="area != null">
+				<if test="area != 0">
 				    area=#{area}
-
 				</if>
-				<if test="room_amount != null">
+				<if test="roomAmount != null">
 					room_amount=#{roomAmount},
 				</if>
-				<if test="livingroom_amount != null">
+				<if test="houseTypeUrl != null">
+					house_type_url = #{houseTypeUrl}
+				</if>
+				<if test="houseViewUrl != null">
+					house_view_url = #{houseViewUrl}
+				</if>
+				<if test="livingroomAmount != null">
 					livingroom_amount=#{livingroomAmount},
 				</if>
-				<if test="toilet_amount != null">
+				<if test="toiletAmount != null">
 					toilet_amount=#{toiletAmount},
 				</if>
 				<if test="balconyAmount != null">
@@ -113,10 +126,8 @@
 				</if>
 				<if test="zone != null">
 					zone=#{zone},
-
 				</if>
-				<if test="village_name != null">
-
+				<if test="villageName != null">
 					village_name=#{villageName},
 				</if>
 				<if test="address != null">

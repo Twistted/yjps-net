@@ -3,9 +3,13 @@
 <mapper namespace="com.test.web.mapper.ManagerMapper">
 	
     <insert id="insert" parameterType="ManagerEntity">
-        insert into manager (account, password, state, level, photo_url)
-		values(#{account},#{password},#{state},#{level},#{photoUrl})
+        insert into manager (account, password,name, state, level, photo_url)
+		values(#{account},#{password},#{name},#{state},#{level},#{photoUrl})
     </insert>
+    
+    <select id="login" parameterType="String" resultType="ManagerEntity">
+    	select * from manager where account=#{account}
+    </select>
     
 	<select id="findById" parameterType="int" resultType="ManagerEntity">
 		select * from manager where manager_id=#{id}
@@ -16,8 +20,16 @@
 	</select>
 	
 	<select id="queryPage" parameterType="int" resultType="ManagerEntity">
-		select * from order by manager_id limit #{offset} #{size}
+		select * from manager where level > 1 order by manager_id limit #{offset}, #{size}
 	</select>
+	
+	<update id="enable" parameterType="int">
+	    update manager set state = 1 where manager_id = #{managerId}
+	</update>
+	
+	<update id="disable" parameterType="int">
+	    update manager set state = 2 where manager_id = #{managerId}
+	</update>
 	
 	<update id="update" parameterType="ManagerEntity">
 		update manager
@@ -28,10 +40,13 @@
 				<if test="password != null">
 					password = #{password},
 				</if>
-				<if test="state != null">
+				<if test="name != null">
+					name = #{name},
+				</if>
+				<if test="state != 0">
 					state = #{state},
 				</if>
-				<if test="level != null">
+				<if test="level != 0">
 					level = #{level},
 				</if>
 				<if test="photoUrl != null">

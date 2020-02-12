@@ -9,6 +9,9 @@
 							<a href="/company/index.jsp">了解易居网</a>
 						</li>
 						<li>
+							<a href="/info/show_news">易居资讯</a>
+						</li>
+						<li>
 							<a href="/company/aboutUs.jsp">关于易居</a>
 						</li>
 						<li>

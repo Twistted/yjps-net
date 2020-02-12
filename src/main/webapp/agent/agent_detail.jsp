@@ -92,7 +92,7 @@
 				<div class="tab">
 					<ul class="tab-lst">
 
-						<li>  data-id="1" <!--id="p1" onclick="document.getElementById('q1').setAttribute('style', 'display:block');document.getElementById('q3').setAttribute('style', 'display:block');document.getElementById('q4').setAttribute('style', 'display:none');"-->
+						<li>  <!--data-id="1" id="p1" onclick="document.getElementById('q1').setAttribute('style', 'display:block');document.getElementById('q3').setAttribute('style', 'display:block');document.getElementById('q4').setAttribute('style', 'display:none');"-->
 							<a>
 								<span>&nbsp;&nbsp;概况&nbsp;&nbsp;</span>
 							</a>

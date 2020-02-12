@@ -96,7 +96,6 @@
 					<dl>
 						<dt>户型：</dt>
 						<dd>${house.roomAmount}室${house.livingroomAmount}厅</dd>
-						
 					</dl>
 					<dl>
 						<dt>朝向：</dt>
@@ -109,10 +108,6 @@
 					<dl class="clear">
 						<dt>年份：</dt>
 						<dd>${house.year}年建</dd>
-					</dl>
-					<dl>
-						<dt>地址：</dt>
-						<dd>${house.province}${house.city}${house.town}${house.address}"</dd>
 					</dl>
 				</div>
 				<div class="countact-panel">
@@ -219,7 +214,7 @@
 						<div class="detail-contents">
 							<div class="items">
 								<div class="content">
-									<h2>正读晋阳小学 内跃精装套三可改套四 带入户花园</h2>
+									<h2>${house.title}</h2>
 									<p class="time">2016-08-05 20:18:49 更新</p>
 									<p class="text-comment">
 										<p></p>
